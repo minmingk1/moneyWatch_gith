@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 
 		<div class="form-group">
+		<td></td>
 		<td>
 	    <select class="custom-select" name="account_company" id="bank">
 				<option value="은행명">은행명</option>
@@ -15,13 +16,14 @@
 				<option value="수협">수협</option>
 	    </select>
 	    </td>
-	    
-	    
+	   
+	    <tr>
 		<td><label class="col-form-label" for="inputDefault">계좌번호</label></td>
 		<td><input type="text" name="account_num" class="form-control" id="inputDefault"></td>
-	  	
+	  	</tr>
 	  		
+	  	<tr>
 		<td><label class="col-form-label" for="inputDefault">잔고</label></td>
 		<td><input type="text"  name="balance" class="form-control" id="inputDefault"></td>
-		
+		</tr>
 		</div>
