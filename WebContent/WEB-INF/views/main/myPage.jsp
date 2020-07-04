@@ -40,7 +40,7 @@
         <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Member</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="#">마이페이지</a>
+      <a class="dropdown-item" href="myPage.mw">마이페이지</a>
       <a class="dropdown-item" href="#">회원정보 수정</a>
       <a class="dropdown-item" href="#">회원 탈퇴</a>
       <div class="dropdown-divider"></div>
@@ -52,10 +52,11 @@
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="#">챗봇</a>
       <a class="dropdown-item" href="#">캘린더</a>
-      <a class="dropdown-item" href="#">지출/수입 등록</a>
+      <a class="dropdown-item" href="moneyioForm.mw">지출/수입 등록</a>
+      <a class="dropdown-item" href="moneyioList">지출/수입 목록</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">나의 소비패턴 보기</a>
-      <a class="dropdown-item" href="#">연령별 지출 비교</a>
+      <a class="dropdown-item" href="ptEstimate.mw">나의 소비목록 보기</a>
+      <a class="dropdown-item" href="ageChart.mw">연령별 지출 비교</a>
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <li class="nav-item dropdown">
@@ -77,8 +78,6 @@
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="#">회원 관리</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">연령별 지출 관리</a>
-      <a class="dropdown-item" href="#">소비패턴 분석 관리</a>
       <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
       <a class="dropdown-item" href="#">챗봇 관리</a>
       <div class="dropdown-divider"></div>
