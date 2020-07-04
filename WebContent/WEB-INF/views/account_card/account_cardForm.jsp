@@ -48,7 +48,7 @@
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark"">
-<div class="container">	
+<div class="container" id="container">	
   <a class="navbar-brand" href="#"><i class="fas fa-bars"></i></a>
   
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">

@@ -12,13 +12,20 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <style>
   .fakeimg {
     height: 200px;
     background: #aaa;
   }
   </style>
+  
+<script type="text/javascript">
+$("#iframe").one("load", function() {
+	  $("#iframe").contents().find("#container").remove()
+	})
+
+</script>
 </head>
 <body>
 
@@ -123,7 +130,7 @@
       <h7>잔액</h7>
       <br>
      -->
-	<iframe name="mypage" src="myPageMain.mw" width="800" height="800"
+	<iframe id="iframe" name="mypage" src="myPageMain.mw" width="800" height="800"
 	 marginwidth="0" marginheight="0" frameborder="0"></iframe>    
     </div>  
     
