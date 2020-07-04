@@ -19,13 +19,7 @@
     background: #aaa;
   }
   </style>
-  
-<script type="text/javascript">
-$("#iframe").one("load", function() {
-	  $("#iframe").contents().find("#container").remove()
-	})
 
-</script>
 </head>
 <body>
 
@@ -130,10 +124,10 @@ $("#iframe").one("load", function() {
       <h7>잔액</h7>
       <br>
      -->
-	<iframe id="iframe" name="mypage" src="myPageMain.mw" width="800" height="800"
-	 marginwidth="0" marginheight="0" frameborder="0"></iframe>    
-    </div>  
-    
+	<iframe name="mypage" src="myPageMain.mw" width="800" height="800"
+	 marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	 </div>    
+  
   </div>
 </div>
 
