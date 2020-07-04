@@ -18,13 +18,19 @@
 &nbsp
 	<h1 align="center">금융 SenseUp!!</h1> <!-- a태그넣기  -->
 &nbsp
+	<c:if test="${sessionScope.memId != null}">
+		<a class="btn-group btn-group-toggle" href="myscrap.mw">마이스크랩</a>
+	</c:if>
+	
 	<div align="center">
 		<div class="left-box" style="float: left; margin-right:10px;">
 			<h2 align="center" >오늘의 영상</h2>
 &nbsp
 			<div id="video_url">
 				<iframe width="850" height="478" src="https://www.youtube.com/embed/${video.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
-				<input id="memo" type="button" value="스크랩" onclick="scrapmemo(${video.num})"/>
+					<c:if test="${sessionScope.memId != null}">
+						<input id="memo" type="button" value="스크랩" onclick="scrapmemo(${video.num})"/>
+					</c:if>
 			</div>
 		</div>
 		

@@ -74,7 +74,7 @@ $("#iframe").one("load", function() {
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">게시판</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="#">금융 상식</a>
+      <a class="dropdown-item" href="sense.mw">금융 상식</a>
       <a class="dropdown-item" href="#">챌린지</a>
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -89,6 +89,7 @@ $("#iframe").one("load", function() {
       <a class="dropdown-item" href="#">챗봇 관리</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">게시판 관리</a>
+      <a class="dropdown-item" href="#">지식관리</a> 
     </div>
     </li>
 
@@ -114,7 +115,7 @@ $("#iframe").one("load", function() {
   
   <h7 class="list-group-item list-group-item-action active">게시판</h7>
   <a href="#" target="mapage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
-  <a href="#" target="mapage" class="list-group-item list-group-item-action">나의 스크랩</a>
+  <a href="myscrap.mw" target="mapage" class="list-group-item list-group-item-action">나의 스크랩</a>
   
 
 </div>

@@ -35,11 +35,17 @@ public class SenseDAO {
 		SenseDTO dto = sqlSession.selectOne("sense.senseDetailVideo", num); //메인 리스트에서 선택시 비디오 url 변경
 		return dto;
 	}
-	
-	//디테일 페이지
-	public SenseDTO senseDetail(int num) {
-		SenseDTO dto = sqlSession.selectOne("sense.select", num);
+
+	//마이스크랩 디테일 페이지
+	public ScrapDTO senseDetail(int num, String id) {
+		
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("num", num);
+		
+		ScrapDTO dto = sqlSession.selectOne("sense.myDetail", map);
 		return dto; //디테일 페이지에 해당 정보를 보여줌
+		
 	}
 	
 	//조회수 올리기
@@ -136,10 +142,16 @@ public class SenseDAO {
 		return video;
 	}
 	
+	//정보가져오기
+	public SenseDTO senseSearch(int num) {
+		SenseDTO dto = sqlSession.selectOne("sense.select", num);
+		return dto; //디테일 페이지에 해당 정보를 보여줌
+	}
+	
 	// 스크랩 저장
 	public void scrap(int num, String id, String memo) {
 		
-		SenseDTO dto = (SenseDTO)senseDetail(num); //번호로 검색해 넣을 값을 불러옴
+		SenseDTO dto = (SenseDTO)senseSearch(num); //번호로 검색해 넣을 값을 불러옴
 		HashMap map = new HashMap();
 		map.put("scrap", dto);
 		map.put("id", id);

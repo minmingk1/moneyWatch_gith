@@ -63,7 +63,7 @@
 			<div class="col-sm-4">
 				<h3>게시판</h3>
 				<br />
-				<li><a href="">금융지식 게시판</a></li> <br />
+				<li><a href="sense.mw">금융지식 게시판</a></li> <br />
 				<li><a href="">FAQ 및 질문 게시판</a></li> <br />
 			</div>
 			<div class="col-sm-4"></div>
@@ -75,6 +75,7 @@
 				<li>연령별 지출 관리</li> <br />
 				<li>소비패턴 분석 관리</li> <br />
 				<li>게시판 관리</li> <br />
+				<li>지식관리</li><br/>
 				<li>DB 챗봇 관리</li> <br />
 				
 			</div>

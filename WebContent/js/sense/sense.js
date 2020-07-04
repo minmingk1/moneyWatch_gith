@@ -32,19 +32,6 @@
 	//sense main에서 리스트 클릭시 디테일 페이지 호출
 	function detail(num){
 		
-		var detail = "#detail"+num;
-		
-		$.ajax({
-			
-			type: "POST",
-			url: "senseDetail.mw",
-			data : {num: num},
-			success: function(data){
-				$(detail).html(data); //리스트 변경			
-				
-			}
-		});
-		
 		$.ajax({
 			
 			type: "POST",
@@ -145,6 +132,21 @@
 	
 	//myscrap에서 리스트 클릭시 비디오 호출
 	function mydetail(num){
+		
+		var detail = "#detail"+num;
+		
+		$.ajax({
+			
+			type: "POST",
+			url: "senseDetail.mw",
+			data : {num: num},
+			success: function(data){
+				$(detail).html(data); //리스트 변경			
+				
+			}
+		});
+		
+		
 		$.ajax({
 			
 			type: "POST",

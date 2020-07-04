@@ -71,12 +71,14 @@ public class SenseBean {
 		return "/sense/mainList";		
 	}
 	
-	//R - 디테일 페이지
+	//R - 마이스크랩 디테일 페이지
 	@RequestMapping("senseDetail.mw")
-	public String senseDetail(int num, Model model) { //시퀀스 번호를 매개변수로 받음
+	public String senseDetail(HttpSession session, int num, Model model) { //시퀀스 번호를 매개변수로 받음
 		
-		dao.count(num); //조회수를 올림
-		SenseDTO dto = dao.senseDetail(num);
+		String id = "crong";
+		// String id = session.getAttribute("memId");
+		
+		ScrapDTO dto = dao.senseDetail(num, id);
 		model.addAttribute("detail", dto); //디테일 페이지의 정보를 가져옴
 		return "/sense/detail";
 		
@@ -86,6 +88,7 @@ public class SenseBean {
 	@RequestMapping("senseDetailVideo.mw")
 	public String senseDetailVideo(int num, Model model) {
 		
+		dao.count(num); //조회수를 올림
 		SenseDTO dto = dao.senseDetailVideo(num);		
 		model.addAttribute("dto", dto);
 		return "/sense/video_url";

@@ -18,7 +18,7 @@
 			<td>${ dto.sense_title }</td>
 		</tr>
 		<tr>
-			<td><input type="text" name="memo"/></td>
+			<td><input type="textbox" name="memo"/></td>
 		</tr>
 		<tr>
 			<input type="button" value="스크랩" onclick="scrap(${dto.num})"/>

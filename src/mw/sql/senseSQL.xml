@@ -132,6 +132,11 @@
 		select * from mwscrap where id=#{id} and num=#{num}
 	</select>
 	
+	<!-- 마이스크랩 디테일 -->
+	<select id="myDetail" resultType="scrapDTO" parameterType="hashMap">
+		select * from mwscrap where  id=#{id} and num=#{num}
+	</select>
+		
 	<!-- 스크랩 저장 -->
 	<insert id="scrap" parameterType="hashMap">
 		insert into mwscrap values(mwscrap_seq.nextval,#{scrap.num},#{id},#{scrap.sense_category},#{scrap.sense_title},#{scrap.sense_url},#{memo})

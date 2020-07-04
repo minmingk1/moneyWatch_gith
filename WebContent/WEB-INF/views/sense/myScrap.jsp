@@ -50,10 +50,14 @@
 								<td onclick="mydetail(${ list.num })">${ list.sense_title }</td>
 								<td><input type="button" value="삭제" onclick="deletescrap(${list.num})"/></td>
 							</tr>
+							<tr>
+								<table id="detail${list.num }">
+								</table>
+							</tr>
 						</table>
 					</c:forEach>	
 				</div>
-			</div>		
+			</div>
 		</div>
 	</div>
 </body>
