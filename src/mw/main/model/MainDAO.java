@@ -4,16 +4,22 @@ import org.mybatis.spring.SqlSessionTemplate;
 
 public class MainDAO {
 		
-	//mybatis¿¡ ¿¬°á
+	//mybatisï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	private SqlSessionTemplate sqlSession = null; 	
 	
-	//sqlSessionÀ» ÀÌ¿ëÇÑ SQL¿¡ ¿¬°á
+	//sqlSessionï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½ï¿½ SQLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public MainDAO(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
 	
-	//¸ÞÀÎ ¿µ»ó url Ãâ·Â
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ url ï¿½ï¿½ï¿½
 	public MainDTO video_url() {
 		return sqlSession.selectOne("main.video_url");
+	}
+	public int thisOut(String id) {
+		return sqlSession.selectOne("moneyio.thisOut", id);
+	}
+	public int thisIn(String id) {
+		return sqlSession.selectOne("moneyio.thisIn", id);
 	}
 }

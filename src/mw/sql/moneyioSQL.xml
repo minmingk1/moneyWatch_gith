@@ -147,7 +147,13 @@
 	]]>
 	
 	</select>
-
+	<select id="thisOut" resultType="int" parameterType="String">
+		select sum(io_price) from mwmoneyio where id=#{id} and io_reg_date like '%-07-%' and io_set=1
+	</select>
+	
+	<select id="thisIn" resultType="int" parameterType="String">
+		select sum(io_price) from mwmoneyio where id=#{id} and io_reg_date like '%-07-%' and io_set=0
+	</select>
 
 	<select id="moneyioListAll" resultType="moneyioDTO" parameterType="String">
 		select * from mwmoneyio where id = #{id} order by io_reg_date desc, io_num desc
