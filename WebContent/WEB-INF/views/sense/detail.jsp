@@ -11,10 +11,10 @@
  
 </head>
 <body>
-<!-- 센스 디테일 페이지 / 메인 리스트 클릭 시 작동-->
+<!-- 센스 디테일 페이지 / 리스트 클릭 시 작동-->
 	<table>
 		<tr>
-			<td>${ detail.memo }</td>
+			<td onclick="click(${detail.num })">${ detail.memo }</td>
 		</tr>
 	</table>
 </body>

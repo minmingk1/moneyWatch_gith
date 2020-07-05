@@ -56,6 +56,7 @@
 		
 	}
 	
+	
 	//sense detail에서 삭제 버튼 선택시 작동
 	function senseDelete(num){
 		
@@ -155,10 +156,18 @@
 			success: function(data){
 				$("#my_video").html(data); //영상변경을 위한 url 호출
 			}
-		});
-	
-		
-		
-
-		
+		});		
 	}
+	
+	
+	function click(num){
+		alert(num);
+		var detail = "#detail"+num;
+		
+		$(detail).click(function(){
+			$(detail).hide();
+			return false;
+		})	
+
+	}
+	

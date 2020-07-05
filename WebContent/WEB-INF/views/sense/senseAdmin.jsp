@@ -24,7 +24,6 @@
 &nbsp
 			<div id="video_url">
 				<iframe width="850" height="478" src="https://www.youtube.com/embed/${video.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
-				<input id="memo" type="button" value="스크랩" onclick="scrapmemo(${video.num})"/>
 			</div>
 		</div>
 		

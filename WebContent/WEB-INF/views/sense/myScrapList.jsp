@@ -19,7 +19,7 @@
 				<td><input type="button" value="삭제" onclick="deletescrap(${list.num})"/></td>
 			</tr>
 			<tr>
-				<table id="detail${list.num }">
+				<table id="detail${list.num }" >
 				</table>
 			</tr>
 		</table>
