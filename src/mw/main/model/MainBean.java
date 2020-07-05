@@ -37,6 +37,7 @@ public class MainBean {
 
 	@RequestMapping("myPageMain.mw")	
 	public String myPageMain(Model model) {
+		/* String id = (String)session.getAttribute("memId"); */
 		String id = "nahui068";
 		int thisOut = dao.thisOut(id);
 		int thisIn = dao.thisIn(id);

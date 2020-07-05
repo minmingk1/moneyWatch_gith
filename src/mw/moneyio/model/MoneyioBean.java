@@ -22,9 +22,10 @@ public class MoneyioBean {
 	private MoneyioDAO dao = null;
 	
 	ArrayList list = new  ArrayList();
-	//ÁöÃâ/¼öÀÔ ÀÔ·Â ÆäÀÌÁö
+	//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping("moneyioForm.mw")
 		public String moneyioForm(MoneyioDTO dto, Model model) {
+			/* String id = (String)session.getAttribute("memId"); */
 			String id= "nahui068";
 			dto.setId(id);
 
@@ -33,7 +34,7 @@ public class MoneyioBean {
 			
 			//System.out.println(card_list.get(0));
 			//System.out.println(card_list.get(1));
-			model.addAttribute("id", id);
+			model.addAttribute("memId", id);
 			model.addAttribute("card_list", card_list);
 
 			return "/moneyio/moneyioForm";
@@ -71,7 +72,7 @@ public class MoneyioBean {
 			return "/moneyio/nbreadForm";
 		}
 		
-		//ÁöÃâ/¼öÀÔ ÀÔ·Â ÆäÀÌÁö ÀÔ·Â
+		//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 		@RequestMapping("moneyioPro.mw")
 		public String moneyioPro(MoneyioDTO dto, NbreadDTO ndto, My_cardDTO mdto, HttpServletRequest request) {
 			int io_old_remain = Integer.parseInt(request.getParameter("io_old_remain"));
@@ -103,11 +104,11 @@ public class MoneyioBean {
 			return "/moneyio/moneyioPro";
 		}
 
-		//ÁöÃâ/¼öÀÔ ÀÔ·Â ÆäÀÌÁö ¼öÁ¤ ÆäÀÌÁö
+		//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		@RequestMapping("ioUpdateForm.mw")
 		public String ioUpdateForm(Model model, HttpServletRequest request) {
 			
-			//String id="nahui068";
+			/* String id = (String)session.getAttribute("memId"); */
 			String id = "minmingk1";
 			//int io_num=905;
 			int io_num = Integer.parseInt(request.getParameter("ioNum"));
@@ -117,19 +118,19 @@ public class MoneyioBean {
 				dto.setIo_N_div(0);
 			}
 
-			model.addAttribute("id", id);
+			model.addAttribute("memId", id);
 			model.addAttribute("dto", dto);
 			
 			return "/moneyio/ioUpdateForm";
 		}
 		
-		//ÁöÃâ/¼öÀÔ ÀÔ·Â ÆäÀÌÁö update
+		//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ update
 		@RequestMapping("ioUpdatePro.mw")
 		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
 			//int io_num = 905;
 			int io_old_price = Integer.parseInt(request.getParameter("io_old_price"));
 			int io_price = dto.getIo_price() - io_old_price; 
-						// 39000 - 40000 // ÁöÃâ // -1000
+						// 39000 - 40000 // ï¿½ï¿½ï¿½ï¿½ // -1000
 			System.out.println("dto.getIo_remain()"+dto.getIo_remain());
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
 			
@@ -161,7 +162,7 @@ public class MoneyioBean {
 			return "/moneyio/ioUpdatePro";
 		}
 		
-		//¿¬·É´ëº° ÁöÃâ chart ÆäÀÌÁö 
+		//ï¿½ï¿½ï¿½É´ëº° ï¿½ï¿½ï¿½ï¿½ chart ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		@RequestMapping("ageChart.mw")
 		public String ageChart20(Model model, MoneyioDTO dto) {
 			List<MoneyioDTO> chart_list20 = new ArrayList<MoneyioDTO>();
@@ -178,10 +179,11 @@ public class MoneyioBean {
 			return "/moneyio/ageChart";
 		}
 		
-		//°³ÀÎ¼ÒºñÆÐÅÏºÐ¼®
+		//ï¿½ï¿½ï¿½Î¼Òºï¿½ï¿½ï¿½ï¿½ÏºÐ¼ï¿½
 		@RequestMapping("ptEstimate.mw")
 		public String ptEstimate(/*String id,*/ Model model) {
-
+			
+			/* String id = (String)session.getAttribute("memId"); */
 			String id = "nahui068";
 			int sum = 0;
 			int sum1 = dao.sum5(id);
@@ -223,7 +225,7 @@ public class MoneyioBean {
 			//MoneyioDTO dtoT = next_list.get(next_list.size()-1);
 			//System.out.println("next_list: "+ dtoT.getCount3());
 			
-			model.addAttribute("id", id);
+			model.addAttribute("memId", id);
 			model.addAttribute("list1", list1);
 			model.addAttribute("sum1", sum1);
 			model.addAttribute("list2", list2);

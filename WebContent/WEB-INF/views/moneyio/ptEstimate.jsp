@@ -66,7 +66,7 @@ table{
 <body>
 
 <div class="container mt-3" style="float: left; width: 30%; margin-left:15%; margin-right:5%;">
-  <h5>${id}님의 </h5><br />
+  <h5>${memId}님의 </h5><br />
   <h2>3개월 지출 내역 리스트</h2>
   <br>
   <!-- Nav tabs -->

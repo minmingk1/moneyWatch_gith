@@ -114,7 +114,8 @@
 	<div class="form-group">
 		<h1>
 			${id}님 안녕하세요!
-			<input type="hidden" name="id" value="${id}" id="id"/>
+			<input type="hidden" name="id" value="${memId}" id="id" />
+			
 		</h1>
 		<table border="1" align="center" width="60%">
 				<tr>
