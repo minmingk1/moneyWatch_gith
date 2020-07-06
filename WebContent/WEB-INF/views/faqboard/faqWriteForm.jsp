@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>게시판</title>
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script language="javaScript">
 function writeSave(){
 	
@@ -36,9 +37,10 @@ function writeSave(){
 }
 </script>
 </head>
-<center><b>글쓰기</b></center>
+<center><h3>글쓰기</h3></center>
 <br>								
 	<form method="post" name="writeform" action="faqWritePro.mw" onsubmit="return writeSave()">
+	<div class="form-group">
 		<input type="hidden" name="faq_num" value="${faq_num}">
 		<input type="hidden" name="ref" value="${ref}">
 		<input type="hidden" name="re_step" value="${re_step}">
@@ -46,57 +48,54 @@ function writeSave(){
 		<input type="hidden" name="readcount" value="${readcount}">
 		
 		<table width="400" border="1" cellspacing="0" cellpadding="0" align="center">
-		<tr>
-		<td align="right" colspan="2">
-		</td>	
-		</tr>
-		
-		<tr>
-     		<td width="70" align="center">작성자</td>
-     		<td width="330">   ${sessionScope.memId }
-      		  <input type="hidden" name="id" value="${sessionScope.memId}"></td>
-    	</tr>
-		
-		
-		</tr>
-		
-		<tr>
-    <td  width="70"  bgcolor="${value_c}" align="center" >제 목</td>
-    <td  width="330">
-     
-       <input type="text" size="40" maxlength="50" name="subject"></td>
-  
-  </tr>
-		
-		<tr>
-		<td width="70" >Email</td>
-		<td width="330">
-		<input type="text" size="40" maxlength="30" name="faq_email"></td>
-		</tr>
-		
-		
-		<tr>
-		<td width="70" align="center">내용</td>
-		<td width="330">
-		<textarea name="content" rows="13" cols="50"></textarea></td>
-		</tr>
-		
-		
-		<tr>
-		<td width="70" align="center">비밀번호</td>
-		<td width="330">
-		<input type="password" size="8" maxlength="10" name="pw"></td>
-		</tr>
-		
-		<tr>
-		<td colspan="2" align="center">
-		<input type="submit" value="글쓰기">
-		<input type="reset" value="새로작성">
-		<input type="button" value="목록보기" onclick="window.location='/moneyWatch/faqList.mw'">
-		</td>
-		</tr>
+			<tr>
+				<td align="right" colspan="2"></td>	
+			</tr>
+			
+			<tr>
+	     		<td width="70" align="center">작성자</td>
+	     		<td width="330">
+	     		<input type="text" class="form-control" name="id" value="${sessionScope.memId}" disabled/></td>
+	    	</tr>
+			
+			</tr>
+			
+			<tr>
+		    	<td  width="70"  bgcolor="${value_c}" align="center" >제 목</td>
+		    	<td  width="330">
+	     		<input type="text" class="form-control" size="40" maxlength="50" name="subject"></td>
+	  		</tr>
+			
+			<tr>
+				<td width="70" align="center" >Email</td>
+				<td width="330">
+				<input type="text" class="form-control" size="40" maxlength="30" name="faq_email"></td>
+			</tr>
+			
+			
+			<tr>
+				<td width="70" align="center">내용</td>
+				<td width="330">
+				<textarea  class="form-control" name="content" rows="13" cols="50"></textarea></td>
+			</tr>
+			
+			<tr>
+				<td width="70" align="center">비밀번호</td>
+				<td width="330">
+				<input type="password" class="form-control" size="8" maxlength="10" name="pw"></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit"  class="btn btn-primary" value="글쓰기">
+					<input type="reset" class="btn btn-primary" value="새로작성">
+					<input type="button" class="btn btn-primary" value="목록보기" onclick="window.location='/moneyWatch/faqList.mw'">
+				</td>
+			</tr>
 	
-	</table>
+		</table>
+	</div>
+		
 </form>
 
 </html>
