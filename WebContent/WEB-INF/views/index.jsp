@@ -69,8 +69,7 @@
 							Forgot
 						</span>
 						<a class="txt2" href="#">
-							Username / Password?
-						</a>
+							Username</a> / <a class="txt2" href="pwFindForm.mw">Password?</a>
 					</div>
 
 					<div class="text-center p-t-136">
