@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainBean {
 	
 	@Autowired
-	private MainDAO dao = null; //���� ������ ����ϱ� ���� DAO
+	private MainDAO dao = null; //占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙歐占� 占쏙옙占쏙옙 DAO
 	
 	@RequestMapping("siteMap.mw")	
 	public String siteMap() {
@@ -23,10 +23,10 @@ public class MainBean {
 	}
 	
 	@RequestMapping("main.mw")	
-	public String main(Model model) {
+	public String aopmain(Model model) {
 		
-		MainDTO video = dao.video_url(); //������ ����
-		model.addAttribute("video", video); //������ ���� url ������
+		MainDTO video = dao.video_url(); //占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
+		model.addAttribute("video", video); //占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 url 占쏙옙占쏙옙占쏙옙
 		return "/main/main";
 	}
 	
