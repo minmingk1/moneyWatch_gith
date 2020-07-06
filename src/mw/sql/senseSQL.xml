@@ -117,22 +117,38 @@
 		select count(*) from mwsense where num=#{num}
 	</select>
 	
+	<!-- 스크랩 메모 -->
+	<select id="senseMemo" resultType="senseDTO" parameterType="int">
+		select * from mwsense where num=#{num}
+	</select>
 	
-	
-	<!-- myscrap main-->
+	<!-- 마이스크랩 메인 -->
 	<select id="myscrap" resultType="scrapDTO" parameterType="String">
 		select * from mwscrap where id=#{id}
 	</select>
 	
-	<!-- myscrap video -->
+	<!-- 마이스크랩 비디오 -->
 	<select id="myVideo" resultType="scrapDTO" parameterType="hashMap">
 		select * from mwscrap where id=#{id} and num=#{num}
 	</select>
 	
+	<!-- 마이스크랩 디테일 -->
+	<select id="myDetail" resultType="scrapDTO" parameterType="hashMap">
+		select * from mwscrap where  id=#{id} and num=#{num}
+	</select>
+		
 	<!-- 스크랩 저장 -->
 	<insert id="scrap" parameterType="hashMap">
-		insert into mwscrap values(mwscrap_seq.nextval,#{scrap.num},#{id},#{scrap.sense_category},#{scrap.sense_title},#{scrap.sense_url})
+		insert into mwscrap values(mwscrap_seq.nextval,#{scrap.num},#{id},#{scrap.sense_category},#{scrap.sense_title},#{scrap.sense_url},#{memo})
 	</insert>
+	
+	<!-- 카테고리 선택시 / 스크랩페이지-->	
+	<select id="myscrapCategory" resultType="scrapDTO" parameterType="hashMap">
+		select * from mwscrap where id=#{id} and sense_category=(
+				select sense_detail_category from mwsense_category where num=#{num} 
+			)
+		order by num desc
+	</select>
 	
 	<!-- 스크랩 삭제 -->
 	<delete id="scrapDelete" parameterType="hashMap">

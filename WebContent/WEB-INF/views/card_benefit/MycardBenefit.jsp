@@ -9,7 +9,7 @@
 
 <center><img src="/moneyWatch/image/${card_img}"/></center>
 <br><br>
-<table class="table table-hover" style="width:50%; text-align:center;" align="center">
+<table class="table table-hover" style="width:80%; text-align:center;" align="center">
 <c:forEach var="cdto" items="${myBenefit}">	
 		<tr class="table-light">
 			<th style="text-align:center;">${cdto.all_benefit_name}</th>
@@ -18,5 +18,4 @@
 	
 </c:forEach>
 </table>	
-<%-- <center><input type="button" class="btn btn-outline-primary" value="목록으로" onclick="window.location='/moneyWatch/myCard.mw'"></center> --%>
 <center><input type="button" class="btn btn-outline-primary" value="목록으로" onclick="history.go(-1)"/></center>	

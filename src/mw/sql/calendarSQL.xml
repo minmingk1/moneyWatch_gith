@@ -54,4 +54,11 @@
 	<delete id="day_delete" parameterType="hashmap">
 		delete from mwSchedule where id=#{id} and title=#{title} and start_time=#{start_time}
 	</delete>
+	
+	<!-- 일정수정 -->
+	<update id="day_update"  parameterType="hashmap">
+		update mwSchedule set title=#{title}, memo=#{memo}, start_time=#{start_time}, end_time=#{end_time}, place=#{place},
+		sc_color=#{sc_color} where id=#{id} and num=#{num}
+	</update>
+	
 </mapper>

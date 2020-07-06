@@ -43,9 +43,8 @@
 		<td colspan="4" align="right">
 		<c:if test="${sessionScope.memId =='aaa'}">
 		<input type="button" value="글수정" onclick="document.location.href='/moneyWatch/faqMainUpdateForm.mw?qnum=${qlist.qnum}'" />
-		
-		<input type="button" value="글삭제" onclick="document.location.href='/moneyWatch/faqMainDelete.mw?qnum=${qlist.qnum}&q_id=${qlist.q_id}'" />
 		</c:if>
+		<input type="button" value="글삭제" onclick="document.location.href='/moneyWatch/faqMainDelete.mw?qnum=${qlist.qnum}&q_id=${qlist.q_id}'" />
 		<input type="button" value="목록보기" onclick="document.location.href='/moneyWatch/faqList.mw'" />
 		
 		</td>

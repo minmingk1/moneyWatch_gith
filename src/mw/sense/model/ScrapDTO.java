@@ -1,12 +1,13 @@
 package mw.sense.model;
 
 public class ScrapDTO {
-	private int scrap_num;
-	private int num;
-	private String id;
-	private String sense_category;
-	private String sense_title;
-	private String sense_url;
+	private int scrap_num; //스크랩번호 - 시퀀스
+	private int num; //번호 - sense번호
+	private String id; //id
+	private String sense_category; //카테고리
+	private String sense_title; //타이틀
+	private String sense_url; //url
+	private String memo; //메모
 	
 	
 	//getter
@@ -27,6 +28,9 @@ public class ScrapDTO {
 	}
 	public String getSense_url() {
 		return sense_url;
+	}
+	public String getMemo() {
+		return memo;
 	}
 	
 	
@@ -49,6 +53,8 @@ public class ScrapDTO {
 	public void setSense_url(String sense_url) {
 		this.sense_url = sense_url;
 	}
-	
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
 	
 }

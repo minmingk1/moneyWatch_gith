@@ -8,7 +8,7 @@
 	<typeAliases>
 		<typeAlias type="mw.main.model.MainDTO" alias="mainDTO"/> <!-- 메인 -->
 		<typeAlias type="mw.member.model.MemberDTO" alias="memberDTO" /> <!-- 회원  -->
-		<typeAlias type="mw.member.model.DeleteMemListDTO" alias="deleteMemListDTO"/><!--탈퇴회원 -->
+		<typeAlias type="mw.member.model.DeleteMemListDTO" alias="deletememListDTO"/><!--탈퇴회원 -->
 		
 		<typeAlias type="mw.email.model.EmailDTO" alias="emailDTO"/> <!-- 아이디/비번 찾기 -->
 		
@@ -27,7 +27,7 @@
 		<typeAlias type="mw.sense.model.ScrapDTO" alias="scrapDTO"/><!-- 스크랩 -->
 		
 		<typeAlias type="mw.faqboard.model.FaqBoardDTO" alias="faqboardDTO"/><!--FAQ유저게시판 -->
-		<typeAlias type="mw.faqboard.model.ReplyDTO" alias="replyDTO"/><!--FAQ유저게시판 댓글-->
+		<!-- <typeAlias type="mw.faqboard.model.ReplyDTO" alias="replyDTO"/>FAQ유저게시판 댓글 -->
 		<typeAlias type="mw.faqboard.model.FaqMainBoardDTO" alias="faqmainboardDTO"/><!--FAQ유저게시판 메인-->
 		
 		
@@ -49,6 +49,7 @@
 		<mapper resource="mw/sql/faqboardSQL.xml" /> <!--F&A게시판 -->
 		<mapper resource="mw/sql/emailSQL.xml"/><!-- 아이디/비번 찾기 -->
 		<mapper resource="mw/sql/mainSQL.xml"/><!-- 메인 -->
+		<mapper resource="mw/sql/adminSQL.xml"/><!-- 관리자 -->
 
 	</mappers>
 	

@@ -10,38 +10,31 @@
 		a {border: 0; text-decoration: none;}
 		a:link {color: #000; text-decoration: none;}
 		a:hover {text-decoration: underline;}
-		
-		#all{
-			width: 100%;
-			height: 2300px;
-			background-color: #f1f3f5;
-			padding: 40px;
-		}
-		
+	
 		#list{
-			width: 1240px;
+			width: 1000px;
 			height: 400px;
 			margin-bottom: 50px;
 		}
 		#list ul{
 			width: 270px;
-			height: 400px;
+			height: 300px;
 			float: left;
 			background-color: #fff;
-			margin: 0 40px 40px 0;
+			/* margin: 0 20px 20px 0; */
 		}
-		#list img{
+/* 		#list img{
 			width: 270px;
-			height: 190px;
+			height: 150px;
 			background-color: #ddd;
 			float: left;
 			margin-bottom: 20px;
-		}
+		} */
 		#list li{text-align: center;}
 </style>
-<br>
+<br><br><br>
 <center><h1>나의 카드 목록</h1>
-<br>
+<br><br>
 
 <div id="list">	
 <c:forEach var="mycard" items="${mycard}">

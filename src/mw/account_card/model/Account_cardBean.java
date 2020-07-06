@@ -253,12 +253,18 @@ public class Account_cardBean {
 		List mycard = acdao.myCardList(id); // 나의 카드목록에 대한 카드이미지
 		
 		model.addAttribute("mycard",mycard);
-		//List myBenefit = acdao.mycard_benefit(card_name);
 		
 		return "/card_benefit/mycardList";
 	}
 	
+	@RequestMapping("card_rank.mw")
+	public String rank_20(Reg_CardDTO cdto, Model model) {
+		
+		List rankList = acdao.card_rank(cdto);
+		model.addAttribute("rankList",rankList);
+		
+		return "/account_card/20card_rank";
+	}
 	
-	
-	
+
 }

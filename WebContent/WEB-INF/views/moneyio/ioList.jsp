@@ -30,7 +30,7 @@
 --%>		
 				
 				<tr>
-					<td align = center width="300" onclick="detail(${ioListval.io_num})">
+					<td align = center width="300" bgcolor="gray" onclick="detail(${ioListval.io_num})">
 						${ioListval.io_reg_date}
 					</td>
 					<td align = right width="100" onclick="detail(${ioListval.io_num})">

@@ -15,20 +15,32 @@
 	<aop:aspectj-autoproxy />	<!-- 작성한 aop 설정 모두 자동 적용 -->
 	
 	<bean id="advice" class="mw.aop.Advice" />	<!-- 객체 생성 -->
+	<bean id="adminAop" class="mw.aop.AdminAOP" />	<!-- 객체 생성 -->
 	
 	<!-- aop 설정 -->
 	<aop:config>
 
+		<!-- 회원 로그인 확인 AOP 설정 -->
 		<aop:pointcut id="p1" expression="execution(public * mw.*.model.*Bean.aop*(..))" />	
 								<!-- 패키지 "mw.*.model"에 속해있는 모든 Bean 클래스 -->
 		<aop:aspect id="bf" ref="advice">
-
 			<aop:around method="around" pointcut-ref="p1" />
-			
-			
 		</aop:aspect>
+				
+	</aop:config>
+
+	<aop:config>
+	
+		<!-- 관리자 로그인 확인 AOP 설정 -->
+		<!-- <aop:pointcut id="p2" expression="execution(public * mw.*.model.*Bean.admin*(..))" />
+		
+		<aop:aspect id="bfadm" ref="adminAop">
+			<aop:around method="around" pointcut-ref="p2" />
+		</aop:aspect> -->
+		
 	
 	</aop:config>
+	
 
 
 </beans>

@@ -82,4 +82,14 @@ public class MwScheduleDAO {
 		sqlSession.delete("calendar.day_delete",dmap);
 		
 	}
+	
+	// 일정수정
+	public void day_update(int num, MwScheduleDTO mwdto) {
+		
+		HashMap daymap = new HashMap();
+		daymap.put("mwdto",mwdto);
+		daymap.put("num",num);
+		
+		sqlSession.update("calendar.day_update",mwdto);
+	}
 }

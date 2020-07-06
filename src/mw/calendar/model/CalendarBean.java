@@ -44,18 +44,6 @@ public class CalendarBean {
 		return "/calendar/calendar";
 	}
 
-	/*
-	 * @RequestMapping("C_popUp.mw") // 캘린더 팝업창 public String cal_pop(Model
-	 * model,HttpServletRequest request) {
-	 * 
-	 * String year = request.getParameter("year"); String month =
-	 * request.getParameter("month"); String day = request.getParameter("date");
-	 * String date = year + "-" + month + "-" + day;
-	 * 
-	 * model.addAttribute("date",date);
-	 * 
-	 * return "/calendar/day"; }
-	 */
 	
 	@RequestMapping("day_popUp.mw") // 캘린더 팝업창
 	public String cal_pop(Model model,String year,String month,String day) {
@@ -68,29 +56,13 @@ public class CalendarBean {
 	}
 	
 	@RequestMapping("day_insert.mw") // 캘린더일정 데이터 입력
-	public String cal_insert(MwScheduleDTO mwdto, Model model) {
+	public String cal_insert(MwScheduleDTO mwdto) {
 		
 		dao.schedule_insert(mwdto); // 캘린더 일정 DB입력
 
 		return "/calendar/day";
 	}
 	
-	// 일정 세부내용 
-//	@RequestMapping("day_detail.mw")
-//	public String day_detail(HttpServletRequest request, Model model) {
-//
-//		List detail = new ArrayList();
-//		
-//		/* String id = request.getSession("memId"); */
-//		String id = "tempid";
-//		String title = request.getParameter("title");
-//		String start_time = request.getParameter("start_time");
-//			
-//		detail = dao.day_detail(id,title,start_time);
-//		model.addAttribute("detail",detail);
-//		
-//		return "/calendar/day_detail";
-//	}
 	
 	// 일정세부내용
 	@RequestMapping("day_detail.mw")
@@ -152,5 +124,29 @@ public class CalendarBean {
 		dao.day_delete(id, title, start_time);
 		
 		return "/calendar/day_delete";
+	}
+	
+	//일정수정
+	@RequestMapping("day_updateForm.mw")
+	public String day_updateForm(String title, String start_time, Model model) {
+		
+		String id = "tempid";
+		
+		MwScheduleDTO detail = dao.day_detail(id, title , start_time);
+		
+		model.addAttribute("detail", detail);
+		
+		return "/calendar/day_updateForm";
+	}
+	
+	@RequestMapping("day_updatePro.mw")
+	public String day_updatePro(HttpServletRequest request, MwScheduleDTO mwdto) {
+		
+		int num = Integer.parseInt(request.getParameter("num"));
+	
+		
+		dao.day_update(num,mwdto);
+		
+		return "/calendar/day_updatePro";
 	}
 }

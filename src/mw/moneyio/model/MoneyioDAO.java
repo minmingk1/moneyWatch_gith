@@ -88,6 +88,37 @@ public class MoneyioDAO {
 		return sqlSession.selectOne("moneyio.nSum", io_num);
 	}
 	
+	//개인소비패턴 chart5월
+	public List<MoneyioDTO> ptEstimate5(String id){
+		return sqlSession.selectList("moneyio.ptEstimate5", id);
+	}
+	//개인소비패턴 chart5월 총금액
+	public int sum5(String id) {
+		return sqlSession.selectOne("moneyio.moneySum5", id);
+	}
+	//개인소비패턴 chart6월
+	public List<MoneyioDTO> ptEstimate6(String id){
+		return sqlSession.selectList("moneyio.ptEstimate6", id);
+	}
+	//개인소비패턴 chart6월 총금액
+	public int sum6(String id) {
+		return sqlSession.selectOne("moneyio.moneySum6", id);
+	}
+	//개인소비패턴 chart7월
+	public List<MoneyioDTO> ptEstimate7(String id){
+		return sqlSession.selectList("moneyio.ptEstimate7", id);
+	}
+	//개인소비패턴 chart7월 총금액
+	public int sum7(String id) {
+		return sqlSession.selectOne("moneyio.moneySum7", id);
+	}
+	
+	public List<MoneyioDTO> nextMonth(String id){
+		return sqlSession.selectList("moneyio.nextMonth", id);
+	}	
+	
+	
+	
 	public List moneyioListAll(String id) {
 		
 		return sqlSession.selectList("moneyio.moneyioListAll", id);

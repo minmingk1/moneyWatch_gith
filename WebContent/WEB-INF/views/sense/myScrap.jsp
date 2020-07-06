@@ -22,7 +22,7 @@
 		<div class="left-box" style="float: left; margin-right:10px;">
 &nbsp
 			<div id="my_video">
-				<iframe width="850" height="478" allowfullscreen><h3>영상을 선택하세요!!</h3></iframe><br/>
+
 			</div>
 		</div>
 		
@@ -32,7 +32,7 @@
 				<table class="btn-group btn-group-toggle" data-toggle="buttons" >
 					<tr>
 						<c:forEach var="category" items="${ category }">
-							<td class="btn btn-primary" align = center onclick="category(${ category.num })">
+							<td class="btn btn-primary" align = center onclick="myscrapCategory(${ category.num })">
 								${ category.sense_detail_category }
 							</td>								
 						</c:forEach>
@@ -50,10 +50,14 @@
 								<td onclick="mydetail(${ list.num })">${ list.sense_title }</td>
 								<td><input type="button" value="삭제" onclick="deletescrap(${list.num})"/></td>
 							</tr>
+							<tr>
+								<table id="detail${list.num }" onclick="click(${list.num })">
+								</table>
+							</tr>
 						</table>
 					</c:forEach>	
 				</div>
-			</div>		
+			</div>
 		</div>
 	</div>
 </body>

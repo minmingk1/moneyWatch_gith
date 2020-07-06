@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainBean {
 	
 	@Autowired
-	private MainDAO dao = null; //¸ÞÀÎ ¿µ»óÀ» Ãâ·ÂÇÏ±â À§ÇÑ DAO
+	private MainDAO dao = null; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ DAO
 	
 	@RequestMapping("siteMap.mw")	
 	public String siteMap() {
@@ -25,8 +25,8 @@ public class MainBean {
 	@RequestMapping("main.mw")	
 	public String main(Model model) {
 		
-		MainDTO video = dao.video_url(); //¿À´ÃÀÇ ¿µ»ó
-		model.addAttribute("video", video); //¿À´ÃÀÇ ¿µ»ó url º¸³»±â
+		MainDTO video = dao.video_url(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		model.addAttribute("video", video); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ url ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		return "/main/main";
 	}
 	
@@ -36,7 +36,14 @@ public class MainBean {
 	}
 
 	@RequestMapping("myPageMain.mw")	
-	public String myPageMain() {
+	public String myPageMain(Model model) {
+		/* String id = (String)session.getAttribute("memId"); */
+		String id = "nahui068";
+		int thisOut = dao.thisOut(id);
+		int thisIn = dao.thisIn(id);
+		
+		model.addAttribute("thisOut", thisOut);
+		model.addAttribute("thisIn", thisIn);
 		return "/main/myPageMain";
 	}
 	

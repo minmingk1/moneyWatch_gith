@@ -13,7 +13,7 @@
         <td align="right">
          
          <c:if test="${sessionScope.memId != null}">
-          <a href="/moneyWatch/myList.mw">글쓰기</a>
+          <a href="/moneyWatch/faqWriteForm.mw">글쓰기</a>
           <a href="/moneyWatch/logout.mw">로그아웃</a>
          </c:if>
          
@@ -36,37 +36,38 @@
          <c:if test="${count != 0}">
           <table border="1" width="700" cellpadding="0" cellspacing="0" align="center">
            <tr height="30">
+           	<td align="center" width="50">   </td>
             <td align="center" width="50">번 호</td>
             <td align="center" width="250">제  목</td>
+            <td align="center" width="250">내용</td>
             <td align="center" width="100">작성자</td>
             <td align="center" width="150">작성일</td>
             <td align="center" width="50">조 회</td>
            </tr> 
            
          <c:forEach var="article" items="${articleList}">   
-           <tr height="30">
-            <td align="center"  width="50" > ${number}</td>
-            <c:set var="number" value="${number-1}"/>
-            <td width="250">
-            <c:set var="wid" value="0"/>
-         <c:if test="${article.re_level > 0}">   
-          <c:set var="wid" value="${5*article.re_level}"/>
-           <img src="/moneyWatch/image/level.gif" width="${wid}" heigth="16">
-           <img src="/moneyWatch/image/re.gif">
-         </c:if>  
-         
-         <c:if test="${article.re_level == 0}">
-          <img src="/moneyWatch/image/level.gif" width="${wid}" height="16">
-         </c:if>    
-          <a href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}">
-              ${article.subject}</a>
-         <c:if test="${article.readcount >=20}">  
-          <img src="/moneyWatch/image/hot.gif" border="0" height="16"></td>
-         </c:if>    
-          <td align="center" width="100">
-          <a href="mailto:${article.faq_email}">${article.id}</a></td>
-          <td align="center" width="150">${article.reg}</td>
-          <td align="center" width="50">${article.readcount}</td>
+         <tr height="30">
+           <td align="center" width="30" >
+           <c:if test="${article.readcount >=20}">  
+           <img src="/moneyWatch/image/hot.gif" border="0" height="16"></td>
+           </c:if>
+            
+	       <td align="center"  width="50" >${number}</td>
+           <c:set var="number" value="${number-1}"/>
+            
+            
+           <td align="center" width="250">
+           <a href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}">
+              ${article.subject}</a></td>
+              
+           <td align="center" width="250">${article.content}</td>
+           
+             
+           <td align="center" width="100">${article.id}</td>
+           
+           <td align="center" width="150">${article.reg}</td>
+           
+           <td align="center" width="50">${article.readcount}</td>
          </tr> 
          </c:forEach>
         </table>

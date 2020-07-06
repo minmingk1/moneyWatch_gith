@@ -52,7 +52,7 @@
 	<div class="form-group">
 		<h1>
 			${id}님 안녕하세요!
-			<input type="hidden" name="id" value="${id}"/>
+			<input type="hidden" name="id" value="${memId}"/>
 			<input type="hidden" name="io_num" value="${dto.io_num}" />
 		</h1>
 		<table border="1" align="center" width="60%">

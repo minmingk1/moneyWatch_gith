@@ -14,7 +14,7 @@
 	<!-- sense 메인 페이지에서 카테고리 선택시 ajax로 list를 불러옴  -->
 			<c:forEach items="${ list }" var="list">
 			<table class="list-group" >
-				<tr class="list-group-item d-flex justify-content-between align-items-center">
+				<tr class="list-group-item d-flex justify-content-between align-items-center" >
 					<!-- 썸네일이미지> --> 
 					<td onclick="detail(${ list.num })"><img src="https://img.youtube.com/vi/${ list.sense_thumbnail }/default.jpg" alt="Page Not Found"/></td>
 					<td onclick="detail(${ list.num })">${ list.sense_title }</td>

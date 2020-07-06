@@ -92,6 +92,7 @@
 					</td>
 				</tr>
 				<tr>
+				
 					<table width="500" border="1" colspan="5" id="detail${ioListval.io_num}">
 					</table>
 				</tr>

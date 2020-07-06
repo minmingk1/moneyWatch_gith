@@ -151,4 +151,12 @@ public class Account_cardDAO {
 		return check;
 	}
 	
+	// 20대 카드 등록 순위
+	public List card_rank(Reg_CardDTO cdto) {
+		
+		List rankList = sqlSession.selectList("account_card.20_cardRegisterCount",cdto);
+		return rankList;
+		
+	}
+	
 }

@@ -11,6 +11,8 @@
 </head>
 <body>
 			<iframe width="850" height="478" src="https://www.youtube.com/embed/${dto.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
-			<input type="button" value="스크랩하기" onclick="scrap(${dto.num})"/>${dto.num}
+		<c:if test="${sessionScope.memId != null}">			
+			<input id="memo" type="button" value="메모하기" onclick="scrapmemo(${dto.num})"/>
+		</c:if>
 </body>
 </html>

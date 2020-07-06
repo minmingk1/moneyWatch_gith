@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <style>
   .fakeimg {
     height: 200px;
@@ -39,9 +39,9 @@
         <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Member</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="#">회원정보 수정</a>
+      <a class="dropdown-item" href="modify.mw">회원정보 수정</a>
       <a class="dropdown-item" href="#">마이페이지</a>
-      <a class="dropdown-item" href="#">회원 탈퇴</a>
+      <a class="dropdown-item" href="memOutForm.mw">회원 탈퇴</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Separated link</a>
     </div>
@@ -51,28 +51,25 @@
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="#">챗봇</a>
       <a class="dropdown-item" href="Calendar.mw">캘린더</a>
-      <a class="dropdown-item" href="#">지출/수입 등록</a>
+      <a class="dropdown-item" href="moneyioForm.mw">지출/수입 등록</a>
+      <a class="dropdown-item" href="moneyioList.mw">지출/수입 목록 </a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">나의 소비패턴 보기</a>
-      <a class="dropdown-item" href="#">연령별 지출 비교</a>
+      <a class="dropdown-item" href="ptEstimate.mw">나의 소비 목록 보기</a>
+      <a class="dropdown-item" href="ageChart.mw">연령별 지출 비교</a>
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">카드/계좌</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="#">등록</a>
-      <a class="dropdown-item" href="#">목록 및 혜택 보기</a>
+      <a class="dropdown-item" href="account_cardForm.mw">등록</a>
+      <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">게시판</a>
      <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="faqList.mw">FAQ</a>
-     </div>
-     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="sense.mw">금융 상식</a>
-      <a class="dropdown-item" href="#">챌린지</a>
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <li class="nav-item dropdown">
@@ -80,8 +77,6 @@
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="#">회원 관리</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">연령별 지출 관리</a>
-      <a class="dropdown-item" href="#">소비패턴 분석 관리</a>
       <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
       <a class="dropdown-item" href="#">챗봇 관리</a>
       <div class="dropdown-divider"></div>
@@ -111,7 +106,7 @@
     </div>
    <div class="col-sm-4">
       <h2>About Me</h2>
-      <h5>OOO님 환영합니다 :^)</h5>
+      <h5>${sessionScope.memId}님 환영합니다 :^)</h5>
       <div class="fakeimg" style="background-color:#dba4d7;"></div>
       <p>개인정보 보호를 위해 주기적으로 비밀번호를 변경해주세요!</p>
       <h3>오늘의 금융상식</h3>

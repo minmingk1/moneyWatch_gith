@@ -139,9 +139,7 @@
 	    		type : "post", //송신 데이터타입
 	    		url : "out_detail.mw",
 	    		data : {title:title, start_time:start_time},
-	    		//dataType : "JSON", //수신 데이터타입
 	    		success : function(data){
-	    			//modal.style.display = "block"; 
 	    			$("#content").html(data);
 	    		}
 	    	});
@@ -153,11 +151,11 @@
 	    		url : "in_detail.mw",
 	    		data : {title:title, start_time:start_time},
 	    		success : function(data){
-	    			//modal.style.display = "block"; 
 	    			$("#content").html(data);
 	    		}
 	    	});
     	}
+    	
     	modal.style.display = "block";
      
     }
@@ -225,9 +223,8 @@
       <!-- Modal content -->
       <div class="modal-content alert-dismissible alert-light" style="width:80%;">
          <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <div id="content">
-        </div>
-                                                                     
+         <div id="content">
+         </div>                                                             
       </div>
  
     </div>

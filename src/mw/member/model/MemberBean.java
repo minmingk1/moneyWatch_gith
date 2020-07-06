@@ -3,7 +3,7 @@ package mw.member.model;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,12 +23,12 @@ public class MemberBean {
 	@Autowired
 	private MemberDAO dao = null;
 	
-	@RequestMapping("loginForm.mw")
+	@RequestMapping("loginForm.mw") //로그인
 	public String loginform() {
 		return "/member/loginForm";
 	}
 
-	@RequestMapping("loginPro.mw")
+	@RequestMapping("loginPro.mw") //로그인 체크
 	public String loginPro(MemberDTO dto, HttpSession session, Model model, HttpServletRequest request) {
 		String id=(String)session.getAttribute(dto.getId());
 		String pw=request.getParameter(dto.getPw());
@@ -41,85 +41,59 @@ public class MemberBean {
 		return "/member/loginPro";
 	}
 	
-	@RequestMapping("logout.mw")
+	@RequestMapping("logout.mw") //로그아웃 세션 삭제
 	public String aoplogout(HttpSession session) {
-		session.invalidate();
-		
+		session.invalidate();	
 		return "/member/logout";
 	}
 	
-	@RequestMapping("registerForm.mw")	
+	@RequestMapping("registerForm.mw")	//회원가입
 	public String registerForm() {
 		return "/member/registerForm";
 	}
-	
-	
-	@RequestMapping("registerPro.mw")	
+
+	@RequestMapping("registerPro.mw")	//회원가입 실행
 	public String registerPro(MemberDTO dto) {
-		
-		dao.insert(dto);
-		
+		dao.insert(dto);	
 		return "/member/registerPro";
 	}
 	
 	
-	@RequestMapping("confirmId.mw")
+	@RequestMapping("confirmId.mw") //아이디 체크
 	public String confirmId(String id,Model model) {
-		int checker=dao.memberCheck(id);
-		model.addAttribute("checker",checker);
+		int check=dao.memberCheck(id);
+		model.addAttribute("check",check);
 		
 		return "/member/confirmId";
 	}
 	
-	
-	
-	
-	
-	
-	
-	@RequestMapping("modify.mw")
-	public String aopmodify(MemberDTO dto, HttpSession session){		
-
-		return "/member/modify";
-	}
-	
-	@RequestMapping("modifyForm.mw")
+	@RequestMapping("modifyForm.mw") //회원 정보에 맞는 데이터 받아서 리턴
 	public String aopmodifyForm(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("memId");
 		MemberDTO dto =dao.modifyCheck(id);
 		model.addAttribute("dto",dto);
 	
-		
 		return "/member/modifyForm";
 	}
 	
 	
-	@RequestMapping("modifyPro.mw")
+	@RequestMapping("modifyPro.mw") //정보수정 실행
 	public String aopmodifyPro(MemberDTO dto) {
 		dao.updateMember(dto);
-		
 		
 		return "/member/modifyPro";
 	}
 	
 
-	
-	
-	
-	
-	
-	@RequestMapping("memOutForm.mw")
+	@RequestMapping("memOutForm.mw") //회원탈퇴
 	public String aopmemOutForm() {
 		return "/member/memOutForm";
 	}
 	
-	@RequestMapping("memOutPro.mw")
+	@RequestMapping("memOutPro.mw") //탈퇴 요청회원 검색,진행
 	public String aopmemOutPro(MemberDTO dto , Model model, DeleteMemListDTO dto2 , HttpServletRequest request, HttpSession session) {
-		
-		
 		String pw =request.getParameter("pw");
 		String id =(String)session.getAttribute("memId");
-		
 		
 		int check = dao.deleteCheck(id,pw);
 		
@@ -135,7 +109,6 @@ public class MemberBean {
 			  
 			  MemberDTO dto1=dao.deleteSelect(id);
 			  
-			  
 			  dto2.setId(dto1.getId()); 
 			  dto2.setName(dto1.getName());
 			  dto2.setGender(dto1.getGender()); 
@@ -149,22 +122,30 @@ public class MemberBean {
 			  dto2.setReason(reason);
 			  dto2.setReg(dto1.getReg());
 			  
-			  
 			  dao.deleteInsert(dto2);
-			
-			
-			dao.deleteMem(id);
-			session.invalidate();
-			
-		}
 		
+			  dao.deleteMem(id);
+			  session.invalidate();
+		}
 		return "/member/memOutPro";
 	}
-}
+		@RequestMapping("memList.mw") //회원 리스트 출력
+		public String memList(MemberDTO dto , Model model,HttpServletRequest request, HttpSession session) {
+			List list=null;
+			list=dao.selectMemList(dto);
+			
 
-
-	
-
-	
-	
-
+			
+			model.addAttribute("list", list);
+			
+			String keyField=request.getParameter("keyField");
+			String keyWord=request.getParameter("keyWord");
+			
+			String search=dao.memSearch(keyField,keyWord);
+			
+			model.addAttribute("search", search);
+			
+			return "/member/memList";
+		}
+		
+	}

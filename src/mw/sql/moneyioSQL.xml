@@ -104,7 +104,56 @@
 	<select id="nSum" resultType="String" parameterType="int">
 		select sum(n_price) from mwN_Bread where io_num=#{io_num}
 	</select> 
-
+	
+	<!-- 개인소비패턴 chart 5월 -->
+	<select id="ptEstimate5" resultType="moneyioDTO" parameterType="String">
+		select io_category, sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and 
+		io_reg_date like '%-05-%' group by io_category order by io_price desc
+	</select>
+	<!-- 개인소비패턴 char 5월 총금액 -->
+	<select id="moneySum5" resultType="int" parameterType="String">
+		select sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and io_reg_date like '%-05-%' 
+	</select>
+	
+	<!-- 개인소비패턴 chart 6월 -->
+	<select id="ptEstimate6" resultType="moneyioDTO" parameterType="String">
+		select io_category, sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and 
+		io_reg_date like '%-06-%' group by io_category order by io_price desc
+	</select>
+	<!-- 개인소비패턴 char 6월 총금액 -->
+	<select id="moneySum6" resultType="int" parameterType="String">
+		select sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and io_reg_date like '%-06-%' 
+	</select>
+	
+	<!-- 개인소비패턴 chart 7월 -->
+	<select id="ptEstimate7" resultType="moneyioDTO" parameterType="String">
+		select io_category, sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and 
+		io_reg_date like '%-07-%' group by io_category order by io_price desc
+	</select>
+	<!-- 개인소비패턴 char 7월 총금액 -->
+	<select id="moneySum7" resultType="int" parameterType="String">
+		select sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and io_reg_date like '%-07-%' 
+	</select>
+	
+	<select id="nextMonth" resultType="moneyioDTO" parameterType="String">
+	<![CDATA[
+		select io_category, count(io_category) as count3, sum(io_price) as io_price from (
+			(select io_category, sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and io_reg_date like '%-05-%' group by io_category)
+			union all
+			(select io_category, sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and io_reg_date like '%-06-%' group by io_category)
+			union all
+			(select io_category, sum(io_price) as io_price from mwmoneyio where id=#{id} and io_set=1 and io_reg_date like '%-07-%' group by io_category)
+		) group by io_category
+	]]>
+	
+	</select>
+	<select id="thisOut" resultType="int" parameterType="String">
+		select sum(io_price) from mwmoneyio where id=#{id} and io_reg_date like '%-07-%' and io_set=1
+	</select>
+	
+	<select id="thisIn" resultType="int" parameterType="String">
+		select sum(io_price) from mwmoneyio where id=#{id} and io_reg_date like '%-07-%' and io_set=0
+	</select>
 
 	<select id="moneyioListAll" resultType="moneyioDTO" parameterType="String">
 		select * from mwmoneyio where id = #{id} order by io_reg_date desc, io_num desc

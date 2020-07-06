@@ -13,10 +13,7 @@
 		<table class="table table-hover">
 			<tr>
 				<td>등록된 카드 및 계좌가 없습니다.</td>
-			<tr>
-			<!-- <tr align="center">
-				<td><input type="button" value="등록하기" onclick="window.location='/moneyWatch/account_cardForm.mw'"></td>
-			</tr> -->
+			</tr>
 		</table>
 		
 	</c:if>
@@ -34,13 +31,6 @@
 			<td>${cdto.card_nickname}</td><td>${cdto.account_num}</td><td><a href='myCardDel.mw?num=${cdto.num}'>삭제</a></td>
 		</tr>	
 	</c:forEach>
-	<%-- <tr align="center"><th>카드사</th><th>카드명</th><th>카드별칭</th><th>연결된계좌</th><th>삭제</th></tr>
-	<c:forEach var="cdto" items="${myCardList}">
-		<tr align="center">
-			<td>${cdto.card_company}</td><td><a href="mycardBenefit.mw?card_name=${cdto.card_name}">${cdto.card_name}</a></td></form>
-			<td>${cdto.card_nickname}</td><td>${cdto.account_num}</td><td><a href='myCardDel.mw?num=${cdto.num}'>삭제</a></td>
-		</tr>	
-	</c:forEach> --%>
 </table>
 </c:if>
 
@@ -65,5 +55,5 @@
 <center>
 <button type="button" class="btn btn-outline-primary" onclick="window.location='/moneyWatch/account_cardForm.mw'">등록하기</button>
 </center>
-<!-- <input type="button" value="등록하기" onclick="window.location='/moneyWatch/account_cardForm.mw'"> -->
+
 </div>

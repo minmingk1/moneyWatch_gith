@@ -15,18 +15,49 @@
 	function checkIt(){ //ID 입력값확인하는 함수
 		var userinput = eval("document.userinput");
 		if(!userinput.id.value){
-			alert("ID를 입력하세요...");
-			return false;
-			
+			alert("ID를 입력해 주세요");
+			return false;	
 		}
-		if(!userinput.pw.value){ //PW 입력값확인하는 함수
-			alert("비밀번호를 입력하세요...");
+		if(userinput.pw.value==''){ //PW 입력값확인하는 함수
+			alert("비밀번호를 입력해 주세요");
 			return false;
 		}
 		if(userinput.pw.value != userinput.pw2.value) //PW와 PW확인값 비교
 		{ 
 			alert("비밀번호가 같지 않습니다...");
 			return false;
+		}
+		if(userinput.name.value==''){
+			alert("이름을 입력해 주세요")
+			return false;
+		}
+		if(userinput.birth_y.value==''){
+			alert("생년을 선택해 주세요")
+			return false;
+		}
+		if(userinput.birth_m.value==''){
+			alert("생월을 선택해 주세요")
+			return false;
+		}
+			if(userinput.birth_d.value==''){
+				alert("생일을 선택해 주세요")
+				return false;
+		}
+			if(userinput.tel.value==''){
+				alert("통신사를 선택해 주세요")
+				return false;
+		}
+			if(userinput.phone1.value==''){
+				alert("휴대폰번호를 입력해 주세요")
+				return false;
+		}
+			if(userinput.phone2.value==''){
+				alert("휴대폰번호를 입력해 주세요")
+				return false;
+		}
+			if(userinput.phone3.value==''){
+				alert("휴대폰번호를 입력해 주세요")
+				return false;
 		}
 	}
 	

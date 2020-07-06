@@ -3,6 +3,8 @@ package mw.sense.model;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,32 @@ public class SenseBean {
 	
 	@Autowired
 	private SenseDAO dao = null;
+	
+	//R - 관리자메인 
+	@RequestMapping("senseAdmin.mw")
+	public String senseAdminMain(Model model) {
+	
+		SenseDTO video = dao.mainVideo(); //오늘의 영상
+		List<SenseCategoryDTO> category = dao.category(); //카테고리 리스트
+		List<SenseDTO> mainlist = dao.mainList(); //메인 리스트
+				
+		model.addAttribute("video", video); //오늘의 영상 url 보내기
+		model.addAttribute("category", category); //카테고리 리스트
+		model.addAttribute("list", mainlist); //메인 리스트			
+
+		return "/sense/senseAdmin";
+		
+	}
+	
+	//R - 관리자메인 / 카테고리 선택 시 리스트
+	@RequestMapping("senseAdminList.mw")
+	public String senseAdminCategorySelect(Model model, int num) {
+		
+		List<SenseDTO> category_select_list = dao.mainCategorySelect(num); //리스트 출력		
+		model.addAttribute("list", category_select_list);
+		
+		return "/sense/senseAdminList";		
+	}
 	
 	//R - 메인 
 	@RequestMapping("sense.mw")
@@ -43,12 +71,14 @@ public class SenseBean {
 		return "/sense/mainList";		
 	}
 	
-	//R - 디테일 페이지
+	//R - 마이스크랩 디테일 페이지
 	@RequestMapping("senseDetail.mw")
-	public String senseDetail(int num, Model model) { //시퀀스 번호를 매개변수로 받음
+	public String senseDetail(HttpSession session, int num, Model model) { //시퀀스 번호를 매개변수로 받음
 		
-		dao.count(num); //조회수를 올림
-		SenseDTO dto = dao.senseDetail(num);
+		String id = "crong";
+		// String id = session.getAttribute("memId");
+		
+		ScrapDTO dto = dao.senseDetail(num, id);
 		model.addAttribute("detail", dto); //디테일 페이지의 정보를 가져옴
 		return "/sense/detail";
 		
@@ -58,6 +88,7 @@ public class SenseBean {
 	@RequestMapping("senseDetailVideo.mw")
 	public String senseDetailVideo(int num, Model model) {
 		
+		dao.count(num); //조회수를 올림
 		SenseDTO dto = dao.senseDetailVideo(num);		
 		model.addAttribute("dto", dto);
 		return "/sense/video_url";
@@ -173,6 +204,19 @@ public class SenseBean {
 		return "/sense/myScrap"; 
 	}
 	
+	
+	//R - memo창
+	@RequestMapping("memo.mw")
+	public String memo(int num, Model model) {
+		
+		SenseDTO dto = (SenseDTO)dao.senseMemo(num); //영상의 정보를 가져옴
+		model.addAttribute("dto", dto);
+		
+		return "/sense/memo";
+		
+	}
+	
+	
 	//R - 스크랩 비디오변경
 	@RequestMapping("myVideo.mw")
 	public String myVideo(HttpSession session, int num, Model model) {
@@ -188,14 +232,30 @@ public class SenseBean {
 	
 	//C - 스크랩 저장
 	@RequestMapping("scrap.mw")
-	public String scrapInsert(HttpSession session, int num) {
+	public String scrapInsert(HttpSession session, int num, String memo) {
+		
+		System.out.println(num);
+		System.out.println(memo);
 		
 		String id = "crong";
 		//String id = session.getAttribute("memId");
 		
-		dao.scrap(num, id);		
+		dao.scrap(num, id, memo);		
 		
 		return "/sense/senseMain";
+	}
+	
+	//R - 스크랩 카테고리 선택
+	@RequestMapping("myscrapCategory.mw")
+	public String myscrapCategory(HttpSession session, int num, Model model) {
+		
+		String id = "crong";
+		//String id = session.getAttribute("memId");
+		
+		List<ScrapDTO> myscrapCategory = dao.myscrapCategory(id, num); //리스트 출력		
+		model.addAttribute("myscraplist", myscrapCategory);
+		
+		return "/sense/myScrapList";		
 	}
 	
 	
