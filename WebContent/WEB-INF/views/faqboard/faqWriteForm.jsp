@@ -37,10 +37,12 @@ function writeSave(){
 }
 </script>
 </head>
+<body>
+<div class="form-group">
 <center><h3>글쓰기</h3></center>
 <br>								
 	<form method="post" name="writeform" action="faqWritePro.mw" onsubmit="return writeSave()">
-	<div class="form-group">
+	
 		<input type="hidden" name="faq_num" value="${faq_num}">
 		<input type="hidden" name="ref" value="${ref}">
 		<input type="hidden" name="re_step" value="${re_step}">
@@ -93,9 +95,10 @@ function writeSave(){
 				</td>
 			</tr>
 	
-		</table>
-	</div>
-		
+		</table>	
 </form>
+	</div>
+</body>
+
 
 </html>
