@@ -129,23 +129,23 @@ public class MemberBean {
 		}
 		return "/member/memOutPro";
 	}
-		@RequestMapping("memList.mw") //회원 리스트 출력
-		public String memList(MemberDTO dto , Model model,HttpServletRequest request, HttpSession session) {
-			List list=null;
-			list=dao.selectMemList(dto);
-			
-
-			
-			model.addAttribute("list", list);
-			
-			String keyField=request.getParameter("keyField");
-			String keyWord=request.getParameter("keyWord");
-			
-			String search=dao.memSearch(keyField,keyWord);
-			
-			model.addAttribute("search", search);
-			
-			return "/member/memList";
-		}
+	/*
+	 * @RequestMapping("memList.mw") //회원 리스트 출력 public String memList(MemberDTO dto
+	 * , Model model,HttpServletRequest request, HttpSession session) { List
+	 * list=null; list=dao.selectMemList(dto);
+	 * 
+	 * 
+	 * 
+	 * model.addAttribute("list", list);
+	 * 
+	 * String keyField=request.getParameter("keyField"); String
+	 * keyWord=request.getParameter("keyWord");
+	 * 
+	 * String search=dao.memSearch(keyField,keyWord);
+	 * 
+	 * model.addAttribute("search", search);
+	 * 
+	 * return "/member/memList"; }
+	 */
 		
 	}

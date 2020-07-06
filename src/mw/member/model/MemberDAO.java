@@ -62,20 +62,20 @@ public class MemberDAO {
 		sqlSession.delete("member.deleteMem", id);
 	
 	}
-	public List selectMemList(MemberDTO dto) { //회원 리스트
-		List list=sqlSession.selectList("member.selectMemList",dto);
-		
-		
-		
-		return list;
-	}
-	public String memSearch(String keyWord,String keyField) {
-		HashMap map= new HashMap();
-		map.put("keyWord",keyWord);
-		map.put("keyField",keyField);
-		
-		
-		String search=sqlSession.selectOne("member.memSearch",map);
-		return search;
-	}
 }
+/*
+ * public List selectMemList(MemberDTO dto) { //회원 리스트 List
+ * list=sqlSession.selectList("member.selectMemList",dto);
+ * 
+ * 
+ * 
+ * return list; }
+ */
+/*
+ * public String memSearch(String keyWord,String keyField) { HashMap map= new
+ * HashMap(); map.put("keyWord",keyWord); map.put("keyField",keyField);
+ * 
+ * String search=sqlSession.selectOne("member.memSearch",map);
+ * 
+ * return search; } }
+ */
