@@ -257,13 +257,19 @@ public class Account_cardBean {
 		return "/card_benefit/mycardList";
 	}
 	
+	// 등록된 카드 순위
 	@RequestMapping("card_rank.mw")
-	public String rank_20(Reg_CardDTO cdto, Model model) {
+	public String card_rank(Reg_CardDTO cdto, Model model) {
 		
-		List rankList = acdao.card_rank(cdto);
-		model.addAttribute("rankList",rankList);
+		List rankList_20 = (List) acdao.card_rank(cdto).get("rankList_20");
+		List rankList_30 = (List) acdao.card_rank(cdto).get("rankList_30");
+		List rankList_40 = (List) acdao.card_rank(cdto).get("rankList_40");
 		
-		return "/account_card/20card_rank";
+		model.addAttribute("rankList_20",rankList_20);
+		model.addAttribute("rankList_30",rankList_30);
+		model.addAttribute("rankList_40",rankList_40);
+		
+		return "/account_card/card_rank";
 	}
 	
 
