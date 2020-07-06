@@ -98,7 +98,7 @@
    
   <div class="col-sm-8">
       <h2>Calendar</h2>
-      <h5>Today, Dec 7, 2017</h5>
+      <h5>Today, ${today}</h5>
       <div class="fakeimg" style="height:90%;">
       	<iframe src="Calendar.mw" width="100%" height="106%"></iframe>
 
@@ -111,7 +111,10 @@
    <div class="col-sm-4">
       <h2>About Me</h2>
       <h5>${sessionScope.memId}님 환영합니다 :^)</h5>
-      <div class="fakeimg" style="background-color:#dba4d7;"></div>
+      <div class="fakeimg" style="background-color:#dba4d7;">
+      <input type="button" class="btn btn-primary" value="마이페이지" onclick="document.location.href='/moneyWatch/myPage.mw'" />
+       <input type="button" class="btn btn-primary" value="로그아웃" onclick="document.location.href='/moneyWatch/logout.mw'" />
+      </div>
       <p>개인정보 보호를 위해 주기적으로 비밀번호를 변경해주세요!</p>
       <h3>오늘의 금융상식</h3>
       <br />
