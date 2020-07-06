@@ -12,6 +12,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  
   <style>
   .fakeimg {
     height: 200px;
@@ -63,6 +65,7 @@
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="account_cardForm.mw">등록</a>
       <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
+      <a class="dropdown-item" href="card_rank.mw">연령별 카드 순위 보기</a>
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <li class="nav-item dropdown">

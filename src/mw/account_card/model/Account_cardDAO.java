@@ -151,11 +151,20 @@ public class Account_cardDAO {
 		return check;
 	}
 	
-	// 20대 카드 등록 순위
-	public List card_rank(Reg_CardDTO cdto) {
+	// 연령별 카드 등록 순위
+	public HashMap card_rank(Reg_CardDTO cdto) {
 		
-		List rankList = sqlSession.selectList("account_card.20_cardRegisterCount",cdto);
-		return rankList;
+		HashMap rmap = new HashMap();
+		List rankList_20 = sqlSession.selectList("account_card.20_cardRegisterCount",cdto);
+		List rankList_30 = sqlSession.selectList("account_card.30_cardRegisterCount",cdto);
+		List rankList_40 = sqlSession.selectList("account_card.40_cardRegisterCount",cdto);
+		
+		rmap.put("rankList_20", rankList_20);
+		rmap.put("rankList_30", rankList_30);
+		rmap.put("rankList_40", rankList_40);
+		
+		
+		return rmap;
 		
 	}
 	
