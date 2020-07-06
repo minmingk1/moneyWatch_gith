@@ -74,3 +74,5 @@
 </div>
 </table>
 </form>
+<br><br><br><br><br>
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>

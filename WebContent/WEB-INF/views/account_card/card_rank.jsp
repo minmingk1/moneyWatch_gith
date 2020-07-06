@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>   
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 <br><br>
 <center><h3>20대 카드 순위</h3></center>
 <br><br>
@@ -52,3 +54,4 @@
 <c:set var="count" value="${count+1}"></c:set>
 </c:forEach>			
 </table>
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>

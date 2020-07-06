@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,7 @@
 <title>금융 SenseUp Page</title>
 
 </head>
+<br><br><br>
 <body>
 &nbsp
 	<h1 align="center">금융 SenseUp!!</h1> <!-- a태그넣기  -->
@@ -67,3 +69,6 @@
 	</div>
 </body>
 </html>
+<div class="jumbotron text-center" style="margin-bottom:0; margin-top:40%;">
+  <p>Footer</p>
+</div>
