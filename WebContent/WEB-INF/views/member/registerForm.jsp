@@ -7,26 +7,55 @@
 <head>
 
 <title>회원가입</title>
-<link href="" rel="" type="text/css">
-
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
-
 <script language="JavaScript">
 	function checkIt(){ //ID 입력값확인하는 함수
 		var userinput = eval("document.userinput");
 		if(!userinput.id.value){
-			alert("ID를 입력하세요...");
-			return false;
-			
+			alert("ID를 입력해 주세요");
+			return false;	
 		}
-		if(!userinput.pw.value){ //PW 입력값확인하는 함수
-			alert("비밀번호를 입력하세요...");
+		if(userinput.pw.value==''){ //PW 입력값확인하는 함수
+			alert("비밀번호를 입력해 주세요");
 			return false;
 		}
 		if(userinput.pw.value != userinput.pw2.value) //PW와 PW확인값 비교
 		{ 
 			alert("비밀번호가 같지 않습니다...");
 			return false;
+		}
+		if(userinput.name.value==''){
+			alert("이름을 입력해 주세요")
+			return false;
+		}
+		if(userinput.birth_y.value==''){
+			alert("생년을 선택해 주세요")
+			return false;
+		}
+		if(userinput.birth_m.value==''){
+			alert("생월을 선택해 주세요")
+			return false;
+		}
+			if(userinput.birth_d.value==''){
+				alert("생일을 선택해 주세요")
+				return false;
+		}
+			if(userinput.tel.value==''){
+				alert("통신사를 선택해 주세요")
+				return false;
+		}
+			if(userinput.phone1.value==''){
+				alert("휴대폰번호를 입력해 주세요")
+				return false;
+		}
+			if(userinput.phone2.value==''){
+				alert("휴대폰번호를 입력해 주세요")
+				return false;
+		}
+			if(userinput.phone3.value==''){
+				alert("휴대폰번호를 입력해 주세요")
+				return false;
 		}
 	}
 	
@@ -50,65 +79,47 @@
 			}).open();
 		}
 	
-
-
-	
-	
 </script>
-
-	<body bgcolor="">
-	
+	<body>	
 	<form method="post" action="/moneyWatch/registerPro.mw" name="userinput" onSubmit="return checkIt()">
-	<table width="700" border="2" cellspacing="1" cellpadding="3" align="center">
+	<div class="form-group">
+	<h2 style="text-align:center;">회원가입</h2><br />
+	<table border="1" cellspacing="1" cellpadding="3" style="text-align:center; margin:auto; width:40%;">
 		<tr>
-		<td colspan="3" height="40" align="center" bgcolor="">
-			<font size="+1" ><b>회원가입</b></font></td>
+			<td bgcolor="">아이디 입력</td>
+			<td colspan="2" >
+				<input type="text" class="form-control" name="id" maxlength="12" size="10">
+			<input type="button" class="btn btn-primary"  name="confirm_id" value="ID중복확인"
+					Onclick="openConfirmId(this.form)"></td>
+
 		</tr>
-		<tr>
-			<td width="300" bgcolor=""><b>아이디 입력</b></td>
-			<td width="300" bgcolor="">&nbsp;</td>	
-		</tr>
-		
-		<tr>
-			<td width="300"> ID </td>
-			<td width="300">
-				<input type="text" name="id" size="10" maxlength="12">
-			    <input type="button" name="confirm_id" value="ID중복확인"
-					Onclick="openConfirmId(this.form)">
-			</td>
-		
-		
-		
-		</tr>
-			<td width="300"> PW </td>
-			<td width="300">
-				<input type="password" name="pw" size="15" maxlength="12">
+			<td>비밀번호</td>
+			<td colspan="2">
+				<input type="password" class="form-control" name="pw" size="15" maxlength="12">
 			</td>
 		<tr>
-		
-		
-		
-		
+
 		</tr>
-			<td width="300"> PW 확인 </td>
-			<td width="300">
-				<input type="password" name="pw2" size="15" maxlength="12">
+			<td>비밀번호 확인 </td>
+			<td colspan="2">
+				<input type="password" class="form-control" name="pw2" size="15" maxlength="12">
 			</td>
+
 		<tr>
-			<td width="300" bgcolor=""><b>개인정보 입력</b></td>
-			<td width="300" bgcolor="">&nbsp;</td>
+			<th  colspan="3" bgcolor=""><h5>개인정보 입력</h5></th>
+
 		</tr>
 		<tr>
-			<td width="300">사용자 이름</td>
-			<td width="300">
-				<input type="text" name="name" size="15" maxlength="10">
+			<td>사용자 이름</td>
+			<td>
+				<input type="text" class="form-control" name="name" size="15" maxlength="10">
 			</td>
 		</tr>
 		
 		<tr>
-			<td width="300" >성별</td>
-			<td width="300">
-				<select name="gender">
+			<td>성별</td>
+			<td>
+				<select class="form-control" name="gender">
 				<option value="men">남 자</option>
 				<option value="woman">여 자</option>
 				</select>
@@ -117,15 +128,15 @@
 		
 		
  		<tr>
- 			<td width="300">생년월일</td>
- 			<td width="300">
+ 			<td>생년월일</td>
+ 			<td>
  			<script language="javascript">
 				var today = new Date();
 				var toyear = parseInt(today.getFullYear());
 				var start = toyear;
 				var end = toyear - 70;
 				
-				document.write("<font size=2><select name=birth_y>");
+				document.write("<font size=3><select name=birth_y>");
 				document.write("<option value='' selected>");
 				for (i=start;i>=end;i--) document.write("<option>"+i);
 				document.write("</select>년  ");
@@ -144,46 +155,45 @@
 		</tr>
 		
 		<tr>		
-		<td width="300"> 휴대폰 번호 </td>
-		<td width="300">
-				<select name="tel">
-				<option value="SKT">SKT</option>
-				<option value="KT">KT</option>
-				<option value="LGU+">LGU+</option>
-				<option value="알뜰폰">알뜰폰</option>			
+		<td> 휴대폰 번호 </td>
+		<td>
+				<select class="form-control" name="tel">
+					<option value="none">-통신사-</option>
+					<option value="SKT">SKT</option>
+					<option value="KT">KT</option>
+					<option value="LGU+">LGU+</option>
+					<option value="알뜰폰">알뜰폰</option>			
 				</select>
 				
-				<select name="phone1">
-				<option value="010">010</option>
-				<option value="011">011</option>
-				<option value="016">016</option>
-				<option value="019">019</option>
+				<select class="form-control" name="phone1">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="019">019</option>
 				</select>
-				
-				
-				<input type="text" name="phone2" size="10" maxlength="4">
-				<input type="text" name="phone3" size="10" maxlength="4">
+				-<input type="text" class="form-control" name="phone2" size="10" maxlength="4">
+				-<input type="text" class="form-control" name="phone3" size="10" maxlength="4">
 		</td>
 		</tr>
 		
 			
 		<tr>
-		<td width="300">이메일 ID</td>
-		<td width="300">
-				<input type="text" name="email1" size="10" maxlength="12"><a>@</a>
-				<input type="text" name="email2" size="10" maxlength="12">
+		<td>이메일 ID</td>
+		<td>
+				<input type="text" class="form-control" name="email1" size="10" maxlength="12">@
+				<input type="text" class="form-control" name="email2" size="10" maxlength="12">
 		
 		</td>
 		</tr>
 		
 		
 		<tr>
-			<td height="30">주소</td>
+			<td>주소</td>
 			<td>
-			<input type="text" id="zon" name="zon" SIZE="12" placeholder="우편번호" readonly />
-			<input type="button" id="jooso_btn" onclick="openZipSearch()" value="주소검색" /> <br/>
-			<input type="text" name="street" id="street" SIZE="40" placeholder="주소" readonly /> <br/>
-			<input type="text" name="addr" id="addr" SIZE="40" placeholder="상세주소" />
+			<input type="text" class="form-control" id="zon" name="zon" SIZE="12" placeholder="우편번호" readonly />
+			<input type="button" class="btn btn-primary" id="jooso_btn" onclick="openZipSearch()" value="주소검색" /> <br/>
+			<input type="text" class="form-control" name="street" id="street" SIZE="40" placeholder="주소" readonly /> <br/>
+			<input type="text" class="form-control" name="addr" id="addr" SIZE="40" placeholder="상세주소" />
 			</td>
 		</tr>
 		
@@ -193,12 +203,15 @@
 		<tr>
 		<td colspan="2" align="center">
 		
-			<input type="submit" name="confirm" value="등록">
-			<input type="reset" name="reset" value="다시입력">
+			<input type="submit" class="btn btn-primary"  name="confirm" value="등록">
+			<input type="reset" class="btn btn-primary"  name="reset" value="다시입력">
 		
 		</td>
 		</tr>	
 	</table>
+	
+	</div>
+	
 	</body>
 	
 	</head>

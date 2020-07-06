@@ -92,5 +92,19 @@
 		from mwmember,mwRegisterCard
 		where mwmember.id = mwRegisterCard.id) where age between 20 and 30 group by card_company,card_name order by count(card_name) desc) where rownum<=3]]>
 	</select>
+	
+	<!-- 30대 카드 등록 순위(top3) -->
+	<select id="30_cardRegisterCount" resultType="reg_cardDTO">
+		<![CDATA[select card_company,card_name from (select card_company,card_name,count(card_name) from(select mwRegisterCard.card_name,mwRegisterCard.card_company,trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) as age
+		from mwmember,mwRegisterCard
+		where mwmember.id = mwRegisterCard.id) where age between 30 and 40 group by card_company,card_name order by count(card_name) desc) where rownum<=3]]>
+	</select>	
+
+	<!-- 40대 카드 등록 순위(top3) -->
+	<select id="40_cardRegisterCount" resultType="reg_cardDTO">
+		<![CDATA[select card_company,card_name from (select card_company,card_name,count(card_name) from(select mwRegisterCard.card_name,mwRegisterCard.card_company,trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) as age
+		from mwmember,mwRegisterCard
+		where mwmember.id = mwRegisterCard.id) where age between 40 and 50 group by card_company,card_name order by count(card_name) desc) where rownum<=3]]>
+	</select>	
 		
 </mapper>
