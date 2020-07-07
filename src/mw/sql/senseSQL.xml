@@ -80,6 +80,7 @@
 	
 	<!-- PW confirm -->
 	<select id="confirmPassword" resultType="int" parameterType="hashMap">
+		select count(*) from mwmember where id=#{id} and pw=#{pw}
 	</select>
 	
 	<!-- 센스 직접 입력 확인 -->

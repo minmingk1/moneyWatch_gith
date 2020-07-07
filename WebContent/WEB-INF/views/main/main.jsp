@@ -74,12 +74,6 @@
      <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="faqList.mw">FAQ</a>
       <a class="dropdown-item" href="sense.mw">금융 상식</a>
-<<<<<<< HEAD
-     </div>
-     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <div class="dropdown-menu" style="">
-=======
->>>>>>> 4003051e75efc46ff53d20418b8f2c427056f134
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
             <li class="nav-item dropdown">

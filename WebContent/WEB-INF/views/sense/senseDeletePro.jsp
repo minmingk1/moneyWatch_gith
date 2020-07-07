@@ -30,6 +30,13 @@
 			history.go(-1);
 		</script>	
 	</c:when>
+	<c:when test="${ check == 2 }">
+	<!-- pw 오류로에 실패했을 경우 -->
+		<script>
+			alert("권한이 없습니다.");
+			history.go(-1);
+		</script>	
+	</c:when>
 	<c:otherwise>
 		<script>
 			alert("에러");
