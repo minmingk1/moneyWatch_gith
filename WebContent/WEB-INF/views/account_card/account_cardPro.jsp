@@ -5,13 +5,13 @@
 <c:if test="${check == 0 }">    
 <script>
 	alert("등록이 완료되었습니다.");
-	window.location="myCard.mw";
+	window.location="account_cardForm_main.mw";
 </script>
 </c:if>
 
 <c:if test="${check == 1}">
 <script>
 	alert("이미 존재합니다.");
-	window.location="myCard.mw";
+	window.location="account_cardForm_main.mw";
 </script>	
 </c:if>

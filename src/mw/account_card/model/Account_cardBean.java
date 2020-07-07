@@ -25,8 +25,8 @@ public class Account_cardBean {
 	@RequestMapping("account_cardForm.mw")
 	public String Account_cardForm(Model model, HttpSession session) {
 		
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+		String id = (String)session.getAttribute("memId");
+		//String id = "nahui068";
 
 		model.addAttribute("memId",id);
 		
@@ -37,8 +37,8 @@ public class Account_cardBean {
 	@RequestMapping("account_cardForm_main.mw")
 	public String Account_cardForm_main(Model model, HttpSession session) {
 		
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+		String id = (String)session.getAttribute("memId");
+		//String id = "nahui068";
 
 		model.addAttribute("memId",id);
 		
@@ -78,12 +78,12 @@ public class Account_cardBean {
 	
 	// 카드 및 계좌등록
 	@RequestMapping("account_cardPro.mw")
-	public String account_cardPro(Model model,HttpServletRequest request,Reg_CardDTO cdto,Reg_AccountDTO adto) {
+	public String account_cardPro(HttpSession session, Model model,HttpServletRequest request,Reg_CardDTO cdto,Reg_AccountDTO adto) {
 		
 		int check = 0;
 	
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+		String id = (String)session.getAttribute("memId");
+		//String id = "nahui068";
 		String ca_set = request.getParameter("ca_set");
 		
 		if(ca_set.equals("0")) { // 카드등록일 경우 
@@ -209,8 +209,8 @@ public class Account_cardBean {
 	@RequestMapping("myCard.mw")
 	public String myAccountCardForm(HttpSession session, Model model) {
 		
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+		String id = (String)session.getAttribute("memId");
+		//String id = "nahui068";
 		
 		List mycard_list = (List) acdao.myCard(id).get("mycard");
 		List myaccount_list = (List) acdao.myCard(id).get("myaccount");
@@ -223,9 +223,10 @@ public class Account_cardBean {
 	
 	// 나의 카드삭제
 	@RequestMapping("myCardDel.mw")
-	public String myCardDel(int num){
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+	public String myCardDel(HttpSession session, int num){
+		
+		String id = (String)session.getAttribute("memId");
+		//String id = "nahui068";
 		
 		acdao.delMyCard(id, num);
 		
@@ -234,9 +235,10 @@ public class Account_cardBean {
 	
 	// 나의 계좌 삭제
 	@RequestMapping("myAccountDel.mw")
-	public String myAccountDel(int num){
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+	public String myAccountDel(HttpSession session,int num){
+		
+		String id = (String)session.getAttribute("memId");
+		//String id = "nahui068";
 		
 		acdao.delMyAccount(id, num);
 		
@@ -259,9 +261,10 @@ public class Account_cardBean {
 	
 	// 나의 카드 리스트 - 나의 카드 혜택페이지 따로 만들기 위함
 	@RequestMapping("mycardList.mw")
-	public String mycardList(String card_name,Model model){
+	public String mycardList(HttpSession session, String card_name,Model model){
 		
-		String id= "nahui068";
+		String id = (String)session.getAttribute("memId");
+		//String id= "nahui068";
 		List mycard = acdao.myCardList(id); // 나의 카드목록에 대한 카드이미지
 		
 		model.addAttribute("mycard",mycard);

@@ -56,7 +56,7 @@
 	<center><h5>일정추가</h5><button type="button" class="btn btn-primary btn-sm" style="float: right;" onclick="window.open('/moneyWatch/moneyioForm.mw')">입/출금 등록하러가기</button></center> 
 	<table width=100%>
 	<form name="scheduleDate" method="post" onsubmit="test()">
-		<input type="hidden" id="id" name="id" value="tempid"/>
+		<input type="hidden" id="id" name="id" value="${sessionScope.memId}"/>
 		
 		<tr><td>
 		<div class="form-group" style="width:100%;">

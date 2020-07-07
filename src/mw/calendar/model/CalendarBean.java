@@ -29,13 +29,14 @@ public class CalendarBean {
 	List detail = new ArrayList();
 
 	@RequestMapping("Calendar.mw")
-	public String cal(HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
+	public String cal(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
-		// DB뿌려주기 필요
-		String id = "tempid";
+		
+		//String id = "tempid";
+		String id = (String)session.getAttribute("memId");
 		List<MwScheduleDTO> slist = dao.schedule_select(id); // 일정가져오기
-		List<MoneyioDTO> olist = dao.money_out("crong"); // 지출내역가져오기
-		List<MoneyioDTO> ilist = dao.money_in("crong"); // 수입내역가져오기
+		List<MoneyioDTO> olist = dao.money_out(id); // 지출내역가져오기
+		List<MoneyioDTO> ilist = dao.money_in(id); // 수입내역가져오기
 		
 		model.addAttribute("listview", slist);
 		model.addAttribute("olist",olist);
@@ -45,13 +46,12 @@ public class CalendarBean {
 	}
 
 	@RequestMapping("Calendar_sub.mw")
-	public String cal_sub(HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
+	public String cal_sub(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
-		// DB뿌려주기 필요
-		String id = "tempid";
+		String id = (String)session.getAttribute("memId");
 		List<MwScheduleDTO> slist = dao.schedule_select(id); // 일정가져오기
-		List<MoneyioDTO> olist = dao.money_out("crong"); // 지출내역가져오기
-		List<MoneyioDTO> ilist = dao.money_in("crong"); // 수입내역가져오기
+		List<MoneyioDTO> olist = dao.money_out(id); // 지출내역가져오기
+		List<MoneyioDTO> ilist = dao.money_in(id); // 수입내역가져오기
 		
 		model.addAttribute("listview", slist);
 		model.addAttribute("olist",olist);
@@ -81,11 +81,11 @@ public class CalendarBean {
 	
 	// 일정세부내용
 	@RequestMapping("day_detail.mw")
-	public String day_detail(String title,String start_time, Model model) {
+	public String day_detail(HttpSession session, String title,String start_time, Model model) {
 
 		
-		/* String id = request.getSession("memId"); */
-		String id = "tempid";
+		String id = (String)session.getAttribute("memId");
+		//String id = "tempid";
 		
 		MwScheduleDTO detail = dao.day_detail(id, title , start_time);
 		
@@ -96,12 +96,12 @@ public class CalendarBean {
 	
 	// 세부지출내용
 	@RequestMapping("out_detail.mw")
-	public String out_detail(HttpServletRequest request, Model model) {
+	public String out_detail(HttpSession session, HttpServletRequest request, Model model) {
 		
 		List outlist = new ArrayList();
 		
-		/* String id = request.getSession("memId"); */
-		String id = "crong";
+		String id = (String)session.getAttribute("memId");
+		//String id = "crong";
 		String io_reg_date = request.getParameter("start_time");
 		
 		outlist = dao.out_detail(id,io_reg_date);
@@ -113,12 +113,12 @@ public class CalendarBean {
 	
 	// 세부수입내용
 	@RequestMapping("in_detail.mw")
-	public String in_detail(HttpServletRequest request, Model model) {
+	public String in_detail(HttpSession session, HttpServletRequest request, Model model) {
 		
 		List inlist = new ArrayList();
 		
-		/* String id = request.getSession("memId"); */
-		String id = "crong";
+		String id = (String)session.getAttribute("memId");
+		//String id = "crong";
 		String io_reg_date = request.getParameter("start_time");
 		
 		inlist = dao.in_detail(id,io_reg_date);
@@ -130,9 +130,10 @@ public class CalendarBean {
 	
 	//일정삭제
 	@RequestMapping("day_delete.mw")
-	public String day_delete(HttpServletRequest request){
+	public String day_delete(HttpSession session, HttpServletRequest request){
 	
-		String id = "tempid";
+		/* String id = "tempid"; */
+		String id = (String)session.getAttribute("memId");
 		String title = request.getParameter("title");
 		String start_time = request.getParameter("start_time");
 		
@@ -143,10 +144,11 @@ public class CalendarBean {
 	
 	//일정수정
 	@RequestMapping("day_updateForm.mw")
-	public String day_updateForm(String title, String start_time, Model model) {
+	public String day_updateForm(HttpSession session, String title, String start_time, Model model) {
 		
-		String id = "tempid";
+		//String id = "tempid";
 		
+		String id = (String)session.getAttribute("memId");
 		MwScheduleDTO detail = dao.day_detail(id, title , start_time);
 		
 		model.addAttribute("detail", detail);
@@ -154,6 +156,7 @@ public class CalendarBean {
 		return "/calendar/day_updateForm";
 	}
 	
+	// 일정수정
 	@RequestMapping("day_updatePro.mw")
 	public String day_updatePro(HttpServletRequest request, MwScheduleDTO mwdto) {
 		
