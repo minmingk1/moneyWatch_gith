@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,6 +62,7 @@
       <a class="dropdown-item" href="sense.mw">금융 상식</a>
     </div>
     </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <c:if test="${sessionScope.memId == 'admin'}">
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
     <div class="dropdown-menu" style="">
@@ -72,7 +74,7 @@
       <a class="dropdown-item" href="senseAdmin.mw">게시판 관리</a>
     </div>
     </li>
-
+	</c:if>
     </ul>
   </div> 
   </div> 
