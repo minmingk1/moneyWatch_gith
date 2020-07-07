@@ -160,7 +160,11 @@
 	<select id="thisIn" resultType="int" parameterType="String">
 		select sum(io_price) from mwmoneyio where id=#{id} and io_reg_date like '%-07-%' and io_set=0
 	</select>
-
+	
+	<select id="id_balance" resultType="String" parameterType="String">
+		select sum(balance) from mwregistercard where id=#{id}
+	</select>
+	
 	<select id="moneyioListAll" resultType="moneyioDTO" parameterType="String">
 		select * from mwmoneyio where id = #{id} order by io_reg_date desc, io_num desc
 	</select>

@@ -50,13 +50,14 @@ public class MainBean {
 		String id = "nahui068";
 		int thisOut = dao.thisOut(id);
 		int thisIn = dao.thisIn(id);
-		
+		String all_balance = dao.all_balance(id);
 		Date today = new Date();
 		SimpleDateFormat now = new SimpleDateFormat("MMM d, yyyy HH:mm");
 		
 		model.addAttribute("today", now.format(today));
 		model.addAttribute("thisOut", thisOut);
 		model.addAttribute("thisIn", thisIn);
+		model.addAttribute("all_balance", all_balance);
 		return "/main/myPageMain";
 	}
 	
