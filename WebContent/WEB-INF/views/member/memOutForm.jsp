@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file = "/WEB-INF/views/main/top.jsp" %>   
+  
 <html>
 <head>
 <title>회원탈퇴 페이지</title>
-
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 <script language="javaScript">
 	function begin(){

@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>회원정보수정</title>
-<%@ include file = "/WEB-INF/views/main/top.jsp" %>
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script language="JavaScript">
     <!-- 
     function checkIt(){
@@ -101,5 +101,4 @@
 
   </form> 
  </body>
-<%@ include file = "/WEB-INF/views/main/footer.jsp" %>
 </html>
