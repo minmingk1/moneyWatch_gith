@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -9,11 +8,6 @@
 <script language="javaScript">
 function writeSave(){
 	
-	if(document.writeform.writer.value==""){
-		alert("이름을 작성해주세요.");
-		document.writeform.writer.focus();
-		return false;
-	}
 	if(document.writeform.subject.value==""){
 		alert("글의 제목을 작성해주세요.");
 		document.writeform.subject.focus();

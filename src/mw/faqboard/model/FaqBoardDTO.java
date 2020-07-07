@@ -3,16 +3,15 @@ package mw.faqboard.model;
 import java.sql.Timestamp;
 import java.lang.Integer;
 
-public class FaqBoardDTO { //À¯Àú°Ô½ÃÆÇ DTO
-	private int faq_num; //°Ô½Ã±Û ¹øÈ£
-	private String subject; //°Ô½Ã±Û Á¦¸ñ
-	private String faq_email; //°Ô½Ã±Û ÀÛ¼º ÀÌ¸ÞÀÏ
-	private String content; // °Ô½Ã±Û ³»¿ë
-	private String pw; //°Ô½Ã±Û ¸¸ÀÇ ºñ¹Ð¹øÈ£
-	private int readcount; // °Ô½Ã±Û Á¶È¸¼ö
-	private Timestamp reg; //°Ô½Ã±Û ÀÛ¼º ½Ã°£
+public class FaqBoardDTO { //ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ DTO
+	private int faq_num; //ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£
+	private String subject; //ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String content; // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String pw; //ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£
+	private int readcount; // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È¸ï¿½ï¿½
+	private Timestamp reg; //ï¿½Ô½Ã±ï¿½ ï¿½Û¼ï¿½ ï¿½Ã°ï¿½
 	private int ref; 
-	private String id; //°Ô½Ã±Û ÀÛ¼º ID
+	private String id; //ï¿½Ô½Ã±ï¿½ ï¿½Û¼ï¿½ ID
 	
 	
 	
@@ -27,12 +26,6 @@ public class FaqBoardDTO { //À¯Àú°Ô½ÃÆÇ DTO
 	}
 	public void setSubject(String subject) {
 		this.subject = subject;
-	}
-	public String getFaq_email() {
-		return faq_email;
-	}
-	public void setFaq_email(String faq_email) {
-		this.faq_email = faq_email;
 	}
 	public String getContent() {
 		return content;

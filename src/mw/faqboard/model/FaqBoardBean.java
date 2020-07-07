@@ -154,30 +154,26 @@ public class FaqBoardBean {
 		return "/faqboard/faqUpdatePro";
 	}
 	@RequestMapping("faqWriteForm.mw") // 유저게시판 글쓰기
-	public String faqWriteForm(FaqBoardDTO dto, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		 String id=(String)session.getAttribute("memId");
+	public String faqWriteForm(Model model , FaqBoardDTO dto, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		  
+		int faq_num=0,ref=1,readcount=0; 
+		 
 		
-		  int faq_num=0,ref=1,readcount=0; 
-		  try{
-		  if(request.getParameter("num")!=null){
-		  faq_num=Integer.parseInt(request.getParameter("faq_num"));
-		  ref=Integer.parseInt(request.getParameter("ref"));
-		  readcount=Integer.parseInt(request.getParameter("readcount"));
-		  id=request.getParameter("id");
-		  }
-		  request.setAttribute("faq_num",faq_num); 
-		  request.setAttribute("ref",ref);
-		  request.setAttribute("readcount",readcount);
-		  request.setAttribute("id",id);
-		  }catch(Exception e) {
-		  e.printStackTrace(); 
-		  }
+		  model.addAttribute("faq_num",faq_num); 
+		  model.addAttribute("ref",ref);
+		  model.addAttribute("readcount",readcount);
+		 
+		  
 		return "/faqboard/faqWriteForm";
 	}
 	@RequestMapping("faqWritePro.mw") //유저게시판 글쓰기 실행
-		public String faqWritePro(FaqBoardDTO dto, HttpServletRequest request) {
-			dao.insertBoard(dto);
-			return "/faqboard/faqWritePro";
+		public String faqWritePro(FaqBoardDTO dto ,HttpSession session) {
+		
+		String id =(String)session.getAttribute("memId");
+		dto.setId(id);
+		
+		dao.insertBoard(dto);
+		return "/faqboard/faqWritePro";
 	}
 	@RequestMapping("myList.mw") //�ڽ��� �� �� ����
 		public String myList(HttpSession
@@ -222,7 +218,7 @@ public class FaqBoardBean {
 			  request.setAttribute("pageCount", pageCount);
 			  request.setAttribute("number", number);
 				
-			  return "/member/myList"; 
+			  return "/faqboard/myList"; 
 			  }
 	
 	
