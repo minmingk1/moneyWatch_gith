@@ -12,18 +12,20 @@
 <script src="js/sense/sense.js"></script>
 
 </head>
-<body>
-	<table>
+<body><br/>
+<div class="form-group">
+	<table align="center" width="50%;">
 		<tr>
 			<td>${ dto.sense_title }</td>
 		</tr>
+		<tr></tr>
 		<tr>
-			<td><input type="textbox" name="memo"/></td>
+			<td>나의 메모 <input type="text" class="form-control" name="memo"/></td>
 		</tr>
 		<tr>
-			<input type="button" value="스크랩" onclick="scrap(${dto.num})"/>
+			<td><input type="button" class="btn btn-info" value="스크랩" onclick="scrap(${dto.num})" style="float:right;"/></td>
 		</tr>
 	</table>
-
+</div>
 </body>
 </html>
