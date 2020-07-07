@@ -64,6 +64,27 @@
 		delete from mwRegisterAccount where id=#{id} and num=#{num}
 	</delete>
 	
+	<!-- 수정할 카드에 대한 정보 -->
+	<select id="getCard" resultType="reg_cardDTO">
+		select * from mwRegisterCard where num=#{num}
+	</select>
+	
+	<!-- 카드에대한 계좌 수정 -->
+	<update id="card_update" parameterType="reg_cardDTO">
+		update mwRegisterCard set card_nickname=#{card_nickname},account_company=#{account_company},account_num=#{account_num} 
+		where num=#{num}
+	</update>
+	
+	<!-- 등록된 계좌 가져오기 -->
+	<select id="getAccount" resultType="reg_cardDTO">
+		select distinct account_company from mwRegisterAccount
+	</select>
+	
+	<!-- 등록된 카드회사에 따른 계좌 가져오기 -->
+	<select id="getAccount_num" resultType="reg_accountDTO" parameterType="String">
+		select account_num from mwRegisterAccount where account_company=#{account_company}	
+	</select>
+	
 	<!-- 나의 카드혜택 보기 -->
 	<select id="my_ac_benefit" resultType="cardDTO" parameterType="String">
 		select * from mwCard where card_name in (select card_name from mwRegisterCard where card_name like '%' || #{card_name} || '%') 

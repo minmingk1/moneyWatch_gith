@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import mw.account_card.model.Reg_AccountDTO;
+
 @Controller
 public class MoneyioBean {
 	
@@ -74,7 +76,7 @@ public class MoneyioBean {
 		
 		//����/���� �Է� ������ �Է�
 		@RequestMapping("moneyioPro.mw")
-		public String moneyioPro(MoneyioDTO dto, NbreadDTO ndto, My_cardDTO mdto, HttpServletRequest request) {
+		public String moneyioPro(Reg_AccountDTO rdto, MoneyioDTO dto, NbreadDTO ndto, My_cardDTO mdto, HttpServletRequest request) {
 			int io_old_remain = Integer.parseInt(request.getParameter("io_old_remain"));
 			
 			if(dto.getIo_set()==1) {
@@ -85,6 +87,7 @@ public class MoneyioBean {
 		
 			dao.insert(dto);
 			dao.balanceUpdate(mdto);
+			dao.balanceUpdateAccount(rdto);
 			//System.out.println("dto io_num : "+dto.getIo_num());	
 			//ndto.setIo_num(dto.getIo_num());
 			//System.out.println("ndto io_num"+ndto.getIo_num());

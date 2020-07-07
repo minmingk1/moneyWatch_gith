@@ -59,7 +59,7 @@
             </a>
           </li>
           <li>
-            <a href="./#.mw">
+            <a href="./memList.mw">
               <i class="now-ui-icons education_atom"></i>
               <p>회원 관리</p>
             </a>
@@ -89,7 +89,7 @@
             </a>
           </li>
           <li>
-            <a href="./#.mw">
+            <a href="./faqList.mw">
               <i class="now-ui-icons text_caps-small"></i>
               <p>게시판 관리</p>
             </a>

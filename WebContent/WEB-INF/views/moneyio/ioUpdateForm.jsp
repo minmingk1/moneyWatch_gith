@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,16 +46,14 @@
 		}
 
 	</script>
-<body>
+<body><br/><br/>
 	<form action="/moneyWatch/ioUpdatePro.mw" >
 
 
 	<div class="form-group">
-		<h1>
-			${id}님 안녕하세요!
-			<input type="hidden" name="id" value="${memId}"/>
-			<input type="hidden" name="io_num" value="${dto.io_num}" />
-		</h1>
+		<h3 style="text-align:center;">수입/지출 내역 수정하기</h3><br/>
+		<input type="hidden" name="id" value="${memId}"/>
+		<input type="hidden" name="io_num" value="${dto.io_num}" />
 		<table border="1" align="center" width="60%">
 				<tr>
 						<td><label for="Select">&nbsp&nbsp&nbsp&nbsp카테고리</label></td>
@@ -135,13 +134,8 @@
 				</tr>
 
 				<tr>
-				<td></td><td></td><td></td><td></td>
-					<td colspan="5"><center>
-								<button type="submit" class="btn btn-primary" name="">&nbsp;&nbsp;수정하기&nbsp;&nbsp;</button>   
-							</center></td>
-				</tr>
-					
-			</table>
+			</table><br/>
+			<input type="submit" value="수정하기" class="btn btn-primary" style="float:right; margin-right:20%;" /> 
 			</div>
 		<br /><br />
 	
@@ -158,12 +152,12 @@
 		
 		<br />
 		<div class="form-group">
-			<table border="1" align="center" width="50%" id="n_people">
+			<table border="0" align="center" width="50%" id="n_people">
 
 			</table>
 		</div>
 	</form>
 	
 </body>
-
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>
 </html>

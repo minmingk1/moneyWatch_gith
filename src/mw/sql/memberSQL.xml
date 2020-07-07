@@ -40,11 +40,13 @@
   		delete from mwMember where id=#{id}
   	</delete>
   	
-  	<select id="selectMemList" resultType="memberDTO" parameterType="memberDTO"> <!-- 관리자 회원 리스트  -->
-  		select * from mwMember
-  	</select>
   	
-  	<select id="memSearch" resultType="String" parameterType="hashmap"> <!-- 월요일 해결 -->
-  		select * from mwMember where ${keyField} like '%${keyWord}%'
-  	</select>
+	<select parameterType="memberDTO" resultType="memberDTO" id="selectMemList"><!-- 관리자 회원 리스트 -->
+		select * from mwMember 
+	</select>
+
+	<select parameterType="hashmap" resultType="memberDTO" id="memSearch"> <!-- 회원 검색 -->
+		select * from mwMember where ${keyField} like '%' || #{keyWord} || '%' 
+	</select>
+
 </mapper>

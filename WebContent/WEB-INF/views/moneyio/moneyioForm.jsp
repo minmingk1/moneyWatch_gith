@@ -114,11 +114,12 @@
 <body>
 	<form action="/moneyWatch/moneyioPro.mw">
 	<div class="form-group">
-		<h1>
-			${id}님 안녕하세요!
+		<h3 style="text-align:center;">
+			지출 / 수입 내역 등록하기
 			<input type="hidden" name="id" value="${memId}" id="id" />
 			
-		</h1>
+		</h3><br/>
+	
 		<table border="1" align="center" width="60%">
 				<tr>
 						<td><label for="Select">&nbsp&nbsp&nbsp&nbsp카테고리</label></td>
@@ -197,14 +198,8 @@
 						<label class="custom-control-label" for="customSwitch1">&nbsp;&nbsp;N빵 Check</label> 
 						</td>
 				</tr>
-				<tr>
-				<td></td><td></td><td></td><td></td>
-					<td colspan="5"><center>
-								<button type="submit" class="btn btn-primary" name="">&nbsp;&nbsp;Submit&nbsp;&nbsp;</button>   
-							</center></td>
-				</tr>
-				
-			</table>
+			</table><br/>
+			<input type="submit" class="btn btn-primary" value="등록하기" style="float:right; margin-right:20%;"/>
 			</div>
 		<br /><br />
 		
@@ -221,7 +216,7 @@
 		
 		<br />
 		<div class="form-group">
-			<table border="1" align="center" width="50%" id="n_people">
+			<table border="0" align="center" width="50%" id="n_people">
 
 			</table>
 		</div>

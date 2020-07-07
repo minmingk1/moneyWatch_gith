@@ -26,7 +26,6 @@ public class Account_cardBean {
 	public String Account_cardForm(Model model, HttpSession session) {
 		
 		String id = (String)session.getAttribute("memId");
-		//String id = "nahui068";
 
 		model.addAttribute("memId",id);
 		
@@ -38,7 +37,6 @@ public class Account_cardBean {
 	public String Account_cardForm_main(Model model, HttpSession session) {
 		
 		String id = (String)session.getAttribute("memId");
-		//String id = "nahui068";
 
 		model.addAttribute("memId",id);
 		
@@ -83,7 +81,7 @@ public class Account_cardBean {
 		int check = 0;
 	
 		String id = (String)session.getAttribute("memId");
-		//String id = "nahui068";
+		
 		String ca_set = request.getParameter("ca_set");
 		
 		if(ca_set.equals("0")) { // 카드등록일 경우 
@@ -210,7 +208,6 @@ public class Account_cardBean {
 	public String myAccountCardForm(HttpSession session, Model model) {
 		
 		String id = (String)session.getAttribute("memId");
-		//String id = "nahui068";
 		
 		List mycard_list = (List) acdao.myCard(id).get("mycard");
 		List myaccount_list = (List) acdao.myCard(id).get("myaccount");
@@ -221,12 +218,44 @@ public class Account_cardBean {
 		return "/account_card/myAccountCardForm";
 	}
 	
+	// 카드 수정(등록되어 있는 계좌 중에서 변경)
+	@RequestMapping("updateCardForm.mw")
+	public String updateCardForm(Reg_CardDTO cdto, Reg_AccountDTO adto, Model model) {
+		
+		Reg_CardDTO reg_card = acdao.getCard(cdto); // 수정할 카드 선택시 정보
+		
+		List reg_account = acdao.getAccount(adto); // 등록되어 있는 은행사 불러오기
+		
+		model.addAttribute("reg_card",reg_card);
+		model.addAttribute("reg_account",reg_account);
+		
+		return "/account_card/updateCardForm";
+	}
+	
+	// 등록된 카드회사에 따른 계좌번호
+	@RequestMapping("account_num.mw")
+	public String selectAccountNum(String account_company, Model model) {
+		
+		List getAccount_num = acdao.getAccount_num(account_company);
+		
+		model.addAttribute("getAccount_num", getAccount_num);
+		
+		return "/account_card/selectAccountNum";
+	}
+	
+	@RequestMapping("updateCardPro.mw")
+	public String updateCardPro(Reg_CardDTO cdto) {
+		
+		acdao.updateCard(cdto);
+		
+		return "/account_card/updateCardPro";
+	}
+	
 	// 나의 카드삭제
 	@RequestMapping("myCardDel.mw")
 	public String myCardDel(HttpSession session, int num){
 		
 		String id = (String)session.getAttribute("memId");
-		//String id = "nahui068";
 		
 		acdao.delMyCard(id, num);
 		
@@ -235,10 +264,9 @@ public class Account_cardBean {
 	
 	// 나의 계좌 삭제
 	@RequestMapping("myAccountDel.mw")
-	public String myAccountDel(HttpSession session,int num){
-		
+	public String myAccountDel(HttpSession session,int num,String account_num){
+			
 		String id = (String)session.getAttribute("memId");
-		//String id = "nahui068";
 		
 		acdao.delMyAccount(id, num);
 		

@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 
+import mw.account_card.model.Reg_AccountDTO;
+
 public class MoneyioDAO {
 	
 	private SqlSessionTemplate sqlSession = null;
@@ -30,6 +32,12 @@ public class MoneyioDAO {
 	public int balanceUpdate(My_cardDTO mdto) {
 		return sqlSession.update("moneyio.balance_update", mdto);
 	}
+	
+	// 계좌 잔액 업데이트
+	public int balanceUpdateAccount(Reg_AccountDTO rdto) {
+		return sqlSession.update("moneyio.balance_update", rdto);
+	}
+	
 	//지출/수입 내역 입력
 	public void insert(MoneyioDTO dto) {
 //		System.out.println("id : " + dto.getId());

@@ -1,3 +1,4 @@
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/views/moneyio/moneyioForm.jsp=UTF-8
 encoding//src/mw/main/model/MainBean.java=UTF-8
+encoding//src/mw/main/model/MainDAO.java=UTF-8

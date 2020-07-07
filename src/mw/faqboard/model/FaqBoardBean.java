@@ -28,12 +28,12 @@ import java.lang.Integer;
 @Controller
 public class FaqBoardBean {
 	
-	@Autowired //¿À¹ö¶óÀÌµå·Î FaqBoardDAO ¿¬°á
+	@Autowired 
 	private FaqBoardDAO dao=null;
 	
 	
 	
-	@RequestMapping("faqList.mw") //FAQ , À¯Àú °Ô½ÃÆÇ ¸®½ºÆ® Ãâ·Â
+	@RequestMapping("faqList.mw") //FAQ ê²Œì‹œíŒ,ìœ ì €ê²Œì‹œíŒ ì¶œë ¥
 	public String faq_getArticles(FaqBoardDTO dto, FaqMainBoardDTO dto1,HttpSession session,HttpServletRequest respons,HttpServletRequest request, Model model){ 
 		List qList=null;
 				
@@ -92,7 +92,7 @@ public class FaqBoardBean {
 		return "/faqboard/faqList"; 
 	}
 	
-	@RequestMapping("faqDeleteForm.mw") // À¯Àú°Ô½Ã±Û »èÁ¦
+	@RequestMapping("faqDeleteForm.mw") // ìœ ì € ê²Œì‹œíŒ ì‚­ì œ
 	public String faqDeleteForm(HttpServletRequest respons,ServletRequest request,Model model) {
 		String pageNum=request.getParameter("pageNum");
 		String faq_num=request.getParameter("faq_num");
@@ -103,7 +103,7 @@ public class FaqBoardBean {
 		return "/faqboard/faqDeleteForm";
 	}
 	
-	@RequestMapping("faqDeletePro.mw") // À¯Àú°Ô½Ã±Û »èÁ¦ Ã¼Å© ¹× ÁøÇà
+	@RequestMapping("faqDeletePro.mw") // ìœ ì €ê²Œì‹œíŒ ì‚­ì œ ì§„í–‰
 	public String faqDeletePro(HttpServletRequest respons,ServletRequest request,Model model) {
 		String pageNum=request.getParameter("pageNum");
 		String faq_num=request.getParameter("faq_num");
@@ -123,7 +123,7 @@ public class FaqBoardBean {
 	}
 	
 	
-	@RequestMapping("faqUpdateForm.mw") //À¯Àú°Ô½Ã±Û ¼öÁ¤
+	@RequestMapping("faqUpdateForm.mw") // ìœ ì €ê²Œì‹œíŒ ìˆ˜ì •
 	public String faqUpdateForm(FaqBoardDTO dto,HttpSession session, ServletRequest request,Model model) {
 		String faq_num=request.getParameter("faq_num");
 		String pageNum=request.getParameter("pageNum");
@@ -136,7 +136,7 @@ public class FaqBoardBean {
 		
 		return "/faqboard/faqUpdateForm";
 	}
-	@RequestMapping("faqUpdatePro.mw") // À¯Àú°Ô½Ã±Û ¼öÁ¤ Ã¼Å© ¹× ÁøÇà
+	@RequestMapping("faqUpdatePro.mw") // ìœ ì €ê²Œì‹œíŒ ìˆ˜ì •ì§„í–‰
 	public String faqUpdatePro(FaqBoardDTO dto1, ServletRequest request,Model model, String article) {
 		String faq_num=request.getParameter("faq_num");
 		String pw=request.getParameter("pw");
@@ -153,7 +153,7 @@ public class FaqBoardBean {
 		
 		return "/faqboard/faqUpdatePro";
 	}
-	@RequestMapping("faqWriteForm.mw") //À¯Àú°Ô½ÃÆÇ ±Û¾²±â
+	@RequestMapping("faqWriteForm.mw") // ìœ ì €ê²Œì‹œíŒ ê¸€ì“°ê¸°
 	public String faqWriteForm(FaqBoardDTO dto, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		 String id=(String)session.getAttribute("memId");
 		
@@ -174,12 +174,12 @@ public class FaqBoardBean {
 		  }
 		return "/faqboard/faqWriteForm";
 	}
-	@RequestMapping("faqWritePro.mw") //À¯Àú°Ô½ÃÆÇ ±Û¾²±â ÁøÇà
+	@RequestMapping("faqWritePro.mw") //ìœ ì €ê²Œì‹œíŒ ê¸€ì“°ê¸° ì‹¤í–‰
 		public String faqWritePro(FaqBoardDTO dto, HttpServletRequest request) {
 			dao.insertBoard(dto);
 			return "/faqboard/faqWritePro";
 	}
-	@RequestMapping("myList.mw") //ÀÚ½ÅÀÌ ¾´ ±Û ³»¿ª
+	@RequestMapping("myList.mw") //ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		public String myList(HttpSession
 			  session,HttpServletRequest respons,HttpServletRequest request, Model model) {
 			  
@@ -228,7 +228,7 @@ public class FaqBoardBean {
 	
 	
 	
-	@RequestMapping("content.mw") //À¯Àú °Ô½ÃÆÇ °Ô½Ã±Û¼¼ºÎ ³»¿ª
+	@RequestMapping("content.mw") //ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±Û¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String faqContent(FaqBoardDTO dto,HttpServletRequest request, Model model,HttpSession session) {
 		String pageNum=request.getParameter("pageNum");
 		String number=request.getParameter("number");
@@ -252,7 +252,7 @@ public class FaqBoardBean {
 		return "/faqboard/content";
 	}
 
-	@RequestMapping("faqQwriteForm.mw") //FAQ (ÀÚÁÖÃ£´Â Áú¹®) ±Û¾²±â
+	@RequestMapping("faqQwriteForm.mw") //FAQ (ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½) ï¿½Û¾ï¿½ï¿½ï¿½
 	public String faqQwriteForm(FaqMainBoardDTO dto,HttpServletRequest request,Model model,HttpSession session) {
 		
 		int qnum=0,qreadcount=1;
@@ -264,14 +264,14 @@ public class FaqBoardBean {
 	}
 	
 	
-	@RequestMapping("faqQwritePro.mw") //FAQ ±Û¾²±â ÁøÇà
+	@RequestMapping("faqQwritePro.mw") //FAQ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String faqQwritePro(FaqMainBoardDTO dto) {
 		dao.insertQwrite(dto);
 		
 		return "/faqboard/faqQwritePro";
 	}
 	
-	@RequestMapping("faqContent.mw") //FAQ °Ô½Ã±Û »ó¼¼
+	@RequestMapping("faqContent.mw") //FAQ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½
 	
 	public String faqMainContent(FaqMainBoardDTO dto,HttpServletRequest request,Model model,HttpSession session) {
 		session.getAttribute("memId");
@@ -287,7 +287,7 @@ public class FaqBoardBean {
 	}
 	
 
-	@RequestMapping("faqMainUpdateForm.mw") //FAQ °Ô½Ã±Û ¼öÁ¤
+	@RequestMapping("faqMainUpdateForm.mw") //FAQ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String faqMainUpdateForm(FaqMainBoardDTO dto1,HttpServletRequest request,Model model,HttpSession session) {
 		
 		
@@ -305,7 +305,7 @@ public class FaqBoardBean {
 	return "/faqboard/faqMainUpdateForm";
 	}
 	
-	@RequestMapping("faqMainUpdatePro.mw") //FAQ °Ô½Ã±Û ¼öÁ¤ ÁøÇà
+	@RequestMapping("faqMainUpdatePro.mw") //FAQ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String faqMainUpdatePro(FaqMainBoardDTO dto,HttpServletRequest request,Model model,HttpSession session) {
 		
 		dao.updateQcontnet(dto);
@@ -313,7 +313,7 @@ public class FaqBoardBean {
 	return "/faqboard/faqMainUpdatePro";
 	}
 	
-	@RequestMapping("faqMainDelete.mw") //FAQ °Ô½Ã±Û »èÁ¦
+	@RequestMapping("faqMainDelete.mw") //FAQ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String faqMainDelete(FaqMainBoardDTO dto,HttpServletRequest request,Model model,HttpSession session) {
 		int qnum=(Integer.parseInt(request.getParameter("qnum")));
 		String q_id=(String)session.getAttribute("memId");
@@ -323,7 +323,7 @@ public class FaqBoardBean {
 		
 		return "/faqboard/faqMainDelete";
 	}
-	@RequestMapping("faqMainDeletePro.mw") //FAQ °Ô½Ã±Û »èÁ¦ ÁøÇà
+	@RequestMapping("faqMainDeletePro.mw") //FAQ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String faqMainDeletePro(FaqMainBoardDTO dto,HttpServletRequest request,Model model,HttpSession session) {
 		
 		int qnum=(Integer.parseInt(request.getParameter("qnum")));

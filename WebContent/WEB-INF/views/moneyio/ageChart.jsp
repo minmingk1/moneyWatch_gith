@@ -18,8 +18,8 @@
 		var chartObj20 = new FusionCharts({
 			type : 'radar',
 			renderAt : 'chart-container20',
-			width : '800',
-			height : '450',
+			width : '900',
+			height : '550',
 			dataFormat : 'json',
 			dataSource : {
 				"chart" : {
@@ -67,8 +67,8 @@
 		var chartObj30 = new FusionCharts({
 			type : 'radar',
 			renderAt : 'chart-container30',
-			width : '800',
-			height : '450',
+			width : '900',
+			height : '550',
 			dataFormat : 'json',
 			dataSource : {
 				"chart" : {
@@ -114,8 +114,8 @@
 		var chartObj40 = new FusionCharts({
 			type : 'radar',
 			renderAt : 'chart-container40',
-			width : '800',
-			height : '450',
+			width : '900',
+			height : '550',
 			dataFormat : 'json',
 			dataSource : {
 				"chart" : {
@@ -160,19 +160,19 @@
 
 </head>
 <body>
-	<!-- select io_category,count(io_category) from mwmoneyio where io_category not in('n빵비','기타') group by io_category order by count(io_category) desc -->
-	<table>
+<br/>
+	<table style="margin:auto;">
 		<tr>
 			<td><div id="chart-container20">FusionCharts XT will load
 					here!</div></td>
-			<td>&nbsp&nbsp&nbsp&nbsp</td>
+
 			<td><div id="chart-container30">FusionCharts XT will load
 					here!</div></td>
 		</tr>
 		<tr>
-
-			<td><div id="chart-container40">FusionCharts XT will load
+			<td colspan="2"><div id="chart-container40" style="align:center; margin-left:25%;">FusionCharts XT will load
 					here!</div></td>
+			<td></td>
 		</tr>
 	</table>
 

@@ -15,33 +15,32 @@
 <title>My scrap page</title>
 
 </head>
-<body>
-&nbsp
+<body><br/>
+
 	<h1 align="center">My Scrap</h1> <!-- a태그넣기  -->
-&nbsp
+	<br />
 	<div align="center">
 		<div class="left-box" style="float: left; margin-right:10px;">
-&nbsp
-			<div id="my_video">
+	<div id="my_video">
 
 			</div>
 		</div>
 		
 			<!-- 카테고리 리스트 -->	
-		<div class="right-box" style="float: left;">
+		<div class="right-box" style="float: right; margin-right:5%;">
 			<div align=center>
 				<table class="btn-group btn-group-toggle" data-toggle="buttons" >
 					<tr>
 						<c:forEach var="category" items="${ category }">
-							<td class="btn btn-primary" align = center onclick="myscrapCategory(${ category.num })">
-								${ category.sense_detail_category }
+							<td>
+								<input type="button" class="btn btn-outline-info" class="btn btn-primary" align = "center" value="${ category.sense_detail_category }" onclick="myscrapCategory(${ category.num })">	
 							</td>								
 						</c:forEach>
 					</tr>
 				</table>
 			</div>
-			&nbsp
-			<div>
+			<br />
+
 				<div id="myScrapList" style="overflow:auto; width:800px; height:500px;"> <!-- 기본 메인에서 리스트를 가져오고/ 카테고리 선택 시 ajax를 통해 리스트를 가져옴 -->
 					<c:forEach items="${ myscrap }" var="list">	
 						<table class="list-group">
@@ -49,7 +48,7 @@
 							<tr class="list-group-item d-flex justify-content-between align-items-center">
 								<td onclick="mydetail(${ list.num })"><img src="https://img.youtube.com/vi/${ list.sense_url }/default.jpg" alt="Page Not Found"/></td>
 								<td onclick="mydetail(${ list.num })">${ list.sense_title }</td>
-								<td><input type="button" value="삭제" onclick="deletescrap(${list.num})"/></td>
+								<td><input type="button" class="btn btn-danger" value="삭제" onclick="deletescrap(${list.num})"/></td>
 							</tr>
 							<tr>
 								<table id="detail${list.num }" onclick="click(${list.num })">
@@ -60,6 +59,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
 </body>
+<div class="jumbotron text-center" style="margin-bottom:0; margin-top:30%;">
+   <p>mw 주식회사  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   전화번호 02) 1111-1111 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="siteMap.mw">사이트맵</a></p>
+</div>
 </html>

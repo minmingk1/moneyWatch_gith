@@ -11,36 +11,36 @@ public class MemberDAO {
 	
 	private SqlSessionTemplate sqlSession = null;
 	
-	public MemberDAO(SqlSessionTemplate sqlSession) {	// »ý¼ºÀÚ
-		this.sqlSession = sqlSession;	// »ý¼ºÀÚ¸¦ ÅëÇØ¼­ SqlSessionTemplate °¡Á®¿À±â(»ý¼º)		
+	public MemberDAO(SqlSessionTemplate sqlSession) {	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		this.sqlSession = sqlSession;	// ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ SqlSessionTemplate ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)		
 	}
 	
-	public int loginCheck(MemberDTO dto) { //·Î±×ÀÎ Ã¼Å©
+	public int loginCheck(MemberDTO dto) { //ï¿½Î±ï¿½ï¿½ï¿½ Ã¼Å©
 		int check = (int)sqlSession.selectOne("member.loginCheck", dto);
 		
 		return check;
 	}
 	
-	public void insert(MemberDTO dto) { //È¸¿ø°¡ÀÔ µ¥ÀÌÅÍ »ðÀÔ
+	public void insert(MemberDTO dto) { //È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		sqlSession.insert("member.insert", dto);
 	}
 	
-	public int memberCheck(String id) { //È¸¿ø Áßº¹È®ÀÎ
+	public int memberCheck(String id) { //È¸ï¿½ï¿½ ï¿½ßºï¿½È®ï¿½ï¿½
 		int check = sqlSession.selectOne("member.memberCheck", id);
 		
 		return check;
 	}
 	
-	public MemberDTO modifyCheck(String id) { //È¸¿ø ¼öÁ¤ µ¥ÀÌÅÍ ¸®ÅÏ
+	public MemberDTO modifyCheck(String id) { //È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		MemberDTO dto = (MemberDTO)sqlSession.selectOne("member.modifyCheck",id);
 	    return dto;
 	}
 	
-	public void updateMember(MemberDTO dto){ //È¸¿ø Á¤º¸ ¼öÁ¤ »ðÀÔ
+	public void updateMember(MemberDTO dto){ //È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		sqlSession.update("member.updateMember", dto);
 	}
 	
-	public int deleteCheck(String id,String pw) {  //È¸¿ø Å»Åð Àü Ã¼Å©
+	public int deleteCheck(String id,String pw) {  //È¸ï¿½ï¿½ Å»ï¿½ï¿½ ï¿½ï¿½ Ã¼Å©
 		HashMap map = new HashMap();
 		map.put("id",id);
 		map.put("pw",pw);
@@ -49,33 +49,34 @@ public class MemberDAO {
 		return check;
 	}
 	
-	public MemberDTO deleteSelect(String id) { //»èÁ¦ÇÒ È¸¿øÁ¤º¸ ¹ÝÈ¯
+	public MemberDTO deleteSelect(String id) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯
 		MemberDTO dto1=(MemberDTO)sqlSession.selectOne("member.deleteSelect", id);
 		return dto1;
 	}
 	
-	public void deleteInsert(DeleteMemListDTO dto2) { //È¸¿øDB¿¡¼­ È¸¿øÅ»ÅðList DB·Î º¹»ç
+	public void deleteInsert(DeleteMemListDTO dto2) { //È¸ï¿½ï¿½DBï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½Å»ï¿½ï¿½List DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		sqlSession.insert("member.deleteMemList", dto2);
 	}
 	
-	public void deleteMem(String id) { //È¸¿øÅ»Åð Á¤º¸ »ðÀÔ
+	public void deleteMem(String id) { //È¸ï¿½ï¿½Å»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		sqlSession.delete("member.deleteMem", id);
 	
 	}
-}
-/*
- * public List selectMemList(MemberDTO dto) { //È¸¿ø ¸®½ºÆ® List
- * list=sqlSession.selectList("member.selectMemList",dto);
- * 
- * 
- * 
- * return list; }
- */
-/*
- * public String memSearch(String keyWord,String keyField) { HashMap map= new
- * HashMap(); map.put("keyWord",keyWord); map.put("keyField",keyField);
- * 
- * String search=sqlSession.selectOne("member.memSearch",map);
- * 
- * return search; } }
- */
+	public List selectMemList(MemberDTO dto) { //È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® List
+		List list=sqlSession.selectList("member.selectMemList",dto);
+		  
+		return list;
+		}
+		 
+		public List memSearch(String keyField,String keyWord) { 
+			
+			HashMap map= new HashMap(); 
+			map.put("keyField",keyField);
+			map.put("keyWord",keyWord); 
+		
+		
+			List search=sqlSession.selectList("member.memSearch",map);
+		
+			return search; 
+		} 
+	}

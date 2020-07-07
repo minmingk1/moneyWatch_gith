@@ -4,13 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file = "/WEB-INF/views/main/top.jsp" %>
 
-<!-- <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
- -->
- 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<title>수입/지출 리스트</title>
 <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 	function filter(){
@@ -34,74 +30,85 @@
 		});
 	}
 </script>
-<br><br>
+<style>
+td{
+	width: 350px;
+}
+</style>
+<br/><br/>
 <center>
+<div class="form-group">
 	<!-- 종합 -->
-	<div>	
-		<table border = "1" width="300">
+		<table class="table table-hover" border = "1" style="width:30%">
 			<tr>
-				<td>
-					<select id="filter" name="filter" onchange="filter()">
+				<td colspan="2">
+					<select class="form-control" id="filter" name="filter" onchange="filter()">
 						<option value="all" selected>전체</option>
 						<option value="inMoney">수입</option>
 						<option value="outMoney">지출</option>					
 					</select>			
 				</td>
-				<td>
-					마지막 업데이트 : ${nowDate}
-				</td>			
+						
 			</tr>
 			<tr>
-				<td colspan=2>			
+				<td scope="row" >
+					마지막 업데이트 : ${nowDate}
+				</td>	
+				<td>			
 					전체 남은 잔액 : <fmt:formatNumber value="${moneyioList[0].io_remain}" pattern="#,###"/> 원
 				</td>
 			</tr>
 		</table>
 	<br />
-	</div>
+	
 	
 	
 	<!-- 내역 출력 -->
 	 <div id="ioList">
 		<c:forEach var="ioListval" items="${moneyioList}">
-			<table border = "1" width="500">
+			<table class="table table-hover" border = "0" style="width:50%; text-align:center;" >
 <%-- 
 				<tr>
 					<td colspan="5">Number : ${ioListval.io_num}</td>
 				</tr>
 --%>		
-				
-				<tr>
-					<td align = center width="300" bgcolor="gray" onclick="detail(${ioListval.io_num})">
+				<tr class="table-info">
+					<td onclick="detail(${ioListval.io_num})">
 						${ioListval.io_reg_date}
 					</td>
-					<td align = right width="100" onclick="detail(${ioListval.io_num})">
-						거래 금액
-					</td>
-					<td align = right width="100" onclick="detail(${ioListval.io_num})">					
-						<fmt:formatNumber value="${ioListval.io_price}" pattern="#,###"/> 원
+					<td  onclick="detail(${ioListval.io_num})">
+						${ioListval.io_detail}
 					</td>
 				</tr>
 				<tr>
-					<td align = center width="300" onclick="detail(${ioListval.io_num})">
-						${ioListval.io_detail}
+					<td scope="row" onclick="detail(${ioListval.io_num})">
+						거래 금액
 					</td>
-					<td align = right width="100" onclick="detail(${ioListval.io_num})">
+					<td onclick="detail(${ioListval.io_num})">
+						<fmt:setLocale value="ko"/>
+				    	<fmt:formatNumber type="text" value="${ioListval.io_price}" pattern="#,###" var="price"/>
+				      	${price}				
+					</td>
+				</tr>
+				<tr>
+					<td onclick="detail(${ioListval.io_num})">
 						남은 잔액
 					</td>
-					<td align = right width="100" onclick="detail(${ioListval.io_num})">					
-						<fmt:formatNumber value="${ioListval.io_remain}" pattern="#,###"/> 원
+					<td onclick="detail(${ioListval.io_num})">	
+						<fmt:setLocale value="ko"/>
+				    	<fmt:formatNumber type="text" value="${ioListval.io_remain}" pattern="#,###" var="remain"/>
+				      	${remain}			
 					</td>
 				</tr>
 				<tr>
 				
-					<table width="500" border="1" colspan="5" id="detail${ioListval.io_num}">
+					<table border="1" colspan="5" id="detail${ioListval.io_num}">
 					</table>
 				</tr>
 			</table>
 		</c:forEach>		
 	</div>
-
+</div>
 </center>
 
 <%@ include file = "/WEB-INF/views/main/footer.jsp" %>

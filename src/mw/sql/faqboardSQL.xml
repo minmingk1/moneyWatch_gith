@@ -4,11 +4,11 @@
 <mapper namespace="faqboard">
 
 	<insert id="insertBoard" parameterType="faqboardDTO"> <!-- 유저게시판 글쓰기 -->
-		insert into mwFaQBoard values(mwFaQBoard_seq.nextval,#{subject},#{faq_email},#{content},#{pw},#{readcount},sysdate,#{ref},#{id})
+		insert into mwFaQBoard values(mwFaQBoard_seq.nextval,#{subject},#{content},#{pw},#{readcount},sysdate,#{ref},#{id})
 	</insert>
 	
 	<select id="getArticles" resultType="faqboardDTO" parameterType="hashmap" > <!-- 유저게시판 List -->
-		<![CDATA[select * from (select id,faq_num,subject,faq_email,content,pw,readcount ,reg,ref,rownum r from(select *  from mwFaQBoard order by faq_num desc) order by faq_num desc) where r >= #{start} and r <= #{end} ]]>
+		<![CDATA[select * from (select id,faq_num,subject,content,pw,readcount ,reg,ref,rownum r from(select *  from mwFaQBoard order by faq_num desc) order by faq_num desc) where r >= #{start} and r <= #{end} ]]>
 	</select>
 	
 	<select id="getCount" resultType="int" > <!-- 유저게시판 DB 총 게시글 -->
@@ -40,7 +40,7 @@
 	</select>
 	
 	<update id="updateContent" parameterType="faqboardDTO"> <!-- 유저게시글 수정할 데이터 삽입 -->
-		update mwFaQBoard set faq_email=#{faq_email},subject=#{subject},content=#{content} where faq_num=#{faq_num}
+		update mwFaQBoard set subject=#{subject},content=#{content} where faq_num=#{faq_num}
 	</update>
 	
 	
@@ -84,7 +84,7 @@
 	</select>
 	                                                                                                                                                                                     
 	<select id="mygetArticles" resultType="faqboardDTO" parameterType="hashmap"> <!--  내가 쓴 게시글 List  -->                                                                                  
-		<![CDATA[select * from (select faq_num,id,subject,faq_email,content,pw,readcount ,reg,ref,rownum r from
+		<![CDATA[select * from (select faq_num,id,subject,content,pw,readcount ,reg,ref,rownum r from
 							   (select *  from mwFaQBoard where id=#{id} order by faq_num desc) 
 							   order by ref desc) where r >= #{start} and r <= #{end} ]]>
 	</select>

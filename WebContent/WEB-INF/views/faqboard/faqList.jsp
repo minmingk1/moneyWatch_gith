@@ -12,18 +12,15 @@
 <body>
 
 	<center>
+	<h5 style="text-align:center;">FAQ</h5>
 	
-	<h3>*FAQ*</h3>
-	<table class="table table-hover">
-	 <tr>
-	 	<td align="right">
-		<c:if test="${sessionScope.memId =='aaa'}">
-		<button class="btn btn-primary"><a href="/moneyWatch/faqQwriteForm.mw">글쓰기</a></button>
+	
+		<c:if test="${sessionScope.memId =='admin'}">
+		<input type="button" class="btn btn-primary" value="글쓰기" onclick="window.location='/moneyWatch/faqQwriteForm.mw'" style="float:right; margin-right:30%;" >
 		</c:if>
-	 	</td>
-	 </tr>
-	</table>
 	
+	<br />
+	<br />
 	<c:if test="${qcount>0}">
 	<table style="width:40%;" border="1" cellpadding="0" cellspacing="0"  class="table table-hover">
 	 <tr class="table-dark">
@@ -39,7 +36,6 @@
 		<c:forEach var="qlist" items="${qList}" >
 		  <tr>
 		  	<td align="center">${qlist.qnum}</td>
-		  	
 			<td align="center">
 			<a href = "/moneyWatch/faqContent.mw?qnum=${qlist.qnum}">${qlist.qsubject}</a></td>
 			<td align="center">${qlist.q_id}</td>
@@ -52,22 +48,19 @@
 	</table>
 	</center>
 	<br />
-<center><h5>전체글 [${count}]</h5>
-<table style="width:40%;" border="1" cellpadding="0" cellspacing="0" align="center" >
-	<tr>
-		<td align="right">
+
+
+
+<h5 style="text-align:center;">전체글 [${count}]</h5>
 		<c:if test="${sessionScope.memId != null}">
-		<input type="button" class="btn btn-primary" value="내가 쓴 글" onclick="window.location='/moneyWatch/myList.mw'">
-		<input type="button" class="btn btn-primary" value="글쓰기" onclick="window.location='/moneyWatch/faqWriteForm.mw'">
+		<input type="button" class="btn btn-primary" value="내가 쓴 글" onclick="window.location='/moneyWatch/myList.mw'" style="float:right; margin-right:30%;">
+		<input type="button" class="btn btn-primary" value="글쓰기" onclick="window.location='/moneyWatch/faqWriteForm.mw'" style="float:right; margin-right:1%;" >
 		</c:if>
 		
 		<c:if test="${sessionScope.memId == null}">
 		<a href="/moneyWatch/loginForm.mw">로그인</a>
 		</c:if>
-		</td>
-	</tr>
-</table>
-
+<br/>
 <c:if test="${count==0}">
 <table style="width:40%;" border="1" cellpadding="0" cellspacing="0">
 <tr>
@@ -77,7 +70,7 @@
 </tr>
 </table>
 </c:if>
-
+<br/>
 <c:if test="${count != 0}">
 	<table class="table table-hover" style="width:40%;" border="1" cellpadding="0" cellspacing="0" align="center">
 		<tr class="table-active">
@@ -130,7 +123,7 @@
 			<a href="/moneyWatch/faqList.mw?pageNum=${startPage + 10}">다음</a>
 		</c:if>
 	</c:if>
-</center>
+
 
 </body>
 </html>

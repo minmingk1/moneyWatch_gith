@@ -4,7 +4,7 @@
 
 
 
-<table border="1" align="center" width="50%" id="n_people">
+<table border="0" style="align:center;" width="30%" id="n_people">
 
 <c:forEach var="n" begin="1" end="${nPeople}" step="1">
 	<tr>
