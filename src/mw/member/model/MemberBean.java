@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
-
-
+import mw.admin.model.VisitCountDAO;
+import mw.admin.model.VisitCountDTO;
 import mw.member.model.MemberDAO;
 
 
@@ -22,6 +24,8 @@ public class MemberBean {
 	
 	@Autowired
 	private MemberDAO dao = null;
+	@Autowired
+	private VisitCountDAO vdao = null;
 	
 	@RequestMapping("loginForm.mw") //로그인
 	public String loginform() {
@@ -36,6 +40,21 @@ public class MemberBean {
 		
 		if(check==1) {
 		session.setAttribute("memId", dto.getId());
+		
+		// 방문자 정보 등록
+		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+		VisitCountDTO vdto = new VisitCountDTO();
+        vdto.setVisit_ip(req.getRemoteAddr());
+        vdto.setVisit_agent(req.getHeader("User-Agent"));//브라우저 정보
+        vdto.setVisit_refer(req.getHeader("referer"));//접속 전 사이트 정보
+        
+        try {
+			vdao.insertVisitor(vdto);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
 	}
 		model.addAttribute("check",check);
 		return "/member/loginPro";
