@@ -30,11 +30,17 @@
  		, (select io_category from mwmoneyio where io_num = (select max(io_num) from mwmoneyio)),#{n_debtor},#{n_price})
 
 	</insert>
-	<!-- 계좌 잔액 업데이트 -->
+	
+	<!-- 카드계좌 잔액 업데이트 -->
 	<update id="balance_update" parameterType="mycardDTO">
 		update mwregistercard set balance=#{balance} where id=#{id} and account_num=#{account_num}
 	</update>
-	
+
+	<!-- 계좌 잔액 업데이트 -->
+	<update id="balance_update_account" parameterType="mycardDTO">
+		update mwregisteraccount set balance=#{balance} where id=#{id} and account_num=#{account_num}
+	</update>
+		
 	<!-- 지출/수입 내역 수정페이지 데이터 -->	
 	<select id="updateForm" resultType="moneyioDTO" parameterType="int">
 		select * from mwmoneyio where io_num = #{io_num} 
