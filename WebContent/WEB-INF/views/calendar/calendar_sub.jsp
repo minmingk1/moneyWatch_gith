@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -172,6 +172,7 @@
   
 </script>
 
+
 <style>
 
   body {
@@ -215,9 +216,10 @@
 </head>
 
 <body>
-
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>   
+<br><br><br><br><br><br>
   <div id='calendar'></div>
-  
+  <%@ include file = "/WEB-INF/views/main/footer.jsp" %> 
   <!-- The Modal -->
     <div id="myModal" class="modal">
  
@@ -231,3 +233,4 @@
     </div>
 </body>
 </html>
+

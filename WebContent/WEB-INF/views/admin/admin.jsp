@@ -53,45 +53,45 @@
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="active ">
-            <a href="./dashboard.html">
+            <a href="./admin.mw">
               <i class="now-ui-icons design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
           <li>
-            <a href="./icons.html">
+            <a href="./#.mw">
               <i class="now-ui-icons education_atom"></i>
-              <p>Icons</p>
+              <p>회원 관리</p>
             </a>
           </li>
           <li>
-            <a href="./map.html">
+            <a href="./#.mw">
               <i class="now-ui-icons location_map-big"></i>
-              <p>Maps</p>
+              <p>연령별 지출 관리</p>
             </a>
           </li>
           <li>
-            <a href="./notifications.html">
+            <a href="./#.mw">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>Notifications</p>
+              <p>소비패턴 분석 관리</p>
             </a>
           </li>
           <li>
-            <a href="./user.html">
+            <a href="./#.mw">
               <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
+              <p>카드 목록 / 혜택 관리</p>
             </a>
           </li>
           <li>
-            <a href="./tables.html">
+            <a href="./#.mw">
               <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
+              <p>챗봇 관리</p>
             </a>
           </li>
           <li>
-            <a href="./typography.html">
+            <a href="./#.mw">
               <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
+              <p>게시판 관리</p>
             </a>
           </li>
           <li class="active-pro">

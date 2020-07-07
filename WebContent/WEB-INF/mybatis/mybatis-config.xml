@@ -35,6 +35,7 @@
 		<typeAlias type="mw.account_card.model.Reg_AccountDTO" alias="reg_accountDTO"/><!-- 계좌정보등록 -->
 		<typeAlias type="mw.account_card.model.MyCardImgDTO" alias="mycard_imgDTO"/><!-- 나의 카드 이미지 -->
 		
+		<typeAlias type="mw.admin.model.VisitCountDTO" alias="visitCountDTO"/>	<!-- 방문자 수 -->
 		
 	</typeAliases>
 	

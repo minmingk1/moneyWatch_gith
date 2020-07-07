@@ -53,7 +53,7 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="#">챗봇</a>
-      <a class="dropdown-item" href="Calendar.mw">캘린더</a>
+      <a class="dropdown-item" href="Calendar_sub.mw">캘린더</a>
       <a class="dropdown-item" href="moneyioForm.mw">지출/수입 등록</a>
       <a class="dropdown-item" href="moneyioList.mw">지출/수입 목록 </a>
       <div class="dropdown-divider"></div>
@@ -64,7 +64,7 @@
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">카드/계좌</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="account_cardForm.mw">등록</a>
+      <a class="dropdown-item" href="account_cardForm_main.mw">등록</a>
       <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
       <a class="dropdown-item" href="card_rank.mw">연령별 카드 순위 보기</a>
     </div>

@@ -44,6 +44,21 @@ public class CalendarBean {
 		return "/calendar/calendar";
 	}
 
+	@RequestMapping("Calendar_sub.mw")
+	public String cal_sub(HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
+		
+		// DB뿌려주기 필요
+		String id = "tempid";
+		List<MwScheduleDTO> slist = dao.schedule_select(id); // 일정가져오기
+		List<MoneyioDTO> olist = dao.money_out("crong"); // 지출내역가져오기
+		List<MoneyioDTO> ilist = dao.money_in("crong"); // 수입내역가져오기
+		
+		model.addAttribute("listview", slist);
+		model.addAttribute("olist",olist);
+		model.addAttribute("ilist",ilist);
+		
+		return "/calendar/calendar_sub";
+	}
 	
 	@RequestMapping("day_popUp.mw") // 캘린더 팝업창
 	public String cal_pop(Model model,String year,String month,String day) {
