@@ -42,8 +42,8 @@
         <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Member</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="modify.mw">회원정보 수정</a>
-      <a class="dropdown-item" href="#">마이페이지</a>
+      <a class="dropdown-item" href="modifyForm.mw">회원정보 수정</a>
+      <a class="dropdown-item" href="myPage.mw">마이페이지</a>
       <a class="dropdown-item" href="memOutForm.mw">회원 탈퇴</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Separated link</a>
@@ -53,7 +53,7 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
     <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="#">챗봇</a>
-      <a class="dropdown-item" href="Calendar.mw">캘린더</a>
+      <a class="dropdown-item" href="Calendar_sub.mw">캘린더</a>
       <a class="dropdown-item" href="moneyioForm.mw">지출/수입 등록</a>
       <a class="dropdown-item" href="moneyioList.mw">지출/수입 목록 </a>
       <div class="dropdown-divider"></div>
