@@ -42,7 +42,7 @@
 <form name = "card_info" method="post" action="account_cardPro.mw">
 
 	<input type="hidden" name="id" value="${memId}">
-	<table align="center" width="50%" >
+	<table align="center" width="30%" >
 
 		<tr>
   			<td><legend>카드/계좌</legend></td>
@@ -62,7 +62,7 @@
   		</tr>	
 		
 		<div class="form-group">
-			<table align="center" width="80%" id="select">
+			<table align="center" width="30%" id="select">
 
 			</table>
 		</div>
