@@ -39,7 +39,9 @@
 <center><h1>카드/계좌 등록</h1></center>
 <br>
 <form name = "card_info" method="post" action="account_cardPro.mw">
-
+	
+	<input type="hidden" name="set" value="sub">
+	
 	<input type="hidden" name="id" value="${memId}">
 	<table align="center" width="50%" >
 

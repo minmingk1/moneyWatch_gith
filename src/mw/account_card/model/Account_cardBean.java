@@ -83,6 +83,7 @@ public class Account_cardBean {
 		String id = (String)session.getAttribute("memId");
 		
 		String ca_set = request.getParameter("ca_set");
+		String set = request.getParameter("set"); // 메인에 있는 form이랑 마이페이지에 있는 form이랑 구별해서 넘기기 위함
 		
 		if(ca_set.equals("0")) { // 카드등록일 경우 
 			check = acdao.check_card(id, cdto.getCard_name(), cdto.getAccount_num());
@@ -102,7 +103,8 @@ public class Account_cardBean {
 		}
 		
 		model.addAttribute("check",check);
-
+		model.addAttribute("set",set);
+		
 		return "/account_card/account_cardPro";
 	}
 	

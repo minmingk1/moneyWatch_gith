@@ -41,6 +41,7 @@
 <br>
 <form name = "card_info" method="post" action="account_cardPro.mw">
 
+	<input type="hidden" name="set" value="main">
 	<input type="hidden" name="id" value="${memId}">
 	<table align="center" width="30%" >
 

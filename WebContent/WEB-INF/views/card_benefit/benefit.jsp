@@ -8,7 +8,7 @@
 
 <img src="/moneyWatch/image/${cardImg}"/>
 <br><br>
-<table class="table table-hover" width="50%" >
+<table class="table table-hover" width="50%" align="center">
 <c:forEach var="cdto" items="${benefitList}">
 	<tr class="table-light"><th scope="row">${cdto.all_benefit_name}</th>
 	<td>${cdto.benefit_text_all}</td>
