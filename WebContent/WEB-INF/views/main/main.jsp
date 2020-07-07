@@ -126,26 +126,12 @@
       <h3>오늘의 금융상식</h3>
       <br />
       <ul class="nav nav-pills flex-column">
-     <!--
-       <li class="nav-item">
-         <a class="nav-link active" href="#">Active</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="#">Link</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link" href="#">Link</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link disabled" href="#">Disabled</a>
-       </li>
-       -->
         
 	<iframe width="360" height="210" src="https://www.youtube.com/embed/${video.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
 		
       </ul>
       <br />
-      <p style="text-align:right;" onclick="location.href='sense.mw'">금융상식 더 보러 가기 ></p>
+      <button style="text-align:right;" onclick="location.href='sense.mw'">금융상식 더 보러 가기 >></button>
       <hr class="d-sm-none">
     </div>
     
