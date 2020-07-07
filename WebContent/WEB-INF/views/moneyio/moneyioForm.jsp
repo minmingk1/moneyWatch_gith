@@ -216,7 +216,7 @@
 		
 		<br />
 		<div class="form-group">
-			<table border="1" align="center" width="50%" id="n_people">
+			<table border="0" align="center" width="50%" id="n_people">
 
 			</table>
 		</div>
