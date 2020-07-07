@@ -19,11 +19,7 @@ function writeSave(){
 		document.writeform.subject.focus();
 		return false;
 	}
-	if(document.writeform.email.value==""){
-		alert("이메일을 작성해주세요.");
-		document.writeform.email.focus();
-		return false;
-	}
+	
 	if(document.writeform.content.value==""){
 		alert("내용을 작성해주세요.");
 		document.writeform.content.focus();
@@ -45,8 +41,6 @@ function writeSave(){
 	
 		<input type="hidden" name="faq_num" value="${faq_num}">
 		<input type="hidden" name="ref" value="${ref}">
-		<input type="hidden" name="re_step" value="${re_step}">
-		<input type="hidden" name="re_level" value="${re_level}">
 		<input type="hidden" name="readcount" value="${readcount}">
 		
 		<table width="400" border="1" cellspacing="0" cellpadding="0" align="center">
@@ -67,12 +61,6 @@ function writeSave(){
 		    	<td  width="330">
 	     		<input type="text" class="form-control" size="40" maxlength="50" name="subject"></td>
 	  		</tr>
-			
-			<tr>
-				<td width="70" align="center" >Email</td>
-				<td width="330">
-				<input type="text" class="form-control" size="40" maxlength="30" name="faq_email"></td>
-			</tr>
 			
 			
 			<tr>

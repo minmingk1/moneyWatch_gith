@@ -66,7 +66,7 @@
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="#">회원 관리</a>
+      <a class="dropdown-item" href="memList.mw">회원 관리</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
       <a class="dropdown-item" href="#">챗봇 관리</a>

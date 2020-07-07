@@ -29,7 +29,7 @@
 		  <h7 class="list-group-item list-group-item-action active">개인 정보</h7>
 		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필</a>
 		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필 수정</a>
-		  <a href="#" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
+		  <a href="memOutForm.mw" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
 		  
 		  <h7 class="list-group-item list-group-item-action active">My 카드/계좌</h7>
 		  <a href="account_cardForm.mw" target="mypage" class="list-group-item list-group-item-action">카드/계좌 등록</a>
@@ -37,7 +37,7 @@
 		  <a href="mycardList.mw" target="mypage" class="list-group-item list-group-item-action">나의 혜택 보기</a>
 		  
 		  <h7 class="list-group-item list-group-item-action active">게시판</h7>
-		  <a href="#" target="mapage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
+		  <a href="myList.mw" target="mapage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
 		  <a href="myscrap.mw" target="mapage" class="list-group-item list-group-item-action">나의 스크랩</a>
 		</div>
 	</div>

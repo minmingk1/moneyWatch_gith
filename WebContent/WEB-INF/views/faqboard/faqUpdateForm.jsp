@@ -48,11 +48,7 @@ function writeSave(){
     <td>
        <input type="text" class="form-control" size="40" maxlength="50" name="subject" value="${dto1.getSubject()}"></td>
   </tr>
-  <tr>
-    <td>Email</td>
-    <td>
-       <input type="text" class="form-control" size="40" maxlength="30" name="faq_email" value="${dto1.getFaq_email()}"></td>
-  </tr>
+  
   <tr>
     <td>내 용</td>
     <td>

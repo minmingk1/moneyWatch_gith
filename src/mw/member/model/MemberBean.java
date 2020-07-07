@@ -27,12 +27,12 @@ public class MemberBean {
 	@Autowired
 	private VisitCountDAO vdao = null;
 	
-	@RequestMapping("loginForm.mw") //·Î±×ÀÎ
+	@RequestMapping("loginForm.mw") //ï¿½Î±ï¿½ï¿½ï¿½
 	public String loginform() {
 		return "/member/loginForm";
 	}
 
-	@RequestMapping("loginPro.mw") //·Î±×ÀÎ Ã¼Å©
+	@RequestMapping("loginPro.mw") //ï¿½Î±ï¿½ï¿½ï¿½ Ã¼Å©
 	public String loginPro(MemberDTO dto, HttpSession session, Model model, HttpServletRequest request) {
 		String id=(String)session.getAttribute(dto.getId());
 		String pw=request.getParameter(dto.getPw());
@@ -41,12 +41,12 @@ public class MemberBean {
 		if(check==1) {
 		session.setAttribute("memId", dto.getId());
 		
-		// ¹æ¹®ÀÚ Á¤º¸ µî·Ï
+		// ï¿½æ¹®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
 		VisitCountDTO vdto = new VisitCountDTO();
         vdto.setVisit_ip(req.getRemoteAddr());
-        vdto.setVisit_agent(req.getHeader("User-Agent"));//ºê¶ó¿ìÀú Á¤º¸
-        vdto.setVisit_refer(req.getHeader("referer"));//Á¢¼Ó Àü »çÀÌÆ® Á¤º¸
+        vdto.setVisit_agent(req.getHeader("User-Agent"));//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        vdto.setVisit_refer(req.getHeader("referer"));//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         
         try {
 			vdao.insertVisitor(vdto);
@@ -60,25 +60,25 @@ public class MemberBean {
 		return "/member/loginPro";
 	}
 	
-	@RequestMapping("logout.mw") //·Î±×¾Æ¿ô ¼¼¼Ç »èÁ¦
+	@RequestMapping("logout.mw") //ï¿½Î±×¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String aoplogout(HttpSession session) {
 		session.invalidate();	
 		return "/member/logout";
 	}
 	
-	@RequestMapping("registerForm.mw")	//È¸¿ø°¡ÀÔ
+	@RequestMapping("registerForm.mw")	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public String registerForm() {
 		return "/member/registerForm";
 	}
 
-	@RequestMapping("registerPro.mw")	//È¸¿ø°¡ÀÔ ½ÇÇà
+	@RequestMapping("registerPro.mw")	//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String registerPro(MemberDTO dto) {
 		dao.insert(dto);	
 		return "/member/registerPro";
 	}
 	
 	
-	@RequestMapping("confirmId.mw") //¾ÆÀÌµð Ã¼Å©
+	@RequestMapping("confirmId.mw") //ï¿½ï¿½ï¿½Ìµï¿½ Ã¼Å©
 	public String confirmId(String id,Model model) {
 		int check=dao.memberCheck(id);
 		model.addAttribute("check",check);
@@ -86,7 +86,7 @@ public class MemberBean {
 		return "/member/confirmId";
 	}
 	
-	@RequestMapping("modifyForm.mw") //È¸¿ø Á¤º¸¿¡ ¸Â´Â µ¥ÀÌÅÍ ¹Þ¾Æ¼­ ¸®ÅÏ
+	@RequestMapping("modifyForm.mw") //È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Â´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String aopmodifyForm(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("memId");
 		MemberDTO dto =dao.modifyCheck(id);
@@ -96,7 +96,7 @@ public class MemberBean {
 	}
 	
 	
-	@RequestMapping("modifyPro.mw") //Á¤º¸¼öÁ¤ ½ÇÇà
+	@RequestMapping("modifyPro.mw") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String aopmodifyPro(MemberDTO dto) {
 		dao.updateMember(dto);
 		
@@ -104,12 +104,12 @@ public class MemberBean {
 	}
 	
 
-	@RequestMapping("memOutForm.mw") //È¸¿øÅ»Åð
+	@RequestMapping("memOutForm.mw") //È¸ï¿½ï¿½Å»ï¿½ï¿½
 	public String aopmemOutForm() {
 		return "/member/memOutForm";
 	}
 	
-	@RequestMapping("memOutPro.mw") //Å»Åð ¿äÃ»È¸¿ø °Ë»ö,ÁøÇà
+	@RequestMapping("memOutPro.mw") //Å»ï¿½ï¿½ ï¿½ï¿½Ã»È¸ï¿½ï¿½ ï¿½Ë»ï¿½,ï¿½ï¿½ï¿½ï¿½
 	public String aopmemOutPro(MemberDTO dto , Model model, DeleteMemListDTO dto2 , HttpServletRequest request, HttpSession session) {
 		String pw =request.getParameter("pw");
 		String id =(String)session.getAttribute("memId");
@@ -122,7 +122,7 @@ public class MemberBean {
 		System.out.println(pw);
 		System.out.println(check);
 				
-		if(check==1) { // »èÁ¦ ÁøÇà
+		if(check==1) { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			
 			  String reason=request.getParameter("reason");
 			  
@@ -148,23 +148,61 @@ public class MemberBean {
 		}
 		return "/member/memOutPro";
 	}
-	/*
-	 * @RequestMapping("memList.mw") //È¸¿ø ¸®½ºÆ® Ãâ·Â public String memList(MemberDTO dto
-	 * , Model model,HttpServletRequest request, HttpSession session) { List
-	 * list=null; list=dao.selectMemList(dto);
-	 * 
-	 * 
-	 * 
-	 * model.addAttribute("list", list);
-	 * 
-	 * String keyField=request.getParameter("keyField"); String
-	 * keyWord=request.getParameter("keyWord");
-	 * 
-	 * String search=dao.memSearch(keyField,keyWord);
-	 * 
-	 * model.addAttribute("search", search);
-	 * 
-	 * return "/member/memList"; }
-	 */
-		
+	@RequestMapping("memList.mw") //È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ 
+	public String memList(MemberDTO dto, Model model,HttpServletRequest request, HttpSession session){ 
+	
+		List list=null; 
+		list=dao.selectMemList(dto);
+	  
+		model.addAttribute("list", list);
+	
+		String keyField=request.getParameter("keyField"); 
+		String keyWord=request.getParameter("keyWord");
+	
+		if(keyField != null) {
+			List search=dao.memSearch(keyField,keyWord);
+			
+			model.addAttribute("search", search);
+			
+		}
+		return "/admin/memList"; 
 	}
+	
+	@RequestMapping("adminMemDel.mw")
+	public String adminMemDel(Model model ,MemberDTO dto ,HttpServletRequest request, HttpSession session) {
+		String id=request.getParameter("id");
+		
+		model.addAttribute("id", id);
+		return "/admin/adminMemDel";
+	}
+	
+	@RequestMapping("adminMemDelPro.mw")
+	public String adminMemDelPro(MemberDTO dto , DeleteMemListDTO dto2 ,HttpServletRequest request, HttpSession session) {
+		String id=request.getParameter("id");
+		
+		
+		String reason=request.getParameter("reason");
+		  
+		MemberDTO dto1=dao.deleteSelect(id);
+		  
+		  dto2.setId(dto1.getId()); 
+		  dto2.setName(dto1.getName());
+		  dto2.setGender(dto1.getGender()); 
+		  dto2.setBirth_y(dto1.getBirth_y());
+		  dto2.setBirth_m(dto1.getBirth_m()); 
+		  dto2.setBirth_d(dto1.getBirth_d());
+		  dto2.setTel(dto1.getTel()); 
+		  dto2.setPhone1(dto1.getPhone1());
+		  dto2.setPhone2(dto1.getPhone2()); 
+		  dto2.setPhone3(dto1.getPhone3());
+		  dto2.setReason(reason);
+		  dto2.setReg(dto1.getReg());
+		  
+		  dao.deleteInsert(dto2);
+		
+		  dao.deleteMem(id);
+		
+		return "/admin/adminMemDelPro";
+	
+	}
+}
