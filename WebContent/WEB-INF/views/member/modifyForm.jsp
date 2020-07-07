@@ -101,5 +101,5 @@
 
   </form> 
  </body>
-<%@ include file = "/WEB-INF/views/main/footer.jsp" %>
+
 </html>
