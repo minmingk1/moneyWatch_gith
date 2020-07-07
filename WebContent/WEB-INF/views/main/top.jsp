@@ -14,7 +14,7 @@
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 <div class="jumbotron text-center" style="margin-bottom:0; background-color:#dfe9eb;">
-  <h1>moneyWatch</h1>
+  <a href="main.mw"><h1>moneyWatch</h1></a>
   <p>통장이 텅장이 되지 말자!</p> 
 </div>
 
