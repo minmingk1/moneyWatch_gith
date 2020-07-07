@@ -28,9 +28,6 @@
 <body>
 	<h1 align="center">금융 SenseUp!!</h1> <!-- a태그넣기  -->
 <br/>
-<%-- 	<c:if test="${sessionScope.memId != null}">
-		<h5><a class="btn btn-info" href="myscrap.mw">마이스크랩</a></h5>
-	</c:if> --%>
 	
 	<div class="left">
 
@@ -66,7 +63,7 @@
 							<!-- 썸네일이미지> --> 
 								<td onclick="detail(${ list.num })"><img src="https://img.youtube.com/vi/${ list.sense_thumbnail }/default.jpg" alt="Page Not Found"/></td>
 								<td onclick="detail(${ list.num })">${ list.sense_title }</td>
-								<td class="badge badge-primary badge-pill" id="readcount"> ${ list.readcount } </td>
+								<td class="badge badge-primary badge-pill" id="readcount${ list.num }"> ${ list.readcount } </td>
 							</tr>
 						</table>
 					</c:forEach>	

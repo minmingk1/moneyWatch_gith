@@ -12,7 +12,7 @@
 	<!--수정에 성공했을 경우ㅡ  -->
 		<script>
 			alert("정상적으로 수정되었습니다.");
-			window.location="/moneyWatch/sense.mw";	
+			window.location="/moneyWatch/senseAdmin.mw";	
 		</script>
 	</c:when>
 	<c:when test="${ check == 0 }">

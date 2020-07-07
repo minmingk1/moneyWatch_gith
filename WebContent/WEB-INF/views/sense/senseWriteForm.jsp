@@ -12,7 +12,7 @@
 
 </head>
 <body>
-	<h1 align="center">당신의 sense를 입력하세요 관리자야^^</h1>
+	<h3 align="center">당신의 sense를 입력하세요</h3>
 	
 	<form action="senseWritePro.mw" method="post">
 	<table align="center">

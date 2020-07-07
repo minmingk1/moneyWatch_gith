@@ -10,16 +10,16 @@
 	<c:when test="${ check == 1 }">	
 	<!-- 입력에 성공했을 경우ㅡ  -->
 		<script>
-			alert("정상적으로 입력되었습니다.");
-			window.location='/moneyWatch/sense.mw';
+			alert("이미 존재하는 URL입니다.");
+			history.go(-1);
 		</script>
 	</c:when>
 	
 	<c:when test="${ check == 0 }">
 	<!-- 입력에 실패했을 경우 -->
 		<script>
-			alert("입력에 실패하였습니다.");
-			history.go(-1);
+			alert("정상적으로 입력되었습니다.");
+			window.location='/moneyWatch/senseAdmin.mw';
 		</script>	
 	</c:when>
 	<c:otherwise>

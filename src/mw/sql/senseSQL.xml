@@ -71,7 +71,8 @@
 			#{sense_title},
 			#{sense_content},
 			#{sense_url}, 
-			#{sense_thumbnail})
+			#{sense_thumbnail},
+			#{readcount})
 	</insert>	
 	
 	<!-- ID confirm -->

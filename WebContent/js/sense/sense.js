@@ -3,7 +3,7 @@
 	function categoryAdmin(num){
 		
 		$.ajax({
-			
+
 			type: "POST",
 			url: "senseAdminList.mw",
 			data : {num: num},
@@ -32,6 +32,8 @@
 	//sense main에서 리스트 클릭시 디테일 페이지 호출
 	function detail(num){
 		
+		var readcount = "#readcount"+num;
+		
 		$.ajax({
 			
 			type: "POST",
@@ -49,7 +51,7 @@
 			url: "senseReadcount.mw",
 			data: {num: num},
 			success: function(data){
-				$("#readcount").html(data); //조회수 변경
+				$(readcount).html(data); //조회수 변경
 			}
 			
 		});
@@ -60,17 +62,26 @@
 	//sense detail에서 삭제 버튼 선택시 작동
 	function senseDelete(num){
 		
-		var password = prompt("비밀번호를 입력하세요.","");
-		
-		$.ajax({
+		if(num != "null"){
 			
-			type: "POST",
-			url: "senseDeletePro.mw",
-			data: password, num,
-			success: function(data){
-				html(data);
-			}
-		});
+			var password = prompt("비밀번호를 입력하세요.","");
+			
+			$.ajax({
+				type: "POST",
+				url: "senseDelete.mw",
+				data: {password: password,
+					number: num
+				},
+				success: function(data){
+					$("#mainList").html(data);
+				}
+			});
+			
+		} else {
+					
+			alert("영상확인 후 삭제 가능합니다.");
+			
+		}
 	}
 	
 	
@@ -115,8 +126,6 @@
 			}		
 		});
 	}
-	
-	
 	
 	//마이 스크랩 삭제
 	function deletescrap(num){

@@ -8,8 +8,6 @@
 <head>
 
 <meta charset="UTF-8">
-<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/sense/sense.js"></script>
 
 <title>Sense 관리</title>
@@ -17,12 +15,10 @@
 </head>
 <body>
 &nbsp
-	<h1 align="center">Sense관리</h1> <!-- a태그넣기  -->
-&nbsp
 	<div align="center">
 		<div class="left-box" style="float: left; margin-right:10px;">
-			<h2 align="center" >오늘의 영상</h2>
-&nbsp
+			<h2 align="center" >Sense관리</h2>
+			&nbsp
 			<div id="video_url">
 				<iframe width="850" height="478" src="https://www.youtube.com/embed/${video.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
 			</div>
@@ -38,6 +34,9 @@
 								${ category.sense_detail_category }
 							</td>								
 						</c:forEach>
+						<td class="btn btn-danger" onclick="location.href='/moneyWatch/senseWriteForm.mw'" style="float:right;">
+							지식올리기
+						</td>								
 					</tr>
 				</table>
 			</div>
@@ -58,7 +57,7 @@
 									<input type="button" value="수정" class="btn-group btn-group-toggle" data-toggle="buttons" onclick="location.href='/moneyWatch/senseModify.mw?num=${list.num}'"/>
 								</td>	
 								<td>
-									<input type="button" value="삭제" class="btn-group btn-group-toggle" data-toggle="buttons" onclick="senseDelete(${list.num})">      
+									<input type="button" value="삭제" class="btn-group btn-group-toggle" data-toggle="buttons" onclick="senseDelete(${list.num})">
 								</td>
 							</tr>
 						</table>

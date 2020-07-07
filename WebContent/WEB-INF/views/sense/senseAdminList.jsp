@@ -22,10 +22,10 @@
 				</tr>
 				<tr>	
 					<td>
-						<input type="button" value="수정" class="btn-group btn-group-toggle" onclick="location.href='/moneyWatch/senseModify.mw?num=${list.num}'"/>
+						<input type="button" value="수정" class="btn-group btn-group-toggle" data-toggle="buttons" onclick="location.href='/moneyWatch/senseModify.mw?num=${list.num}'"/>
 					</td>	
 					<td>
-						<input type="button" value="삭제" class="btn-group btn-group-toggle" onclick="senseDelete(${list.num})">      
+						<input type="button" value="삭제" class="btn-group btn-group-toggle" data-toggle="buttons" onclick="senseDelete(${list.num})"> 
 					</td>
 				</tr>
 			</table>

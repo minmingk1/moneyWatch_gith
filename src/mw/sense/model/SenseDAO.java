@@ -79,9 +79,6 @@ public class SenseDAO {
 		return check;
 	}
 	
-	// ID confirm	
-	
-	
 	// PW confirm
 	public int confirmPassword(String id, String password) {
 		

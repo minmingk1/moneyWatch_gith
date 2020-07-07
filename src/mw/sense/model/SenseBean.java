@@ -120,7 +120,7 @@ public class SenseBean {
 		int maxNum = dao.senseMaxNum() + 1; //mwsense테이블의 num 최댓값을 출력해 +1 해줌
 		dto.setNum(maxNum); //dto에 maxNum을 넣어줌
 		
-		int check = dao.senseInsertCheck(dto); //url or thumbnail 유효성 확인		
+		int check = dao.senseInsertCheck(dto); //url or thumbnail 중복 확인		
 		if (check == 0) {
 			dao.senseInsert(dto); //입력					
 		}
@@ -159,37 +159,43 @@ public class SenseBean {
 	
 	
 	//D - 센스 삭제를 위한 PW확인
-	@RequestMapping("senseDeletePro.mw")
-	public String confirmPassword(HttpSession session, String password, int num, Model model) {
+	@RequestMapping("senseDelete.mw")
+	public String confirmPassword(HttpSession session, String password, String number, Model model) {
 		
+		int num = Integer.parseInt(number);
 		int check; //반환 정보를 확인하기 위한 값
 		String id = (String)session.getAttribute("memId");
-		
-		if (id == "admin") { //관리자의 경우만 실행
+
+		if ("admin".equals(id)) { //관리자의 경우만 실행
 			
 			check = dao.confirmPassword(id, password); //id와 pw를 확인함
-			
+
 			if (check == 1) { // id/pw가 맞을 때
-				
+
 				dao.senseDelete(num); // 센스 게시글 삭제			
 				int deleteCheck = dao.senseDeleteCheck(num); // 게시글 삭제 확인 
-				
+
 				if(deleteCheck == 0) { // 제대로 삭제 되었을 때
+
 					model.addAttribute("check",check); // 1을 반환
+
 				}else {
 					check = -1; //제대로 삭제되지 않았을 때
+
 					model.addAttribute("check", check); // -1을 반환
 				}
-				
 			}else {	// id/pw가 틀릴 때
+
 				model.addAttribute("check",check); // 0을 반환
 			}
-			
 		}else {
+
 			check = 2; //삭제 권한이 없을 경우
 			model.addAttribute("check", check); //2를 반환
 		}
-		return "/sense/senseDeletePro";
+		List<SenseDTO> mainlist = dao.mainList(); //메인 리스트	
+		model.addAttribute("list", mainlist);
+		return "/sense/senseDelete";
 	}
 	
 	
