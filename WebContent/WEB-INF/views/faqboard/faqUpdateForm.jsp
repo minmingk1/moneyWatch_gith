@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>  
 <html>
 <head>
 <title>update form</title>
-<center><b>글수정</b>
-<br>
 
 <script language="JavaScript">
 function writeSave(){
@@ -35,46 +34,45 @@ function writeSave(){
  }    
 </script>
 <form method="post" name="writeform" action="/moneyWatch/faqUpdatePro.mw" onsubmit="return writeSave()">
-<table width="400" border="1" cellspacing="0" cellpadding="0" align="center">
+<div class="form-group"> <br />
+<h3 style="text-align:center;">글 수정하기</h3><br />
+<table border="1" align="center" width="50%" style="text-align:center;">
   <tr>
-    <td  width="70"   align="center">이 름</td>
-    <td align="left" width="330">
-       <input type="text" size="10" maxlength="10" name="id" value="${dto1.getId()}"></td>
+    <td>이 름</td>
+    <td>
+       <input type="text" class="form-control" size="10" maxlength="10" name="id" value="${dto1.getId()}"></td>
 	   <input type="hidden" name="faq_num" value="${dto1.getFaq_num()}" />
   </tr>
   <tr>
-    <td  width="70"  align="center" >제 목</td>
-    <td align="left" width="330">
-       <input type="text" size="40" maxlength="50" name="subject" value="${dto1.getSubject()}"></td>
+    <td>제 목</td>
+    <td>
+       <input type="text" class="form-control" size="40" maxlength="50" name="subject" value="${dto1.getSubject()}"></td>
   </tr>
   <tr>
-    <td  width="70"  align="center">Email</td>
-    <td align="left" width="330">
-       <input type="text" size="40" maxlength="30" name="faq_email" value="${dto1.getFaq_email()}"></td>
+    <td>Email</td>
+    <td>
+       <input type="text" class="form-control" size="40" maxlength="30" name="faq_email" value="${dto1.getFaq_email()}"></td>
   </tr>
   <tr>
-    <td  width="70"   align="center" >내 용</td>
-    <td align="left" width="330">
-     <textarea name="content" rows="13" cols="40">${dto1.getContent()}</textarea></td>
+    <td>내 용</td>
+    <td>
+     <textarea class="form-control" name="content" rows="13" cols="40">${dto1.getContent()}</textarea></td>
   </tr>
   <tr>
-    <td  width="70"   align="center" >비밀번호</td>
-    <td align="left" width="330" >
-     <input type="password" size="8" maxlength="12" name="pw">
+    <td>비밀번호</td>
+    <td>
+     <input type="password" class="form-control" size="8" maxlength="12" name="pw">
      
 	 </td>
   </tr>
-  <tr>      
-   <td colspan=2  align="center"> 
-     <input type="submit" value="글수정" >  
-     <input type="reset" value="다시작성">
-     <input type="button" value="목록보기" 
-       onclick="window.location='moneyWatch/faqList.mw'">
-   </td>
- </tr>
- </table>
+ </table><br/>
+ <div style="margin-left:45%;">
+      <input type="submit" class="btn btn-info" value="글수정" >  
+     <input type="reset" class="btn btn-info" value="다시작성" >
+     <input type="button" class="btn btn-info" value="목록보기" onclick="window.location='moneyWatch/faqList.mw'" >
+     </div>
+ </div>
 </form>
-
-      
 </body>
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>
 </html>      
