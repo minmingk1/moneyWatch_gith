@@ -117,6 +117,40 @@ public class Account_cardDAO {
 		
 		sqlSession.delete("account_card.myaccount_del",map);
 	}
+	// 카드에 대한 정보 가져오기(수정할 카드에 대한 정보)
+	public Reg_CardDTO getCard(Reg_CardDTO cdto) {
+		
+		Reg_CardDTO reg_card = new Reg_CardDTO();
+		
+		reg_card = (Reg_CardDTO)sqlSession.selectOne("account_card.getCard",cdto);
+		
+		return reg_card;
+	}
+	
+	// 카드 수정
+	public void updateCard(Reg_CardDTO cdto) {
+		
+		sqlSession.update("account_card.card_update",cdto);
+	}
+	
+	// 등록된 계좌 불러오기
+	public List getAccount(Reg_AccountDTO adto) {
+		
+		List reg_account = new ArrayList();
+		reg_account = sqlSession.selectList("account_card.getAccount");
+		
+		return reg_account;
+	}
+	
+	// 등록된 은행명에 대한 계좌번호 가져오기
+	public List getAccount_num(String account_company) {
+		
+		
+		List getAccountNum = new ArrayList();
+		getAccountNum = sqlSession.selectList("account_card.getAccount_num",account_company);
+		
+		return getAccountNum;
+	}
 	
 	// 나의 카드 혜택보기 
 	public List mycard_benefit(String ca_name) {

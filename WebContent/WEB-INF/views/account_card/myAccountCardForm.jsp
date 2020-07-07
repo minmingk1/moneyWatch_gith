@@ -24,11 +24,13 @@
 <table class="table table-hover" border="1">
 	 <tr class="table-primary">
       <th scope="row">카드사</th><th>카드명</th><th>카드별칭</th><th>연결된계좌</th><th>삭제</th>
+      <th scope="row">수정</th>
      </tr>
 	<c:forEach var="cdto" items="${myCardList}">
 		<tr align="center">
-			<td>${cdto.card_company}</td><td><a href="mycardBenefit.mw?card_name=${cdto.card_name}">${cdto.card_name}</a></td></form>
+			<td>${cdto.card_company}</td><td><a href="mycardBenefit.mw?card_name=${cdto.card_name}">${cdto.card_name}</a></td>
 			<td>${cdto.card_nickname}</td><td>${cdto.account_num}</td><td><a href='myCardDel.mw?num=${cdto.num}'>삭제</a></td>
+			<td><a href='updateCardForm.mw?num=${cdto.num}'>수정</a></td>
 		</tr>	
 	</c:forEach>
 </table>
