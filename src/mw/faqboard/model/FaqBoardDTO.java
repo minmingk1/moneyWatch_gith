@@ -3,18 +3,16 @@ package mw.faqboard.model;
 import java.sql.Timestamp;
 import java.lang.Integer;
 
-public class FaqBoardDTO {
-	private int faq_num;
-	private String subject;
-	private String faq_email;
-	private String content;
-	private String pw;
-	private int readcount;
-	private int re_step;
-	private int re_level;
-	private Timestamp reg;
-	private int ref;
-	private String id;
+public class FaqBoardDTO { //유저게시판 DTO
+	private int faq_num; //게시글 번호
+	private String subject; //게시글 제목
+	private String faq_email; //게시글 작성 이메일
+	private String content; // 게시글 내용
+	private String pw; //게시글 만의 비밀번호
+	private int readcount; // 게시글 조회수
+	private Timestamp reg; //게시글 작성 시간
+	private int ref; 
+	private String id; //게시글 작성 ID
 	
 	
 	
@@ -53,18 +51,6 @@ public class FaqBoardDTO {
 	}
 	public void setReadcount(int readcount) {
 		this.readcount = readcount;
-	}
-	public int getRe_step() {
-		return re_step;
-	}
-	public void setRe_step(int re_step) {
-		this.re_step = re_step;
-	}
-	public int getRe_level() {
-		return re_level;
-	}
-	public void setRe_level(int re_level) {
-		this.re_level = re_level;
 	}
 	public Timestamp getReg() {
 		return reg;

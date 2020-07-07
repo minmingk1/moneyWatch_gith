@@ -86,9 +86,12 @@ public class SenseBean {
 	
 	//R - 디테일 main video url 변경
 	@RequestMapping("senseDetailVideo.mw")
-	public String senseDetailVideo(int num, Model model) {
+	public String senseDetailVideo(HttpSession session, int num, Model model) {
 		
-		dao.count(num); //조회수를 올림
+		//String id = session.getAttribute("memId");
+		//if( id != admin) {
+			dao.count(num); //조회수를 올림
+		//}
 		SenseDTO dto = dao.senseDetailVideo(num);		
 		model.addAttribute("dto", dto);
 		return "/sense/video_url";

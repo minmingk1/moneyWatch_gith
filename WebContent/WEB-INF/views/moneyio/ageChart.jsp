@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>
+
 <html>
 <head>
 <title>연령대별 지출 chart</title>
@@ -177,3 +179,5 @@
 
 </body>
 </html>
+
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>

@@ -4,54 +4,47 @@
  
 <mapper namespace="member">
 		
-	<select id="loginCheck" resultType="int" parameterType="memberDTO">
+	<select id="loginCheck" resultType="int" parameterType="memberDTO"> <!--로그인시 id pw 비교 -->
 		select count(*) from mwMember where id=#{id} and pw=#{pw}
 	</select>
 
-	<insert id="insert" parameterType="memberDTO">
+	<insert id="insert" parameterType="memberDTO"> <!--회원가입 데이터 삽입 -->
 		insert into mwMember values(#{id},#{pw},#{name},#{gender},#{birth_y},#{birth_m},#{birth_d},#{tel},#{phone1},#{phone2},#{phone3},#{zon},#{street},#{addr},#{email1},#{email2},sysdate)
 	</insert>
 	
-	<select id="memberCheck" resultType="int" parameterType="String">
+	<select id="memberCheck" resultType="int" parameterType="String"> <!--아이디 중복확인 -->
 		select count(*) from mwMember where id = #{id}
 	</select>
 	
-	 <select id="modifyCheck" resultType="memberDTO" parameterType="String">
+	<select id="modifyCheck" resultType="memberDTO" parameterType="String"> <!-- 정보수정 전 id 비교 -->
   		select * from mwMember where id=#{id} 
-  		
   	</select>
   	
-  	<update id="updateMember" parameterType="memberDTO">
+  	<update id="updateMember" parameterType="memberDTO"> <!-- 정보 수정 데이터 삽입 -->
   		update mwMember set pw=#{pw},name=#{name},tel=#{tel},phone1=#{phone1},phone2=#{phone2},phone3=#{phone3},zon=#{zon},street=#{street},addr=#{addr},email1=#{email1},email2=#{email2} where id=#{id}
   	</update>
-  				 		
-												
-	<!-- <select id="search" resultType="memberDTO" parameterType="hashmap">
-  		select * from mwMember where ${ch} like '%'||#{search}||'%'   	${ch}명령어를 입력하려면 #말고 $써야함
-    </select> -->
-  	 
-  	<select id="deleteCheck" resultType="int" parameterType="hashmap">
+  	
+  	<select id="deleteCheck" resultType="int" parameterType="hashmap"> <!--회원 탈퇴 전 id pw 비교 -->
 		select count(*) from mwMember where id=#{id} and pw=#{pw}
 	</select>
   	
-  	
-  	
-  	<select id="deleteSelect" resultType="memberDTO" parameterType="String">
+  	<select id="deleteSelect" resultType="memberDTO" parameterType="String"> <!--탈퇴 id의 데이터 찾기(탈퇴회원 List를 작성하기 위함)-->
   		select * from mwMember where id=#{id} 
   	</select>
   	
-  	<insert id="deleteMemList" parameterType="deleteMemListDTO" >
+  	<insert id="deleteMemList" parameterType="deletememListDTO" > <!--탈퇴회원 List DB에 삽입  -->
   		insert into mw_deleteMember values(mw_deleteMember_seq.nextval,#{id},#{name},#{gender},#{birth_y},#{birth_m},#{birth_d},#{tel},#{phone1},#{phone2},#{phone3},#{reason},sysdate)
   	</insert>
   	
-  	
-  	 
-  	<delete id="deleteMem" parameterType="String">
+  	<delete id="deleteMem" parameterType="String"> <!-- 회원 DB에서 삭제 -->
   		delete from mwMember where id=#{id}
   	</delete>
   	
+  	<select id="selectMemList" resultType="memberDTO" parameterType="memberDTO"> <!-- 관리자 회원 리스트  -->
+  		select * from mwMember
+  	</select>
   	
-  	 
-  	 
-																			
+  	<select id="memSearch" resultType="String" parameterType="hashmap"> <!-- 월요일 해결 -->
+  		select * from mwMember where ${keyField} like '%${keyWord}%'
+  	</select>
 </mapper>

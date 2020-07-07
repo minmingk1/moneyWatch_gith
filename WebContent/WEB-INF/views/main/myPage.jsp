@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
     
 <!DOCTYPE html>
 <head>
@@ -13,6 +14,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  
   <style>
   .fakeimg {
     height: 200px;
@@ -107,8 +110,8 @@
   <a href="mycardList.mw" target="mypage" class="list-group-item list-group-item-action">나의 혜택 보기</a>
   
   <h7 class="list-group-item list-group-item-action active">게시판</h7>
-  <a href="#" target="mapage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
-  <a href="myscrap.mw" target="mapage" class="list-group-item list-group-item-action">나의 스크랩</a>
+  <a href="#" target="mypage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
+  <a href="myscrap.mw" target="mypage" class="list-group-item list-group-item-action">나의 스크랩</a>
   
 
 </div>

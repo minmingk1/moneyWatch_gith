@@ -6,7 +6,7 @@
 <title>FAQ 삭제 FORM</title>
 </head>
 <a>삭제 요청 ID :${sessionScope.memId}</a>
-<a>삭제 요청 NUMBER :${qnum}</a>
+<a>현제 게시글 번호:${qnum}</a>
 
 <body>
 <form mothod="post" action="faqMainDeletePro.mw" >

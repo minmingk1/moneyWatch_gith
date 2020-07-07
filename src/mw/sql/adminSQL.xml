@@ -3,6 +3,9 @@
 
 <mapper namespace="admin">
 
+	<insert id="insertVisitor" parameterType="VisitCountDTO">
+            INSERT INTO MWVISITOR(VISIT_NO, VISIT_IP, VISIT_TIME, VISIT_REFER,VISIT_AGENT)VALUES(MWVISITOR_SEQ.NEXTVAL, #{visit_ip}, SYSDATE, #{visit_refer},#{visit_agent})
+    </insert>
 	
 
 </mapper>

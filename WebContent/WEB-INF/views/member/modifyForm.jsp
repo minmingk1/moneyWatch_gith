@@ -3,7 +3,7 @@
 <html>
 <head>
 <title>회원정보수정</title>
-
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>
 <script language="JavaScript">
     <!-- 
     function checkIt(){
@@ -20,90 +20,86 @@
     }   
     -->
 </script>
-<body>
+<body><br />
+<h3 style="text-align:center;"> 회원 정보 수정</h3><br/>
   <form method="post" action="/moneyWatch/modifyPro.mw" name="userinput" onsubmit="return checkIt()">
-
-   <table width="400" border="1" cellspacing="0" cellpadding="2" align="center">
+  <div class="form-group">
+     <table border="1" align="center" width="50%">
     <tr>
-     <td colspan="2" heigth="35" align="center">
-      <font size="+1"><b>회원 정보 수정</b></font></td>
-    </tr>
-    
-    <tr>
-     <td width="150">사용자 ID</td>
-      <input type="hidden" name="id" value="${dto.getId()}">
-     <td width="350">${dto.getId()}</td>
-    </tr>
-    
-    <tr>
-     <td width="150">이름</td>
-     <td width="350">
-      <input type="text" name="name" size="9" maxlength="9" value="${dto.getName()}"></td>
+     <td>사용자 ID</td>
+     <td><input type="text" class="form-control"  name="id" value="${dto.getId()}" disabled /></td>
+     <td>이름</td>
+     <td>
+      <input type="text" class="form-control" name="name" size="9" maxlength="9" value="${dto.getName()}"></td>
     </tr>
        
     <tr>
-     <td width="150">비밀번호</td>
-     <td width="350">
-      <input type="password" name="pw" size="9" maxlength="9" value="${dto.getPw()}"></td>
+     <td>비밀번호</td>
+     <td colspan="3">
+      <input type="password" class="form-control" name="pw" size="9" maxlength="9" value="${dto.getPw()}"></td>
     </tr>
     
     <tr>		
-		<td width="300"> 휴대폰 번호 </td>
-		<td width="300">
-				<select name="tel" value="${dto.getTel()}">
+		<td rowspan="2"> 휴대폰 번호 </td>
+		<td colspan="3">
+			<select class="form-control" name="tel" value="${dto.getTel()}">
 				<option value="SKT">SKT</option>
 				<option value="KT">KT</option>
 				<option value="LGU+">LGU+</option>
 				<option value="알뜰폰">알뜰폰</option>			
-				</select>
-				
-				<select name="phone1" value="${dto.getPhone1()}">
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>	
+			<select class="form-control" name="phone1" value="${dto.getPhone1()}">
 				<option value="010">010</option>
 				<option value="011">011</option>
 				<option value="016">016</option>
 				<option value="019">019</option>
-				</select>
-				
-				
-				<input type="text" name="phone2" size="10" maxlength="4" value="${dto.getPhone2()}">
-				<input type="text" name="phone3" size="10" maxlength="4" value="${dto.getPhone3()}">
+			</select>
+		</td>
+		<td>	
+			<input type="text" class="form-control" name="phone2" size="10" maxlength="4" value="${dto.getPhone2()}">
+		</td>
+		<td>	
+			<input type="text" class="form-control" name="phone3" size="10" maxlength="4" value="${dto.getPhone3()}">
 		</td>
 		</tr>
 
     <tr>
-     <td wigth="150">우편번호</td>
-     <td width="350">
-      <input type="text" name="zon" size="9" maxlength="9" value="${dto.getZon()}"></td>
+     <td>우편번호</td>
+     <td colspan="3">
+      <input type="text" class="form-control" name="zon" size="9" maxlength="9" value="${dto.getZon()}"></td>
     </tr>
     
     <tr>
-     <td wigth="150">주소</td>
-     <td width="350">
-      <input type="text" name="street" size="30" maxlength="30" value="${dto.getStreet()}"></td>
-    </tr>
-    
-    <tr>
-     <td wigth="150">상세주소</td>
-     <td width="350">
-      <input type="text" name="addr" size="9" maxlength="9" value="${dto.getAddr()}"></td>
+     <td>주소</td>
+     <td>
+      <input type="text" class="form-control" name="street" size="30" maxlength="30" value="${dto.getStreet()}"></td>
+     <td>상세주소</td>
+     <td>
+      <input type="text" class="form-control" name="addr" size="9" maxlength="9" value="${dto.getAddr()}"></td>
     </tr>
 
     <tr>
-		<td width="300">이메일 ID</td>
-		<td width="300">
-				<input type="text" name="email1" size="10" maxlength="12" value="${dto.getEmail1()}"><a>@</a>
-				<input type="text" name="email2" size="10" maxlength="12" value="${dto.getEmail2()}">
-		
+		<td>이메일 ID</td>
+		<td>
+			<input type="text" class="form-control" name="email1" size="10" maxlength="12" value="${dto.getEmail1()}"></td>
+			<td>@</td>
+			<td><input type="text" class="form-control" name="email2" size="10" maxlength="12" value="${dto.getEmail2()}">
 		</td>
-		</tr>
+	</tr>
     
     <tr>
-     <td colspan="1" align="center">
-      <input type="submit" name="modify" value="수정">
-      <input type="button" value="취소" onclick="javascript:window.location='main.mw'"></td>
+      <td colspan="5">
+      <input type="submit" class="btn btn-danger" name="modify" value="수정" style="float:right;">
+      <input type="button"  class="btn btn-info" value="취소" onclick="javascript:window.location='main.mw'"></td>
     </tr>
    </table>
+  </div>
+
   </form> 
  </body>
-</head>
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>
 </html>
