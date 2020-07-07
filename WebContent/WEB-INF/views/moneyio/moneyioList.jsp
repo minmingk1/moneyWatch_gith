@@ -30,6 +30,11 @@
 		});
 	}
 </script>
+<style>
+td{
+	width: 350px;
+}
+</style>
 <br/><br/>
 <center>
 <div class="form-group">
@@ -61,7 +66,7 @@
 	<!-- 내역 출력 -->
 	 <div id="ioList">
 		<c:forEach var="ioListval" items="${moneyioList}">
-			<table class="table table-hover" border = "1" style="width:50%" >
+			<table class="table table-hover" border = "0" style="width:50%; text-align:center;" >
 <%-- 
 				<tr>
 					<td colspan="5">Number : ${ioListval.io_num}</td>
