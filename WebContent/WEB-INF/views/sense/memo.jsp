@@ -14,13 +14,13 @@
 </head>
 <body><br/>
 <div class="form-group">
-	<table align="center" width="50%;">
+	<table align="center" width="80%;">
 		<tr>
 			<td>${ dto.sense_title }</td>
 		</tr>
 		<tr></tr>
 		<tr>
-			<td>나의 메모 <input type="text" class="form-control" name="memo"/></td>
+			<td><textarea cols="20" rows="10" class="form-control" name="memo"><input type="text" name="memo"/>메모를 입력하세요.</textarea></td>
 		</tr>
 		<tr>
 			<td><input type="button" class="btn btn-info" value="스크랩" onclick="scrap(${dto.num})" style="float:right;"/></td>

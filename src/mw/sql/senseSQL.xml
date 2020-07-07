@@ -141,7 +141,14 @@
 		
 	<!-- 스크랩 저장 -->
 	<insert id="scrap" parameterType="hashMap">
-		insert into mwscrap values(mwscrap_seq.nextval,#{scrap.num},#{id},#{scrap.sense_category},#{scrap.sense_title},#{scrap.sense_url},#{memo})
+		insert into mwscrap values(
+			mwscrap_seq.nextval,
+			#{scrap.num},
+			#{id},
+			#{scrap.sense_category},
+			#{scrap.sense_title},
+			#{scrap.sense_url},
+			#{memo})
 	</insert>
 	
 	<!-- 카테고리 선택시 / 스크랩페이지-->	
