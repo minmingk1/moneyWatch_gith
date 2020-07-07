@@ -2,7 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<<<<<<< master
 <%@ include file = "/WEB-INF/views/main/top.jsp" %>
+=======
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>   
+>>>>>>> ed4b795 commit
 
 <!DOCTYPE html>
 <html>
