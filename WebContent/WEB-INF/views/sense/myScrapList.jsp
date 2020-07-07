@@ -16,7 +16,7 @@
 			<tr class="list-group-item d-flex justify-content-between align-items-center">
 				<td onclick="mydetail(${ list.num })"><img src="https://img.youtube.com/vi/${ list.sense_url }/default.jpg" alt="Page Not Found"/></td>
 				<td onclick="mydetail(${ list.num })">${ list.sense_title }</td>
-				<td><input type="button" value="삭제" onclick="deletescrap(${list.num})"/></td>
+				<td><input type="button" class="btn btn-danger" value="삭제" onclick="deletescrap(${list.num})"/></td>
 			</tr>
 			<tr>
 				<table id="detail${list.num }" >

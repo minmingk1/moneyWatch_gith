@@ -10,6 +10,8 @@
 <script src="js/sense/sense.js"></script>
 </head>
 <body>
-			<iframe width="850" height="478" src="https://www.youtube.com/embed/${dto.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
+<div style="margin-left:10%;">
+	<iframe width="850" height="478" src="https://www.youtube.com/embed/${dto.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
+</div>
 </body>
 </html>
