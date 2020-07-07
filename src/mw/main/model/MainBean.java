@@ -37,7 +37,10 @@ public class MainBean {
 	}
 	
 	@RequestMapping("myPage.mw")	
-	public String myPage() {
+	public String myPage( Model model) {
+		/*String id = (String)session.getAttribute("memId"); */
+		String id = "nahui068";
+		model.addAttribute("memId", id);
 		return "/main/myPage";
 	}
 
@@ -48,6 +51,10 @@ public class MainBean {
 		int thisOut = dao.thisOut(id);
 		int thisIn = dao.thisIn(id);
 		
+		Date today = new Date();
+		SimpleDateFormat now = new SimpleDateFormat("MMM d, yyyy HH:mm");
+		
+		model.addAttribute("today", now.format(today));
 		model.addAttribute("thisOut", thisOut);
 		model.addAttribute("thisIn", thisIn);
 		return "/main/myPageMain";
