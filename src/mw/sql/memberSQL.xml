@@ -41,11 +41,11 @@
   	</delete>
   	
   	
-	<select parameterType="memberDTO" resultType="memberDTO" id="selectMemList"><!-- 관리자 회원 리스트 -->
+	<select id="selectMemList" parameterType="memberDTO" resultType="memberDTO" ><!-- 관리자 회원 리스트 -->
 		select * from mwMember 
 	</select>
 
-	<select parameterType="hashmap" resultType="memberDTO" id="memSearch"> <!-- 회원 검색 -->
+	<select id="memSearch" parameterType="hashmap" resultType="memberDTO" > <!-- 회원 검색 -->
 		select * from mwMember where ${keyField} like '%' || #{keyWord} || '%' 
 	</select>
 

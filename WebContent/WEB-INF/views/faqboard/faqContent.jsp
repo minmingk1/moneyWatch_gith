@@ -40,8 +40,8 @@ table{
 			<td colspan="6" align="right">
 			<c:if test="${sessionScope.memId =='aaa'}">
 			<input type="button" class="btn btn-primary" value="글수정" onclick="document.location.href='/moneyWatch/faqMainUpdateForm.mw?qnum=${qlist.qnum}'" />
-			</c:if>
 			<input type="button" class="btn btn-primary" value="글삭제" onclick="document.location.href='/moneyWatch/faqMainDelete.mw?qnum=${qlist.qnum}&q_id=${qlist.q_id}'" />
+			</c:if>
 			<input type="button" class="btn btn-primary" value="목록보기" onclick="document.location.href='/moneyWatch/faqList.mw'" />
 			
 			</td>

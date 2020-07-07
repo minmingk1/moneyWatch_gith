@@ -97,7 +97,9 @@ public class MemberBean {
 	
 	
 	@RequestMapping("modifyPro.mw") //�������� ����
-	public String aopmodifyPro(MemberDTO dto) {
+	public String aopmodifyPro(MemberDTO dto,HttpSession session) {
+		String id=(String)session.getAttribute("memId");
+		dto.setId(id);
 		dao.updateMember(dto);
 		
 		return "/member/modifyPro";
