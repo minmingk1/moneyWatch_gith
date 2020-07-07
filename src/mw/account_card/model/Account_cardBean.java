@@ -33,6 +33,18 @@ public class Account_cardBean {
 		return "/account_card/account_cardForm";
 	}
 	
+	// 카드/계좌 등록 form - main
+	@RequestMapping("account_cardForm_main.mw")
+	public String Account_cardForm_main(Model model, HttpSession session) {
+		
+		/* String id = (String)session.getAttribute("memId"); */
+		String id = "nahui068";
+
+		model.addAttribute("memId",id);
+		
+		return "/account_card/account_cardForm_main";
+	}
+	
 	// 카드사에 따른 카드이름 선택
 	@RequestMapping("select_card.mw")
 	public String select_cardName(String cardCompany, Model model){
