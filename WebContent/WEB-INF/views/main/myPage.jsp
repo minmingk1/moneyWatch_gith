@@ -21,7 +21,7 @@
 <%@ include file = "/WEB-INF/views/main/top.jsp" %>
 <div class="container" style="margin-top:30px;">
   <div class="row">
-<<<<<<< HEAD
+
     <div class="col-sm-4" style="margin-left:-10%;">
           <h3>마이페이지</h3><br/>
       	<h5>${memId}님 Hi~~!</h5><br/>
@@ -84,6 +84,32 @@
 	 </div>    
   
 >>>>>>> branch 'master' of https://github.com/minmingk1/moneyWatch_gith.git
+=======
+    <div class="col-sm-4" style="margin-left:-10%;">
+          <h3>마이페이지</h3><br/>
+      	<h5>${memId}님 Hi~~!</h5><br/>
+	    <div class="list-group" style="margin-right:45%;">
+		  <h7 class="list-group-item list-group-item-action active">개인 정보</h7>
+		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필</a>
+		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필 수정</a>
+		  <a href="#" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
+		  
+		  <h7 class="list-group-item list-group-item-action active">My 카드/계좌</h7>
+		  <a href="account_cardForm.mw" target="mypage" class="list-group-item list-group-item-action">카드/계좌 등록</a>
+		  <a href="myCard.mw" target="mypage" class="list-group-item list-group-item-action">카드/계좌 리스트</a>
+		  <a href="mycardList.mw" target="mypage" class="list-group-item list-group-item-action">나의 혜택 보기</a>
+		  
+		  <h7 class="list-group-item list-group-item-action active">게시판</h7>
+		  <a href="#" target="mapage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
+		  <a href="myscrap.mw" target="mapage" class="list-group-item list-group-item-action">나의 스크랩</a>
+		</div>
+	</div>
+	
+	<div class="col-sm-8">
+		<iframe name="mypage" src="myPageMain.mw" width="800" height="800"
+		 marginwidth="0" marginheight="0" frameborder="0"></iframe>
+	</div>    
+>>>>>>> f8a87b5 commit
   </div>
 </div> 
 
