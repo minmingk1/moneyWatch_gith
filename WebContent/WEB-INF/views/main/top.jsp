@@ -34,7 +34,7 @@
       <a class="dropdown-item" href="myPage.mw">마이페이지</a>
       <a class="dropdown-item" href="memOutForm.mw">회원 탈퇴</a>
     </div>
-    </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
     <div class="dropdown-menu" style="">
@@ -46,7 +46,7 @@
       <a class="dropdown-item" href="ptEstimate.mw">나의 소비 목록 보기</a>
       <a class="dropdown-item" href="ageChart.mw">연령별 지출 비교</a>
     </div>
-    </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">카드/계좌</a>
     <div class="dropdown-menu" style="">
@@ -54,14 +54,14 @@
       <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
       <a class="dropdown-item" href="card_rank.mw">연령별 카드 순위 보기</a>
     </div>
-    </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">게시판</a>
      <div class="dropdown-menu" style="">
       <a class="dropdown-item" href="faqList.mw">FAQ</a>
       <a class="dropdown-item" href="sense.mw">금융 상식</a>
     </div>
-    </li>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <c:if test="${sessionScope.memId == 'admin'}">
             <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
@@ -77,6 +77,9 @@
     </li>
 	</c:if>
     </ul>
+   
   </div> 
+  
+   <input type="button"  class="btn btn-info" value="로그아웃" onclick="window.location='/moneyWatch/logout.mw'" style="float:right;"  />
   </div> 
 </nav>
