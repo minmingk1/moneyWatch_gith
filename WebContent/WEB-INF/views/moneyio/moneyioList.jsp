@@ -30,6 +30,11 @@
 		});
 	}
 </script>
+<style>
+td{
+	width: 350px;
+}
+</style>
 <br/><br/>
 <center>
 <div class="form-group">
