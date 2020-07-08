@@ -20,13 +20,6 @@
 <nav style="background-color:#343a40;" class="navbar navbar-expand-sm navbar-dark" >
   <div class="container">	<!-- "navbar-brand" -->
   
-<!--    <a class="navbar-brand" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-   <i class="fas fa-bars">
-
-  	</i></a> -->
-<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon">버튼</span>
-  </button> -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="nav nav-pills"> 
     	<li class="nav-item dropdown">
@@ -56,10 +49,6 @@
 	    <c:if test="${sessionScope.memId == 'admin'}">
 
 	      <a class="dropdown-item" href="memList.mw">회원 관리</a>
-	      <div class="dropdown-divider"></div>
-	      <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
-	      <a class="dropdown-item" href="#">챗봇 관리</a>
-	      <div class="dropdown-divider"></div>
 	      <a class="dropdown-item" href="faqList.mw">게시판 관리</a>
 	      <a class="dropdown-item" href="senseAdmin.mw">지식 관리</a>
 	    </c:if>
@@ -110,11 +99,7 @@
 	            <li class="nav-item dropdown">
 	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
 	    <div class="dropdown-menu" style="">
-	      <a class="dropdown-item" href="memList.mw">회원 관리</a>
-	      <div class="dropdown-divider"></div>
-	      <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
-	      <a class="dropdown-item" href="#">챗봇 관리</a>
-	      <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="memList.mw">회원 관리</a>    
 	      <a class="dropdown-item" href="faqList.mw">게시판 관리</a>
 	      <a class="dropdown-item" href="senseAdmin.mw">지식 관리</a>
 	    </div>
