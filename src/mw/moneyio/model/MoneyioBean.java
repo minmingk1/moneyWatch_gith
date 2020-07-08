@@ -185,11 +185,14 @@ public class MoneyioBean {
 		public String ptEstimate(HttpSession session, Model model) {
 			
 			String id = (String)session.getAttribute("memId");
+			System.out.println(id);
 		/* String id = "nahui068"; */
 			int sum = 0;
 			int sum1 = dao.sum5(id);
 			int sum2 = dao.sum6(id);
 			int sum3 = dao.sum7(id);
+			
+			System.out.println(id);
 			
 			List<MoneyioDTO> list1 = dao.ptEstimate5(id);
 			List<MoneyioDTO> list2 = dao.ptEstimate6(id);

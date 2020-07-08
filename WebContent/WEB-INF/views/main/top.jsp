@@ -28,6 +28,7 @@
     <span class="navbar-toggler-icon">버튼</span>
   </button> -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
+<<<<<<< HEAD
     <ul class="nav nav-pills"> 
     	<li class="nav-item dropdown">
     	  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
