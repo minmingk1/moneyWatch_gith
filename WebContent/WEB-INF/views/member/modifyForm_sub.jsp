@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script language="JavaScript">
     <!-- 
     function checkIt(){
@@ -21,7 +21,7 @@
 <h3 style="text-align:center;"> 회원 정보 수정</h3><br/>
   <form method="post" action="/moneyWatch/modifyPro.mw" name="userinput" onsubmit="return checkIt()">
   <div class="form-group">
-     <table border="1" align="center" width="50%">
+     <table border="1" align="center" width="80%">
     <tr>
      <td>사용자 ID</td>
      <td><input type="text" class="form-control"  name="id" value="${dto.getId()}" disabled /></td>

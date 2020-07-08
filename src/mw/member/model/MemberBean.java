@@ -100,7 +100,14 @@ public class MemberBean {
 		return "/member/modifyForm";
 	}
 	
+	@RequestMapping("modifyForm_sub.mw")
+	public String aopmodifyForm_sub(HttpSession session,Model model) {
+		String id=(String)session.getAttribute("memId");
+		MemberDTO dto =dao.modifyCheck(id);
+		model.addAttribute("dto",dto);
 	
+		return "/member/modifyForm_sub";
+	}
 
 	@RequestMapping("modifyPro.mw") 
 	public String aopmodifyPro(MemberDTO dto,HttpSession session) {
@@ -116,6 +123,11 @@ public class MemberBean {
 	@RequestMapping("memOutForm.mw")
 	public String aopmemOutForm() {
 		return "/member/memOutForm";
+	}
+	
+	@RequestMapping("memOutForm_sub.mw")
+	public String aopmemOutForm_sub() {
+		return "/member/memOutForm_sub";
 	}
 	
 	@RequestMapping("memOutPro.mw")
