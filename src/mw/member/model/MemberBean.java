@@ -25,12 +25,12 @@ public class MemberBean {
 	@Autowired
 	private AdminDAO admdao = null;
 	
-	@RequestMapping("loginForm.mw") //占싸깍옙占쏙옙
+	@RequestMapping("loginForm.mw")
 	public String loginform() {
 		return "/member/loginForm";
 	}
 
-	@RequestMapping("loginPro.mw") //占싸깍옙占쏙옙 체크
+	@RequestMapping("loginPro.mw")
 	public String loginPro(MemberDTO dto, HttpSession session, Model model, HttpServletRequest request) {
 		String id=request.getParameter("id");
 		String pw=request.getParameter("pw");
@@ -65,25 +65,25 @@ public class MemberBean {
 		return "/member/loginPro";
 	}
 	
-	@RequestMapping("logout.mw") //占싸그아울옙 占쏙옙占쏙옙 占쏙옙占쏙옙
+	@RequestMapping("logout.mw")
 	public String aoplogout(HttpSession session) {
 		session.invalidate();	
 		return "/member/logout";
 	}
 	
-	@RequestMapping("registerForm.mw")	//회占쏙옙占쏙옙占쏙옙
+	@RequestMapping("registerForm.mw")
 	public String registerForm() {
 		return "/member/registerForm";
 	}
 
-	@RequestMapping("registerPro.mw")	//회占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
+	@RequestMapping("registerPro.mw")
 	public String registerPro(MemberDTO dto) {
 		dao.insert(dto);	
 		return "/member/registerPro";
 	}
 	
 	
-	@RequestMapping("confirmId.mw") //占쏙옙占싱듸옙 체크
+	@RequestMapping("confirmId.mw")
 	public String confirmId(String id,Model model) {
 		int check=dao.memberCheck(id);
 		model.addAttribute("check",check);
@@ -91,7 +91,7 @@ public class MemberBean {
 		return "/member/confirmId";
 	}
 	
-	@RequestMapping("modifyForm.mw") //회占쏙옙 占쏙옙占쏙옙占쏙옙 占승댐옙 占쏙옙占쏙옙占쏙옙 占쌨아쇽옙 占쏙옙占쏙옙
+	@RequestMapping("modifyForm.mw")
 	public String aopmodifyForm(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("memId");
 		MemberDTO dto =dao.modifyCheck(id);
@@ -101,7 +101,7 @@ public class MemberBean {
 	}
 	
 	
-	@RequestMapping("modifyPro.mw") //占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
+	@RequestMapping("modifyPro.mw")
 	public String aopmodifyPro(MemberDTO dto) {
 		dao.updateMember(dto);
 		
@@ -109,12 +109,12 @@ public class MemberBean {
 	}
 	
 
-	@RequestMapping("memOutForm.mw") //회占쏙옙탈占쏙옙
+	@RequestMapping("memOutForm.mw")
 	public String aopmemOutForm() {
 		return "/member/memOutForm";
 	}
 	
-	@RequestMapping("memOutPro.mw") //탈占쏙옙 占쏙옙청회占쏙옙 占싯삼옙,占쏙옙占쏙옙
+	@RequestMapping("memOutPro.mw")
 	public String aopmemOutPro(MemberDTO dto , Model model, DeleteMemListDTO dto2 , HttpServletRequest request, HttpSession session) {
 		String pw =request.getParameter("pw");
 		String id =(String)session.getAttribute("memId");
@@ -127,7 +127,7 @@ public class MemberBean {
 		System.out.println(pw);
 		System.out.println(check);
 				
-		if(check==1) { // 占쏙옙占쏙옙 占쏙옙占쏙옙
+		if(check==1) {
 			
 			  String reason=request.getParameter("reason");
 			  
@@ -153,7 +153,7 @@ public class MemberBean {
 		}
 		return "/member/memOutPro";
 	}
-	@RequestMapping("memList.mw") //회占쏙옙 占쏙옙占쏙옙트 占쏙옙占� 
+	@RequestMapping("memList.mw")
 	public String memList(MemberDTO dto, Model model,HttpServletRequest request, HttpSession session){ 
 	
 		List list=null; 
