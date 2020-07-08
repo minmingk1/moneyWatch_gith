@@ -27,8 +27,6 @@
       	<h5>${sessionScope.memId}님 Hi~~!</h5><br/>
 	    <div class="list-group" style="margin-right:45%;">
 		  <h7 class="list-group-item list-group-item-action active">개인 정보</h7>
-
-		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필</a>
 		  <a href="modifyForm_sub.mw" target="mypage" class="list-group-item list-group-item-action">프로필 수정</a>
 		  <a href="memOutForm_sub.mw" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
 		  
