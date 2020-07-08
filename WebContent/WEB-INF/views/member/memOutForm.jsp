@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>회원탈퇴 페이지</title>
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>  
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 <script language="javaScript">

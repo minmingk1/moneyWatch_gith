@@ -21,6 +21,7 @@
 
 </script>
 <body><br />
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>  
 <h3 style="text-align:center;"> 회원 정보 수정</h3><br/>
   <form method="post" action="/moneyWatch/modifyPro.mw" name="userinput" onsubmit="return checkIt()">
   <div class="form-group">
