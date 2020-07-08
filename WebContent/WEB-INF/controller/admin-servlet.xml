@@ -16,9 +16,9 @@
 		<constructor-arg ref="sqlSession" />
 	</bean> 
  -->
- 	<bean id="visitCountDAO" class="mw.admin.model.VisitCountDAO">
+ 	<bean id="adminDAO" class="mw.admin.model.AdminDAO">
 		<constructor-arg ref="sqlSession" />
-	</bean> 
+	</bean> 	
 	
 	<context:component-scan base-package="mw.admin.model" />
 	

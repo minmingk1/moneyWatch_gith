@@ -213,7 +213,18 @@ public class SenseBean {
 		return "/sense/myScrap"; 
 		
 	}
-	
+	@RequestMapping("myscrap_sub.mw")
+	public String myScrap_sub(HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("memId");
+		List<ScrapDTO> dto = dao.myScrap(id); //스크랩 리스트
+		List<SenseCategoryDTO> category = dao.category(); //카테고리 리스트
+
+		model.addAttribute("myscrap", dto); //마이 스크랩리스트
+		model.addAttribute("category", category); //카테고리 리스트
+		return "/sense/myScrap_sub"; 
+		
+	}
 	
 	//R - memo창
 	@RequestMapping("memo.mw")

@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-<title>회원정보수정</title>
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script language="JavaScript">
-
+    <!-- 
     function checkIt(){
     	var userinput = eval("document.userinput");
     	
@@ -18,14 +15,13 @@
     		return false;
     	}   		
     }   
-
+    -->
 </script>
-<body><br />
-<%@ include file = "/WEB-INF/views/main/top.jsp" %>  
-<h3 style="text-align:center;"> 회원 정보 수정</h3><br/>
+<body><br /><br/>
+<h3 style="text-align:center;"> 회원 정보 수정</h3><br/><br/>
   <form method="post" action="/moneyWatch/modifyPro.mw" name="userinput" onsubmit="return checkIt()">
   <div class="form-group">
-     <table border="1" align="center" width="50%">
+     <table border="1" align="center" width="80%">
     <tr>
      <td>사용자 ID</td>
      <td><input type="text" class="form-control"  name="id" value="${dto.getId()}" disabled /></td>
@@ -102,4 +98,3 @@
 
   </form> 
  </body>
-</html>

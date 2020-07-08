@@ -24,12 +24,11 @@
 
     <div class="col-sm-4" style="margin-left:-10%;">
           <h3>마이페이지</h3><br/>
-      	<h5>${memId}님 Hi~~!</h5><br/>
+      	<h5>${sessionScope.memId}님 Hi~~!</h5><br/>
 	    <div class="list-group" style="margin-right:45%;">
 		  <h7 class="list-group-item list-group-item-action active">개인 정보</h7>
-		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필</a>
-		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필 수정</a>
-		  <a href="memOutForm.mw" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
+		  <a href="modifyForm_sub.mw" target="mypage" class="list-group-item list-group-item-action">프로필 수정</a>
+		  <a href="memOutForm_sub.mw" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
 		  
 		  <h7 class="list-group-item list-group-item-action active">My 카드/계좌</h7>
 		  <a href="account_cardForm.mw" target="mypage" class="list-group-item list-group-item-action">카드/계좌 등록</a>
@@ -37,20 +36,21 @@
 		  <a href="mycardList.mw" target="mypage" class="list-group-item list-group-item-action">나의 혜택 보기</a>
 		  
 		  <h7 class="list-group-item list-group-item-action active">게시판</h7>
-		  <a href="myList.mw" target="mapage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
-		  <a href="myscrap.mw" target="mapage" class="list-group-item list-group-item-action">나의 스크랩</a>
+		  <a href="myList.mw" target="mypage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
+		  <a href="myscrap_sub.mw" target="mypage" class="list-group-item list-group-item-action">나의 스크랩</a>
 		</div>
 	</div>
 	
 	<div class="col-sm-8">
-		<iframe name="mypage" src="myPageMain.mw" width="800" height="750"
-		 marginwidth="0" marginheight="0" frameborder="0"></iframe>
+		<iframe name="mypage" src="myPageMain.mw" style="width:150%; height:120%;"
+				 marginwidth="0" marginheight="0" frameborder="0"></iframe>
 	</div>    
 
 
     </div>
+    </div>
 </body>
-<div class="jumbotron text-center" style="margin-bottom:0; width:100%;">
+<div class="jumbotron text-center" style="margin-bottom:0; margin-top:10%;" >
    <p>mw 주식회사  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    전화번호 02) 1111-1111 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="siteMap.mw">사이트맵</a></p>

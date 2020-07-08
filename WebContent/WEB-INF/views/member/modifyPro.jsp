@@ -1,20 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
+
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <body>
-<table width="250" border="0" cellspacing="0" cellpadding="4" align="center">
+<table class="table table-hover" border="1" cellspacing="0" cellpadding="4" align="center">
 <tr>
   	<td height="37" align="center">
-    <font size="+1"><b>회원정보가 수정되었습니다.</b></font></td>
+   <h5 style="text-align:center;">정보수정이 완료 되었습니다</h5>
 </tr>
- 
-<tr>
-	<td align="center">
-    <p>입력하신 내용대로 수정이 되었습니다.</p></td>
-</tr>
- 
-<tr>
+
+ <tr scope="row">
  	<td align="center">
     <form>
     <input type="button" value="메인으로" onclick="window.location='main.mw'">
