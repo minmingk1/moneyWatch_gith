@@ -21,7 +21,6 @@
 
 
 <script>
-console.log('${olist[0].io_reg_date}');
 
    var dataset = [
 	<c:forEach var="listview" items="${listview}" varStatus="status">
