@@ -714,9 +714,10 @@
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: ["11일 전", "10일 전", "9일 전", "8일 전", "7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전", "오늘"],
+        labels: ['${days12}', '${days11}', '${days10}', '${days9}', '${days8}', '${days7}', '${days6}', 
+        	'${days5}', '${days4}', '${days3}', '${days2}', '${days1}'],
         datasets: [{
-          label: "Data",
+          label: "Visitor",
           borderColor: chartColor,
           pointBorderColor: chartColor,
           pointBackgroundColor: "#1e3d60",
@@ -729,9 +730,9 @@
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data: ['${eleAgoVisitorCount}', '${tenAgoVisitorCount}', '${nineAgoVisitorCount}', '${eightAgoVisitorCount}', 
-        	  '${sevenAgoVisitorCount}', '${sixAgoVisitorCount}', '${fiveAgoVisitorCount}', '${fourAgoVisitorCount}', 
-        	  '${threeAgoVisitorCount}', '${twoAgoVisitorCount}', '${oneAgoVisitorCount}', '${todayVisitorCount}']
+          data: ['${visitorCount11}', '${visitorCount10}', '${visitorCount9}', '${visitorCount8}', 
+        	  '${visitorCount7}', '${visitorCount6}', '${visitorCount5}', '${visitorCount4}', 
+        	  '${visitorCount3}', '${visitorCount2}', '${visitorCount1}', '${visitorCount0}']
         }]
       },
       options: {
@@ -811,9 +812,10 @@
       type: 'line',
       responsive: true,
       data: {
-        labels: ["11일 전", "10일 전", "9일 전", "8일 전", "7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전", "오늘"],
+        labels: ['${days12}', '${days11}', '${days10}', '${days9}', '${days8}', '${days7}', '${days6}', 
+        	'${days5}', '${days4}', '${days3}', '${days2}', '${days1}'],
         datasets: [{
-          label: "Active Users",
+          label: "Leave Users",
           borderColor: "#f96332",
           pointBorderColor: "#FFF",
           pointBackgroundColor: "#f96332",
@@ -824,9 +826,9 @@
           fill: true,
           backgroundColor: gradientFill,
           borderWidth: 2,
-          data: ['${eleAgoLeaveCount}', '${tenAgoLeaveCount}', '${nineAgoLeaveCount}', '${eightAgoLeaveCount}', 
-        	  '${sevenAgoLeaveCount}', '${sixAgoLeaveCount}', '${fiveAgoLeaveCount}', '${fourAgoLeaveCount}', 
-        	  '${threeAgoLeaveCount}', '${twoAgoLeaveCount}', '${oneAgoLeaveCount}', '${todayLeaveCount}']
+          data: ['${leaveCount11}', '${leaveCount10}', '${leaveCount9}', '${leaveCount8}', 
+        	  '${leaveCount7}', '${leaveCount6}', '${leaveCount5}', '${leaveCount4}', 
+        	  '${leaveCount3}', '${leaveCount2}', '${leaveCount1}', '${leaveCount0}']
         }]
     },
     options: gradientChartOptionsConfiguration
@@ -847,9 +849,10 @@
     type: 'line',
     responsive: true,
     data: {
-      labels: ["11일 전", "10일 전", "9일 전", "8일 전", "7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전", "오늘"],
+      labels: ['${days12}', '${days11}', '${days10}', '${days9}', '${days8}', '${days7}', '${days6}', 
+      	'${days5}', '${days4}', '${days3}', '${days2}', '${days1}'],
       datasets: [{
-        label: "Email Stats",
+        label: "Register Users",
         borderColor: "#18ce0f",
         pointBorderColor: "#FFF",
         pointBackgroundColor: "#18ce0f",
@@ -860,9 +863,9 @@
         fill: true,
         backgroundColor: gradientFill,
         borderWidth: 2,
-        data: ['${eleAgoRegisterCount}', '${tenAgoRegisterCount}', '${nineAgoRegisterCount}', '${eightAgoRegisterCount}', 
-      	  '${sevenAgoRegisterCount}', '${sixAgoRegisterCount}', '${fiveAgoRegisterCount}', '${fourAgoRegisterCount}', 
-    	  '${threeAgoRegisterCount}', '${twoAgoRegisterCount}', '${oneAgoRegisterCount}', '${todayRegisterCount}']
+        data: ['${registerCount11}', '${registerCount10}', '${registerCount9}', '${registerCount8}', 
+      	  '${registerCount7}', '${registerCount6}', '${registerCount5}', '${registerCount4}', 
+    	  '${registerCount3}', '${registerCount2}', '${registerCount1}', '${registerCount0}']
       }]
     },
     options: gradientChartOptionsConfigurationWithNumbersAndGrid
@@ -877,9 +880,10 @@
   var a = {
     type: "bar",
     data: {
-      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      labels: ['${days12}', '${days11}', '${days10}', '${days9}', '${days8}', '${days7}', '${days6}', 
+      	'${days5}', '${days4}', '${days3}', '${days2}', '${days1}'],
       datasets: [{
-        label: "Active Countries",
+        label: "Insert Moneyio",
         backgroundColor: gradientFill,
         borderColor: "#2CA8FF",
         pointBorderColor: "#FFF",
@@ -890,7 +894,9 @@
         pointRadius: 4,
         fill: true,
         borderWidth: 1,
-        data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
+        data: ['${moneyioCount11}', '${moneyioCount10}', '${moneyioCount9}', '${moneyioCount8}', 
+        	  '${moneyioCount7}', '${moneyioCount6}', '${moneyioCount5}', '${moneyioCount4}', 
+        	  '${moneyioCount3}', '${moneyioCount2}', '${moneyioCount1}', '${moneyioCount0}']
       }]
     },
     options: {
@@ -1083,6 +1089,3 @@ initGoogleMaps: function() {
     
   </script>
 </body>
-
-
-

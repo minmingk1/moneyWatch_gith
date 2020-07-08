@@ -28,4 +28,8 @@ private SqlSessionTemplate sqlSession = null;
 		return sqlSession.selectOne("admin.registerCount", map);
 	}
 	
+	public int moneyioCount(HashMap map) {
+		return sqlSession.selectOne("admin.moneyioCount", map);
+	}
+	
 }
