@@ -43,7 +43,7 @@
 	</div>
 	
 	<div class="col-sm-8">
-		<iframe name="mypage" src="myPageMain.mw" width="1300" height="1000"
+		<iframe name="mypage" src="myPageMain.mw" width="800" height="750"
 		 marginwidth="0" marginheight="0" frameborder="0"></iframe>
 	</div>    
 

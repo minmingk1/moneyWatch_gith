@@ -2,10 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="admin">
-
 	<insert id="insertVisitor" parameterType="VisitCountDTO">
-            INSERT INTO MWVISITOR(VISIT_NO, VISIT_IP, VISIT_TIME, VISIT_REFER,VISIT_AGENT)VALUES(MWVISITOR_SEQ.NEXTVAL, #{visit_ip}, SYSDATE, #{visit_refer},#{visit_agent})
+		insert into mwvisitor(visit_no, visit_ip, visit_time, visit_refer, visit_agent, id) values(mwvisitor_seq.nextval, #{visit_ip}, sysdate, #{visit_refer}, #{visit_agent}, #{id})		
     </insert>
+    
+    <select id="visitCount" parameterType="HashMap" resultType="int">
+    	<![CDATA[
+    		select count(*) from mwvisitor where visit_time >= #{day2} and visit_time < #{day1}
+    	]]>
+    </select>
+    
+    <select id="leaveCount" parameterType="HashMap" resultType="int">
+    	<![CDATA[
+    		select count(*) from mw_deletemember where reg >= #{day2} and reg < #{day1}
+    	]]>
+    </select>
+    
+    <select id="registerCount" parameterType="HashMap" resultType="int">
+    	<![CDATA[
+    		select count(*) from mwmember where reg >= #{day2} and reg < #{day1}
+    	]]>
+    </select>
+    
 	
 
 </mapper>

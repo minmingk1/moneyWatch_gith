@@ -23,7 +23,7 @@
   <link rel="icon" type="image/png" href="/moneyWatch/assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Now UI Dashboard by Creative Tim
+    Money Watch Administrator
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -34,9 +34,11 @@
   <link href="/moneyWatch/assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="/moneyWatch/assets/demo/demo.css" rel="stylesheet" />
+    
 </head>
 
 <body class="">
+<input type="hidden" id='test' value='test01' />
   <div class="wrapper ">
     <div class="sidebar" data-color="orange">
       <!--
@@ -44,10 +46,10 @@
     -->
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          CT
+          MW
         </a>
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Creative Tim
+        <a href="/moneyWatch/admin.mw" class="simple-text logo-normal">
+          Money Watch
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
@@ -59,7 +61,7 @@
             </a>
           </li>
           <li>
-            <a href="./memList.mw">
+            <a href="./#.mw">
               <i class="now-ui-icons education_atom"></i>
               <p>회원 관리</p>
             </a>
@@ -89,13 +91,13 @@
             </a>
           </li>
           <li>
-            <a href="./faqList.mw">
+            <a href="./#.mw">
               <i class="now-ui-icons text_caps-small"></i>
               <p>게시판 관리</p>
             </a>
           </li>
           <li class="active-pro">
-            <a href="./upgrade.html">
+            <a href="./#.mw">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
               <p>Upgrade to PRO</p>
             </a>
@@ -115,7 +117,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Dashboard</a>
+            <a class="navbar-brand" href="#pablo">Visitor Graph</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -176,8 +178,8 @@
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Global Sales</h5>
-                <h4 class="card-title">Shipped Products</h4>
+                <h5 class="card-category">Members</h5>
+                <h4 class="card-title">Leave Members</h4>
                 <div class="dropdown">
                   <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                     <i class="now-ui-icons loader_gear"></i>
@@ -205,8 +207,8 @@
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">2018 Sales</h5>
-                <h4 class="card-title">All products</h4>
+                <h5 class="card-category">Members</h5>
+                <h4 class="card-title">Register Members</h4>
                 <div class="dropdown">
                   <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                     <i class="now-ui-icons loader_gear"></i>
@@ -234,8 +236,8 @@
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Email Statistics</h5>
-                <h4 class="card-title">24 Hours Performance</h4>
+                <h5 class="card-category">Money In/Out List</h5>
+                <h4 class="card-title">Insert Money historys</h4>
               </div>
               <div class="card-body">
                 <div class="chart-area">
@@ -463,6 +465,9 @@
       </footer>
     </div>
   </div>
+  
+  
+    
   <!--   Core JS Files   -->
   <script src="/moneyWatch/assets/js/core/jquery.min.js"></script>
   <script src="/moneyWatch/assets/js/core/popper.min.js"></script>
@@ -476,12 +481,608 @@
   <script src="/moneyWatch/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/moneyWatch/assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="/moneyWatch/assets/demo/demo.js"></script>
+  <script src="/moneyWatch/assets/demo/demo.js?v=1.5.0" type="text/javascript"></script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
 
     });
+    
+    demo = {
+    		  initPickColor: function() {
+    		    $('.pick-class-label').click(function() {
+    		      var new_class = $(this).attr('new-class');
+    		      var old_class = $('#display-buttons').attr('data-class');
+    		      var display_div = $('#display-buttons');
+    		      if (display_div.length) {
+    		        var display_buttons = display_div.find('.btn');
+    		        display_buttons.removeClass(old_class);
+    		        display_buttons.addClass(new_class);
+    		        display_div.attr('data-class', new_class);
+    		      }
+    		    });
+    		  },
+
+    		  initDocChart: function() {
+    		    chartColor = "#FFFFFF";
+
+    		    // General configuration for the charts with Line gradientStroke
+    		    gradientChartOptionsConfiguration = {
+    		      maintainAspectRatio: false,
+    		      legend: {
+    		        display: false
+    		      },
+    		      tooltips: {
+    		        bodySpacing: 4,
+    		        mode: "nearest",
+    		        intersect: 0,
+    		        position: "nearest",
+    		        xPadding: 10,
+    		        yPadding: 10,
+    		        caretPadding: 10
+    		      },
+    		      responsive: true,
+    		      scales: {
+    		        yAxes: [{
+    		          display: 0,
+    		          gridLines: 0,
+    		          ticks: {
+    		            display: false
+    		          },
+    		          gridLines: {
+    		            zeroLineColor: "transparent",
+    		            drawTicks: false,
+    		            display: false,
+    		            drawBorder: false
+    		          }
+    		        }],
+    		        xAxes: [{
+    		          display: 0,
+    		          gridLines: 0,
+    		          ticks: {
+    		            display: false
+    		          },
+    		          gridLines: {
+    		            zeroLineColor: "transparent",
+    		            drawTicks: false,
+    		            display: false,
+    		            drawBorder: false
+    		          }
+    		        }]
+    		      },
+    		      layout: {
+    		        padding: {
+    		          left: 0,
+    		          right: 0,
+    		          top: 15,
+    		          bottom: 15
+    		        }
+    		      }
+    		    };
+
+    		    ctx = document.getElementById('lineChartExample').getContext("2d");
+
+    		    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    		    gradientStroke.addColorStop(0, '#80b6f4');
+    		    gradientStroke.addColorStop(1, chartColor);
+
+    		    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+    		    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    		    gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+
+    		    myChart = new Chart(ctx, {
+    		      type: 'line',
+    		      responsive: true,
+    		      data: {
+    		        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    		        datasets: [{
+    		          label: "Active Users",
+    		          borderColor: "#f96332",
+    		          pointBorderColor: "#FFF",
+    		          pointBackgroundColor: "#f96332",
+    		          pointBorderWidth: 2,
+    		          pointHoverRadius: 4,
+    		          pointHoverBorderWidth: 1,
+    		          pointRadius: 4,
+    		          fill: true,
+    		          backgroundColor: gradientFill,
+    		          borderWidth: 2,
+    		          data: [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630]
+    		        }]
+    		      },
+    		      options: gradientChartOptionsConfiguration
+    		    });
+    		  },
+
+    			initDashboardPageCharts: function() {
+
+    		    chartColor = "#FFFFFF";
+
+    		    // General configuration for the charts with Line gradientStroke
+    		    gradientChartOptionsConfiguration = {
+    		      maintainAspectRatio: false,
+    		      legend: {
+    		        display: false
+    		      },
+    		      tooltips: {
+    		        bodySpacing: 4,
+    		        mode: "nearest",
+    		        intersect: 0,
+    		        position: "nearest",
+    		        xPadding: 10,
+    		        yPadding: 10,
+    		        caretPadding: 10
+    		      },
+    		      responsive: 1,
+    		      scales: {
+    		        yAxes: [{
+    		          display: 0,
+    		          gridLines: 0,
+    		          ticks: {
+    		            display: false
+    		          },
+    		          gridLines: {
+    		            zeroLineColor: "transparent",
+    		            drawTicks: false,
+    		            display: false,
+    		            drawBorder: false
+    		          }
+    		        }],
+    		        xAxes: [{
+    		          display: 0,
+    		          gridLines: 0,
+    		          ticks: {
+    		            display: false
+    		          },
+    		          gridLines: {
+    		            zeroLineColor: "transparent",
+    		            drawTicks: false,
+    		            display: false,
+    		            drawBorder: false
+    		          }
+    		        }]
+    		      },
+    		      layout: {
+    		        padding: {
+    		          left: 0,
+    		          right: 0,
+    		          top: 15,
+    		          bottom: 15
+    		        }
+    		      }
+    		    };
+
+    		    gradientChartOptionsConfigurationWithNumbersAndGrid = {
+    		      maintainAspectRatio: false,
+    		      legend: {
+    		        display: false
+    		      },
+    		      tooltips: {
+    		        bodySpacing: 4,
+    		        mode: "nearest",
+    		        intersect: 0,
+    		        position: "nearest",
+    		        xPadding: 10,
+    		        yPadding: 10,
+    		        caretPadding: 10
+    		      },
+    		      responsive: true,
+    		      scales: {
+    		        yAxes: [{
+    		          gridLines: 0,
+    		          gridLines: {
+    		            zeroLineColor: "transparent",
+    		            drawBorder: false
+    		          }
+    		        }],
+    		        xAxes: [{
+    		          display: 0,
+    		          gridLines: 0,
+    		          ticks: {
+    		            display: false
+    		          },
+    		          gridLines: {
+    		            zeroLineColor: "transparent",
+    		            drawTicks: false,
+    		            display: false,
+    		            drawBorder: false
+    		          }
+    		        }]
+    		      },
+    		      layout: {
+    		        padding: {
+    		          left: 0,
+    		          right: 0,
+    		          top: 15,
+    		          bottom: 15
+    		        }
+    		      }
+    		    };
+    		    
+ // Dashboard Graph (Visitor Count)
+    var ctx = document.getElementById('bigDashboardChart').getContext("2d");
+	chartColor = "#FFFFFF";	////
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, '#80b6f4');
+    gradientStroke.addColorStop(1, chartColor);
+
+    var gradientFill = ctx.createLinearGradient(0, 100, 0, 25);		//y축값표시
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+    gradientFill.addColorStop(1, "rgba(255, 255, 255, 0.24)");
+
+    var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["11일 전", "10일 전", "9일 전", "8일 전", "7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전", "오늘"],
+        datasets: [{
+          label: "Data",
+          borderColor: chartColor,
+          pointBorderColor: chartColor,
+          pointBackgroundColor: "#1e3d60",
+          pointHoverBackgroundColor: "#1e3d60",
+          pointHoverBorderColor: chartColor,
+          pointBorderWidth: 1,
+          pointHoverRadius: 7,
+          pointHoverBorderWidth: 2,
+          pointRadius: 5,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: ['${eleAgoVisitorCount}', '${tenAgoVisitorCount}', '${nineAgoVisitorCount}', '${eightAgoVisitorCount}', 
+        	  '${sevenAgoVisitorCount}', '${sixAgoVisitorCount}', '${fiveAgoVisitorCount}', '${fourAgoVisitorCount}', 
+        	  '${threeAgoVisitorCount}', '${twoAgoVisitorCount}', '${oneAgoVisitorCount}', '${todayVisitorCount}']
+        }]
+      },
+      options: {
+        layout: {
+          padding: {
+            left: 20,
+            right: 20,
+            top: 0,
+            bottom: 0
+          }
+        },
+        maintainAspectRatio: false,
+        tooltips: {
+          backgroundColor: '#fff',
+          titleFontColor: '#333',
+          bodyFontColor: '#666',
+          bodySpacing: 4,
+          xPadding: 12,
+          mode: "nearest",
+          intersect: 0,
+          position: "nearest"
+        },
+        legend: {
+          position: "bottom",
+          fillStyle: "#FFF",
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              fontColor: "rgba(255,255,255,0.4)",
+              fontStyle: "bold",
+              beginAtZero: true,
+              maxTicksLimit: 5,
+              padding: 10
+            },
+            gridLines: {
+              drawTicks: true,
+              drawBorder: false,
+              display: true,
+              color: "rgba(255,255,255,0.1)",
+              zeroLineColor: "transparent"
+            }
+
+          }],
+          xAxes: [{
+            gridLines: {
+              zeroLineColor: "transparent",
+              display: false,
+
+            },
+            ticks: {
+              padding: 10,
+              fontColor: "rgba(255,255,255,0.4)",
+              fontStyle: "bold"
+            }
+          }]
+        }
+      }
+    });
+    
+    // Leave Members
+    var cardStatsMiniLineColor = "#fff",
+    cardStatsMiniDotColor = "#fff";
+
+  ctx = document.getElementById('lineChartExample').getContext("2d");
+
+  gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+  gradientStroke.addColorStop(0, '#80b6f4');
+  gradientStroke.addColorStop(1, chartColor);
+
+  gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+  gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+  gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
+
+  myChart = new Chart(ctx, {
+      type: 'line',
+      responsive: true,
+      data: {
+        labels: ["11일 전", "10일 전", "9일 전", "8일 전", "7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전", "오늘"],
+        datasets: [{
+          label: "Active Users",
+          borderColor: "#f96332",
+          pointBorderColor: "#FFF",
+          pointBackgroundColor: "#f96332",
+          pointBorderWidth: 2,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 1,
+          pointRadius: 4,
+          fill: true,
+          backgroundColor: gradientFill,
+          borderWidth: 2,
+          data: ['${eleAgoLeaveCount}', '${tenAgoLeaveCount}', '${nineAgoLeaveCount}', '${eightAgoLeaveCount}', 
+        	  '${sevenAgoLeaveCount}', '${sixAgoLeaveCount}', '${fiveAgoLeaveCount}', '${fourAgoLeaveCount}', 
+        	  '${threeAgoLeaveCount}', '${twoAgoLeaveCount}', '${oneAgoLeaveCount}', '${todayLeaveCount}']
+        }]
+    },
+    options: gradientChartOptionsConfiguration
+  });
+
+	// Register Members
+  ctx = document.getElementById('lineChartExampleWithNumbersAndGrid').getContext("2d");
+
+  gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+  gradientStroke.addColorStop(0, '#18ce0f');
+  gradientStroke.addColorStop(1, chartColor);
+
+  gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+  gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+  gradientFill.addColorStop(1, hexToRGB('#18ce0f', 0.4));
+
+  myChart = new Chart(ctx, {
+    type: 'line',
+    responsive: true,
+    data: {
+      labels: ["11일 전", "10일 전", "9일 전", "8일 전", "7일 전", "6일 전", "5일 전", "4일 전", "3일 전", "2일 전", "1일 전", "오늘"],
+      datasets: [{
+        label: "Email Stats",
+        borderColor: "#18ce0f",
+        pointBorderColor: "#FFF",
+        pointBackgroundColor: "#18ce0f",
+        pointBorderWidth: 2,
+        pointHoverRadius: 4,
+        pointHoverBorderWidth: 1,
+        pointRadius: 4,
+        fill: true,
+        backgroundColor: gradientFill,
+        borderWidth: 2,
+        data: ['${eleAgoRegisterCount}', '${tenAgoRegisterCount}', '${nineAgoRegisterCount}', '${eightAgoRegisterCount}', 
+      	  '${sevenAgoRegisterCount}', '${sixAgoRegisterCount}', '${fiveAgoRegisterCount}', '${fourAgoRegisterCount}', 
+    	  '${threeAgoRegisterCount}', '${twoAgoRegisterCount}', '${oneAgoRegisterCount}', '${todayRegisterCount}']
+      }]
+    },
+    options: gradientChartOptionsConfigurationWithNumbersAndGrid
+  });
+
+  var e = document.getElementById("barChartSimpleGradientsNumbers").getContext("2d");
+
+  gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
+  gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
+  gradientFill.addColorStop(1, hexToRGB('#2CA8FF', 0.6));
+
+  var a = {
+    type: "bar",
+    data: {
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      datasets: [{
+        label: "Active Countries",
+        backgroundColor: gradientFill,
+        borderColor: "#2CA8FF",
+        pointBorderColor: "#FFF",
+        pointBackgroundColor: "#2CA8FF",
+        pointBorderWidth: 2,
+        pointHoverRadius: 4,
+        pointHoverBorderWidth: 1,
+        pointRadius: 4,
+        fill: true,
+        borderWidth: 1,
+        data: [80, 99, 86, 96, 123, 85, 100, 75, 88, 90, 123, 155]
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      legend: {
+        display: false
+      },
+      tooltips: {
+        bodySpacing: 4,
+        mode: "nearest",
+        intersect: 0,
+        position: "nearest",
+        xPadding: 10,
+        yPadding: 10,
+        caretPadding: 10
+      },
+      responsive: 1,
+      scales: {
+        yAxes: [{
+          gridLines: 0,
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawBorder: false
+          }
+        }],
+        xAxes: [{
+          display: 0,
+          gridLines: 0,
+          ticks: {
+            display: false
+          },
+          gridLines: {
+            zeroLineColor: "transparent",
+            drawTicks: false,
+            display: false,
+            drawBorder: false
+          }
+        }]
+      },
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 15,
+          bottom: 15
+        }
+      }
+    }
+  };
+
+  var viewsChart = new Chart(e, a);
+},
+
+initGoogleMaps: function() {
+  var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
+  var mapOptions = {
+    zoom: 13,
+    center: myLatlng,
+    scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
+    styles: [{
+      "featureType": "water",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#e9e9e9"
+      }, {
+        "lightness": 17
+      }]
+    }, {
+      "featureType": "landscape",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#f5f5f5"
+      }, {
+        "lightness": 20
+      }]
+    }, {
+      "featureType": "road.highway",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "color": "#ffffff"
+      }, {
+        "lightness": 17
+      }]
+    }, {
+      "featureType": "road.highway",
+      "elementType": "geometry.stroke",
+      "stylers": [{
+        "color": "#ffffff"
+      }, {
+        "lightness": 29
+      }, {
+        "weight": 0.2
+      }]
+    }, {
+      "featureType": "road.arterial",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#ffffff"
+      }, {
+        "lightness": 18
+      }]
+    }, {
+      "featureType": "road.local",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#ffffff"
+      }, {
+        "lightness": 16
+      }]
+    }, {
+      "featureType": "poi",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#f5f5f5"
+      }, {
+        "lightness": 21
+      }]
+    }, {
+      "featureType": "poi.park",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#dedede"
+      }, {
+        "lightness": 21
+      }]
+    }, {
+      "elementType": "labels.text.stroke",
+      "stylers": [{
+        "visibility": "on"
+      }, {
+        "color": "#ffffff"
+      }, {
+        "lightness": 16
+      }]
+    }, {
+      "elementType": "labels.text.fill",
+      "stylers": [{
+        "saturation": 36
+      }, {
+        "color": "#333333"
+      }, {
+        "lightness": 40
+      }]
+    }, {
+      "elementType": "labels.icon",
+      "stylers": [{
+        "visibility": "off"
+      }]
+    }, {
+      "featureType": "transit",
+      "elementType": "geometry",
+      "stylers": [{
+        "color": "#f2f2f2"
+      }, {
+        "lightness": 19
+      }]
+    }, {
+      "featureType": "administrative",
+      "elementType": "geometry.fill",
+      "stylers": [{
+        "color": "#fefefe"
+      }, {
+        "lightness": 20
+      }]
+    }, {
+      "featureType": "administrative",
+      "elementType": "geometry.stroke",
+      "stylers": [{
+        "color": "#fefefe"
+      }, {
+        "lightness": 17
+      }, {
+        "weight": 1.2
+      }]
+    }]
+  };
+
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: myLatlng,
+    title: "Hello World!"
+  });
+
+  // To add the marker to the map, call setMap();
+  marker.setMap(map);
+}
+};
+    
+    
   </script>
 </body>
+
+
+

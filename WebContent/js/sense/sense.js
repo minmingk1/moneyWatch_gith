@@ -92,7 +92,7 @@
 			url: "scrap.mw",
 			data: {
 					num: num,
-					memo: $("input[name=memo]").val()
+					memo: $("textarea[name=memo]").val()
 				  },
 			success: function(){
 				close();
@@ -106,7 +106,7 @@
 	function scrapmemo(num){
 		var url= "memo.mw?num="+num;
 		var name = "memo";
-		var option = "width=400, height=300, left=100, top=50";
+		var option = "width=500, height=500, left=150, top=100";
 		
 		window.open(url, name, option);
 	}
@@ -170,7 +170,6 @@
 	
 	
 	function click(num){
-		alert(num);
 		var detail = "#detail"+num;
 		
 		$(detail).click(function(){

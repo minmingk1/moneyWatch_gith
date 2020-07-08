@@ -21,6 +21,7 @@
     background:  rgba(250, 235, 215,0.5);
     
   }
+
   </style>
 </head>
 <body>
@@ -28,7 +29,7 @@
 
 <div class="container" style="margin-top:30px">
   <div class="row">
-   
+
   <div class="col-sm-8">
       <h2>Calendar</h2>
       <h5>Today, ${today}</h5>
@@ -37,10 +38,10 @@
 
       </div>
       <p>캘린더를 클릭해 일정을 등록해보세요!</p>
-      <p> ....</p>
-      <br>
-      
-    </div>
+   <br/> 
+   </div>
+
+
    <div class="col-sm-4">
       <h2>About Me</h2><br/>
       <h5>${sessionScope.memId}님 환영합니다 :^)</h5><br/>
@@ -57,9 +58,10 @@
 		
       </ul>
       <br />
-      <button style="text-align:right;" onclick="location.href='sense.mw'">금융상식 더 보러 가기 >></button>
+      <button style="float:right;" class="btn btn-outline-secondary" onclick="location.href='sense.mw'">금융상식 더 보러 가기 >></button>
       <hr class="d-sm-none">
     </div>
+
     
   </div>
 </div>
