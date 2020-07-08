@@ -31,27 +31,30 @@
 			<div class="col-sm-4">
 				<h3>고객</h3>
 				<br />
-			
-				<li><a href="">회원가입</a></li> <br />
-				<li><a href="">로그인</a></li> <br />
-				<li><a href="">마이페이지</a></li> <br />
-				<li><a href="">회원탈퇴</a></li> <br />
-				
+				<c:if test="${sessionScope.memId == null}">
+				<li><a href="registerForm.mw">회원가입</a></li> <br />
+				<li><a href="loginForm.mw">로그인</a></li> <br />
+				</c:if>
+				<li><a href="myPage.mw">마이페이지</a></li> <br />
+				<li><a href="memOutForm.mw">회원탈퇴</a></li> <br />
+				<li><a href="logout.mw">로그아웃</a></li> <br />
 			</div>
 			<div class="col-sm-4">
 				<h3>서비스</h3>
 				<br />
-				<li><a href="">챗봇</a></li> <br />
-				<li><a href="">캘린더</a></li> <br />
-				<li><a href="">지출 내역</a></li> <br />
-				<li><a href="">개인 소비패턴</a> </li> <br />
-				<li><a href="">연령별 지출 비교</a></li> <br />
+				<li><a href="chat.mw">챗봇</a></li> <br />
+				<li><a href="Calendar_sub.mw">캘린더</a></li> <br />
+				<li><a href="moneyioForm.mw">지출/수입 등록</a></li> <br />
+				<li><a href="moneyioList.mw">지출/수입 목록</a></li> <br />
+				<li><a href="ptEstimate.mw">나의 소비 목록 보기</a> </li> <br />
+				<li><a href="ageChart.mw">연령별 지출 비교</a></li> <br />
 			</div>
 			<div class="col-sm-4">
 				<h3>카드/계좌 </h3>
 				<br />
-				<li><a href="">등록</a></li> <br />
-				<li><a href="">목록 및 혜택보기</a></li> <br />
+				<li><a href="account_cardForm_main.mw">등록</a></li> <br />
+				<li><a href="card_benefit.mw">목록 및 혜택보기</a></li> <br />
+				<li><a href="card_rank.mw">연령별 카드 순위 보기</a></li> <br />
 			</div>
 
 		</div>
@@ -64,20 +67,21 @@
 				<h3>게시판</h3>
 				<br />
 				<li><a href="sense.mw">금융지식 게시판</a></li> <br />
-				<li><a href="">FAQ 및 질문 게시판</a></li> <br />
+				<li><a href="faqList.mw">FAQ 및 질문 게시판</a></li> <br />
+				<li><a href="myList.mw">내가 쓴 게시물</a></li> <br />
 			</div>
 			<div class="col-sm-4"></div>
 			<c:if test="${sessionScope.memId == 'admin'}">
 			<div class="col-sm-4">
 				<h3>관리자</h3>
 				<br />
-				<li>고객 관리</li> <br />
-				<li>DB 카드/계좌 목록 및 혜택 관리</li> <br />
-				<li>연령별 지출 관리</li> <br />
-				<li>소비패턴 분석 관리</li> <br />
-				<li>게시판 관리</li> <br />
-				<li>지식관리</li><br/>
-				<li>DB 챗봇 관리</li> <br />
+				<li><a href="memList.mw">고객 관리</a></li> <br />
+				<li><a href="">DB 카드/계좌 목록 및 혜택 관리</a></li> <br />
+				<li><a href="">연령별 지출 관리</a></li> <br />
+				<li><a href="">소비패턴 분석 관리</a></li> <br />
+				<li><a href="faqList.mw">게시판 관리</a></li> <br />
+				<li><a href="senseAdmin.mw">지식관리</a></li><br/>
+				<li><a href="">DB 챗봇 관리</a></li> <br />
 				
 			</div>
 			</c:if>
