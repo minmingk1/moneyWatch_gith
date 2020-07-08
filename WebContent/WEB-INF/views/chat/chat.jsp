@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,11 +52,11 @@
 
 </script>
 </head>
-<body align="center">
+<body align="center"><br/>
 	
-	<h1>Chatting Room</h1>
-	<button onclick="window.location='/moneyWatch/main.mw'">메인으로</button>	
-	
+	<h3 style="text-align:center;">Chatting Room</h3>
+	<input type="button"  class="btn btn-secondary" value="메인으로" onclick="window.location='/moneyWatch/main.mw'" style="margin-left:30%;"/>
+
 	<br /><hr /><br />
 	
 	
@@ -66,12 +66,16 @@
 		<table id="msgs" width="100%" cellspacing="10" cellpadding="10"	></table>
 	</div>
 	
-	<div style="width:100%; margin: 0 0 0 5%">
+	<!-- <div style="width:100%; margin: 0 0 0 5%"> -->
 	<br />
-		<input type="text" id="chat" size="40" tabindex="2 placeholder="채팅내용 작성 (Tab키 입력)" />
-		
-		<input type="button" value="send" id="sendBtn" tabindex="3" /><br />
-	</div>
+<table style="width:30%;" border="0" align="center">
+<tr>
+	<td><input type="text" class="form-control" id="chat" size="40" tabindex="2 placeholder="채팅내용 작성 (Tab키 입력)" /></td>	
+	<td><input type="button" class="btn btn-primary" value="send" id="sendBtn" tabindex="3" /></td><br />
+</tr>
+</table>
+<!-- 	</div> -->
 	
 </body>
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>
 </html>
