@@ -208,7 +208,7 @@ public class MoneyioBean {
 				}
 				System.out.println();
 				if(next_list.get(i).getCount3()==2) {
-					int next = next_list.get(i).getIo_price()/2;
+					int next = next_list.get(i).getIo_price()/4;
 					//System.out.println("next2: "+next);
 					sum = sum + next;
 					//System.out.println("sum2: "+sum);
