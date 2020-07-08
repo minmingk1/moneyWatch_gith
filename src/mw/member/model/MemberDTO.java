@@ -2,25 +2,25 @@ package mw.member.model;
 
 import java.sql.Timestamp;
 
-public class MemberDTO { //È¸¿ø DTO
+public class MemberDTO { 
 	
-	private String id;		// È¸¿øID
-	private String pw;		// È¸¿øPW
-	private String name;	// ÀÌ¸§
-	private String gender;	// ¼ºº°
-	private String birth_y;	// »ı³â¿ùÀÏ(¿¬µµ)
-	private String birth_m;	// »ı³â¿ùÀÏ(¿ù)
-	private String birth_d;	// »ı³â¿ùÀÏ(ÀÏ)
-	private String tel;		// ÈŞ´ëÆù Åë½Å»ç(SKT,KT,LGU,etc(¾Ë¶ãÆù))
-	private String phone1;	// ÈŞ´ëÆù ¾ÕÀÚ¸®(010,011,...)
-	private String phone2;	// ÈŞ´ëÆù Áß°£ÀÚ¸®
-	private String phone3;	// ÈŞ´ëÆù µŞÀÚ¸®
-	private String zon;		// ¿ìÆí¹øÈ£
-	private String street;	// ÁÖ¼Ò
-	private String addr;	// »ó¼¼ÁÖ¼Ò
-	private String email1;	// ÀÌ¸ŞÀÏID
-	private String email2;	// ÀÌ¸ŞÀÏÁÖ¼Ò
-	private Timestamp reg;	// °¡ÀÔ³¯Â¥¹×½Ã°£
+	private String id;		
+	private String pw;		
+	private String name;	
+	private String gender;
+	private String birth_y;	
+	private String birth_m;	
+	private String birth_d;	
+	private String tel;		
+	private String phone1;	
+	private String phone2;	
+	private String phone3;	
+	private String zon;		
+	private String street;	
+	private String addr;	
+	private String email1;
+	private String email2;	// ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
+	private Timestamp reg;	// ï¿½ï¿½ï¿½Ô³ï¿½Â¥ï¿½×½Ã°ï¿½
 
 	public String getId() {
 		return id;

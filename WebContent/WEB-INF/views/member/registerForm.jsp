@@ -41,7 +41,7 @@
 				alert("생일을 선택해 주세요")
 				return false;
 		}
-			if(userinput.tel.value==''){
+			if(userinput.tel.value=='none'){
 				alert("통신사를 선택해 주세요")
 				return false;
 		}

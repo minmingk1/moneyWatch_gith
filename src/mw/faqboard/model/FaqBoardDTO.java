@@ -3,15 +3,15 @@ package mw.faqboard.model;
 import java.sql.Timestamp;
 import java.lang.Integer;
 
-public class FaqBoardDTO { //�����Խ��� DTO
-	private int faq_num; //�Խñ� ��ȣ
-	private String subject; //�Խñ� ����
-	private String content; // �Խñ� ����
-	private String pw; //�Խñ� ���� ��й�ȣ
-	private int readcount; // �Խñ� ��ȸ��
-	private Timestamp reg; //�Խñ� �ۼ� �ð�
+public class FaqBoardDTO { 
+	private int faq_num; 
+	private String subject; 
+	private String content; 
+	private String pw; 
+	private int readcount; 
+	private Timestamp reg; 
 	private int ref; 
-	private String id; //�Խñ� �ۼ� ID
+	private String id; 
 	
 	
 	

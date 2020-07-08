@@ -3,9 +3,9 @@
 <html>
 <head>
 <title>회원정보수정</title>
-<%@ include file = "/WEB-INF/views/main/top.jsp" %>
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script language="JavaScript">
-    <!-- 
+
     function checkIt(){
     	var userinput = eval("document.userinput");
     	
@@ -18,7 +18,7 @@
     		return false;
     	}   		
     }   
-    -->
+
 </script>
 <body><br />
 <h3 style="text-align:center;"> 회원 정보 수정</h3><br/>
@@ -101,5 +101,4 @@
 
   </form> 
  </body>
-<%@ include file = "/WEB-INF/views/main/footer.jsp" %>
 </html>
