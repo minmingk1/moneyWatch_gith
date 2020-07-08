@@ -28,8 +28,8 @@
 	    <div class="list-group" style="margin-right:45%;">
 		  <h7 class="list-group-item list-group-item-action active">개인 정보</h7>
 		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필</a>
-		  <a href="#" target="mypage" class="list-group-item list-group-item-action">프로필 수정</a>
-		  <a href="memOutForm.mw" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
+		  <a href="modifyForm_sub.mw" target="mypage" class="list-group-item list-group-item-action">프로필 수정</a>
+		  <a href="memOutForm_sub.mw" target="mypage" class="list-group-item list-group-item-action">회원 탈퇴</a>
 		  
 		  <h7 class="list-group-item list-group-item-action active">My 카드/계좌</h7>
 		  <a href="account_cardForm.mw" target="mypage" class="list-group-item list-group-item-action">카드/계좌 등록</a>
@@ -43,7 +43,7 @@
 	</div>
 	
 	<div class="col-sm-8">
-		<iframe name="mypage" src="myPageMain.mw" width="800" height="750"
+		<iframe name="mypage" src="myPageMain.mw" width="800" height="1000"
 		 marginwidth="0" marginheight="0" frameborder="0"></iframe>
 	</div>    
 
