@@ -36,8 +36,8 @@
 		  <a href="mycardList.mw" target="mypage" class="list-group-item list-group-item-action">나의 혜택 보기</a>
 		  
 		  <h7 class="list-group-item list-group-item-action active">게시판</h7>
-		  <a href="myList.mw" target="mapage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
-		  <a href="myscrap.mw" target="mapage" class="list-group-item list-group-item-action">나의 스크랩</a>
+		  <a href="myList.mw" target="mypage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
+		  <a href="myscrap.mw" target="mypage" class="list-group-item list-group-item-action">나의 스크랩</a>
 		</div>
 	</div>
 	

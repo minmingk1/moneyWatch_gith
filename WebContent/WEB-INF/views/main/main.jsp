@@ -47,7 +47,7 @@
       <h5>${sessionScope.memId}님 환영합니다 :^)</h5><br/>
       <div class="fakeimg" style="background-color:#fff;">
       <input type="button" class="btn btn-primary" value="마이페이지" onclick="document.location.href='/moneyWatch/myPage.mw'"  style="float:middle;"/>
-       <input type="button" class="btn btn-primary" value="로그아웃" onclick="document.location.href='/moneyWatch/logout.mw'"  style="float:middle;"/>
+       <input type="button" class="btn btn-primary" value="지출/수입 등록" onclick="document.location.href='/moneyWatch/moneyioForm.mw'"  style="float:middle;"/>
       </div>
       
       <h3>오늘의 금융상식</h3>
