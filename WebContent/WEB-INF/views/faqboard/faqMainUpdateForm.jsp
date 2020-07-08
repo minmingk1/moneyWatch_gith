@@ -12,18 +12,18 @@
 <tr>
 
 	<td width="25%" align="center" >해당 글쓴이 ID
-	<input type="text" name="qid" value="${list.getQ_id()}" readonly>
-	<input type="hidden" value="${sessionScope.memId}">
+		<input type="text" name="qid" value="${list.getQ_id()}" readonly>
+		<input type="hidden" value="${sessionScope.memId}">
 	</td>
 	
 	<td width="25%" align="center" >글번호
-	<input type="text" name="qunm" value="${list.qnum}" readonly></td>
+		<input type="text" name="qunm" value="${list.qnum}" readonly></td>
 	
 	<td width="25%" align="center" >제목
-	<input type="text" name="qsubject" value="${list.getQsubject()}"></td>
+		<input type="text" name="qsubject" value="${list.getQsubject()}"></td>
 	
 	<td width="25%" align="center" >글내용
-	<input type="text" name="qcontent" value="${list.getQcontent()}"></td>
+		<input type="text" name="qcontent" value="${list.getQcontent()}"></td>
 
 </tr>
 

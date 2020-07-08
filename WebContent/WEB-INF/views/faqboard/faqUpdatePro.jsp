@@ -4,7 +4,7 @@
 
 <html>
 <head>
-<title>update pro</title>
+<title>게시글 수정 PRO</title>
 </head>
 <c:if test="${check == 0}">
 	<script language="javaScript">

@@ -3,14 +3,14 @@ package mw.faqboard.model;
 import java.util.List;
 import java.sql.Timestamp;
 
-public class FaqMainBoardDTO {
-	private int qnum;
-	private String nickname;
-	private String qsubject;
-	private String qcontent;
-	private int qreadcount;
-	private Timestamp reg;
-	private String q_id;
+public class FaqMainBoardDTO { //운영자게시글 DTO
+	private int qnum; //운영자 게시글 번호
+	private String nickname; //운영자 닉네임
+	private String qsubject; //제목
+	private String qcontent; //내용
+	private int qreadcount; //조회수
+	private Timestamp reg; //글쓴 시간
+	private String q_id; //글쓴이
 
 	public String getQ_id() {
 		return q_id;

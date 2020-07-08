@@ -27,44 +27,44 @@ function check(){
 </script>
 <body>
 	<form mothod="post" name="writeForm" action="faqQwritePro.mw" onsubmit="return check()" >
-	<input type="hidden" name="qnum" value="${qnum}">
-	<input type="hidden" name="qreadcount" value="${qreadcount}">
+		<input type="hidden" name="qnum" value="${qnum}">
+		<input type="hidden" name="qreadcount" value="${qreadcount}">
 	
 	
 	
 	<table width="20%" border="1" cellspacing="0" cellpadding="0" align="center" >
-	<tr>
-	<td align="right" colspan="2">
-	</td>
-	</tr>
+		<tr>
+			<td align="right" colspan="2">
+			</td>
+		</tr>
 	
-	<tr>
-		<td width="30%" align="center">운영자 ID</td>	
-		<td width="30%">${sessionScope.memId}
-		<input type="hidden" name="q_id" value="${sessionScope.memId}"></td>
-	</tr>
+		<tr>
+			<td width="30%" align="center">운영자 ID</td>	
+			<td width="30%">${sessionScope.memId}
+			<input type="hidden" name="q_id" value="${sessionScope.memId}"></td>
+		</tr>
 	
-	<tr>
-		<td width="30%" align="center">닉네임</td>
-		<td width="30">
-		<input type="text" name="nickname" size="20" maxlength="10"></td>
-	</tr>
+		<tr>
+			<td width="30%" align="center">닉네임</td>
+			<td width="30">
+			<input type="text" name="nickname" size="20" maxlength="10"></td>
+		</tr>
 		
-	<tr>
-		<td width="30%" align="center">제 목</td>
-		<td width="30">
-		<input type="text" name="qsubject" size="30" maxlength="50"></td>
-	</tr>
+		<tr>
+			<td width="30%" align="center">제 목</td>
+			<td width="30">
+			<input type="text" name="qsubject" size="30" maxlength="50"></td>
+		</tr>
 	
-	<tr>
-		<td width="30%" align="center">글내용</td>
-		<td width="30">
-		<textarea name="qcontent" rows="15" cols="50" maxlength="300"></textarea></td>
-	</tr>
+		<tr>
+			<td width="30%" align="center">글내용</td>
+			<td width="30">
+			<textarea name="qcontent" rows="15" cols="50" maxlength="300"></textarea></td>
+		</tr>
 	
-	<tr>
-	<input type="submit" value="글작성">
-	</tr>
+		<tr>
+			<input type="submit" value="글작성">
+		</tr>
 	
 	</table>
 	</form>
