@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ include file="/WEB-INF/views/main/top.jsp"%>
 <html>
 <head>
 <title>나의 문의글</title>
@@ -19,9 +18,7 @@
 		<input type="button" class="btn btn-primary" value="글쓰기"
 			onclick="window.location='/moneyWatch/faqWriteForm.mw'"
 			style="float: right; margin-right: 25%;">
-		<input type="button" class="btn btn-primary" value="목록으로"
-			onclick="window.location='/moneyWatch/faqList.mw'"
-			style="float: right; margin-right: 1%;">
+		<!-- <input type="button" class="btn btn-primary" value="로그아웃" onclick="window.location='/moneyWatch/logout.mw'" style="float:right; margin-right:1%;" > -->
 	</c:if>
 
 	<c:if test="${sessionScope.memId == null}">
@@ -62,9 +59,9 @@
 
 
 					<td align="center"><a
-						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
+						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}">
 							${article.subject}</a></td>
-							
+
 					<td align="center">${article.content}</td>
 
 
@@ -80,19 +77,17 @@
 	<center>
 	<c:if test="${count > 0}">
 		<c:if test="${startPage > 10}">
-			<a href="/moneyWatch/myList.mw?pageNum=${startPage - 10}">[이전]</a>
+			<a href="/moneyWatch/myList_sub.mw?pageNum=${startPage - 10}">[이전]</a>
 		</c:if>
 
 		<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
-			<a href="/moneyWatch/myList.mw?pageNum=${i}">[${i}]</a>
+			<a href="/moneyWatch/myList_sub.mw?pageNum=${i}">[${i}]</a>
 		</c:forEach>
 
 		<c:if test="${endPage < pageCount}">
-			<a href="/moneyWatch/myList.mw?pageNum=${startPage + 10}">[다음]</a>
+			<a href="/moneyWatch/myList_sub.mw?pageNum=${startPage + 10}">[다음]</a>
 		</c:if>
 	</c:if>
 	</center>
 </body>
 </html>
-<br><br><br><br><br><br><br><br><br>
-<%@ include file="/WEB-INF/views/main/footer.jsp"%>

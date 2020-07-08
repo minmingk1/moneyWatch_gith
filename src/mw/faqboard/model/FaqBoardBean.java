@@ -91,6 +91,7 @@ public class FaqBoardBean {
 		return "/faqboard/faqList";
 	}
 
+	
 	@RequestMapping("faqDeleteForm.mw") // 유저 게시판 삭제
 	public String faqDeleteForm(HttpServletRequest respons, ServletRequest request, Model model) {
 		String pageNum = request.getParameter("pageNum");
@@ -219,6 +220,51 @@ public class FaqBoardBean {
 		return "/faqboard/myList";
 	}
 
+	// 마이페이지에서 볼 내가 쓴 글
+	@RequestMapping("myList_sub.mw") // 내가 쓴글 보기
+	public String myList_sub(HttpSession session, HttpServletRequest respons, HttpServletRequest request, Model model) {
+
+		int pageSize = 10;
+
+		String pageNum = request.getParameter("pageNum");
+		String id = (String) session.getAttribute("memId");
+
+		if (pageNum == null) {
+			pageNum = "1";
+		}
+		int currentPage = Integer.parseInt(pageNum);
+		int start = (currentPage - 1) * pageSize + 1;
+		int end = currentPage * pageSize;
+
+		int number = 0;
+
+		List articleList = null;
+
+		int count = dao.getCountmy(id);
+		if (count > 0) {
+			articleList = dao.getArticles(start, end, id);
+		}
+		number = count - (currentPage - 1) * pageSize;
+
+		int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		int startPage = (int) (currentPage / 10) * 10 + 1;
+		int pageBlock = 10;
+		int endPage = startPage + pageBlock - 1;
+		if (endPage > pageCount) {
+			endPage = pageCount;
+		}
+		request.setAttribute("memId", id);
+		request.setAttribute("count", count);
+		request.setAttribute("articleList", articleList);
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("pageCount", pageCount);
+		request.setAttribute("number", number);
+
+		return "/faqboard/myList_sub";
+	}
+	
 	@RequestMapping("content.mw") // 유저게시글 상세 보기
 	public String faqContent(FaqBoardDTO dto, HttpServletRequest request, Model model, HttpSession session) {
 		String pageNum = request.getParameter("pageNum");
