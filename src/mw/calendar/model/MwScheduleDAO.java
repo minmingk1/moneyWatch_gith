@@ -9,6 +9,7 @@ import mw.moneyio.model.MoneyioDTO;
 
 public class MwScheduleDAO {
 
+	// SqlSessionTemplate는 쓰레드에 안전하고 여러개의 DAO나 mapper에서 공유할 수 있음
 	private SqlSessionTemplate sqlSession = null; //mybatis를 사용하기 위한 작업 - 연결
 	
 	// sql문을 사용하기 위함

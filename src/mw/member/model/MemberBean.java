@@ -83,7 +83,7 @@ public class MemberBean {
 	}
 	
 	
-	@RequestMapping("confirmId.mw")
+	@RequestMapping("confirmId.mw") //아이디 중복 체크
 	public String confirmId(String id,Model model) {
 		int check=dao.memberCheck(id);
 		model.addAttribute("check",check);
@@ -91,7 +91,7 @@ public class MemberBean {
 		return "/member/confirmId";
 	}
 	
-	@RequestMapping("modifyForm.mw")
+	@RequestMapping("modifyForm.mw") // 회원정보 수정
 	public String aopmodifyForm(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("memId");
 		MemberDTO dto =dao.modifyCheck(id);
@@ -100,21 +100,21 @@ public class MemberBean {
 		return "/member/modifyForm";
 	}
 	
-	@RequestMapping("modifyForm_sub.mw")
+	@RequestMapping("modifyForm_sub.mw") // 회원정보 수정 탑에도 있어야하고 마이페이지안에도 있어야 하기 때문에 2개임
 	public String aopmodifyForm_sub(HttpSession session,Model model) {
-		String id=(String)session.getAttribute("memId");
-		MemberDTO dto =dao.modifyCheck(id);
-		model.addAttribute("dto",dto);
+		String id=(String)session.getAttribute("memId");// 서버에 있는 세션을 가지고와 id에 저장
+		MemberDTO dto =dao.modifyCheck(id); // 그 아이디를 dto에 넣고  
+		model.addAttribute("dto",dto); //모델.에드어트류뷰트로 name="dto"에 dto겍체를 추가한다.
 	
 		return "/member/modifyForm_sub";
 	}
 
-	@RequestMapping("modifyPro.mw") 
+	@RequestMapping("modifyPro.mw") // 회원정보를 업데이트 시킴
 	public String aopmodifyPro(MemberDTO dto,HttpSession session) {
-		String id=(String)session.getAttribute("memId");
-		dto.setId(id);
+		String id=(String)session.getAttribute("memId"); // 서버에 있는 세션을 가지고와 id에 저장
+		dto.setId(id);// 서버에서 가지고온 id를 dto에set로 저장
 
-		dao.updateMember(dto);
+		dao.updateMember(dto); // set으로 저장된 dto를 dao.updateMember메서드로 업데이트 시킴
 		
 		return "/member/modifyPro";
 	}
@@ -130,26 +130,26 @@ public class MemberBean {
 		return "/member/memOutForm_sub";
 	}
 	
-	@RequestMapping("memOutPro.mw")
+	@RequestMapping("memOutPro.mw") // 회원탈퇴
 	public String aopmemOutPro(MemberDTO dto , Model model, DeleteMemListDTO dto2 , HttpServletRequest request, HttpSession session) {
-		String pw =request.getParameter("pw");
-		String id =(String)session.getAttribute("memId");
+		String pw =request.getParameter("pw"); // "pw" 값을 요청.겟 파라미터로 가지고와 pw에 저장 
+		String id =(String)session.getAttribute("memId"); // 서버에 있는 세션을 가지고와 id에 저장
 		
-		int check = dao.deleteCheck(id,pw);
+		int check = dao.deleteCheck(id,pw); // 다오 deleteCheck메서드로 id,pw 체크
 		
-		model.addAttribute("check",check);
+		model.addAttribute("check",check); //모델.에드어트류뷰트로"check"이름으로 check겍체를 추가
 		
-		System.out.println(id);
+		System.out.println(id); // 콘솔창에 출력이 되는지 확인하는
 		System.out.println(pw);
 		System.out.println(check);
 				
-		if(check==1) {
+		if(check==1) { // 조건이 맞다면 삭제진행
 			
 			  String reason=request.getParameter("reason");
 			  
-			  MemberDTO dto1=dao.deleteSelect(id);
+			  MemberDTO dto1=dao.deleteSelect(id); // deleteSelect메서드로 id를 검색 된값을 dto1에 저장
 			  
-			  dto2.setId(dto1.getId()); 
+			  dto2.setId(dto1.getId()); // dto1 저장된 값을 dto2에 set로 저장 시키고
 			  dto2.setName(dto1.getName());
 			  dto2.setGender(dto1.getGender()); 
 			  dto2.setBirth_y(dto1.getBirth_y());
@@ -162,20 +162,20 @@ public class MemberBean {
 			  dto2.setReason(reason);
 			  dto2.setReg(dto1.getReg());
 			  
-			  dao.deleteInsert(dto2);
+			  dao.deleteInsert(dto2); // 위에 값을deleteInsert로 넣음
 		
-			  dao.deleteMem(id);
+			  dao.deleteMem(id); //삭제 진행
 			  session.invalidate();
 		}
 		return "/member/memOutPro";
 	}
-	@RequestMapping("memList.mw")
+	@RequestMapping("memList.mw") //운영자가 회원을 검색
 	public String memList(MemberDTO dto, Model model,HttpServletRequest request, HttpSession session){ 
 	
-		List list=null; 
-		list=dao.selectMemList(dto);
+		List list=null; //선언부
+		list=dao.selectMemList(dto); // list 에 dto 저장
 	  
-		model.addAttribute("list", list);
+		model.addAttribute("list", list); //"list"이름으로 list겍체 추가
 	
 		String keyField=request.getParameter("keyField"); 
 		String keyWord=request.getParameter("keyWord");
@@ -197,7 +197,7 @@ public class MemberBean {
 		return "/admin/adminMemDel";
 	}
 	
-	@RequestMapping("adminMemDelPro.mw")
+	@RequestMapping("adminMemDelPro.mw") // 운영자가 회원을 제명
 	public String adminMemDelPro(MemberDTO dto , DeleteMemListDTO dto2 ,HttpServletRequest request, HttpSession session) {
 		String id=request.getParameter("id");
 		

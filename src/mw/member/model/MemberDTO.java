@@ -4,23 +4,23 @@ import java.sql.Timestamp;
 
 public class MemberDTO { 
 	
-	private String id; 		
-	private String pw;		
-	private String name;	
-	private String gender;
-	private String birth_y;	
-	private String birth_m;	
-	private String birth_d;	
-	private String tel;		
-	private String phone1;	
-	private String phone2;	
-	private String phone3;	
-	private String zon;		
-	private String street;	
-	private String addr;	
-	private String email1;
-	private String email2;	
-	private Timestamp reg;	
+	private String id;		// 회원아이디
+	private String pw;		// 비밀번호
+	private String name;	// 회원이름
+	private String gender;  // 성별
+	private String birth_y;	// 출생년도
+	private String birth_m;	//  월 
+	private String birth_d;	//  일
+	private String tel;		// 통신사
+	private String phone1;	// 010,011등등
+	private String phone2;	// 폰 중간자리
+	private String phone3;	// 폰 마지막
+	private String zon;		// 우편번호
+	private String street;	// 주소
+	private String addr;	// 상세주소
+	private String email1;  // 이메일
+	private String email2;	// 이메일
+	private Timestamp reg;	// 날짜
 
 	public String getId() {
 		return id;

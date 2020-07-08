@@ -70,7 +70,7 @@
       <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
       <a class="dropdown-item" href="#">챗봇 관리</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="">게시판 관리</a>
+      <a class="dropdown-item" href="faqList.mw">게시판 관리</a>
       <a class="dropdown-item" href="senseAdmin.mw">지식 관리</a>
     </div>
     </li>

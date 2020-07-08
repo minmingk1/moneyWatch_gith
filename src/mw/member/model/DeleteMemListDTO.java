@@ -3,19 +3,19 @@ package mw.member.model;
 import java.sql.Timestamp;
 
 public class DeleteMemListDTO {
-	private int no;
-	private String id;
-	private String name;
-	private String gender;
-	private String birth_y;
-	private String birth_m;
-	private String birth_d;
-	private String tel;
-	private String phone1;
-	private String phone2;
-	private String phone3;
-	private String reason;
-	private Timestamp reg;
+	private int no;			// 번호
+	private String id;      // 회원 아이디
+	private String name;    // 회원 이름
+	private String gender;	// 성별
+	private String birth_y; // 출생년
+	private String birth_m; // 출생월
+	private String birth_d; // 출생일
+	private String tel;		// 통신사
+	private String phone1;	// 010,011..등등
+	private String phone2;	// 폰 중간자리
+	private String phone3;	// 폰 마지막자리
+	private String reason;	// 탈퇴사유
+	private Timestamp reg; 	// 탈퇴날짜
 
 	public int getNo() {
 		return no;

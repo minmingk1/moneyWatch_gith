@@ -46,7 +46,7 @@
 	</select>
 
 	<select id="memSearch" parameterType="hashmap" resultType="memberDTO" > <!-- 회원 검색 -->
-		select * from mwMember where ${keyField} like '%' || #{keyWord} || '%' 
+		select * from mwMember where ${keyField} like '%' || #{keyWord} || '%'
 	</select>
 
 </mapper>

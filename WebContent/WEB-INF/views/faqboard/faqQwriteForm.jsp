@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 <title>FAQ 글쓰기 FORM</title>
 </head>
 <script language="javaScript">
@@ -25,6 +27,8 @@ function check(){
 	}
 }
 </script>
+<div class="form-group">
+<center><h3>FAQ 운영자 글쓰기</h3></center>
 <body>
 	<form mothod="post" name="writeForm" action="faqQwritePro.mw" onsubmit="return check()" >
 		<input type="hidden" name="qnum" value="${qnum}">
@@ -32,7 +36,7 @@ function check(){
 	
 	
 	
-	<table width="20%" border="1" cellspacing="0" cellpadding="0" align="center" >
+	<table width="400" border="1" cellspacing="0" cellpadding="0" align="center" >
 		<tr>
 			<td align="right" colspan="2">
 			</td>
@@ -41,32 +45,36 @@ function check(){
 		<tr>
 			<td width="30%" align="center">운영자 ID</td>	
 			<td width="30%">${sessionScope.memId}
-			<input type="hidden" name="q_id" value="${sessionScope.memId}"></td>
+			<input type="hidden" class="form-control" name="q_id" value="${sessionScope.memId}"></td>
 		</tr>
 	
 		<tr>
 			<td width="30%" align="center">닉네임</td>
 			<td width="30">
-			<input type="text" name="nickname" size="20" maxlength="10"></td>
+			<input type="text" class="form-control" name="nickname" size="20" maxlength="10"></td>
 		</tr>
 		
 		<tr>
 			<td width="30%" align="center">제 목</td>
 			<td width="30">
-			<input type="text" name="qsubject" size="30" maxlength="50"></td>
+			<input type="text" class="form-control" name="qsubject" size="30" maxlength="50"></td>
 		</tr>
 	
 		<tr>
 			<td width="30%" align="center">글내용</td>
 			<td width="30">
-			<textarea name="qcontent" rows="15" cols="50" maxlength="300"></textarea></td>
+			<textarea class="form-control"  name="qcontent" rows="15" cols="50" maxlength="300"></textarea></td>
 		</tr>
 	
 		<tr>
-			<input type="submit" value="글작성">
+			<td colspan="2" align="center">
+				<input type="submit" class="btn btn-primary"  value="글작성">
+				<input type="button" class="btn btn-primary" value="목록보기" onclick="window.location='/moneyWatch/faqList.mw'">
+			</td>
 		</tr>
 	
 	</table>
 	</form>
+	</div>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package mw.moneyio.model;
 
+import java.sql.Timestamp;
 import java.text.DecimalFormat;
 
 public class MoneyioDTO {
@@ -7,7 +8,7 @@ public class MoneyioDTO {
 	private int io_num; //sequence 번호
 	private String io_category; //카테고리
 	private String io_detail; //세부내역
-	private String io_reg_date;	//날짜
+	private Timestamp io_reg_date;	//날짜
 	private int io_price; //거래금액
 	private int io_remain; //거래잔액
 	private String io_bank; //대상(은행/카드)
@@ -36,10 +37,10 @@ public class MoneyioDTO {
 	public void setIo_detail(String io_detail) {
 		this.io_detail = io_detail;
 	}
-	public String getIo_reg_date() {
+	public Timestamp getIo_reg_date() {
 		return io_reg_date;
 	}
-	public void setIo_reg_date(String io_reg_date) {
+	public void setIo_reg_date(Timestamp io_reg_date) {
 		this.io_reg_date = io_reg_date;
 	}
 	public int getIo_price() {
