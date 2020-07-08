@@ -12,7 +12,7 @@
 <script src="/moneyWatch/js/socket.io.js"></script>
 <script>
 	$(document).ready(function() { // 계속 실행
-		var socket = io.connect("http://192.168.44.1:12345");  //서버연결
+		var socket = io.connect("http://192.168.0.76:12345");  //서버연결
 			
 		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:300px">'
 						+ '안녕하세요. 무엇을 도와드릴까요?'
