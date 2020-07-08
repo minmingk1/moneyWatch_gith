@@ -18,67 +18,112 @@
   <p>통장이 텅장이 되지 말자!</p> 
 </div>
 <nav style="background-color:#343a40;" class="navbar navbar-expand-sm navbar-dark" >
-<div class="container">	
-  <a class="navbar-brand" href="#"><i class="fas fa-bars"></i></a>
+  <div class="container">	<!-- "navbar-brand" -->
   
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<!--    <a class="navbar-brand" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+   <i class="fas fa-bars">
+
+  	</i></a> -->
+<!--   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon">버튼</span>
+  </button> -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Member</a>
-    <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="modifyForm.mw">회원정보 수정</a>
-      <a class="dropdown-item" href="myPage.mw">마이페이지</a>
-      <a class="dropdown-item" href="memOutForm.mw">회원 탈퇴</a>
-    </div>
-    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
-    <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="chat.mw">챗봇</a>
-      <a class="dropdown-item" href="Calendar_sub.mw">캘린더</a>
-      <a class="dropdown-item" href="moneyioForm.mw">지출/수입 등록</a>
-      <a class="dropdown-item" href="moneyioList.mw">지출/수입 목록 </a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="ptEstimate.mw">나의 소비 목록 보기</a>
-      <a class="dropdown-item" href="ageChart.mw">연령별 지출 비교</a>
-    </div>
-    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">카드/계좌</a>
-    <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="account_cardForm_main.mw">등록</a>
-      <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
-      <a class="dropdown-item" href="card_rank.mw">연령별 카드 순위 보기</a>
-    </div>
-    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">게시판</a>
-     <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="faqList.mw">FAQ 및 질문 게시판</a>
-      <a class="dropdown-item" href="sense.mw">금융 상식</a>
-    </div>
-    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <c:if test="${sessionScope.memId == 'admin'}">
-            <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
-    <div class="dropdown-menu" style="">
-      <a class="dropdown-item" href="memList.mw">회원 관리</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
-      <a class="dropdown-item" href="#">챗봇 관리</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="faqList.mw">게시판 관리</a>
-      <a class="dropdown-item" href="senseAdmin.mw">지식 관리</a>
-    </div>
-    </li>
-	</c:if>
-    </ul>
-   
-  </div> 
-  
-   <input type="button"  class="btn btn-info" value="로그아웃" onclick="window.location='/moneyWatch/logout.mw'" style="float:right;"  />
-  </div> 
+    <ul class="nav nav-pills"> 
+    	<li class="nav-item dropdown">
+    	  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i></a>
+		 <div class="dropdown-menu" style="">
+	      <a class="dropdown-item" href="modifyForm.mw">회원정보 수정</a>
+	      <a class="dropdown-item" href="myPage.mw">마이페이지</a>
+	      <a class="dropdown-item" href="memOutForm.mw">회원 탈퇴</a>
+		  <div class="dropdown-divider"></div>
+
+	      <a class="dropdown-item" href="chat.mw">챗봇</a>
+	      <a class="dropdown-item" href="Calendar_sub.mw">캘린더</a>
+	      <a class="dropdown-item" href="moneyioForm.mw">지출/수입 등록</a>
+	      <a class="dropdown-item" href="moneyioList.mw">지출/수입 목록 </a>
+	      <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="ptEstimate.mw">나의 소비 목록 보기</a>
+	      <a class="dropdown-item" href="ageChart.mw">연령별 지출 비교</a>
+		  <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="account_cardForm_main.mw">등록</a>
+	      <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
+	      <a class="dropdown-item" href="card_rank.mw">연령별 카드 순위 보기</a>
+		  <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="faqList.mw">FAQ</a>
+	      <a class="dropdown-item" href="sense.mw">금융 상식</a>
+		  <div class="dropdown-divider"></div>
+	    
+	    <c:if test="${sessionScope.memId == 'admin'}">
+
+	      <a class="dropdown-item" href="memList.mw">회원 관리</a>
+	      <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
+	      <a class="dropdown-item" href="#">챗봇 관리</a>
+	      <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="faqList.mw">게시판 관리</a>
+	      <a class="dropdown-item" href="senseAdmin.mw">지식 관리</a>
+	    </c:if>
+	    
+	    </div>
+	    </li>
+		
+ 	</ul>
+ 	
+ 	<ul class="navbar-nav">
+	    <li class="nav-item dropdown">
+	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Member</a>
+	    <div class="dropdown-menu" style="">
+	      <a class="dropdown-item" href="modifyForm.mw">회원정보 수정</a>
+	      <a class="dropdown-item" href="myPage.mw">마이페이지</a>
+	      <a class="dropdown-item" href="memOutForm.mw">회원 탈퇴</a>
+	    </div>
+	    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    
+	    <li class="nav-item dropdown">
+	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Service</a>
+	    <div class="dropdown-menu" style="">
+	      <a class="dropdown-item" href="chat.mw">챗봇</a>
+	      <a class="dropdown-item" href="Calendar_sub.mw">캘린더</a>
+	      <a class="dropdown-item" href="moneyioForm.mw">지출/수입 등록</a>
+	      <a class="dropdown-item" href="moneyioList.mw">지출/수입 목록 </a>
+	      <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="ptEstimate.mw">나의 소비 목록 보기</a>
+	      <a class="dropdown-item" href="ageChart.mw">연령별 지출 비교</a>
+	    </div>
+	    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	     <li class="nav-item dropdown">
+	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">카드/계좌</a>
+	    <div class="dropdown-menu" style="">
+	      <a class="dropdown-item" href="account_cardForm_main.mw">등록</a>
+	      <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
+	      <a class="dropdown-item" href="card_rank.mw">연령별 카드 순위 보기</a>
+	    </div>
+	    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <li class="nav-item dropdown">
+	      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">게시판</a>
+	     <div class="dropdown-menu" style="">
+	      <a class="dropdown-item" href="faqList.mw">FAQ</a>
+	      <a class="dropdown-item" href="sense.mw">금융 상식</a>
+	    </div>
+	    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	    <c:if test="${sessionScope.memId == 'admin'}">
+	            <li class="nav-item dropdown">
+	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
+	    <div class="dropdown-menu" style="">
+	      <a class="dropdown-item" href="memList.mw">회원 관리</a>
+	      <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="#">카드 목록/혜택 관리</a>
+	      <a class="dropdown-item" href="#">챗봇 관리</a>
+	      <div class="dropdown-divider"></div>
+	      <a class="dropdown-item" href="faqList.mw">게시판 관리</a>
+	      <a class="dropdown-item" href="senseAdmin.mw">지식 관리</a>
+	    </div>
+	    </li>
+		</c:if>
+	    </ul>
+	   
+	  </div> 
+	  
+	   <input type="button"  class="btn btn-info" value="로그아웃" onclick="window.location='/moneyWatch/logout.mw'" style="float:right;"  />
+	  </div> 
 </nav>
