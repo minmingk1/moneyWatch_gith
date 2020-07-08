@@ -4,7 +4,7 @@
 <%@ include file = "/WEB-INF/views/main/top.jsp" %>  
 <html>
 <head>
-<title>update form</title>
+<title>게시글 수정 FORM</title>
 
 <script language="JavaScript">
 function writeSave(){

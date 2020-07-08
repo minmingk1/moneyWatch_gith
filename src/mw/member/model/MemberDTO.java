@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class MemberDTO { 
 	
-	private String id;		
+	private String id; 		
 	private String pw;		
 	private String name;	
 	private String gender;
@@ -19,8 +19,8 @@ public class MemberDTO {
 	private String street;	
 	private String addr;	
 	private String email1;
-	private String email2;	// �̸����ּ�
-	private Timestamp reg;	// ���Գ�¥�׽ð�
+	private String email2;	
+	private Timestamp reg;	
 
 	public String getId() {
 		return id;

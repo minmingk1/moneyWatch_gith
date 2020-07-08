@@ -3,14 +3,14 @@ package mw.faqboard.model;
 import java.sql.Timestamp;
 import java.lang.Integer;
 
-public class FaqBoardDTO {
-	private int faq_num;
-	private String subject;
-	private String content;
-	private String pw;
-	private int readcount;
-	private Timestamp reg;
-	private String id;
+public class FaqBoardDTO { //유저 게시판 DTO
+	private int faq_num; //글번호
+	private String subject;//글제목
+	private String content;//글내용
+	private String pw;//게시글 비밀번호
+	private int readcount;//조회수
+	private Timestamp reg;//글쓴 시간
+	private String id;//글쓴이 ID
 
 	public int getFaq_num() {
 		return faq_num;

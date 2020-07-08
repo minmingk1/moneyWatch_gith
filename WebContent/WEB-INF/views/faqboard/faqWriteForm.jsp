@@ -3,7 +3,7 @@
 
 <html>
 <head>
-<title>게시판</title>
+<title>글쓰기 FORM</title>
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <script language="javaScript">
 function writeSave(){
@@ -42,12 +42,11 @@ function writeSave(){
 			</tr>
 			
 			<tr>
+				<!-- 작성자란을 memId로 가져와서 보여줌 -->
 	     		<td width="70" align="center">작성자</td>
 	     		<td width="330">
 	     		<input type="text" class="form-control" name="id" value="${sessionScope.memId}" disabled/></td>
 	    	</tr>
-			
-			</tr>
 			
 			<tr>
 		    	<td  width="70"  bgcolor="${value_c}" align="center" >제 목</td>

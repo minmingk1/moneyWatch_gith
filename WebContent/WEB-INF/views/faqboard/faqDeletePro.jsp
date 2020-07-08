@@ -4,7 +4,7 @@
    
 <html>
 <head>
-<title>삭제 Pro</title>
+<title>유저게시판 삭제 PRO</title>
 
 
 <c:if test="${check == 0}">
