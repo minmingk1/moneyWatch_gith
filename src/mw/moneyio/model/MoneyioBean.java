@@ -26,9 +26,9 @@ public class MoneyioBean {
 	ArrayList list = new  ArrayList();
 	//����/���� �Է� ������
 		@RequestMapping("moneyioForm.mw")
-		public String moneyioForm(MoneyioDTO dto, Model model) {
-			/* String id = (String)session.getAttribute("memId"); */
-			String id= "nahui068";
+		public String moneyioForm(HttpSession session, MoneyioDTO dto, Model model) {
+		String id = (String)session.getAttribute("memId");
+		/* String id= "nahui068"; */
 			dto.setId(id);
 
 			List<My_cardDTO> card_list = dao.card(id);
@@ -109,11 +109,10 @@ public class MoneyioBean {
 
 		//����/���� �Է� ������ ���� ������
 		@RequestMapping("ioUpdateForm.mw")
-		public String ioUpdateForm(Model model, HttpServletRequest request) {
+		public String ioUpdateForm(HttpSession session, Model model, HttpServletRequest request) {
 			
-			/* String id = (String)session.getAttribute("memId"); */
-			String id = "minmingk1";
-			//int io_num=905;
+			String id = (String)session.getAttribute("memId"); 
+		/* String id = "minmingk1"; */
 			int io_num = Integer.parseInt(request.getParameter("ioNum"));
 
 			MoneyioDTO dto = dao.ioUpdateForm(io_num);
@@ -130,7 +129,6 @@ public class MoneyioBean {
 		//����/���� �Է� ������ update
 		@RequestMapping("ioUpdatePro.mw")
 		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
-			//int io_num = 905;
 			int io_old_price = Integer.parseInt(request.getParameter("io_old_price"));
 			int io_price = dto.getIo_price() - io_old_price; 
 						// 39000 - 40000 // ���� // -1000
@@ -184,10 +182,10 @@ public class MoneyioBean {
 		
 		//���μҺ����Ϻм�
 		@RequestMapping("ptEstimate.mw")
-		public String ptEstimate(/*String id,*/ Model model) {
+		public String ptEstimate(HttpSession session, Model model) {
 			
-			/* String id = (String)session.getAttribute("memId"); */
-			String id = "nahui068";
+			String id = (String)session.getAttribute("memId");
+		/* String id = "nahui068"; */
 			int sum = 0;
 			int sum1 = dao.sum5(id);
 			int sum2 = dao.sum6(id);
@@ -241,8 +239,8 @@ public class MoneyioBean {
 		}
 		
 		@RequestMapping("nbreadList.mw")
-		public String nbreadList(/*int io_num,*/ Model model) {
-			int io_num=911;
+		public String nbreadList(int io_num, Model model) {
+			/*int io_num=911;*/
 			
 			List<NbreadDTO> nlist = dao.nList(io_num);
 			String category = nlist.get(1).getN_category();
@@ -257,12 +255,12 @@ public class MoneyioBean {
 	
 	
 	@RequestMapping("moneyioList.mw")	
-	public String moneyioList(/*String id, */Model model, HttpSession session) {
+	public String moneyioList(HttpSession session, Model model) {
 		Date date = new Date();
 		String nowDate = formatDate.format(date);
 		
-		String id = "minmingk1";
-	/* String id = session.getAttribute("memId"); */
+		/* String id = "minmingk1"; */
+		String id = (String)session.getAttribute("memId");
 
 		List list = dao.moneyioListAll(id);
 		
@@ -275,8 +273,8 @@ public class MoneyioBean {
 	@RequestMapping("ioList.mw")	
 	public String ioList(String filter, Model model, HttpSession session) {
 			
-		String id = "minmingk1";
-		/* String id = session.getAttribute("memId"); */
+		/* String id = "minmingk1"; */
+		String id = (String)session.getAttribute("memId"); 
 		List list = new ArrayList();
 		
 		if(filter.equals("all")) {
@@ -296,8 +294,8 @@ public class MoneyioBean {
 	@RequestMapping("ioListDetail.mw")
 	public String ioListDetail(int ioNum, Model model, HttpSession session) {
 		
-		String id = "minmingk1";
-		/* String id = session.getAttribute("memId"); */
+//		String id = "minmingk1";
+		String id = (String)session.getAttribute("memId"); 
 		
 		MoneyioDTO dto = dao.moneyioListDetail(id, ioNum);
 		model.addAttribute("dto", dto);
