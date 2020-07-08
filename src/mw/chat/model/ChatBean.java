@@ -11,8 +11,8 @@ public class ChatBean {
 
 	@RequestMapping("chat.mw")
 	public String chat(HttpSession session, Model model) {
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "minmingk1";
+		
+		String id = (String)session.getAttribute("memId");
 		
 		model.addAttribute("id", id);
 		
