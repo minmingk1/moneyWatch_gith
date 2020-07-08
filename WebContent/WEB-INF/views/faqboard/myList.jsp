@@ -19,7 +19,9 @@
 		<input type="button" class="btn btn-primary" value="글쓰기"
 			onclick="window.location='/moneyWatch/faqWriteForm.mw'"
 			style="float: right; margin-right: 25%;">
-		<!-- <input type="button" class="btn btn-primary" value="로그아웃" onclick="window.location='/moneyWatch/logout.mw'" style="float:right; margin-right:1%;" > -->
+		<input type="button" class="btn btn-primary" value="목록으로"
+			onclick="window.location='/moneyWatch/faqList.mw'"
+			style="float: right; margin-right: 1%;">
 	</c:if>
 
 	<c:if test="${sessionScope.memId == null}">
@@ -60,9 +62,9 @@
 
 
 					<td align="center"><a
-						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}">
+						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
 							${article.subject}</a></td>
-
+							
 					<td align="center">${article.content}</td>
 
 
