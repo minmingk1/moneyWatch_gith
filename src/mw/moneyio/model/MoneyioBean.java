@@ -214,7 +214,7 @@ public class MoneyioBean {
 					//System.out.println("sum2: "+sum);
 				}
 				if(next_list.get(i).getCount3()==1) {
-					int next = next_list.get(i).getIo_price()/2;
+					int next = next_list.get(i).getIo_price()/3;
 					sum = sum + next;
 					//System.out.println("sum1"+sum);
 				}
