@@ -265,8 +265,8 @@ public class SenseBean {
 	public String scrapDelete(HttpSession session, int num, Model model) {
 		
 		String id = (String)session.getAttribute("memId");
-		dao.scrapDelete(num, id);
-		List<ScrapDTO> dto = dao.myScrap(id);
+		dao.scrapDelete(num, id); 
+		List<ScrapDTO> dto = dao.myScrap(id); //나의 스크랩 리스트를 다시 출력 
 		model.addAttribute("myscraplist", dto);		
 		return "/sense/myScrapList";
 		

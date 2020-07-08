@@ -20,7 +20,7 @@
 		</tr>
 		<tr></tr>
 		<tr>
-			<td><textarea cols="20" rows="10" class="form-control" name="memo"><input type="text" name="memo"/>메모를 입력하세요.</textarea></td>
+			<td><textarea cols="20" rows="10" class="form-control" name="memo">메모를 입력하세요.</textarea></td>
 		</tr>
 		<tr>
 			<td><input type="button" class="btn btn-info" value="스크랩" onclick="scrap(${dto.num})" style="float:right;"/></td>
