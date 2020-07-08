@@ -146,9 +146,8 @@ public class CalendarBean {
 	@RequestMapping("day_updateForm.mw")
 	public String day_updateForm(HttpSession session, String title, String start_time, Model model) {
 		
-		//String id = "tempid";
-		
 		String id = (String)session.getAttribute("memId");
+		
 		MwScheduleDTO detail = dao.day_detail(id, title , start_time);
 		
 		model.addAttribute("detail", detail);
@@ -161,7 +160,6 @@ public class CalendarBean {
 	public String day_updatePro(HttpServletRequest request, MwScheduleDTO mwdto) {
 		
 		int num = Integer.parseInt(request.getParameter("num"));
-	
 		
 		dao.day_update(num,mwdto);
 		

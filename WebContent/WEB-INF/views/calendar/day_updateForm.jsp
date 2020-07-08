@@ -55,7 +55,7 @@
 	<center><h5>일정수정</h5></center> 
 	<table width=100%>
 	<form name = "scheduleDate" method="post" action="day_updatePro.mw">
-		<input type="hidden" id="id" name="id" value="tempid"/>
+		<input type="hidden" id="id" name="id" value="${sessionScope.memId}"/>
 		<input type="hidden" id="num" name="num" value="${detail.num}">
 		
 		<tr><td>
