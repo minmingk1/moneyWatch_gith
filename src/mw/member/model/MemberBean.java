@@ -12,73 +12,78 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import mw.admin.model.VisitCountDAO;
+import mw.admin.model.AdminDAO;
 import mw.admin.model.VisitCountDTO;
 import mw.member.model.MemberDAO;
 
 
 @Controller
-
-
 public class MemberBean {
 	
 	@Autowired
 	private MemberDAO dao = null;
 	@Autowired
-	private VisitCountDAO vdao = null;
+	private AdminDAO admdao = null;
 	
-	@RequestMapping("loginForm.mw") //�α���
+	@RequestMapping("loginForm.mw") //占싸깍옙占쏙옙
 	public String loginform() {
 		return "/member/loginForm";
 	}
 
-	@RequestMapping("loginPro.mw") //�α��� üũ
+	@RequestMapping("loginPro.mw") //占싸깍옙占쏙옙 체크
 	public String loginPro(MemberDTO dto, HttpSession session, Model model, HttpServletRequest request) {
-		String id=(String)session.getAttribute(dto.getId());
-		String pw=request.getParameter(dto.getPw());
+		String id=request.getParameter("id");
+		String pw=request.getParameter("pw");
+		dto.setId(id);
+		dto.setPw(pw);
 		int check=dao.loginCheck(dto);
 		
 		if(check==1) {
-		session.setAttribute("memId", dto.getId());
+			session.setAttribute("memId", dto.getId());
 		
-		// �湮�� ���� ���
-		HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
-		VisitCountDTO vdto = new VisitCountDTO();
-        vdto.setVisit_ip(req.getRemoteAddr());
-        vdto.setVisit_agent(req.getHeader("User-Agent"));//������ ����
-        vdto.setVisit_refer(req.getHeader("referer"));//���� �� ����Ʈ ����
-        
-        try {
-			vdao.insertVisitor(vdto);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// 방문자 정보 등록
+			HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
+			VisitCountDTO vdto = new VisitCountDTO();
+	        vdto.setVisit_ip(req.getRemoteAddr());
+	        vdto.setVisit_agent(req.getHeader("User-Agent"));//브라우저 정보
+	        vdto.setVisit_refer(req.getHeader("referer"));//접속 전 사이트 정보
+	        vdto.setId(id);
+	        
+	        System.out.println("ip : " + vdto.getVisit_ip());
+	        System.out.println("agent : " + vdto.getVisit_agent());
+	        System.out.println("refer : " + vdto.getVisit_refer());
+	        
+			try {
+				admdao.insertVisitor(vdto);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-        
-	}
+		
 		model.addAttribute("check",check);
 		return "/member/loginPro";
 	}
 	
-	@RequestMapping("logout.mw") //�α׾ƿ� ���� ����
+	@RequestMapping("logout.mw") //占싸그아울옙 占쏙옙占쏙옙 占쏙옙占쏙옙
 	public String aoplogout(HttpSession session) {
 		session.invalidate();	
 		return "/member/logout";
 	}
 	
-	@RequestMapping("registerForm.mw")	//ȸ������
+	@RequestMapping("registerForm.mw")	//회占쏙옙占쏙옙占쏙옙
 	public String registerForm() {
 		return "/member/registerForm";
 	}
 
-	@RequestMapping("registerPro.mw")	//ȸ������ ����
+	@RequestMapping("registerPro.mw")	//회占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
 	public String registerPro(MemberDTO dto) {
 		dao.insert(dto);	
 		return "/member/registerPro";
 	}
 	
 	
-	@RequestMapping("confirmId.mw") //���̵� üũ
+	@RequestMapping("confirmId.mw") //占쏙옙占싱듸옙 체크
 	public String confirmId(String id,Model model) {
 		int check=dao.memberCheck(id);
 		model.addAttribute("check",check);
@@ -86,7 +91,7 @@ public class MemberBean {
 		return "/member/confirmId";
 	}
 	
-	@RequestMapping("modifyForm.mw") //ȸ�� ������ �´� ������ �޾Ƽ� ����
+	@RequestMapping("modifyForm.mw") //회占쏙옙 占쏙옙占쏙옙占쏙옙 占승댐옙 占쏙옙占쏙옙占쏙옙 占쌨아쇽옙 占쏙옙占쏙옙
 	public String aopmodifyForm(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("memId");
 		MemberDTO dto =dao.modifyCheck(id);
@@ -96,7 +101,7 @@ public class MemberBean {
 	}
 	
 	
-	@RequestMapping("modifyPro.mw") //�������� ����
+	@RequestMapping("modifyPro.mw") //占쏙옙占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
 	public String aopmodifyPro(MemberDTO dto) {
 		dao.updateMember(dto);
 		
@@ -104,12 +109,12 @@ public class MemberBean {
 	}
 	
 
-	@RequestMapping("memOutForm.mw") //ȸ��Ż��
+	@RequestMapping("memOutForm.mw") //회占쏙옙탈占쏙옙
 	public String aopmemOutForm() {
 		return "/member/memOutForm";
 	}
 	
-	@RequestMapping("memOutPro.mw") //Ż�� ��ûȸ�� �˻�,����
+	@RequestMapping("memOutPro.mw") //탈占쏙옙 占쏙옙청회占쏙옙 占싯삼옙,占쏙옙占쏙옙
 	public String aopmemOutPro(MemberDTO dto , Model model, DeleteMemListDTO dto2 , HttpServletRequest request, HttpSession session) {
 		String pw =request.getParameter("pw");
 		String id =(String)session.getAttribute("memId");
@@ -122,7 +127,7 @@ public class MemberBean {
 		System.out.println(pw);
 		System.out.println(check);
 				
-		if(check==1) { // ���� ����
+		if(check==1) { // 占쏙옙占쏙옙 占쏙옙占쏙옙
 			
 			  String reason=request.getParameter("reason");
 			  
@@ -148,7 +153,7 @@ public class MemberBean {
 		}
 		return "/member/memOutPro";
 	}
-	@RequestMapping("memList.mw") //ȸ�� ����Ʈ ��� 
+	@RequestMapping("memList.mw") //회占쏙옙 占쏙옙占쏙옙트 占쏙옙占� 
 	public String memList(MemberDTO dto, Model model,HttpServletRequest request, HttpSession session){ 
 	
 		List list=null; 

@@ -6,6 +6,7 @@ public class VisitCountDTO {
     private String visit_time;
     private String visit_refer;
     private String visit_agent;
+    private String id;
 	
     
     
@@ -38,6 +39,12 @@ public class VisitCountDTO {
 	}
 	public void setVisit_agent(String visit_agent) {
 		this.visit_agent = visit_agent;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
     
     
