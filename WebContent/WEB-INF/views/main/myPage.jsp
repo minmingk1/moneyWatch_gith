@@ -37,20 +37,20 @@
 		  
 		  <h7 class="list-group-item list-group-item-action active">게시판</h7>
 		  <a href="myList.mw" target="mypage" class="list-group-item list-group-item-action">내가 쓴 글 목록</a>
-		  <a href="myscrap.mw" target="mypage" class="list-group-item list-group-item-action">나의 스크랩</a>
+		  <a href="myscrap_sub.mw" target="mypage" class="list-group-item list-group-item-action">나의 스크랩</a>
 		</div>
 	</div>
 	
 	<div class="col-sm-8">
-		<iframe name="mypage" src="myPageMain.mw" width="800" height="1000"
-		 marginwidth="0" marginheight="0" frameborder="0"></iframe>
+		<iframe name="mypage" src="myPageMain.mw" style="width:150%; height:120%;"
+				 marginwidth="0" marginheight="0" frameborder="0"></iframe>
 	</div>    
 
 
     </div>
     </div>
 </body>
-<div class="jumbotron text-center" style="margin-bottom:0;" >
+<div class="jumbotron text-center" style="margin-bottom:0; margin-top:10%;" >
    <p>mw 주식회사  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    전화번호 02) 1111-1111 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="siteMap.mw">사이트맵</a></p>
