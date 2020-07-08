@@ -3,6 +3,8 @@ package mw.main.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,17 +39,17 @@ public class MainBean {
 	}
 	
 	@RequestMapping("myPage.mw")	
-	public String myPage( Model model) {
-		/*String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+	public String myPage(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("memId");
+//		String id = "nahui068";
 		model.addAttribute("memId", id);
 		return "/main/myPage";
 	}
 
 	@RequestMapping("myPageMain.mw")	
-	public String myPageMain(Model model) {
-		/* String id = (String)session.getAttribute("memId"); */
-		String id = "nahui068";
+	public String myPageMain(HttpSession session, Model model) {
+		String id = (String)session.getAttribute("memId"); 
+//		String id = "nahui068";
 		int thisOut = dao.thisOut(id);
 		int thisIn = dao.thisIn(id);
 		String all_balance = dao.all_balance(id);

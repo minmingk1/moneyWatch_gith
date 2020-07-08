@@ -14,7 +14,7 @@
 	$(document).ready(function() { // 계속 실행
 		var socket = io.connect("http://192.168.0.76:12345");  //서버연결
 			
-		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:300px">'
+		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:300px; border-radius: 10px; ">'
 						+ '안녕하세요. 무엇을 도와드릴까요?'
 						+ '</td><td style="width:1000px"></td></tr><tr><td></td></tr></table>');
 		
@@ -25,11 +25,11 @@
 			
 			//if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
 				
-				$('#msgs').append('<table width="100%"><tr><td style="width:1000px"></td><td bgcolor="yellow" align="right" style="width:300px">' + msg.msg
-								+ '</td></tr><tr><td style="width:1000px"></td><td bgcolor="skyblue" align="right" style="width:300px; font-size:70%">' + msg.nowTime
+				$('#msgs').append('<table width="100%"><tr><td style="width:1000px"></td><td bgcolor="yellow" align="right" style="width:300px; border-radius: 10px;">' + msg.msg
+								+ '</td></tr><tr><td style="width:1000px"></td><td bgcolor="skyblue" align="right" style="width:300px; font-size:70%; border-radius: 10px;">' + msg.nowTime
 								+ '</td></tr><tr><td></td></tr></table>');
 	
-				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:300px">' + msg.adminRe
+				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:300px; border-radius: 10px; ">' + msg.adminRe
 						+ '</td><td style="width:1000px"></td></tr><tr><td></td></tr></table>');
 	
 			
@@ -62,7 +62,7 @@
 	
 	<!-- 채팅박스 -->
 		
-	<div id="chatScroll" style="width:40%; height:600px; overflow:auto; border:1px solid; margin: 0 30% 0 30%;" >
+	<div id="chatScroll" style="width:40%; height:600px; overflow:auto; border:1px solid; margin: 0 30% 0 30%; border-radius: 10px;" >
 		<table id="msgs" width="100%" cellspacing="10" cellpadding="10"	></table>
 	</div>
 	
