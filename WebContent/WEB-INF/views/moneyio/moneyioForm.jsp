@@ -78,7 +78,7 @@
 			$.ajax({
 				url : "remain.mw",
 				type : "POST",
-				data : {io_account: $("#io_account").val(), id:$("#id").val()},
+				data : {account_num: $("#io_account").val(), id:$("#id").val()},
 				success : function(data){
 					//alert("success");
 					$("#io_remain").html(data);

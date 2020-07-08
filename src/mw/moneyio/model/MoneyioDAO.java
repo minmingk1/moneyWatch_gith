@@ -25,8 +25,8 @@ public class MoneyioDAO {
 		return sqlSession.selectList("moneyio.card_Account", mdto);
 	}
 	//³ªÀÇ °èÁÂ ÀÜ¾×
-	public int allMoney(MoneyioDTO dto) {
-		return sqlSession.selectOne("moneyio.allMoney", dto);
+	public String allMoney(My_cardDTO mdto) {
+		return sqlSession.selectOne("moneyio.allMoney", mdto);
 	}
 	//mwregistercard balance update
 	public int balanceUpdate(My_cardDTO mdto) {

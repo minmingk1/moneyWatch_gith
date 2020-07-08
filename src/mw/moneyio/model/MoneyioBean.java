@@ -55,13 +55,13 @@ public class MoneyioBean {
 		}
 		
 		@RequestMapping("remain.mw")
-		public String remain(MoneyioDTO dto, Model model) {
+		public String remain(My_cardDTO mdto, Model model) {
 			
-			//System.out.println("dto.io_account : " + dto.getIo_account());
-			//System.out.println("dto.io_id : " + dto.getId());
+			System.out.println("dto.io_account : " + mdto.getAccount_num());
+			System.out.println("dto.io_id : " + mdto.getId());
 			
-			int io_remain = dao.allMoney(dto);
-			//System.out.println("io_remain: "+io_remain);
+			String io_remain = dao.allMoney(mdto);
+			System.out.println("io_remain: "+io_remain);
 			model.addAttribute("io_remain", io_remain);
 			return "/moneyio/remain";
 		}

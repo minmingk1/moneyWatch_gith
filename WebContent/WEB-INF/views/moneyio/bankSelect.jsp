@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <option value="none">--계좌/번호--</option>
-<c:forEach items="${bankAccount}" var="account">
-	<option value="${account.ca_name}">${account.ca_name}</option>
+<c:forEach items="${card_Account}" var="account">
+	<option value="${account.account_num}">${account.account_num}</option>
 	
 </c:forEach>

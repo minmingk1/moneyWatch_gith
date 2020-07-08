@@ -14,8 +14,8 @@
 	</select>
 
 	<!-- 계좌 잔액 -->
-	<select id="allMoney" resultType="int" parameterType="moneyioDTO">
-		select io_remain from (select * from mwmoneyio where io_num=(select max(io_num) from mwmoneyio where id=#{id} and io_account=#{io_account}))
+	<select id="allMoney" resultType="String" parameterType="mycardDTO">
+		select balance from mwregistercard where id=#{id} and account_num=#{account_num}
 	</select>
 	
 	<!-- 지출/수입 insert -->
