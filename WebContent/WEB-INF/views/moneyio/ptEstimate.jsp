@@ -28,7 +28,7 @@
     dataSource: {
         "chart": {
             "theme": "fusion",
-            "caption": "+다음 달 예상 지출액",
+            "caption": "+다음 달 예상 지출액 : ${estimate}원",
             "subCaption": "단위 (만)",
             "xAxisName": "Month",
             "yAxisName": "Won",
