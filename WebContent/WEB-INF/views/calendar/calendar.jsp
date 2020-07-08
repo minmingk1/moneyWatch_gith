@@ -21,6 +21,7 @@
 
 
 <script>
+console.log('${olist[0].io_reg_date}');
 
    var dataset = [
 	<c:forEach var="listview" items="${listview}" varStatus="status">
@@ -35,13 +36,13 @@
 	        </c:if>
 	        },
 	    </c:if>
-	</c:forEach>
-	
+	</c:forEach>	
 		<c:forEach var="olist" items="${olist}" varStatus="status">
+		
 	    {"id":'<c:out value="${olist.id}" />'
 	    ,"url":'out_detail.mw?io_reg_date='+'<c:out value="${olist.io_reg_date}" />'
 	    ,"title":'<fmt:formatNumber value="${olist.io_price}" pattern="#,###"/>'
-	    ,"start":'<c:out value="${olist.io_reg_date}" />'
+	    ,"start":'<fmt:formatDate value="${olist.io_reg_date}" pattern="yyyy-MM-dd"/>'
 	    ,"color":'#FF9696'
 	    },
 	
@@ -51,7 +52,7 @@
     {"id":'<c:out value="${ilist.id}" />'
     ,"url":'in_detail.mw?io_reg_date='+'<c:out value="${ilist.io_reg_date}" />'
     ,"title":'<fmt:formatNumber value="${ilist.io_price}" pattern="#,###"/>'
-    ,"start":'<c:out value="${ilist.io_reg_date}" />'
+    ,"start":'<fmt:formatDate value="${ilist.io_reg_date}" pattern="yyyy-MM-dd"/>'
     ,"color":'#91D8FA'
     }<c:if test="${!status.last}">,</c:if>
 

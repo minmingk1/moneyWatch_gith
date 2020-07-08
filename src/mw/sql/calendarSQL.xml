@@ -25,7 +25,7 @@
 
 	<!-- 지출내역꺼내오기 -->
 	<select id="money_out" resultType="moneyioDTO" parameterType="String">
-		select sum(io_price) as io_price,io_reg_date from mwmoneyio where io_set=1 and id=#{id} group by io_reg_date
+		select sum(io_price) as io_price, io_reg_date from mwmoneyio where io_set=1 and id=#{id} group by io_reg_date
 		<!-- select * from mwmoneyio where id=#{id} -->
 	</select>
 	
