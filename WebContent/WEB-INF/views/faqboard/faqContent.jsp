@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
+<%@ include file = "/WEB-INF/views/main/top.jsp" %>
+
 <title>FAQ 게시글 내용</title>
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <style>
@@ -50,3 +52,5 @@ table{
 </div>
 </body>
 </html>
+
+<%@ include file = "/WEB-INF/views/main/footer.jsp" %>

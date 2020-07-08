@@ -34,7 +34,6 @@ function writeSave(){
 	<form method="post" name="writeform" action="faqWritePro.mw" onsubmit="return writeSave()">
 	
 		<input type="hidden" name="faq_num" value="${faq_num}">
-		<input type="hidden" name="ref" value="${ref}">
 		<input type="hidden" name="readcount" value="${readcount}">
 		
 		<table width="400" border="1" cellspacing="0" cellpadding="0" align="center">
