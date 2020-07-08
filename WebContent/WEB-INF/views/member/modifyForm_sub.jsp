@@ -17,8 +17,8 @@
     }   
     -->
 </script>
-<body><br />
-<h3 style="text-align:center;"> 회원 정보 수정</h3><br/>
+<body><br /><br/>
+<h3 style="text-align:center;"> 회원 정보 수정</h3><br/><br/>
   <form method="post" action="/moneyWatch/modifyPro.mw" name="userinput" onsubmit="return checkIt()">
   <div class="form-group">
      <table border="1" align="center" width="80%">
