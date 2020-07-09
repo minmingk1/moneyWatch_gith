@@ -8,8 +8,6 @@
 <title>MEMBER LIST</title>
 </head>
 
-
-
 <script language="javaScript">
 function Search(){ 
 		
@@ -28,8 +26,11 @@ function searchCheck(form){
 }
 </script>
 <body><br/>
+
 <h2 style="text-align:center;">회원 LIST</h2><br />
+
 <table  align="center" style="margin:auto; width:60%;">
+
 <tr scope="col">
 <form name="SearchForm" method="post" onSubmit="memList.mw" >
 <td>
@@ -41,11 +42,18 @@ function searchCheck(form){
 </td>
 <td>
 <input type="text" class="form-control" name="keyWord"></td>
+
+
 <td>
 <c:if test="${sessionScope.memId=='admin'}">
 <input type="button" class="btn btn-primary" value="확인" onclick="searchCheck(form)">
 </c:if>
 </td>
+<td align="right">
+<input type="button" class="btn btn-primary" value="관리자 메인" onclick="window.location='admin.mw'">
+</td>
+
+
 </form>
 </tr>
 </table>
