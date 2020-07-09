@@ -14,6 +14,7 @@ table{
 </style>
 </head>
 <body>
+<br><br><br><br><br><br>
 <div class="form-group">
 	<table style="width:50%; text-align:center;" cellspacing="0" cellpadding="0" border="1">
 		<tr heigth="700">
@@ -52,5 +53,5 @@ table{
 </div>
 </body>
 </html>
-
+<br><br><br><br><br><br>
 <%@ include file = "/WEB-INF/views/main/footer.jsp" %>
