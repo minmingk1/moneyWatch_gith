@@ -19,7 +19,7 @@
 	}
 </script>
 <br><br><br>
-<center><h1>${reg_card.card_name}카드 수정</h1></center>
+<center><h1>${reg_card.card_name} 수정</h1></center>
 <br><br>
 <div class="form-group">
 <form method="post" action="updateCardPro.mw">
