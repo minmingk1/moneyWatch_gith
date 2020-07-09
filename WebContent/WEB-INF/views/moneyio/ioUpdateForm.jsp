@@ -116,9 +116,9 @@
 						<td><label for="text">&nbsp;&nbsp;&nbsp;&nbsp;거래 잔액</label></td>
 						<td colspan="2">
 							<fmt:setLocale value="ko"/>
-							<fmt:formatNumber type="text" value="${dto.io_remain}" pattern="#,###" var="io_remain"/>
-						<input type="hidden" name="io_remain" value="${dto.io_remain}" />		 			
-						<input type="text" class="form-control" placeholder="${io_remain}" disabled></td>
+							<fmt:formatNumber type="text" value="${balance}" pattern="#,###" var="b"/>
+						<input type="hidden" name="io_remain" value="${balance}" />		 			
+						<input type="text" class="form-control" placeholder="${b}" disabled></td>
 				</tr>
 				<tr>
 						<td><label for="exampleTextarea">&nbsp;&nbsp;&nbsp;&nbsp;세부내역</label></td>

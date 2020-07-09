@@ -52,7 +52,7 @@
 			${dto.io_account}
 		</td>
 		<td width="100" align="center">
-			<button class="btn btn-primary" onclick="window.location.href='/moneyWatch/ioUpdateForm.mw?ioNum=${dto.io_num}'">수정</button>
+			<button class="btn btn-primary" onclick="window.location.href='/moneyWatch/ioUpdateForm.mw?ioNum=${dto.io_num}&id=${dto.id}&account_num=${dto.io_account}'">수정</button>
 		</td>	
 		<td width="100" align="center">
 			<button class="btn btn-primary" onclick="deleteConfirm(${dto.io_num})">삭제</button>

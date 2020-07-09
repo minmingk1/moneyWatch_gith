@@ -114,16 +114,16 @@ public class MoneyioBean {
 
 		
 		@RequestMapping("ioUpdateForm.mw")
-		public String ioUpdateForm(HttpSession session, Model model, HttpServletRequest request) {
+		public String ioUpdateForm(HttpSession session, My_cardDTO mdto, Model model, HttpServletRequest request) {
 			
 			String id = (String)session.getAttribute("memId"); 
 			int io_num = Integer.parseInt(request.getParameter("ioNum"));
-
+			String balance = dao.allMoney(mdto);
 			MoneyioDTO dto = dao.ioUpdateForm(io_num);
 			if(dto.getIo_N_div() == 0) {
 				dto.setIo_N_div(0);
 			}
-
+			model.addAttribute("balance", balance);
 			model.addAttribute("memId", id);
 			model.addAttribute("dto", dto);
 			
@@ -135,7 +135,7 @@ public class MoneyioBean {
 		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
 			int io_old_price = Integer.parseInt(request.getParameter("io_old_price"));
 			int io_price = dto.getIo_price() - io_old_price; 
-						// 39000 - 40000 // ���� // -1000
+						// 39000 - 40000 //  // -1000
 			System.out.println("dto.getIo_remain()"+dto.getIo_remain());
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
 			
