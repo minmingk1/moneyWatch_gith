@@ -80,43 +80,44 @@
 		    	<div class="input-group mb-3">
 		    	<table>
 		    	<c:forEach items="${nlist}" var="n">
-		    	<c:if test="${n.n_num == 0}">
-		    		<tr>
-		    		<td style="color:red;">${n.n_check}</td>
-		    		</tr>
-		    	</c:if>
-		    	<c:if test="${n.n_num != 0}">
-		    	<tr>
-		 			<td>
-				        <div class="input-group-prepend">
-				        	<span class="input-group-text">이름</span>
-				      	</div>
+			    	<c:if test="${n.n_num <= 0}">
+			    		<tr>
+			    		<td style="color:red;">${n.n_check}</td>
+			    		</tr>
+			    	</c:if>
+			    	
+			    	<c:if test="${n.n_num > 0}">
+			    	<tr>
+			 			<td>
+					        <div class="input-group-prepend">
+					        	<span class="input-group-text">이름</span>
+					      	</div>
+					      	</td>
+					      	<td>
+					     
+				      	<input type="text" class="form-control" value="${n.n_debtor}"aria-label="Amount (to the nearest dollar)" disabled />
 				      	</td>
 				      	<td>
-				     
-			      	<input type="text" class="form-control" value="${n.n_debtor}"aria-label="Amount (to the nearest dollar)" disabled />
-			      	</td>
-			      	<td>
-				      	<div class="input-group-prepend">
-				       	 	<span class="input-group-text">금액</span>
-				      	</div></td>
-				    <td>
-				    	<fmt:setLocale value="ko"/>
-				    	<fmt:formatNumber type="text" value="${n.n_price}" pattern="#,###" var="n_price"/>
-				      	<input type="text" class="form-control" pattern="#,###" value="${n_price}" aria-label="Amount (to the nearest dollar)" disabled /> 
-				    </td>
-			    </tr>
-
-			    <tr>
-			    	<td colspan="3"></td>
-			    	<th style="text-align:right;">합계 :
-			    	
-			    		<fmt:setLocale value="ko"/>
-			    		<fmt:formatNumber type="text" value="${nSum}" pattern="#,###"/>
-			    		 
-			    	</th>
-			    </tr>
-				</c:if>
+					      	<div class="input-group-prepend">
+					       	 	<span class="input-group-text">금액</span>
+					      	</div></td>
+					    <td>
+					    	<fmt:setLocale value="ko"/>
+					    	<fmt:formatNumber type="text" value="${n.n_price}" pattern="#,###" var="n_price"/>
+					      	<input type="text" class="form-control" pattern="#,###" value="${n_price}" aria-label="Amount (to the nearest dollar)" disabled /> 
+					    </td>
+				    </tr>
+	
+				    <tr>
+				    	<td colspan="3"></td>
+				    	<th style="text-align:right;">합계 :
+				    	
+				    		<fmt:setLocale value="ko"/>
+				    		<fmt:formatNumber type="text" value="${nSum}" pattern="#,###"/>
+				    		 
+				    	</th>
+				    </tr>
+					</c:if>
 			    
 			    </c:forEach>
 			    </table>

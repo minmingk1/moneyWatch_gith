@@ -288,7 +288,6 @@ public class MoneyioBean {
 		
 //		String id = "minmingk1";
 		String id = (String)session.getAttribute("memId"); 
-		//System.out.println("ioNum"+ioNum);
 		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
 		String n_check="내역이 없습니다.";
