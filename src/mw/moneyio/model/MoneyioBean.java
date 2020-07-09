@@ -244,21 +244,6 @@ public class MoneyioBean {
 			
 			return "/moneyio/ptEstimate";
 		}
-		
-		@RequestMapping("nbreadList.mw")
-		public String nbreadList(int io_num, Model model) {
-			/*int io_num=911;*/
-			
-			List<NbreadDTO> nlist = dao.nList(io_num);
-			String category = nlist.get(1).getN_category();
-			String nSum = dao.nSum(io_num);
-			
-			model.addAttribute("category", category);
-			model.addAttribute("nlist", nlist);
-			model.addAttribute("nSum", nSum);
-			
-			return "/moneyio/nbreadList";
-		}
 	
 	
 	@RequestMapping("moneyioList.mw")	
@@ -303,10 +288,27 @@ public class MoneyioBean {
 		
 //		String id = "minmingk1";
 		String id = (String)session.getAttribute("memId"); 
+		//System.out.println("ioNum"+ioNum);
+		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
+		String n_check="내역이 없습니다.";
+		NbreadDTO ndto = new NbreadDTO();
+		
+		if(nlist.size()==0) {
+			ndto.setN_num(0);
+			ndto.setN_check(n_check);
+			nlist.add(ndto);
+		}else {
+		
+			String category = nlist.get(1).getN_category();
+			String nSum = dao.nSum(ioNum);
+			model.addAttribute("category", category);
+			model.addAttribute("nSum", nSum);
+			
+		}
 		MoneyioDTO dto = dao.moneyioListDetail(id, ioNum);
 		model.addAttribute("dto", dto);
-		
+		model.addAttribute("nlist", nlist);
 		return "/moneyio/ioListDetail";
 	}
 	

@@ -80,6 +80,12 @@
 		    	<div class="input-group mb-3">
 		    	<table>
 		    	<c:forEach items="${nlist}" var="n">
+		    	<c:if test="${n.n_num == 0}">
+		    		<tr>
+		    		<td style="color:red;">${n.n_check}</td>
+		    		</tr>
+		    	</c:if>
+		    	<c:if test="${n.n_num != 0}">
 		    	<tr>
 		 			<td>
 				        <div class="input-group-prepend">
@@ -100,7 +106,7 @@
 				      	<input type="text" class="form-control" pattern="#,###" value="${n_price}" aria-label="Amount (to the nearest dollar)" disabled /> 
 				    </td>
 			    </tr>
-			    </c:forEach>
+
 			    <tr>
 			    	<td colspan="3"></td>
 			    	<th style="text-align:right;">합계 :
@@ -110,6 +116,9 @@
 			    		 
 			    	</th>
 			    </tr>
+				</c:if>
+			    
+			    </c:forEach>
 			    </table>
 			    </div>
 		   		</div>

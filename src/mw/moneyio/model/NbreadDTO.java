@@ -7,6 +7,7 @@ public class NbreadDTO {
 	private String n_category;
 	private String n_debtor;
 	private String n_price;
+	private String n_check;
 	
 	public int getN_num() {
 		return n_num;
@@ -43,6 +44,12 @@ public class NbreadDTO {
 	}
 	public void setN_price(String n_price) {
 		this.n_price = n_price;
+	}
+	public String getN_check() {
+		return n_check;
+	}
+	public void setN_check(String n_check) {
+		this.n_check = n_check;
 	}
 	
 }
