@@ -67,8 +67,8 @@
    
   document.addEventListener('DOMContentLoaded', function() {
 	
-	var modal = document.getElementById('myModal');
-  	var span = document.getElementsByClassName("close")[0];   
+	var modal = document.getElementById('myModal'); // 모달창
+  	var span = document.getElementsByClassName("close")[0]; //닫기창  
 
     var calendarEl = document.getElementById('calendar');
     
@@ -113,7 +113,7 @@
       },
       
     events : dataset, // 달력에 들어갈 내용
-    eventClick:function(info) { // 달력에 들어간 내용(즉, event)클릭 시 나타낼 내용
+    eventClick:function(info) { // 달력에 들어간 내용(즉, event 클릭 시 나타낼 내용)
     
     	info.jsEvent.preventDefault();
     	
@@ -126,7 +126,7 @@
 	    	$.ajax({
 	    		type : "post", //송신 데이터타입
 	    		url : "day_detail.mw",
-	    		data : {title:title, start_time:start_time},
+	    		data : {title:title, start_time:start_time}, // day_detail.mw에 넘길 데이터
 	    		success : function(data){
 	    			$("#content").html(data);
 	    		}
@@ -137,7 +137,7 @@
 	    	$.ajax({
 	    		type : "post", //송신 데이터타입
 	    		url : "out_detail.mw",
-	    		data : {title:title, start_time:start_time},
+	    		data : {title:title, start_time:start_time}, // out_detail.mw에 넘길 데이터
 	    		success : function(data){
 	    			$("#content").html(data);
 	    		}
@@ -148,7 +148,7 @@
 	    	$.ajax({
 	    		type : "post", //송신 데이터타입
 	    		url : "in_detail.mw",
-	    		data : {title:title, start_time:start_time},
+	    		data : {title:title, start_time:start_time}, // in_detail.mw에 넘길 데이터
 	    		success : function(data){
 	    			$("#content").html(data);
 	    		}

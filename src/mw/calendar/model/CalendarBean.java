@@ -25,10 +25,8 @@ public class CalendarBean {
 
 	@Autowired
 	private MwScheduleDAO dao = null;
-	
-	List detail = new ArrayList();
 
-	@RequestMapping("Calendar.mw")// 캘린더 메인페이지
+	@RequestMapping("Calendar.mw") // 캘린더 메인페이지
 	public String cal(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
 		String id = (String)session.getAttribute("memId");
@@ -43,7 +41,7 @@ public class CalendarBean {
 		return "/calendar/calendar";
 	}
 
-	@RequestMapping("Calendar_sub.mw")// 캘린더 클릭시 들어가는 페이지
+	@RequestMapping("Calendar_sub.mw") // 캘린더 클릭시 들어가는 페이지
 	public String cal_sub(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
 		String id = (String)session.getAttribute("memId");
@@ -82,6 +80,7 @@ public class CalendarBean {
 		
 		String id = (String)session.getAttribute("memId");
 		
+		// title : 일정명 , start_time : 일정 시작일 
 		MwScheduleDTO detail = dao.day_detail(id, title , start_time);
 		
 		model.addAttribute("detail", detail);
@@ -89,15 +88,13 @@ public class CalendarBean {
 		return "/calendar/day_detail";
 	}
 	
-	// 세부지출내용
-	@RequestMapping("out_detail.mw")
+	@RequestMapping("out_detail.mw") // 세부지출내용
 	public String out_detail(HttpSession session, HttpServletRequest request, Model model) {
 		
 		List outlist = new ArrayList();
 		
 		String id = (String)session.getAttribute("memId");
-		//String id = "crong";
-		String io_reg_date = request.getParameter("start_time");
+		String io_reg_date = request.getParameter("start_time"); // 지출일
 		
 		outlist = dao.out_detail(id,io_reg_date);
 		
@@ -106,15 +103,13 @@ public class CalendarBean {
 		return "/calendar/out_detail";
 	}
 	
-	// 세부수입내용
-	@RequestMapping("in_detail.mw")
+	@RequestMapping("in_detail.mw")// 세부수입내용
 	public String in_detail(HttpSession session, HttpServletRequest request, Model model) {
 		
 		List inlist = new ArrayList();
 		
 		String id = (String)session.getAttribute("memId");
-		//String id = "crong";
-		String io_reg_date = request.getParameter("start_time");
+		String io_reg_date = request.getParameter("start_time"); // 수입일
 		
 		inlist = dao.in_detail(id,io_reg_date);
 		
@@ -123,22 +118,19 @@ public class CalendarBean {
 		return "/calendar/in_detail";
 	}
 	
-	//일정삭제
-	@RequestMapping("day_delete.mw")
+	@RequestMapping("day_delete.mw")//일정삭제
 	public String day_delete(HttpSession session, HttpServletRequest request){
 	
-		/* String id = "tempid"; */
 		String id = (String)session.getAttribute("memId");
-		String title = request.getParameter("title");
-		String start_time = request.getParameter("start_time");
+		String title = request.getParameter("title"); // 일정명
+		String start_time = request.getParameter("start_time"); // 시작일
 		
 		dao.day_delete(id, title, start_time);
 		
 		return "/calendar/day_delete";
 	}
 	
-	//일정수정
-	@RequestMapping("day_updateForm.mw")
+	@RequestMapping("day_updateForm.mw") //일정수정 form
 	public String day_updateForm(HttpSession session, String title, String start_time, Model model) {
 		
 		String id = (String)session.getAttribute("memId");
@@ -150,8 +142,7 @@ public class CalendarBean {
 		return "/calendar/day_updateForm";
 	}
 	
-	// 일정수정
-	@RequestMapping("day_updatePro.mw")
+	@RequestMapping("day_updatePro.mw")// 일정수정처리
 	public String day_updatePro(HttpServletRequest request, MwScheduleDTO mwdto) {
 		
 		int num = Integer.parseInt(request.getParameter("num"));

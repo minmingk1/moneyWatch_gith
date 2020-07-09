@@ -12,42 +12,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 
-<!-- <script>
-
-	$('#day_submit').click(function(){
-		
-		theForm = document.scheduleDate;
-		
-		if($("input[name=title]").val() == ''){
-			alert("일정명은 필수입력입니다.확인해주세요");
-			$("input[name=title]").focus();
-			return;
-		}
-		
-		$.ajax({
-			type : "post", //송신 데이터타입
-			url : "day_updatePro.mw",
-			data : {
-				id : $("input[name=id]").val(), //id - session값 이용 필요
-				title : $("input[name=title]").val(), //일정명
-				place : $("input[name=place]").val(), //장소
-				start_time : $("input[name=start_time]").val(), //시작일 
-				end_time : $("input[name=end_time]").val(), //종료일
-				memo : $("#exampleTextarea").val(), //메모
-				sc_color : $("#sc_color").val()	
-			},
-			success : function(data) {
-				alert("일정이 수정되었습니다.");
-				$('#myModal').hide();
-				window.location.reload();
-
-			}
-		});
-		
-		
-	});
-</script> -->
-
 </head>
 
 <body>

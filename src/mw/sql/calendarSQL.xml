@@ -20,19 +20,16 @@
 	<!-- 일정꺼내오기 -->
 	<select id="schedule_select" resultType="mwscheduleDTO" parameterType="String">
 		select * from mwSchedule where id=#{id} 
-
 	</select>
 
 	<!-- 지출내역꺼내오기 -->
 	<select id="money_out" resultType="moneyioDTO" parameterType="String">
 		select sum(io_price) as io_price, io_reg_date from mwmoneyio where io_set=1 and id=#{id} group by io_reg_date
-		<!-- select * from mwmoneyio where id=#{id} -->
 	</select>
 	
-		<!-- 수입내역꺼내오기 -->
+	<!-- 수입내역꺼내오기 -->
 	<select id="money_in" resultType="moneyioDTO" parameterType="String">
 		select sum(io_price) as io_price,io_reg_date from mwmoneyio where io_set=0 and id=#{id} group by io_reg_date
-		<!-- select * from mwmoneyio where id=#{id} -->
 	</select>
 	
 	<!-- 세부일정내용 -->
