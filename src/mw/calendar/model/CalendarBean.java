@@ -28,11 +28,9 @@ public class CalendarBean {
 	
 	List detail = new ArrayList();
 
-	@RequestMapping("Calendar.mw")
+	@RequestMapping("Calendar.mw")// 캘린더 메인페이지
 	public String cal(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
-		
-		//String id = "tempid";
 		String id = (String)session.getAttribute("memId");
 		List<MwScheduleDTO> slist = dao.schedule_select(id); // 일정가져오기
 		List<MoneyioDTO> olist = dao.money_out(id); // 지출내역가져오기
@@ -45,7 +43,7 @@ public class CalendarBean {
 		return "/calendar/calendar";
 	}
 
-	@RequestMapping("Calendar_sub.mw")
+	@RequestMapping("Calendar_sub.mw")// 캘린더 클릭시 들어가는 페이지
 	public String cal_sub(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
 		String id = (String)session.getAttribute("memId");
@@ -63,7 +61,7 @@ public class CalendarBean {
 	@RequestMapping("day_popUp.mw") // 캘린더 팝업창
 	public String cal_pop(Model model,String year,String month,String day) {
 		
-		String date = year + "-" + month + "-" + day;
+		String date = year + "-" + month + "-" + day; // year-month-day로 합쳐진 형태로 저장시키기 위함
 
 		model.addAttribute("date",date);
 
@@ -79,13 +77,10 @@ public class CalendarBean {
 	}
 	
 	
-	// 일정세부내용
-	@RequestMapping("day_detail.mw")
-	public String day_detail(HttpSession session, String title,String start_time, Model model) {
-
+	@RequestMapping("day_detail.mw")// 일정세부내용 출력
+	public String day_detail(HttpSession session, String title, String start_time, Model model) {
 		
 		String id = (String)session.getAttribute("memId");
-		//String id = "tempid";
 		
 		MwScheduleDTO detail = dao.day_detail(id, title , start_time);
 		

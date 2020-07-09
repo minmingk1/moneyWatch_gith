@@ -36,14 +36,14 @@
 	        },
 	    </c:if>
 	</c:forEach>	
-		<c:forEach var="olist" items="${olist}" varStatus="status">
+	<c:forEach var="olist" items="${olist}" varStatus="status">
 		
-	    {"id":'<c:out value="${olist.id}" />'
-	    ,"url":'out_detail.mw?io_reg_date='+'<c:out value="${olist.io_reg_date}" />'
-	    ,"title":'<fmt:formatNumber value="${olist.io_price}" pattern="#,###"/>'
-	    ,"start":'<fmt:formatDate value="${olist.io_reg_date}" pattern="yyyy-MM-dd"/>'
-	    ,"color":'#FF9696'
-	    },
+	   {"id":'<c:out value="${olist.id}" />'
+	   ,"url":'out_detail.mw?io_reg_date='+'<c:out value="${olist.io_reg_date}" />'
+	   ,"title":'<fmt:formatNumber value="${olist.io_price}" pattern="#,###"/>'
+	   ,"start":'<fmt:formatDate value="${olist.io_reg_date}" pattern="yyyy-MM-dd"/>'
+	   ,"color":'#FF9696'
+	   },
 	
 	</c:forEach> 
 	
@@ -84,7 +84,6 @@
       selectable: true,
       navLinks: true, // can click day/week names to navigate views
       businessHours: true, // display business hours
-      //editable: true,
     
       //날짜 클릭 시 팝업창 오픈
       dateClick: function(info){
@@ -96,8 +95,8 @@
     	  let s_month = s_date_obj.getMonth() + 1; // 선택된날짜 월
     	  let s_day = s_date_obj.getDate(); // 선택된날짜 일
     	 
-    	  if(s_month < 10) s_month = '0' + s_month;
-    	  if(s_day < 10) s_day = '0' + s_day;
+    	  if(s_month < 10) s_month = '0' + s_month; // 10월 보다 작은 월에 0을 붙혀주기 위함
+    	  if(s_day < 10) s_day = '0' + s_day; // 10일 보다 작은 일에 0을 붙혀주기 위함
     	  
     	  
     	  $.ajax({
@@ -113,9 +112,8 @@
     	  
       },
       
-    events : dataset,
-    // 레이어팝업으로 만들기
-    eventClick:function(info) {
+    events : dataset, // 달력에 들어갈 내용
+    eventClick:function(info) { // 달력에 들어간 내용(즉, event)클릭 시 나타낼 내용
     
     	info.jsEvent.preventDefault();
     	
