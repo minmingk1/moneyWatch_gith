@@ -40,7 +40,6 @@
 
 <!-- ####################################### 좌측 메뉴 ####################################################### -->
 <body class="">
-<input type="hidden" id='test' value='test01' />
   <div class="wrapper ">
     <div class="sidebar" data-color="orange">
       <!--
