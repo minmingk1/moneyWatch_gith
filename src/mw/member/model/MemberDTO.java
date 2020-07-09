@@ -21,6 +21,8 @@ public class MemberDTO {
 	private String email1;  // 이메일
 	private String email2;	// 이메일
 	private Timestamp reg;	// 날짜
+	private int age;		// 연령
+	private int count;		// 연령별 수
 
 	public String getId() {
 		return id;
@@ -123,6 +125,18 @@ public class MemberDTO {
 	}
 	public void setReg(Timestamp reg) {
 		this.reg = reg;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 }

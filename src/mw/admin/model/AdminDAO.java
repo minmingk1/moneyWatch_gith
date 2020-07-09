@@ -1,8 +1,10 @@
 package mw.admin.model;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+
 
 public class AdminDAO {
 	
@@ -30,6 +32,18 @@ private SqlSessionTemplate sqlSession = null;
 	
 	public int moneyioCount(HashMap map) {
 		return sqlSession.selectOne("admin.moneyioCount", map);
+	}
+	
+	public List faqboardinfo() {
+		return sqlSession.selectList("admin.faqboard");
+	}
+	
+	public List senseCount() {
+		return sqlSession.selectList("admin.senseCount");
+	}
+	
+	public List memberAgeCount() {
+		return sqlSession.selectList("admin.memberAgeCount");
 	}
 	
 }

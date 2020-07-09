@@ -31,6 +31,33 @@
     	]]>
     </select>
     
+    <select id="faqboard" resultType="faqboardDTO">
+    	<![CDATA[
+    		select * from (select faq_num, subject, id, reg, rownum from mwfaqboard order by reg desc, faq_num desc) where rownum <=5
+    	]]>
+    </select>
+    
+    <select id="senseCount" resultType="senseCategoryDTO">
+   		select sense_detail_category, count(sense_category) count from
+   		 (select * from mwsense_category c left outer join mwscrap s on c.sense_detail_category = s.sense_category)
+   		  group by sense_detail_category order by sense_detail_category
+    </select>
+    
+    <select id="memberAgeCount" resultType="memberDTO">
+    	<![CDATA[
+	    	select age, count(age) as count from
+			    (select case when trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) >=20 and
+			                    trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) <30 then 20
+			                when trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) >=30 and
+			                    trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) <40 then 30
+			                when trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) >=40 and
+			                    trunc(MONTHS_BETWEEN(sysdate,to_date(birth_y,'yyyy'))/12+1) <50 then 40
+			                else 0
+			            end as age
+			    from mwmember)
+			group by age order by age
+		]]>
+    </select>
 	
 
 </mapper>
