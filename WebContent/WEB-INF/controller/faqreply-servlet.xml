@@ -12,10 +12,10 @@
 	   http://www.springframework.org/schema/aop/spring-aop-4.3.xsd"
 >
 
-	<bean id="faqreplyDAO" class="mw.faqreply.model.FaqReplyDAO">
+	<bean id="faqreplyDAO" class="mw.faqboard.model.FaqReplyDAO">
 		<constructor-arg ref="sqlSession" />
 	</bean> 
 
-	<context:component-scan base-package="mw.faqreply.model" />	
+	<context:component-scan base-package="mw.faqboard.model" />	
 
 </beans>

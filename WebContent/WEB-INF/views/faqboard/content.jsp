@@ -50,6 +50,26 @@ table {
 			</tr>
 
 		</table>
+	<br/>
+		<table style="width: 50%; text-align: center;" border="1" cellspacing="0" cellpadding="0">
+			<div>
+				<tr>
+					<td>댓글</td>
+					<td colspan="2"><textarea cols="10" rows="5" class="form-control" name="memo" placeholder="댓글을 입력하세요."></textarea></td>
+					<td><input type="button" value="입력" name="reply" id="reply" onclick="insertReply()"></td>				
+				</tr>	
+			</div>	
+			<div>
+				<tr>
+					<td colspan="2">작성자</td>
+					<td colspan="2">작성일</td>
+				</tr>
+				<tr>
+					<td colspan="3">내용</td>
+					<td><input type="button" value="삭제" name="deleteReply" id="deleteReply" onclick="deleteReply()"></td>
+				</tr>
+			</div>
+		</table>
 		
 		
 		<br />

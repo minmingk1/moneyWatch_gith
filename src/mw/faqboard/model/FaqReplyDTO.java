@@ -1,4 +1,4 @@
-package mw.faqreply.model;
+package mw.faqboard.model;
 
 import java.sql.Timestamp;
 
