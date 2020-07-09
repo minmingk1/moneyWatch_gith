@@ -396,13 +396,9 @@
                 <h5 class="card-category">chat</h5>
                 <h4 class="card-title"> Chat Messages </h4>
               </div>
-              <div>
-                
-					 <div id="chatScroll" style="width:90%; height:90%; overflow:auto; border:1px solid; margin: 5%;" >
+					 <div id="chatScroll" style="width:90%; height:500px; overflow:auto; border:1px solid; margin: 5%; border-radius: 10px;" >
 							<table id="msgs" width="100%" cellspacing="10" cellpadding="10"	></table>
 					</div>
-						
-              </div>
             </div>
           </div> 
           
@@ -466,7 +462,7 @@
       // chat
       var socket = io.connect("http://192.168.44.1:12345");  //서버연결
 		
-		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%">'
+		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%; border-radius: 10px;">'
 						+ '안녕하세요. 무엇을 도와드릴까요?'
 						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
 		
@@ -474,12 +470,12 @@
 			
 			//if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
 				
-				$('#msgs').append('<table width="100%"><tr><td style="width:5%"></td><td bgcolor="yellow" align="right" style="width:95%">' + msg.msg
-								+ '</td></tr><tr><td style="width:5%"></td><td bgcolor="skyblue" align="right" style="width:95%; font-size:70%">'
+				$('#msgs').append('<table width="100%"><tr><td style="width:5%"></td><td bgcolor="yellow" align="right" style="width:95%; border-radius: 10px;">' + msg.msg
+								+ '</td></tr><tr><td style="width:5%"></td><td bgcolor="skyblue" align="right" style="width:95%; font-size:70%; border-radius: 10px;">'
 								+ msg.id + ' :: ' + msg.nowTime
 								+ '</td></tr><tr><td></td></tr></table>');
 	
-				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%">' + msg.adminRe
+				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%; border-radius: 10px;">' + msg.adminRe
 						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
 	
 				$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));

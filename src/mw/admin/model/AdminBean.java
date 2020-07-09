@@ -58,7 +58,7 @@ public class AdminBean {
 				}
 			}else if(month == 2 || month == 4 || month == 6 || month == 8 || month == 9 || month == 11) {
 				if(day <= (i-1)) {
-					days[i] = year + "-" + (month-1) + "-" + (39-i);	
+					days[i] = year + "-" + (month-1) + "-" + (day+32-i);	
 				}else {
 					days[i] = year + "-" + month + "-" + (day+1-i);
 				}
@@ -69,7 +69,7 @@ public class AdminBean {
 					}else if(month == 3) {
 						days[i] = (year-1) + "-2-28";
 					}else {
-						days[i] = year + "-" + (month-1) +"-"+ (38-i);
+						days[i] = year + "-" + (month-1) +"-"+ (day+31-i);
 					}
 				}else {
 					days[i] = year + "-" + month + "-" + (day+1-i);
@@ -92,6 +92,8 @@ public class AdminBean {
 			model.addAttribute("leaveCount"+i, leaveCount[i]);	// ¿À´Ã(0),¾îÁ¦(1),... Å»ÅðÈ¸¿ø ¼ö
 			model.addAttribute("registerCount"+i, registerCount[i]);	// ¿À´Ã(0),¾îÁ¦(1),... µî·ÏÀÚ ¼ö
 			model.addAttribute("moneyioCount"+i, moneyioCount[i]);	// ¿À´Ã(0),¾îÁ¦(1),... ³»¿ªµî·Ï ¼ö
+			
+			System.out.println("days"+i + " : " + days[i]);
 		}
 
 		
