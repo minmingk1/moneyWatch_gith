@@ -24,7 +24,7 @@ public class MoneyioBean {
 	private MoneyioDAO dao = null;
 	
 	ArrayList list = new  ArrayList();
-	//����/���� �Է� ������
+
 		@RequestMapping("moneyioForm.mw")
 		public String moneyioForm(HttpSession session, MoneyioDTO dto, Model model) {
 		String id = (String)session.getAttribute("memId");
@@ -57,11 +57,11 @@ public class MoneyioBean {
 		@RequestMapping("remain.mw")
 		public String remain(My_cardDTO mdto, Model model) {
 			
-			System.out.println("dto.io_account : " + mdto.getAccount_num());
-			System.out.println("dto.io_id : " + mdto.getId());
+			//System.out.println("dto.io_account : " + mdto.getAccount_num());
+			//System.out.println("dto.io_id : " + mdto.getId());
 			
 			String io_remain = dao.allMoney(mdto);
-			System.out.println("io_remain: "+io_remain);
+			//System.out.println("io_remain: "+io_remain);
 			model.addAttribute("io_remain", io_remain);
 			return "/moneyio/remain";
 		}
@@ -74,20 +74,25 @@ public class MoneyioBean {
 			return "/moneyio/nbreadForm";
 		}
 		
-		//����/���� �Է� ������ �Է�
+
 		@RequestMapping("moneyioPro.mw")
-		public String moneyioPro(Reg_AccountDTO rdto, MoneyioDTO dto, NbreadDTO ndto, My_cardDTO mdto, HttpServletRequest request) {
+		public String moneyioPro(/* Reg_AccountDTO rdto, */ MoneyioDTO dto, NbreadDTO ndto,
+			/* My_cardDTO mdto, */HttpServletRequest request) {
 			int io_old_remain = Integer.parseInt(request.getParameter("io_old_remain"));
+			System.out.println("io_old_remain:"+io_old_remain);
 			
 			if(dto.getIo_set()==1) {
 				dto.setIo_remain(io_old_remain-dto.getIo_price());
 			}else {
 				dto.setIo_remain(io_old_remain+dto.getIo_price());
 			}
-		
+			
 			dao.insert(dto);
-			dao.balanceUpdate(mdto);
-			dao.balanceUpdateAccount(rdto);
+			System.out.println("reg: "+dto.getIo_reg_date()); 
+			
+			//dao.balanceUpdate(mdto);
+			//dao.balanceUpdateAccount(rdto);
+			
 			//System.out.println("dto io_num : "+dto.getIo_num());	
 			//ndto.setIo_num(dto.getIo_num());
 			//System.out.println("ndto io_num"+ndto.getIo_num());
@@ -103,11 +108,11 @@ public class MoneyioBean {
 					//System.out.println("ndto get n debtor"+ndto.getN_debtor());
 				}
 			}	
-			System.out.println(ndto.getN_debtor());
+			System.out.println("getN_debtor: "+ndto.getN_debtor());
 			return "/moneyio/moneyioPro";
 		}
 
-		//����/���� �Է� ������ ���� ������
+		
 		@RequestMapping("ioUpdateForm.mw")
 		public String ioUpdateForm(HttpSession session, Model model, HttpServletRequest request) {
 			
@@ -214,7 +219,7 @@ public class MoneyioBean {
 					//System.out.println("sum2: "+sum);
 				}
 				if(next_list.get(i).getCount3()==1) {
-					int next = next_list.get(i).getIo_price()/3;
+					int next = next_list.get(i).getIo_price()/5;
 					sum = sum + next;
 					//System.out.println("sum1"+sum);
 				}

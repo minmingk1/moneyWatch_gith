@@ -68,8 +68,7 @@
 						<span class="txt1">
 							Forgot
 						</span>
-						<a class="txt2" href="#">
-							Username</a> / <a class="txt2" href="pwFindForm.mw">Password?</a>
+						<a class="txt2" href="idFindForm.mw">Username</a> / <a class="txt2" href="pwFindForm.mw">Password?</a>
 					</div>
 
 					<div class="text-center p-t-136">

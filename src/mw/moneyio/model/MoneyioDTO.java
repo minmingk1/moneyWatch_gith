@@ -8,8 +8,9 @@ public class MoneyioDTO {
 	private int io_num; //sequence 번호
 	private String io_category; //카테고리
 	private String io_detail; //세부내역
-	private Timestamp io_reg_date;	//날짜
+	private String io_reg_date;	//날짜
 	private int io_price; //거래금액
+	private int io_old_remain; //거래계산 전 잔액
 	private int io_remain; //거래잔액
 	private String io_bank; //대상(은행/카드)
 	private String io_account;  //거래번호(계좌/카드번호)
@@ -37,10 +38,10 @@ public class MoneyioDTO {
 	public void setIo_detail(String io_detail) {
 		this.io_detail = io_detail;
 	}
-	public Timestamp getIo_reg_date() {
+	public String getIo_reg_date() {
 		return io_reg_date;
 	}
-	public void setIo_reg_date(Timestamp io_reg_date) {
+	public void setIo_reg_date(String io_reg_date) {
 		this.io_reg_date = io_reg_date;
 	}
 	public int getIo_price() {
@@ -99,6 +100,12 @@ public class MoneyioDTO {
 	}
 	public void setCount3(int count3) {
 		this.count3 = count3;
+	}
+	public int getIo_old_remain() {
+		return io_old_remain;
+	}
+	public void setIo_old_remain(int io_old_remain) {
+		this.io_old_remain = io_old_remain;
 	}
 	
 }
