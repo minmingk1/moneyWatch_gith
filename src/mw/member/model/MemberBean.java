@@ -87,6 +87,7 @@ public class MemberBean {
 	public String confirmId(String id,Model model) {
 		int check=dao.memberCheck(id);
 		model.addAttribute("check",check);
+		model.addAttribute("id",id);
 		
 		return "/member/confirmId";
 	}

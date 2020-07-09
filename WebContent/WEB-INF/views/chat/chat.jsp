@@ -23,7 +23,7 @@
 			
 		socket.on('response', function(msg){// 서버로부터 채팅메세지를 계속 받고있다. .. 
 			
-			//if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
+			if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
 				
 				$('#msgs').append('<table width="100%"><tr><td style="width:1000px"></td><td bgcolor="yellow" align="right" style="width:300px; border-radius: 10px;">' + msg.msg
 								+ '</td></tr><tr><td style="width:1000px"></td><td bgcolor="skyblue" align="right" style="width:300px; font-size:70%; border-radius: 10px;">' + msg.nowTime
@@ -36,7 +36,7 @@
 			
 				$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));
 				
-			//}
+			}
 
 		});
 		

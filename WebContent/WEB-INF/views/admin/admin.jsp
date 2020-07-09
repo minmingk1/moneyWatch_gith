@@ -64,40 +64,23 @@
           </li>
           <li>
             <a href="./#.mw">
-              <i class="now-ui-icons education_atom"></i>
-              <p>회원 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="./#.mw">
-              <i class="now-ui-icons location_map-big"></i>
-              <p>연령별 지출 관리</p>
+              <i class="now-ui-icons users_single-02"></i>
+              <p>Members</p>
             </a>
           </li>
           <li>
             <a href="./#.mw">
               <i class="now-ui-icons ui-1_bell-53"></i>
-              <p>소비패턴 분석 관리</p>
+              <p>FAQ Board</p>
             </a>
           </li>
           <li>
             <a href="./#.mw">
-              <i class="now-ui-icons users_single-02"></i>
-              <p>카드 목록 / 혜택 관리</p>
+              <i class="now-ui-icons location_map-big"></i>
+              <p>Sense Board</p>
             </a>
           </li>
-          <li>
-            <a href="./#.mw">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>챗봇 관리</p>
-            </a>
-          </li>
-          <li>
-            <a href="./#.mw">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>게시판 관리</p>
-            </a>
-          </li>
+          
           <li class="active-pro">
             <a href="./#.mw">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
