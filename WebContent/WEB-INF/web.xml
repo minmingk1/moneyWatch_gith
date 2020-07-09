@@ -42,6 +42,7 @@
 				/WEB-INF/controller/email-servlet.xml
 				/WEB-INF/controller/main-servlet.xml
 				/WEB-INF/controller/admin-servlet.xml
+				/WEB-INF/controller/faqreply-servlet.xml
 			</param-value>
 		</init-param>
 	</servlet>

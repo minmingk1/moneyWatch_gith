@@ -107,7 +107,8 @@
 					      	<input type="text" class="form-control" pattern="#,###" value="${n_price}" aria-label="Amount (to the nearest dollar)" disabled /> 
 					    </td>
 				    </tr>
-	
+					</c:if>
+			    </c:forEach>					
 				    <tr>
 				    	<td colspan="3"></td>
 				    	<th style="text-align:right;">합계 :
@@ -117,9 +118,6 @@
 				    		 
 				    	</th>
 				    </tr>
-					</c:if>
-			    
-			    </c:forEach>
 			    </table>
 			    </div>
 		   		</div>
