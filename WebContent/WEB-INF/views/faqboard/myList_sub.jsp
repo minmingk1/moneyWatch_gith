@@ -15,9 +15,9 @@
 	<h3 style="text-align: center;">나의 글 [${count}]</h3>
 
 	<c:if test="${sessionScope.memId != null}">
-		<input type="button" class="btn btn-primary" value="글쓰기"
+	<!-- 	<input type="button" class="btn btn-primary" value="글쓰기"
 			onclick="window.location='/moneyWatch/faqWriteForm.mw'"
-			style="float: right; margin-right: 25%;">
+			style="float: right; margin-right: 25%;"> -->
 		<!-- <input type="button" class="btn btn-primary" value="로그아웃" onclick="window.location='/moneyWatch/logout.mw'" style="float:right; margin-right:1%;" > -->
 	</c:if>
 

@@ -298,12 +298,10 @@ public class MoneyioBean {
 			ndto.setN_check(n_check);
 			nlist.add(ndto);
 		}else {
-		
 			String category = nlist.get(1).getN_category();
 			String nSum = dao.nSum(ioNum);
 			model.addAttribute("category", category);
 			model.addAttribute("nSum", nSum);
-			
 		}
 		MoneyioDTO dto = dao.moneyioListDetail(id, ioNum);
 		model.addAttribute("dto", dto);

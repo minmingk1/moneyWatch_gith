@@ -16,6 +16,7 @@
 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
   <meta charset="utf-8" />
@@ -37,6 +38,7 @@
     
 </head>
 
+<!-- ####################################### 좌측 메뉴 ####################################################### -->
 <body class="">
 <input type="hidden" id='test' value='test01' />
   <div class="wrapper ">
@@ -105,6 +107,9 @@
         </ul>
       </div>
     </div>
+    
+    
+<!-- ####################################### 상단 메뉴(검색/아이콘) ####################################################### -->    
     <div class="main-panel" id="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent  bg-primary  navbar-absolute">
@@ -171,10 +176,11 @@
       </nav>
       <!-- End Navbar -->
       <div class="panel-header panel-header-lg">
-        <canvas id="bigDashboardChart"></canvas>
+        <canvas id="bigDashboardChart"></canvas>	<!-- Visitor Chart 출력 -->
       </div>
       <div class="content">
         <div class="row">
+        <!-- ####################################### 탈퇴 회원 차트 ####################################################### -->
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
@@ -204,6 +210,7 @@
               </div>
             </div>
           </div>
+          <!-- ####################################### 등록 회원 차트 ####################################################### -->
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
@@ -233,6 +240,7 @@
               </div>
             </div>
           </div>
+          <!-- ####################################### 내역 등록 차트 ####################################################### -->
           <div class="col-lg-4 col-md-6">
             <div class="card card-chart">
               <div class="card-header">
@@ -253,186 +261,148 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <div class="card  card-tasks">
-              <div class="card-header ">
-                <h5 class="card-category">Backend development</h5>
-                <h4 class="card-title">Tasks</h4>
-              </div>
-              <div class="card-body ">
-                <div class="table-full-width table-responsive">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" checked>
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="text-left">Sign contract for "What are conference organizers afraid of?"</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox">
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="text-left">Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="form-check">
-                            <label class="form-check-label">
-                              <input class="form-check-input" type="checkbox" checked>
-                              <span class="form-check-sign"></span>
-                            </label>
-                          </div>
-                        </td>
-                        <td class="text-left">Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                        </td>
-                        <td class="td-actions text-right">
-                          <button type="button" rel="tooltip" title="" class="btn btn-info btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Edit Task">
-                            <i class="now-ui-icons ui-2_settings-90"></i>
-                          </button>
-                          <button type="button" rel="tooltip" title="" class="btn btn-danger btn-round btn-icon btn-icon-mini btn-neutral" data-original-title="Remove">
-                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="card-footer ">
-                <hr>
-                <div class="stats">
-                  <i class="now-ui-icons loader_refresh spin"></i> Updated 3 minutes ago
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- ####################################### 최근 등록 FAQ 게시글 정보 (표)  ####################################################### -->
           <div class="col-md-6">
             <div class="card">
               <div class="card-header">
-                <h5 class="card-category">All Persons List</h5>
-                <h4 class="card-title"> Employees Stats</h4>
+                <h5 class="card-category">FAQ Board</h5>
+                <h4 class="card-title"> Recent FAQ info </h4>
               </div>
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table">
                     <thead class=" text-primary">
                       <th>
-                        Name
+                        No.
                       </th>
                       <th>
-                        Country
+                        Title
                       </th>
                       <th>
-                        City
+                        Writer
                       </th>
-                      <th class="text-right">
-                        Salary
+                      <th>
+                        Date
                       </th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          Dakota Rice
-                        </td>
-                        <td>
-                          Niger
-                        </td>
-                        <td>
-                          Oud-Turnhout
-                        </td>
-                        <td class="text-right">
-                          $36,738
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td class="text-right">
-                          $23,789
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Sage Rodriguez
-                        </td>
-                        <td>
-                          Netherlands
-                        </td>
-                        <td>
-                          Baileux
-                        </td>
-                        <td class="text-right">
-                          $56,142
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Doris Greene
-                        </td>
-                        <td>
-                          Malawi
-                        </td>
-                        <td>
-                          Feldkirchen in Kärnten
-                        </td>
-                        <td class="text-right">
-                          $63,542
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Mason Porter
-                        </td>
-                        <td>
-                          Chile
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-right">
-                          $78,615
-                        </td>
-                      </tr>
+                    	<c:forEach var="faq" items="${faqList}">
+                    		<tr>
+                    			<td>
+                    				${faq.faq_num}
+                    			</td>
+                    			<td>
+                    				<a href="/moneyWatch/faqContent.mw?qnum=${faq.faq_num}">${faq.subject}</a>
+                    			</td>
+                    			<td>
+                    				${faq.id}
+                    			</td>
+                    			<td>
+                    				${faq.reg}
+                    			</td>
+                    		</tr>                    	
+                    	</c:forEach>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
           </div>
+          <!-- ####################################### 금융지식 카테고리 별 스크랩 수 (표) ####################################################### -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">Financial knowledge</h5>
+                <h4 class="card-title">Scrap by Sense Category</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Category
+                      </th>
+                      <th>
+                        Count
+                      </th>
+                      <th>
+                        Category
+                      </th>
+                      <th>
+                        Count
+                      </th>
+                    </thead>
+                    <tbody>                    
+                    	<c:forEach varStatus="idx" begin="0" end="3" step="1"> <!-- index 0~3번 / 4번 반복 -->
+                    		<tr>            			
+	                    		<c:forEach var="ss" items="${senseCount}" begin="${idx.index}" end="7" step="4"> <!-- index번호시작, +4 / 2번씩 반복 -->
+	                    			<td>
+	                    				${ss.sense_detail_category}
+	                    			</td>
+	                    			<td>
+	                    				${ss.count} 개
+	                    			</td>                    					
+	                    		</c:forEach>                    		
+                    		</tr>                    	
+                    	</c:forEach>                    		
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      <div class="row">
+         <!-- ####################################### 연령별 회원 수 (표)  ####################################################### -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">Members</h5>
+                <h4 class="card-title"> Age Count </h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Age
+                      </th>
+                      <th>
+                        Count
+                      </th>
+                    </thead>
+                    <tbody>
+                    	<c:forEach var="age" items="${memberAgeCount}" begin="1">
+                    		<tr>
+                    			<td>
+                    				${age.age} 대
+                    			</td>
+                    			<td>
+                    				${age.count} 명
+                    			</td>
+                    		</tr>                    	
+                    	</c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <!-- ####################################### 챗봇 (표)  ####################################################### -->
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-category">chat</h5>
+                <h4 class="card-title"> Chat Messages </h4>
+              </div>
+					 <div id="chatScroll" style="width:90%; height:500px; overflow:auto; border:1px solid; margin: 5%; border-radius: 10px;" >
+							<table id="msgs" width="100%" cellspacing="10" cellpadding="10"	></table>
+					</div>
+            </div>
+          </div> 
+          
+          
         </div>
       </div>
       <footer class="footer">
@@ -482,10 +452,38 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/moneyWatch/assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="/moneyWatch/assets/demo/demo.js?v=1.5.0" type="text/javascript"></script>
+  <script src="/moneyWatch/js/jquery-1.10.2.min.js"></script>
+  <script src="/moneyWatch/js/socket.io.js"></script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       demo.initDashboardPageCharts();
+      
+      // chat
+      var socket = io.connect("http://192.168.44.1:12345");  //서버연결
+		
+		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%; border-radius: 10px;">'
+						+ '안녕하세요. 무엇을 도와드릴까요?'
+						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
+		
+		socket.on('response', function(msg){// 서버로부터 채팅메세지를 계속 받고있다. .. 
+			
+			//if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
+				
+				$('#msgs').append('<table width="100%"><tr><td style="width:5%"></td><td bgcolor="yellow" align="right" style="width:95%; border-radius: 10px;">' + msg.msg
+								+ '</td></tr><tr><td style="width:5%"></td><td bgcolor="skyblue" align="right" style="width:95%; font-size:70%; border-radius: 10px;">'
+								+ msg.id + ' :: ' + msg.nowTime
+								+ '</td></tr><tr><td></td></tr></table>');
+	
+				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%; border-radius: 10px;">' + msg.adminRe
+						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
+	
+				$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));
+				
+			//}
+      
+		});
+      
 
     });
     
