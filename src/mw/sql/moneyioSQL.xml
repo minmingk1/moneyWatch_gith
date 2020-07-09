@@ -48,9 +48,9 @@
 	
 	<!-- 지출/수입 내역 update -->
 	<update id="update" parameterType="moneyioDTO">
-		update mwmoneyio set io_category = #{io_category}, io_detail = #{io_detail}, io_reg_date = to_date(#{io_reg_date}, 'YYYY-MM-DD'),
-		io_price = #{io_price},io_remain = #{io_remain}, io_N_div = #{io_N_div}, io_set = #{io_set}
-		where io_num = #{io_num}
+		update mwmoneyio set io_category = #{io_category}, io_detail = #{io_detail}, to_date(#{io_reg_date}, 'YYYY-MM-DD'),
+		io_price = #{io_price},io_remain = #{io_remain}, io_bank=#{io_bank}, io_account=#{io_account},io_N_div = #{io_N_div}, io_set = #{io_set}
+		where io_num >= #{io_num} and id=#{id} and io_account=#{io_account}
 	</update>
 
 	<delete id="io_delete" parameterType="int">
