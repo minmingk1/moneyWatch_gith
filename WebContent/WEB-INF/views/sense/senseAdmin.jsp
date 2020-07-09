@@ -11,27 +11,36 @@
 <script src="js/sense/sense.js"></script>
 
 <title>Sense 관리</title>
-
+<style>
+.left{
+	float:left;
+	margin-left: 5%;
+}
+.right{
+	float:right;
+	margin-right: 5%;
+}
+</style>
 </head>
 <body>
-&nbsp
+<br/>
 	<div align="center">
-		<div class="left-box" style="float: left; margin-right:10px;">
+		<div class="left">
 			<h2 align="center" >Sense관리</h2>
-			&nbsp
+&nbsp;			
 			<div id="video_url">
 				<iframe width="850" height="478" src="https://www.youtube.com/embed/${video.sense_url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br/>
 			</div>
 		</div>
 		
 			<!-- 카테고리 리스트 -->	
-		<div class="right-box" style="float: left;">
+		<div class="right">
 			<div align=center>
-				<table class="btn-group btn-group-toggle" data-toggle="buttons" >
+				<table style="margin:0 auto;">
 					<tr>
 						<c:forEach var="category" items="${ category }">
-							<td class="btn btn-primary" align = center onclick="categoryAdmin(${ category.num })">
-								${ category.sense_detail_category }
+							<td>
+								<input type="button" class="btn btn-outline-primary" onclick="categoryAdmin(${ category.num })" value="${ category.sense_detail_category }"/>&nbsp;		
 							</td>								
 						</c:forEach>
 						<td class="btn btn-danger" onclick="location.href='/moneyWatch/senseWriteForm.mw'" style="float:right;">
@@ -40,7 +49,7 @@
 					</tr>
 				</table>
 			</div>
-			&nbsp
+			<br/>
 			<div>
 				<div id="mainList" style="overflow:auto; width:800px; height:500px;"> <!-- 기본 메인에서 리스트를 가져오고/ 카테고리 선택 시 ajax를 통해 리스트를 가져옴 -->
 					<c:forEach items="${ list }" var="list">	
@@ -67,4 +76,9 @@
 		</div>
 	</div>
 </body>
+<div class="jumbotron text-center" style="margin-bottom:0; margin-top:40%;">
+   <p>mw 주식회사  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   전화번호 02) 1111-1111 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="siteMap.mw">사이트맵</a></p>
+</div>
 </html>

@@ -26,7 +26,7 @@
 </head>
 <br /><br/>
 <body>
-	<h1 align="center">금융 SenseUp!!</h1> <!-- a태그넣기  -->
+	<h1 align="center">금융 SenseUp!!</h1> 
 <br/>
 	
 	<div class="left">

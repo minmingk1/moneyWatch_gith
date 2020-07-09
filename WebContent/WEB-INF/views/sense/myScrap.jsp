@@ -13,27 +13,37 @@
 <script src="js/sense/sense.js"></script>
 
 <title>My scrap page</title>
-
+<style>
+.left{
+	float:left;
+	margin-left: 5%;
+}
+.right{
+	float:right;
+	margin-right: 5%;
+}
+</style>
 </head>
-<body><br/>
+<body>
+<br/>
+	<h1 align="center">My Scrap</h1>
+<br/>
 
-	<h1 align="center">My Scrap</h1> <!-- a태그넣기  -->
-	<br />
 	<div align="center">
-		<div class="left-box" style="float: left; margin-right:10px;">
-	<div id="my_video">
-
+		<div class="left">
+			<div id="my_video">
+				<!-- 리스트 클릭시 영상 ajax로 호출 -->
 			</div>
 		</div>
 		
 			<!-- 카테고리 리스트 -->	
-		<div class="right-box" style="float: right; margin-right:5%;">
+		<div class="right">
 			<div align=center>
-				<table class="btn-group btn-group-toggle" data-toggle="buttons" >
+				<table style="margin:0 auto;">
 					<tr>
 						<c:forEach var="category" items="${ category }">
 							<td>
-								<input type="button" class="btn btn-outline-info" class="btn btn-primary" align = "center" value="${ category.sense_detail_category }" onclick="myscrapCategory(${ category.num })">	
+								<input type="button" class="btn btn-outline-info" class="btn btn-primary"  value="${ category.sense_detail_category }" onclick="myscrapCategory(${ category.num })">&nbsp;		
 							</td>								
 						</c:forEach>
 					</tr>
