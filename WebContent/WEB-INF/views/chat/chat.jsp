@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <%@ include file = "/WEB-INF/views/main/top.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,29 +15,29 @@
 	$(document).ready(function() { // 계속 실행
 		var socket = io.connect("http://192.168.0.76:12345");  //서버연결
 			
-		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:300px; border-radius: 10px; ">'
+		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="color:black; width:95%; border-radius: 10px; ">'
 						+ '안녕하세요. 무엇을 도와드릴까요?'
-						+ '</td><td style="width:1000px"></td></tr><tr><td></td></tr></table>');
+						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
 		
 		$("#chat").focus();
 			
 			
 		socket.on('response', function(msg){// 서버로부터 채팅메세지를 계속 받고있다. .. 
 			
-			//if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
+			if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
 				
-				$('#msgs').append('<table width="100%"><tr><td style="width:1000px"></td><td bgcolor="yellow" align="right" style="width:300px; border-radius: 10px;">' + msg.msg
-								+ '</td></tr><tr><td style="width:1000px"></td><td bgcolor="skyblue" align="right" style="width:300px; font-size:70%; border-radius: 10px;">' + msg.nowTime
+				$('#msgs').append('<table width="100%"><tr><td style="width:5%"></td><td bgcolor="yellow" align="right" style="color:black; width:95%; border-radius: 10px;">' + msg.msg
+								+ '</td></tr><tr><td style="width:5%"></td><td bgcolor="skyblue" align="right" style="width:95%; font-size:70%; border-radius: 10px;">' + msg.nowTime
 								+ '</td></tr><tr><td></td></tr></table>');
 	
-				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:300px; border-radius: 10px; ">' + msg.adminRe
-						+ '</td><td style="width:1000px"></td></tr><tr><td></td></tr></table>');
+				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="color:black; width:95%; border-radius: 10px; ">' + msg.adminRe
+						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
 	
 			
 			
 				$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));
 				
-			//}
+			}
 
 		});
 		

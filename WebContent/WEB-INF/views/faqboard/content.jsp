@@ -45,11 +45,13 @@ table {
 			<tr>
 				<td colspan="4">글내용</td>
 			</tr>
-			<tr>
+			<tr style="height:120px;">
 				<td colspan="4">${article.content}</td>
 			</tr>
 
 		</table>
+		
+		
 		<br />
 		<br />
 		<!-- 페이지 num url과 함께 보냄 -->

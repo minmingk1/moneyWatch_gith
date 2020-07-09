@@ -37,7 +37,15 @@
 	<!-- 종합 -->
 		<table class="table table-hover" border = "1" style="width:30%">
 			<tr>
-				<td colspan="2">
+				<td>
+					<select class="form-control" id="myAddr" name="myAddr" onchange="myAddr()">
+					
+						<option value="all" selected>전체</option>
+						<option value="inMoney">수입</option>
+						<option value="outMoney">지출</option>			
+					</select>
+				</td>
+				<td>
 					<select class="form-control" id="filter" name="filter" onchange="filter()">
 						<option value="all" selected>전체</option>
 						<option value="inMoney">수입</option>
@@ -62,37 +70,25 @@
 	<!-- 내역 출력 -->
 	 <div id="ioList">
 		<c:forEach var="ioListval" items="${moneyioList}">
-			<table class="table table-hover" border = "1" style="width:50%; text-align:center;" >
-<%-- 
-				<tr>
-					<td colspan="5">Number : ${ioListval.io_num}</td>
-				</tr>
---%>		
+			<table class="table table-hover" border = "1" style="width:40%; text-align:center;" >
 				<tr class="table-info">
-					<td width="300" onclick="detail(${ioListval.io_num})">
+					<td width="300px" onclick="detail(${ioListval.io_num})">
 						${ioListval.io_reg_date}
 					</td>
-					<td width="100" onclick="detail(${ioListval.io_num})">
-						거래 금액
-					</td>
-					<td width="100"  onclick="detail(${ioListval.io_num})">
-						<fmt:setLocale value="ko"/>
-				    	<fmt:formatNumber type="text" value="${ioListval.io_price}" pattern="#,###" var="price"/>
-				      	${price}				
+					<td width="300px" onclick="detail(${ioListval.io_num})">
+						${ioListval.io_detail}
 					</td>
 
 				</tr>
 				<tr>
-					<td width="300" onclick="detail(${ioListval.io_num})">
-						${ioListval.io_detail}
+
+					<td width="100px" onclick="detail(${ioListval.io_num})">
+						거래 금액
 					</td>
-					<td onclick="detail(${ioListval.io_num})">
-						남은 잔액
-					</td>
-					<td onclick="detail(${ioListval.io_num})">	
+					<td width="100px"  onclick="detail(${ioListval.io_num})">
 						<fmt:setLocale value="ko"/>
-				    	<fmt:formatNumber type="text" value="${ioListval.io_remain}" pattern="#,###" var="remain"/>
-				      	${remain}			
+				    	<fmt:formatNumber type="text" value="${ioListval.io_price}" pattern="#,###" var="price"/>
+				      	${price}				
 					</td>
 				</tr>
 				<tr>

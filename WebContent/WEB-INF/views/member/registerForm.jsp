@@ -205,6 +205,8 @@
 		
 			<input type="submit" class="btn btn-primary"  name="confirm" value="등록">
 			<input type="reset" class="btn btn-primary"  name="reset" value="다시입력">
+			<input type="button" class="btn btn-primary"  value="취소" onclick="window.location='loginForm.mw'">
+			
 		
 		</td>
 		</tr>	

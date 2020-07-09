@@ -19,7 +19,7 @@
 	<!-- 내역 출력 -->
 	 <div id="ioList">
 		<c:forEach var="ioListval" items="${moneyioList}">
-			<table  class="table table-hover" border = "1" style="width:50%; text-align:center;">
+			<table  class="table table-hover" border = "1" style="width:40%; text-align:center;">
 <%-- 
 				<tr>
 					<td colspan="5">Number : ${ioListval.io_num}</td>
@@ -29,23 +29,18 @@
 					<td width="300" onclick="detail(${ioListval.io_num})">
 						${ioListval.io_reg_date}
 					</td>
+					<td width="300" onclick="detail(${ioListval.io_num})">
+						${ioListval.io_detail}
+					</td>
+				</tr>
+				<tr>
 					<td width="100" onclick="detail(${ioListval.io_num})">
 						거래 금액
 					</td>
 					<td width="100" onclick="detail(${ioListval.io_num})">					
 						<fmt:formatNumber value="${ioListval.io_price}" pattern="#,###"/> 원
 					</td>
-				</tr>
-				<tr>
-					<td width="300" onclick="detail(${ioListval.io_num})">
-						${ioListval.io_detail}
-					</td>
-					<td width="100" onclick="detail(${ioListval.io_num})">
-						남은 잔액
-					</td>
-					<td width="100" onclick="detail(${ioListval.io_num})">
-						<fmt:formatNumber value="${ioListval.io_remain}" pattern="#,###"/> 원
-					</td>
+
 				</tr>
 				<tr>
 					<table scope="row" width="500" border="1" colspan="5" id="detail${ioListval.io_num}">
