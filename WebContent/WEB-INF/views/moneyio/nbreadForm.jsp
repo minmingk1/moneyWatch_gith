@@ -4,13 +4,13 @@
 
 
 
-<table border="0" style="align:center;" width="30%" id="n_people">
+<table border="0" style="align:center; text-align:center;" width="30%" id="n_people">
 
 <c:forEach var="n" begin="1" end="${nPeople}" step="1">
 	<tr>
-			<td><label for="text">&nbsp&nbsp&nbsp&nbsp이름</label></td>
+			<td><label for="text">이름</label></td>
 			<td><input type="text" class="form-control" name="n_debtor"/>
-			<td><label for="text">&nbsp&nbsp&nbsp&nbspN빵 금액</label></td>
+			<td><label for="text">N빵 금액</label></td>
 			<td><input type="text" class="form-control" name="n_price"/>
 	</tr>
 </c:forEach>

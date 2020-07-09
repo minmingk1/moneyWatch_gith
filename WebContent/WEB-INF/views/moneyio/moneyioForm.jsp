@@ -112,17 +112,17 @@
 	</script>
 <br><br>	
 <body>
-	<form action="/moneyWatch/moneyioPro.mw">
+	<form action="moneyioPro.mw">
 	<div class="form-group">
 		<h3 style="text-align:center;">
 			지출 / 수입 내역 등록하기
-			<input type="hidden" name="id" value="${memId}" id="id" />
+			<input type="hidden" name="id" value="${sessionScope.memId}" id="id" />
 			
 		</h3><br/>
 	
 		<table border="1" align="center" width="60%">
 				<tr>
-					<td><label for="Select">&nbsp&nbsp&nbsp&nbsp카테고리</label></td>
+					<td><label for="Select">&nbsp;&nbsp;&nbsp;&nbsp;카테고리</label></td>
 					<td><select class="form-control" name="io_category">
 							<option value="none">--선택--</option>
 							<option value="카페/간식">카페/간식</option>
@@ -197,7 +197,7 @@
 		</div>
 		<br /><br />
 		
-		<div id="n_bread" style="text-align:center;display: none;">
+		<div id="n_bread" style="text-align:center; display: none;">
 			<h5 >N빵 상세 내역 기입하기</h5><br />
 			<table border="1" align="center" width="40%">
 				<tr>

@@ -76,8 +76,8 @@ public class MoneyioBean {
 		
 
 		@RequestMapping("moneyioPro.mw")
-		public String moneyioPro(/* Reg_AccountDTO rdto, */ MoneyioDTO dto, NbreadDTO ndto,
-			/* My_cardDTO mdto, */HttpServletRequest request) {
+		public String moneyioPro( Reg_AccountDTO rdto,  MoneyioDTO dto, NbreadDTO ndto,
+			My_cardDTO mdto, HttpServletRequest request) {
 			int io_old_remain = Integer.parseInt(request.getParameter("io_old_remain"));
 			System.out.println("io_old_remain:"+io_old_remain);
 			
@@ -90,12 +90,12 @@ public class MoneyioBean {
 			dao.insert(dto);
 			System.out.println("reg: "+dto.getIo_reg_date()); 
 			
-			//dao.balanceUpdate(mdto);
-			//dao.balanceUpdateAccount(rdto);
-			
+			dao.balanceUpdate(mdto);
+			dao.balanceUpdateAccount(rdto);
+			ndto.setIo_num(dto.getIo_num());
+			ndto.setN_category(dto.getIo_category());
 			//System.out.println("dto io_num : "+dto.getIo_num());	
-			//ndto.setIo_num(dto.getIo_num());
-			//System.out.println("ndto io_num"+ndto.getIo_num());
+			//System.out.println("getIo_N_div: "+dto.getIo_N_div());
 			
 			if(dto.getIo_N_div()>0) {
 				String[] n_debtor = request.getParameterValues("n_debtor");
@@ -117,7 +117,6 @@ public class MoneyioBean {
 		public String ioUpdateForm(HttpSession session, Model model, HttpServletRequest request) {
 			
 			String id = (String)session.getAttribute("memId"); 
-		/* String id = "minmingk1"; */
 			int io_num = Integer.parseInt(request.getParameter("ioNum"));
 
 			MoneyioDTO dto = dao.ioUpdateForm(io_num);
@@ -131,7 +130,7 @@ public class MoneyioBean {
 			return "/moneyio/ioUpdateForm";
 		}
 		
-		//����/���� �Է� ������ update
+
 		@RequestMapping("ioUpdatePro.mw")
 		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
 			int io_old_price = Integer.parseInt(request.getParameter("io_old_price"));
@@ -168,7 +167,7 @@ public class MoneyioBean {
 			return "/moneyio/ioUpdatePro";
 		}
 		
-		//���ɴ뺰 ���� chart ������ 
+
 		@RequestMapping("ageChart.mw")
 		public String ageChart20(Model model, MoneyioDTO dto) {
 			List<MoneyioDTO> chart_list20 = new ArrayList<MoneyioDTO>();
@@ -185,7 +184,7 @@ public class MoneyioBean {
 			return "/moneyio/ageChart";
 		}
 		
-		//���μҺ����Ϻм�
+
 		@RequestMapping("ptEstimate.mw")
 		public String ptEstimate(HttpSession session, Model model) {
 			
