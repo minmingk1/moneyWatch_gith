@@ -111,8 +111,8 @@
 						<td>
 							<fmt:setLocale value="ko"/>
 							<fmt:formatNumber type="text" value="${dto.io_price}" pattern="#,###" var="io_price"/>
-							<input type = "hidden" name="io_old_price" value="${dto.io_price}" />
-						<input type="text" class="form-control" name="io_price" placeholder="${io_price}"></td>
+							<%-- <input type = "hidden" name="io_price" value="${dto.io_price}" /> --%>
+							<input type="text" class="form-control" name="io_price" placeholder="${io_price}"></td>
 						<td><label for="text">&nbsp;&nbsp;&nbsp;&nbsp;거래 잔액</label></td>
 						<td colspan="2">
 							<fmt:setLocale value="ko"/>
@@ -122,15 +122,13 @@
 				</tr>
 				<tr>
 						<td><label for="exampleTextarea">&nbsp;&nbsp;&nbsp;&nbsp;세부내역</label></td>
-						<td colspan="1"><textarea class="form-control"
-								name="io_detail" rows="3" >${dto.io_detail}</textarea></td>
+						<td colspan="1"><textarea class="form-control" name="io_detail" rows="3" >${dto.io_detail}</textarea></td>
 						<td><label for="text">&nbsp;&nbsp;&nbsp;&nbsp;날짜</label>
 							<input type="date" class="form-control" name="io_reg_date" value="${dto.io_reg_date}"></td>
 						<td colspan="2"><div class="custom-control custom-switch">
-						
-						<input type="checkbox" class="custom-control-input" id="customSwitch1" value="${dto.io_N_div}" onclick="N_divFunction()" />&nbsp;&nbsp;
-						<label class="custom-control-label" for="customSwitch1">&nbsp;&nbsp;N빵 Check</label> 
-						</td>
+						<input type="checkbox" class="custom-control-input" id="customSwitch1" value="${dto.io_N_div}" onclick="N_divFunction()" />
+						&nbsp;&nbsp;
+						<label class="custom-control-label" for="customSwitch1">&nbsp;&nbsp;N빵 Check</label> </td>
 				</tr>
 
 				<tr>

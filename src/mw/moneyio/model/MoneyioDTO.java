@@ -16,6 +16,7 @@ public class MoneyioDTO {
 	private String io_account;  //거래번호(계좌/카드번호)
 	private String id; //회원ID
 	private int io_N_div; //N빵 0/N
+	private int io_old_set;
 	private int io_set; //구분 0/1(수입/지출)
 	private String io_age; //나이
 	private int count3; //예상지출액을 위한 카테고리 카운트
@@ -107,6 +108,12 @@ public class MoneyioDTO {
 	}
 	public void setIo_old_remain(int io_old_remain) {
 		this.io_old_remain = io_old_remain;
+	}
+	public int getIo_old_set() {
+		return io_old_set;
+	}
+	public void setIo_old_set(int io_old_set) {
+		this.io_old_set = io_old_set;
 	}
 	
 }
