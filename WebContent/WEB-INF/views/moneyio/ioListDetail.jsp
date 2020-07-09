@@ -108,18 +108,18 @@
 					    </td>
 				    </tr>
 	
-				    <tr>
-				    	<td colspan="3"></td>
-				    	<th style="text-align:right;">합계 :
-				    	
-				    		<fmt:setLocale value="ko"/>
-				    		<fmt:formatNumber type="text" value="${nSum}" pattern="#,###"/>
-				    		 
-				    	</th>
-				    </tr>
+
 					</c:if>
 			    
 			    </c:forEach>
+			    	<tr>
+				    	<td colspan="3"></td>
+				    	<th style="text-align:right;">합계 :
+				    	
+				    	<fmt:setLocale value="ko"/>
+				    	<fmt:formatNumber type="text" value="${nSum}" pattern="#,###"/>	 
+				    	</th>
+				    </tr>
 			    </table>
 			    </div>
 		   		</div>
