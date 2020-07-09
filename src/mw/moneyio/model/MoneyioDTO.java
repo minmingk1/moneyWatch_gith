@@ -39,7 +39,8 @@ public class MoneyioDTO {
 		this.io_detail = io_detail;
 	}
 	public String getIo_reg_date() {
-		return io_reg_date;
+		
+		return io_reg_date.substring(0,10);
 	}
 	public void setIo_reg_date(String io_reg_date) {
 		this.io_reg_date = io_reg_date;

@@ -41,7 +41,7 @@
 	   {"id":'<c:out value="${olist.id}" />'
 	   ,"url":'out_detail.mw?io_reg_date='+'<c:out value="${olist.io_reg_date}" />'
 	   ,"title":'<fmt:formatNumber value="${olist.io_price}" pattern="#,###"/>'
-	   ,"start":'<fmt:formatDate value="${olist.io_reg_date}" pattern="yyyy-MM-dd"/>'
+	   ,"start":'<c:out value="${olist.io_reg_date}" />'
 	   ,"color":'#FF9696'
 	   },
 	
@@ -51,7 +51,7 @@
     {"id":'<c:out value="${ilist.id}" />'
     ,"url":'in_detail.mw?io_reg_date='+'<c:out value="${ilist.io_reg_date}" />'
     ,"title":'<fmt:formatNumber value="${ilist.io_price}" pattern="#,###"/>'
-    ,"start":'<fmt:formatDate value="${ilist.io_reg_date}" pattern="yyyy-MM-dd"/>'
+    ,"start":'<c:out value="${ilist.io_reg_date}" />'
     ,"color":'#91D8FA'
     }<c:if test="${!status.last}">,</c:if>
 

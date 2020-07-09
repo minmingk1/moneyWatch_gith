@@ -97,7 +97,7 @@ public class CalendarBean {
 		String io_reg_date = request.getParameter("start_time"); // ÁöÃâÀÏ
 		
 		outlist = dao.out_detail(id,io_reg_date);
-		
+	
 		model.addAttribute("outlist",outlist);
 		
 		return "/calendar/out_detail";
