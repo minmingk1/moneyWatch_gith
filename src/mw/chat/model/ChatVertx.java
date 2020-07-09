@@ -1,5 +1,6 @@
 package mw.chat.model;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +27,7 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 	
 	
 	SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss");
-	
+	DecimalFormat formatter = new DecimalFormat("###,###.##");
 	
 	// moneyioDAO, DTO, List 생성(호출)
 	@Autowired
@@ -109,7 +110,7 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 										userMsg.contains("얼마") || userMsg.contains("돈")) ) {
 			// 남은 잔액 알림							
 							moDTO = (MoneyioDTO)moAllList.get(0);		// 가장 최근 내역
-							event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + moDTO.getIo_remain()  + "원 입니다.");		
+							event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + formatter.format(moDTO.getIo_remain())  + " 원 입니다.");		
 							
 						}else if((userMsg.contains("어제") || userMsg.contains("전날")
 								 || userMsg.contains("하루 전") || userMsg.contains("1일 전")) &&
@@ -125,7 +126,7 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 							
 							before_remain = remainAgo_2 - remainAgo_1;	// 1일 전에 지출한 잔액
 							
-							event.putString("adminRe", id + " 님은 어제 사용하신 금액 " + before_remain  + "원 입니다.");		
+							event.putString("adminRe", id + " 님은 어제 사용하신 금액 " + formatter.format(before_remain)  + "원 입니다.");		
 							
 						}else if((userMsg.contains("그제") || userMsg.contains("이튿날")
 								 || userMsg.contains("그저께") || userMsg.contains("2일 전")) &&
@@ -141,7 +142,7 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 							
 							before_remain = remainAgo_2 - remainAgo_1;	// 1일 전에 지출한 잔액
 							
-							event.putString("adminRe", id + " 님은 어제 사용하신 금액 " + before_remain  + "원 입니다.");		
+							event.putString("adminRe", id + " 님은 어제 사용하신 금액 " + formatter.format(before_remain)  + "원 입니다.");		
 							
 						}else if( userMsg.contains("금리") ) {
 			// 금융지식(1) '금리'				
