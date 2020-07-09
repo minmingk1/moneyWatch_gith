@@ -11,6 +11,8 @@ public class MoneyioDAO {
 	
 	private SqlSessionTemplate sqlSession = null;
 	
+	HashMap map = new HashMap();
+	
 	public MoneyioDAO(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
@@ -127,22 +129,34 @@ public class MoneyioDAO {
 	
 	
 	
-	public List moneyioListAll(String id) {
+	public List moneyioListAll(String id, String acc) {
 		
-		return sqlSession.selectList("moneyio.moneyioListAll", id);
+		map = new HashMap();
+		map.put("id", id);
+		map.put("acc", acc);
+		
+		return sqlSession.selectList("moneyio.moneyioListAll", map);
 	}
-	public List moneyioListIn(String id) {
+	public List moneyioListIn(String id, String acc) {
 		
-		return sqlSession.selectList("moneyio.moneyioListIn", id);
+		map = new HashMap();
+		map.put("id", id);
+		map.put("acc", acc);
+		
+		return sqlSession.selectList("moneyio.moneyioListIn", map);
 	}
-	public List moneyioListOut(String id) {
+	public List moneyioListOut(String id, String acc) {
 		
-		return sqlSession.selectList("moneyio.moneyioListOut", id);
+		map = new HashMap();
+		map.put("id", id);
+		map.put("acc", acc);
+		
+		return sqlSession.selectList("moneyio.moneyioListOut", map);
 	}
 	
 	public MoneyioDTO moneyioListDetail(String id, int ioNum) {
 		
-		HashMap map = new HashMap();
+		map = new HashMap();
 		map.put("id", id);
 		map.put("ioNum", ioNum);
 		
@@ -154,7 +168,9 @@ public class MoneyioDAO {
 		return sqlSession.selectList("moneyio.moneyioListRemain", id);
 	}
 	
-	
+//	public List registerAccount(String id) {
+//		
+//	}
 	
 	
 }

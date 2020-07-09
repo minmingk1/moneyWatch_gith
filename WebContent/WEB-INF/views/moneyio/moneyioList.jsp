@@ -12,7 +12,8 @@
 	function filter(){
 		$.ajax({
 			url : "ioList.mw",
-			data : {filter: $("#filter").val()},
+			data : {filter: $("#filter").val(),
+					acc: $("#myAcc").val()},
 			success : function(data){
 				$("#ioList").html(data);
 			}
@@ -38,11 +39,10 @@
 		<table class="table table-hover" border = "1" style="width:30%">
 			<tr>
 				<td>
-					<select class="form-control" id="myAddr" name="myAddr" onchange="myAddr()">
-					
-						<option value="all" selected>전체</option>
-						<option value="inMoney">수입</option>
-						<option value="outMoney">지출</option>			
+					<select class="form-control" id="myAcc" name="myAcc">
+						<c:forEach>						
+							<option value="#">#</option>		
+						</c:forEach>
 					</select>
 				</td>
 				<td>

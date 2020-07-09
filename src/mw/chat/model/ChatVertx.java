@@ -71,7 +71,7 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						
 						String id = event.getString("id");
 						
-						moAllList = moDAO.moneyioListAll(id);	// 메시지 보낸 사용자에 대한 입출력내역 목록 가져오기
+						//moAllList = moDAO.moneyioListAll(id, acc);	// 메시지 보낸 사용자에 대한 입출력내역 목록 가져오기
 						moReList = moDAO.moneyioListRemain(id);	// 메시지 보낸 사용자에 대한 입출력내역의 일자별 마지막 내역 가져오기
 						
 						meDTO = meDAO.modifyCheck(id);			// 메시지 보낸 사용자에 대한 회원정보 가져오기
@@ -109,8 +109,8 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 								(userMsg.contains("잔액") || userMsg.contains("금액") || 
 										userMsg.contains("얼마") || userMsg.contains("돈")) ) {
 			// 남은 잔액 알림							
-							moDTO = (MoneyioDTO)moAllList.get(0);		// 가장 최근 내역
-							event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + formatter.format(moDTO.getIo_remain())  + " 원 입니다.");		
+							//moDTO = (MoneyioDTO)moAllList.get(0);		// 가장 최근 내역
+							//event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + formatter.format(moDTO.getIo_remain())  + " 원 입니다.");		
 							
 						}else if((userMsg.contains("어제") || userMsg.contains("전날")
 								 || userMsg.contains("하루 전") || userMsg.contains("1일 전")) &&

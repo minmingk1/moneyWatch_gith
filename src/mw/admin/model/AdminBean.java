@@ -38,6 +38,9 @@ public class AdminBean {
 
 	@RequestMapping("admin.mw")
 	public String admin(Model model) {
+		
+		
+		//String id = (String)session.getAttribute("memId");
 		String id = "admin";
 		
 		model.addAttribute("id", id);

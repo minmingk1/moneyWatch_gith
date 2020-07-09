@@ -263,8 +263,15 @@ public class MoneyioBean {
 		
 		/* String id = "minmingk1"; */
 		String id = (String)session.getAttribute("memId");
-
-		List list = dao.moneyioListAll(id);
+		
+		//List acclist = new ArrayList();
+		//acclist = dao.
+		
+		// 해당 회원id를 매개변수로 계좌정보 가져오기
+		// 첫번째 계좌정보를 가지고 내역 가져오기
+		// 계좌정보 보내기
+		
+		//List list = dao.moneyioListAll(id, acc);
 		
 		model.addAttribute("moneyioList", list);
 		model.addAttribute("nowDate", nowDate);
@@ -273,18 +280,18 @@ public class MoneyioBean {
 	}
 	
 	@RequestMapping("ioList.mw")	
-	public String ioList(String filter, Model model, HttpSession session) {
+	public String ioList(String filter, String acc, Model model, HttpSession session) {
 			
 		/* String id = "minmingk1"; */
 		String id = (String)session.getAttribute("memId"); 
 		List list = new ArrayList();
 		
 		if(filter.equals("all")) {
-			list = dao.moneyioListAll(id);
+			list = dao.moneyioListAll(id, acc);
 		}else if (filter.equals("inMoney")) {
-			list = dao.moneyioListIn(id);
+			list = dao.moneyioListIn(id, acc);
 		}else {
-			list = dao.moneyioListOut(id);
+			list = dao.moneyioListOut(id, acc);
 		}
 
 		model.addAttribute("id",id);
