@@ -189,4 +189,8 @@
 		select * from mwregisterAccount where id = #{id}
 	</select>
 	
+	<select id="ioRemain" resultType="int" parameterType="hashmap">
+		select balance from mwregisteraccount where id=#{id} and account_num=#{acc}
+	</select>
+	
 </mapper>
