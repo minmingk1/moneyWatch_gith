@@ -34,14 +34,17 @@
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="image/clock.jpg" alt="IMG">
+			
+				<div class="login100-pic js-tilt" data-tilt style="margin-top:-10%;">
+					<h1 style="text-align:center;">moneyWatch</h1><br/>
+					<img src="image/clock.jpg" alt="IMG"><br/><br/>
+					<h4 style="text-align:center;">자산 관리 프로그램</h4>
 				</div>
 				
 				<body onload="begin()">
 				<form class="login100-form validate-form" name="myform" action="/moneyWatch/loginPro.mw" method="post" onSubmit="return checkIt()">
 					<span class="login100-form-title">
-						Member Login
+						<h3>Login</h3>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -67,14 +70,14 @@
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
+							<a class="txt2" href="idFindForm.mw">Username</a> / <a class="txt2" href="pwFindForm.mw">Password?</a>
 						</span>
-						<a class="txt2" href="idFindForm.mw">Username</a> / <a class="txt2" href="pwFindForm.mw">Password?</a>
 					</div>
 
 					<div class="text-center p-t-136">
 						<a class="txt2" href="/moneyWatch/registerForm.mw">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+							<h5>Create your Account<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></h5>
+							
 						</a>
 					</div>
 				</form>
