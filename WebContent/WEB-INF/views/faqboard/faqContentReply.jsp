@@ -12,26 +12,26 @@
 </head>
 <body>
 		<!-- 댓글 리스트 -->
-		<table id="replyList" style="width: 50%; text-align: center;"  cellspacing="0" cellpadding="0">
-
-			<div>
-			
+		<table id="replyList" style="width:50%; text-align: center;"  border="1"cellspacing="0" cellpadding="10">
 				<c:forEach items="${ reply }" var="reply">
 				<tr>
-					<td colspan="2">${ reply.id }</td><!-- 작성자 -->
-					<td>${ reply.reg }</td> <!-- 작성일 -->
+					<td rowspan="2">${ reply.id }</td><!-- 작성자 -->
+					<td >${ reply.reg }</td> <!-- 작성일 -->
 					<c:if test="${sessionScope.memId == reply.id }">				
-						<td><input type="button" value="삭제" onclick="deleteReply(${ reply.num }, ${reply.faq_num })"></td>
+						<td rowspan="2"><input type="button" class="btn btn-danger" value="삭제" onclick="deleteReply(${ reply.num }, ${reply.faq_num })"></td>
+					</c:if>
+					<c:if test="${sessionScope.memId != reply.id }">	
+					<td  rowspan="2"></td>
 					</c:if>
 				</tr>
 				<tr>
-					<td colspan="4">${ reply.content }</td><!-- 댓글내용 -->
+					<td>${ reply.content }</td><!-- 댓글내용 -->
 				</tr>
+				
 				</c:forEach>
 				
-			</div>
-				
 		</table>
+		
 			
 </body>
 </html>
