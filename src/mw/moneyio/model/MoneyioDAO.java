@@ -183,5 +183,9 @@ public class MoneyioDAO {
 		return sqlSession.selectOne("moneyio.ioRemain", map);
 	}
 	
+	public int ioAllRemain(String id) {
+		return sqlSession.selectOne("moneyio.ioAllRemain", id);
+	}
+	
 	
 }

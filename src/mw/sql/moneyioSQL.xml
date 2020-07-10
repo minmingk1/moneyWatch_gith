@@ -199,4 +199,8 @@
 		select balance from mwregisteraccount where id=#{id} and account_num=#{acc}
 	</select>
 	
+	<select id="ioAllRemain" resultType="int" parameterType="String">
+		select sum(balance) from mwregisteraccount where id=#{id}
+	</select>
+	
 </mapper>
