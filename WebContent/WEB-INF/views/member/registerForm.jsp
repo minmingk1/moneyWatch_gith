@@ -80,10 +80,11 @@
 		}
 	
 </script>
-	<body>	
+</head>
+	<body>
 	<form method="post" action="/moneyWatch/registerPro.mw" name="userinput" onSubmit="return checkIt()">
 	<div class="form-group">
-	<h2 style="text-align:center;">회원가입</h2><br />
+	<br/><br/><h2 style="text-align:center;">회원가입</h2><br />
 	<table border="1" cellspacing="1" cellpadding="3" style="text-align:center; margin:auto; width:40%;">
 		<tr>
 			<td bgcolor="">아이디 입력</td>
@@ -198,23 +199,15 @@
 		</tr>
 		
 		
-		</form>
 		
-		<tr>
-		<td colspan="2" align="center">
-		
-			<input type="submit" class="btn btn-primary"  name="confirm" value="등록">
-			<input type="reset" class="btn btn-primary"  name="reset" value="다시입력">
-			<input type="button" class="btn btn-primary"  value="취소" onclick="window.location='loginForm.mw'">
-			
-		
-		</td>
-		</tr>	
-	</table>
-	
+	</table><br/>
+	<input type="submit" class="btn btn-primary"  name="confirm" value="등록" style="float:left; margin-left:42%;">
+	<input type="reset" class="btn btn-primary"  name="reset" value="다시입력" style="float:left; margin-left:2%;">
+	<input type="button" class="btn btn-primary"  value="취소" onclick="window.location='loginForm.mw'" style="float:left; margin-left:2%;">
 	</div>
-	
+	</form>
+	<br/><br/><br/><br/>
 	</body>
 	
-	</head>
+
 </html>
