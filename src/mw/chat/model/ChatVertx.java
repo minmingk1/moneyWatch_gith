@@ -47,6 +47,8 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 	private MemberDTO meDTO = new MemberDTO();
 	public List meAllList = new ArrayList();
 	
+	public List<Reg_AccountDTO> acclist = new ArrayList();
+	private Reg_AccountDTO radto = new Reg_AccountDTO();
 	
 	@Override
 	public void start(Vertx vertx) {
@@ -73,12 +75,12 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						String id = event.getString("id");
 						
 						
-						List<Reg_AccountDTO> acclist = new ArrayList();
 						acclist = moDAO.myAccount(id);
-						Reg_AccountDTO radto = new Reg_AccountDTO();
-						String account = acclist.get(0).getAccount_num();
 						
-						
+						String account;
+						if(acclist.size() != 0) {
+							account = acclist.get(0).getAccount_num();
+						}
 						
 						
 						//moAllList = moDAO.moneyioListAll(id, acc);	// 메시지 보낸 사용자에 대한 입출력내역 목록 가져오기
@@ -86,7 +88,7 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						
 						meDTO = meDAO.modifyCheck(id);			// 메시지 보낸 사용자에 대한 회원정보 가져오기
 						
-						System.out.println("id2 : " + meDTO.getId());
+						//System.out.println("id2 : " + meDTO.getId());
 						
 						String userMsg = "";
 						userMsg = event.getString("msg"); 	// 회원이 보낸 채팅메시지
@@ -123,10 +125,16 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 							
 //							int ioRemain = moDAO.ioRemain(id, account);
 //							event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + account
-//									+" 계좌에 " + formatter.format(ioRemain)  + " 원 남아 있습니다.");	
+//									+" 계좌에 " + formatter.format(ioRemain)  + " 원 남아 있습니다.");
+							int ioAllRemain;
+							try {
+								ioAllRemain = moDAO.ioAllRemain(id);
+							}catch(Exception e){
+								ioAllRemain = 0; 
+							}
 							
 							event.putString("adminRe", id + " 님의 현재 남은 잔액은 "
-							+ formatter.format(moDAO.ioAllRemain(id))  + " 원 남아 있습니다.");
+							+ formatter.format(ioAllRemain)  + " 원 남아 있습니다.");
 							
 						}else if((userMsg.contains("어제") || userMsg.contains("전날")
 								 || userMsg.contains("하루 전") || userMsg.contains("1일 전")) &&
