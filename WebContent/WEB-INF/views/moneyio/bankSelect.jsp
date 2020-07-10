@@ -4,6 +4,6 @@
 
 <option value="none">--계좌/번호--</option>
 <c:forEach items="${card_Account}" var="account">
-	<option value="${account.account_num}">${account.account_num}</option>
+	<option value="${account}">${account}</option>
 	
 </c:forEach>

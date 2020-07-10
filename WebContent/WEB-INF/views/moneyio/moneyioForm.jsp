@@ -164,9 +164,9 @@
 					</td>
 				</tr>
 				<tr>
-					<td><label for="exampleSelect1">&nbsp;&nbsp;&nbsp;&nbsp;카드</label></td>
+					<td><label for="exampleSelect1">&nbsp;&nbsp;&nbsp;&nbsp;은행/카드</label></td>
 					<td><select class="form-control" name="io_bank" id="io_bank" onchange="bank()">
-							<option value="none">--카드명--</option>
+							<option value="none">--은행/카드명--</option>
 							<c:forEach items="${card_list}" var="list">
 								<option value="${list}">${list}</option>
 							</c:forEach>

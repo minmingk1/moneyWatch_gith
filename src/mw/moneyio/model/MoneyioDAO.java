@@ -25,14 +25,21 @@ public class MoneyioDAO {
 	}
 	
 	//³ªÀÇ Ä«µå °èÁÂ
-	public List<My_cardDTO> card_Account(My_cardDTO mdto) {
+	public List card_Account(String id, String card_name) {
 		//System.out.println(ca_company);
 		//System.out.println("dao: "+mdto.getId());
-		return sqlSession.selectList("moneyio.card_Account", mdto);
+		map.put("id", id);
+		map.put("card_name", card_name);
+		
+		return sqlSession.selectList("moneyio.card_Account", map);
 	}
-	public List<My_cardDTO> company_Account(My_cardDTO mdto){
-		return sqlSession.selectList("moneyio.company_Account", mdto);
+	public List company_Account(String id, String account_company){
+		map.put("id", id);
+		map.put("account_company", account_company);
+		
+		return sqlSession.selectList("moneyio.company_Account", map);
 	}
+	
 	//³ªÀÇ °èÁÂ ÀÜ¾×
 	public String allMoney(My_cardDTO mdto) {
 		return sqlSession.selectOne("moneyio.allMoney", mdto);

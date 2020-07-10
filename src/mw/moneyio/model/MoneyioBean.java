@@ -33,11 +33,31 @@ public class MoneyioBean {
 		String id = (String)session.getAttribute("memId");
 		/* String id= "nahui068"; */
 			dto.setId(id);
-			ArrayList<List<My_cardDTO>> card_list = new ArrayList<List<My_cardDTO>>();
-			List<My_cardDTO> list_company = dao.account(id);
-			List<My_cardDTO> list_card = dao.card(id);
-			card_list.add(list_company);
-			card_list.add(list_card);
+			
+			List list_company = dao.account(id);
+			List list_card = dao.card(id);
+			
+		/*
+		 * System.out.println("list_company"+list_company);
+		 * System.out.println("list_card"+list_card)
+		 */;
+			
+			String[] card_list = new String[list_company.size()+list_card.size()];
+			
+			for(int i=0; i<list_company.size();i++) {
+				card_list[i] = (String)list_company.get(i);
+			}
+			for(int i=list_company.size();i<list_company.size()+list_card.size();i++) {
+				int j = 0;
+				card_list[i] = (String)list_card.get(j);
+				j++;
+			}
+			
+			for(int i = 0; i < card_list.length; i++) {
+				System.out.println("card_list["+i+"] : " + card_list[i]);
+			}
+			//System.out.println("card_list"+card_list);
+			
 			//System.out.println("card_list: "+card_list);
 			
 			//System.out.println(card_list.get(0));
@@ -49,20 +69,54 @@ public class MoneyioBean {
 		}
 		
 		@RequestMapping("bankSelect.mw")
-		public String bankSelect(My_cardDTO mdto, Model model/* , HttpServletRequest request */) {
+		public String bankSelect(My_cardDTO mdto, String id, String card_name, Model model/* , HttpServletRequest request */) {
 			//System.out.println("id: "+mdto.getId());
 			//System.out.println("mdtoCard_name() : " + mdto.getCard_name());
-			String[] card_Account = {""};
+			System.out.println("mdto.getCard_name() : " + mdto.getCard_name());
+			System.out.println("mdto.getId() : " + mdto.getId());
 			
-			List account_card = dao.card_Account(mdto);				
-			List account_company = dao.company_Account(mdto);
-			for(int i=0; i<account_card.size();i++) {
-				card_Account[i] = (String) account_card.get(i);
+//			List<String> account_card = null;
+//			List<String> account_company = null; 
+//			List<String> la = new ArrayList();
+			
+			List account_company = dao.company_Account(id, card_name);
+			List account_card = dao.card_Account(id, card_name);
+				
+			String[] card_Account = new String[account_company.size()+account_card.size()];
+			
+			
+			for(int i=0; i<account_company.size();i++) {
+				card_Account[i] = (String)account_company.get(i);
 			}
-			for(int i=account_card.size()+1; i<account_card.size()+account_company.size();i++) {
-				card_Account[i] = (String) account_company.get(i);
+			for(int i=account_company.size();i<account_company.size()+account_card.size();i++) {
+				int j = 0;
+				card_Account[i] = (String)account_card.get(j);
+				j++;
 			}
-
+			
+			for(int i = 0; i < card_Account.length; i++) {
+				System.out.println("card_account["+i+"] : " + card_Account[i]);
+			}
+			
+			
+			
+			
+//			if(account_company != null) {
+//				la.add(account_company.toString());
+//			}
+//				
+//			if(account_card != null) {
+//				la.add(account_card.toString());
+//			}
+			
+			
+			
+//			for(int i=0; i<card_Account.length;i++) {
+//				card_Account[i] = (String) la.get(i);
+//				System.out.println("card_Account===="+card_Account[i]);
+//			}
+			
+			
 			//System.out.println("card_Account: "+card_Account);
 			model.addAttribute("card_Account", card_Account);
 

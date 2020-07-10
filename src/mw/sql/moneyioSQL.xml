@@ -12,12 +12,12 @@
 	</select>
 	
 	<!-- 개인 카드명/은행 option선택 후 해당 계좌 option으로 select -->
-	<select id="card_Account" resultType="mycardDTO" parameterType="mycardDTO" >
-		select account_company, account_num from mwregistercard where id=#{id} and card_name=#{card_name}
+	<select id="card_Account" resultType="String" parameterType="hashmap" >
+		select account_num from mwregistercard where id=#{id} and card_name=#{card_name}
 	</select>
 	
-	<select id="company_Account" resultType="mycardDTO" parameterType="mycardDTO" >
-		select account_company, account_num from mwregistercard where id=#{id} and account_company=#{card_name}
+	<select id="company_Account" resultType="String" parameterType="hashmap" >
+		select account_num from mwregisteraccount where id=#{id} and account_company=#{account_company}
 	</select>
 
 	<!-- 계좌 잔액 -->
