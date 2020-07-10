@@ -17,6 +17,7 @@ import com.nhncorp.mods.socket.io.SocketIOSocket;
 import com.nhncorp.mods.socket.io.impl.DefaultSocketIOServer;
 import com.nhncorp.mods.socket.io.spring.DefaultEmbeddableVerticle;
 
+import mw.account_card.model.Reg_AccountDTO;
 import mw.member.model.MemberDAO;
 import mw.member.model.MemberDTO;
 import mw.moneyio.model.MoneyioDAO;
@@ -71,6 +72,15 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						
 						String id = event.getString("id");
 						
+						
+						List<Reg_AccountDTO> acclist = new ArrayList();
+						acclist = moDAO.myAccount(id);
+						Reg_AccountDTO radto = new Reg_AccountDTO();
+						String account = acclist.get(0).getAccount_num();
+						
+						
+						
+						
 						//moAllList = moDAO.moneyioListAll(id, acc);	// 메시지 보낸 사용자에 대한 입출력내역 목록 가져오기
 						moReList = moDAO.moneyioListRemain(id);	// 메시지 보낸 사용자에 대한 입출력내역의 일자별 마지막 내역 가져오기
 						
@@ -110,7 +120,13 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 										userMsg.contains("얼마") || userMsg.contains("돈")) ) {
 			// 남은 잔액 알림							
 							//moDTO = (MoneyioDTO)moAllList.get(0);		// 가장 최근 내역
-							//event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + formatter.format(moDTO.getIo_remain())  + " 원 입니다.");		
+							
+//							int ioRemain = moDAO.ioRemain(id, account);
+//							event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + account
+//									+" 계좌에 " + formatter.format(ioRemain)  + " 원 남아 있습니다.");	
+							
+							event.putString("adminRe", id + " 님의 현재 남은 잔액은 "
+							+ formatter.format(moDAO.ioAllRemain(id))  + " 원 남아 있습니다.");
 							
 						}else if((userMsg.contains("어제") || userMsg.contains("전날")
 								 || userMsg.contains("하루 전") || userMsg.contains("1일 전")) &&
