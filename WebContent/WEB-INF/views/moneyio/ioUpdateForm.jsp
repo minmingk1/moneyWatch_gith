@@ -169,7 +169,9 @@
 
 				<tr>
 			</table><br/>
-			<input type="submit" value="수정하기" class="btn btn-primary" style="float:right; margin-right:20%;" /> 
+					<input type="submit" value="수정하기" class="btn btn-danger"  style="float:right; margin-right:20%;" /> 
+					<input type="button" value="목록" class="btn btn-primary" onclick="javascript:window.location='moneyioList.mw'" style="float:right; margin-right:1%;"/>
+						
 			</div>
 		<br /><br />
 	
