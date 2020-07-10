@@ -9,6 +9,7 @@
 <title>수입/지출 리스트</title>
 <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+	var old_detail;
 	function filter(){
 		$.ajax({
 			url : "ioList.mw",
@@ -34,6 +35,8 @@
 			url : "ioListDetail.mw",
 			data : {ioNum: ioNum},
 			success : function(data){
+				$(old_detail).empty();				
+				old_detail = detail;	
 				$(detail).html(data);
 			}
 		});

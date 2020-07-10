@@ -5,13 +5,16 @@
 
 <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
+	var old_detail;
 	function detail(ioNum){
 		var detail = "#detail"+ioNum;
 		$.ajax({
 			url : "ioListDetail.mw",
 			data : {ioNum: ioNum},
-			success : function(data){
-				$(detail).html(data);
+			success : function(data){				
+				$(old_detail).empty();				
+				old_detail = detail;				
+				$(detail).html(data);				
 			}
 		});
 	}
