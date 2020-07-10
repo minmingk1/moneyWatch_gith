@@ -2,5 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="reply">
+	<insert id="replyInsert" parameterType="hashMap"> <!-- 유저게시판 댓글쓰기 -->
+		insert into mwfaqreply values(mwfaqreply_seq.nextval,#{faq_num},#{id},#{content},sysdate)
+	</insert>
 
 </mapper>

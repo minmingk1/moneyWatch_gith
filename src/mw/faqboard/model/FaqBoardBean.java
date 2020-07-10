@@ -29,6 +29,7 @@ public class FaqBoardBean {
 	// faqboard 오버라이드
 	@Autowired
 	private FaqBoardDAO dao = null;
+	private FaqReplyDAO reply = null; //댓글 DAO
 
 	// FAQ 게시판,유저게시판 출력
 	@RequestMapping("faqList.mw")
@@ -283,6 +284,20 @@ public class FaqBoardBean {
 
 		return "/faqboard/content";
 	}
+	
+	//유저게시글 상세보기 댓글 입출력 - ajax
+	@RequestMapping("contentReply.mw")
+	public String faqContentReply(int faq_num, String content, HttpSession session, Model model) {
+		String id = (String) session.getAttribute("memId");
+		
+		reply.faqContentReplyInsert(id, faq_num, content); //입력
+		//FaqReplyDTO reply = reply.faqContentReplySelect(faq_num);//출력
+		
+		model.addAttribute("reply", reply);
+		return "/faqboard/faqContentReply";
+	}
+	
+	
 
 	@RequestMapping("faqQwriteForm.mw") // 운영자 게시글 작성
 	public String faqQwriteForm(FaqMainBoardDTO dto, HttpServletRequest request, Model model, HttpSession session) {
