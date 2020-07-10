@@ -89,5 +89,9 @@
 							    where r >= #{start} and r <= #{end} ]]>
 	</select>
 	
+	<delete id="DeleteAdminfaq" parameterType="int">
+		delete from mwFaqBoard where faq_num=#{faq_num}
+	</delete>
+	
 </mapper>
 
