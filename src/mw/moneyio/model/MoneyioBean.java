@@ -136,6 +136,10 @@ public class MoneyioBean {
 		@RequestMapping("ioUpdatePro.mw")
 		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
 			int io_new_price = Integer.parseInt(request.getParameter("io_price"));
+			int io_price_one = Integer.parseInt(request.getParameter("io_price_one"));
+			if(io_new_price != io_price_one) {
+				
+			}
 			int io_new_set = Integer.parseInt(request.getParameter("io_set"));
 			int io_price = Math.abs(dto.getIo_price() - io_new_price); 
 						// 39000 - 40000 //  // -1000
