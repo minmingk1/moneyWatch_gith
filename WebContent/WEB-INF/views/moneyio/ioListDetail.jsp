@@ -107,7 +107,7 @@
 					      	<input type="text" class="form-control" pattern="#,###" value="${n_price}" aria-label="Amount (to the nearest dollar)" disabled /> 
 					    </td>
 				    </tr>
-					</c:if>
+					
 			    </c:forEach>
 			    
 			    	<tr>
@@ -118,6 +118,7 @@
 				    	<fmt:formatNumber type="text" value="${nSum}" pattern="#,###"/>	 
 				    	</th>
 				    </tr>
+				    </c:if>
 			    </table>
 			    </div>
 		   		</div>
