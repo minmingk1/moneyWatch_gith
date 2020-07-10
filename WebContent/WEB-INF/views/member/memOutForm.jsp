@@ -43,13 +43,9 @@
 		  	<input type="password" class="form-control" name="pw" size="15" maxlength="12">
 		  	</td>
 		</tr>
-		<tr>
-		  <td colspan="2">
-		  <input type="submit" class="btn btn-danger" value="회원 탈퇴" style="float:right;">
-		  <input type="button"  class="btn btn-primary" value="취 소" onclick="javascript:window.location='/moneyWatch/main.mw'" style="float:left;">
-		  </td>
-		</tr>
-	</table>
+	</table><br />
+	<input type="submit" class="btn btn-danger" value="회원 탈퇴" style="float:right; margin-right:30%;">
+	<input type="button"  class="btn btn-primary" value="취 소" onclick="javascript:window.location='/moneyWatch/main.mw'" style="float:right; margin-right:2%;">
 </div>
 </form>
 </head>

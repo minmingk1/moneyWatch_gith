@@ -18,7 +18,7 @@
 		var chartObj20 = new FusionCharts({
 			type : 'radar',
 			renderAt : 'chart-container20',
-			width : '900',
+			width : '850',
 			height : '550',
 			dataFormat : 'json',
 			dataSource : {
@@ -67,7 +67,7 @@
 		var chartObj30 = new FusionCharts({
 			type : 'radar',
 			renderAt : 'chart-container30',
-			width : '900',
+			width : '850',
 			height : '550',
 			dataFormat : 'json',
 			dataSource : {
@@ -114,7 +114,7 @@
 		var chartObj40 = new FusionCharts({
 			type : 'radar',
 			renderAt : 'chart-container40',
-			width : '900',
+			width : '850',
 			height : '550',
 			dataFormat : 'json',
 			dataSource : {

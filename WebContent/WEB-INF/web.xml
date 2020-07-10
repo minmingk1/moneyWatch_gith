@@ -43,6 +43,7 @@
 				/WEB-INF/controller/main-servlet.xml
 				/WEB-INF/controller/admin-servlet.xml
 				/WEB-INF/controller/faqreply-servlet.xml
+				/WEB-INF/controller/error-servlet.xml
 			</param-value>
 		</init-param>
 	</servlet>
@@ -64,6 +65,19 @@
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 	
+	<!-- Error -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/no_resource</location>
+	</error-page>
+
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/server</location>
+	</error-page>
 	
+	<error-page>
+		<location>/error/error</location>
+	</error-page>
 	
 </web-app>

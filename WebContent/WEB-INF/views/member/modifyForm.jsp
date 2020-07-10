@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file = "/WEB-INF/views/main/top.jsp" %> 
 <html>
 <head>
 <title>회원정보수정</title>
@@ -20,8 +21,8 @@
     }   
 
 </script>
-<body><br />
-<%@ include file = "/WEB-INF/views/main/top.jsp" %>  
+<body><br /><br />
+ 
 <h3 style="text-align:center;"> 회원 정보 수정</h3><br/>
   <form method="post" action="/moneyWatch/modifyPro.mw" name="userinput" onsubmit="return checkIt()">
   <div class="form-group">
@@ -91,15 +92,13 @@
 			<td><input type="text" class="form-control" name="email2" size="10" maxlength="12" value="${dto.getEmail2()}">
 		</td>
 	</tr>
-    
-    <tr>
-      <td colspan="5">
-      <input type="submit" class="btn btn-danger" name="modify" value="수정" style="float:right;">
-      <input type="button"  class="btn btn-info" value="취소" onclick="javascript:window.location='main.mw'"></td>
-    </tr>
-   </table>
+
+   </table><br/>
+      <input type="submit" class="btn btn-danger" name="modify" value="수정" style="float:right; margin-right:25%;">
+      <input type="button"  class="btn btn-info" value="취소" onclick="javascript:window.location='main.mw'" style="float:right; margin-right:2%;">
   </div>
 
   </form> 
  </body>
+ <%@ include file = "/WEB-INF/views/main/footer.jsp" %>
 </html>
