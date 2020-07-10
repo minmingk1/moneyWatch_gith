@@ -38,13 +38,13 @@
 	<!-- 종합 -->
 		<table class="table table-hover" border = "1" style="width:30%">
 			<tr>
-				<td>
-					<select class="form-control" id="myAcc" name="myAcc">
-						<c:forEach>						
-							<option value="#">#</option>		
+				<%-- <td>
+					<select class="form-control" id="myAcc" name="myAcc" onchange="filter()">
+						<c:forEach var="myAcc" items="${myAcc}">						
+							<option value="${ }">#</option>		
 						</c:forEach>
 					</select>
-				</td>
+				</td> --%>
 				<td>
 					<select class="form-control" id="filter" name="filter" onchange="filter()">
 						<option value="all" selected>전체</option>

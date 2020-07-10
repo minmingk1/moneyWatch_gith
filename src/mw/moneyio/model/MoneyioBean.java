@@ -264,16 +264,19 @@ public class MoneyioBean {
 		/* String id = "minmingk1"; */
 		String id = (String)session.getAttribute("memId");
 		
-		//List acclist = new ArrayList();
-		//acclist = dao.
+		List<Reg_AccountDTO> acclist = new ArrayList();
+		acclist = dao.myAccount(id);
+		Reg_AccountDTO radto = new Reg_AccountDTO();
+		String account = acclist.get(0).getAccount_num();
 		
 		// 해당 회원id를 매개변수로 계좌정보 가져오기
 		// 첫번째 계좌정보를 가지고 내역 가져오기
 		// 계좌정보 보내기
 		
-		//List list = dao.moneyioListAll(id, acc);
+		List<MoneyioDTO> mlist = dao.moneyioListAll(id, account);
 		
-		model.addAttribute("moneyioList", list);
+		model.addAttribute("myAcc", acclist);
+		model.addAttribute("moneyioList", mlist);
 		model.addAttribute("nowDate", nowDate);
 		
 		return "/moneyio/moneyioList";

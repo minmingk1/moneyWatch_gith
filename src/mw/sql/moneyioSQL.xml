@@ -185,5 +185,8 @@
 		select * from mwmoneyio where io_num in (select max(io_num) from mwmoneyio where id = #{id} group by io_reg_date) order by io_reg_date desc, io_num desc
 	</select>
 	
+	<select id="myAccount" resultType="reg_AccountDTO" parameterType="String">
+		select * from mwregisterAccount where id = #{id}
+	</select>
 	
 </mapper>
