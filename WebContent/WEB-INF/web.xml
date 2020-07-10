@@ -68,16 +68,13 @@
 	<!-- Error -->
 	<error-page>
 		<error-code>404</error-code>
-		<location>/error/no_resource</location>
+		<location>/WEB-INF/views/error/error.jsp</location>
 	</error-page>
 
 	<error-page>
 		<error-code>500</error-code>
-		<location>/error/server</location>
+		<location>/WEB-INF/views/error/error.jsp</location>
 	</error-page>
 	
-	<error-page>
-		<location>/error/error</location>
-	</error-page>
 	
 </web-app>

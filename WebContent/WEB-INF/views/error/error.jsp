@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-error
+<c:if test="${requestScope['javax.servlet.error.status_code'] == 404}">
+404 error
+<p>요청하신 페이지를 찾을 수 없습니다.</p>
+
+</c:if>
+<c:if test="${requestScope['javax.servlet.error.status_code'] == 500}">
+500 error
+<p>서버에 오류가 발생하여 요청을 수행할 수 없습니다.</p>
+
+</c:if>
+
 </body>
 </html>
