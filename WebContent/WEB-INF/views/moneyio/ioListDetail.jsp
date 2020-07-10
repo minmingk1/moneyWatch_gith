@@ -108,7 +108,7 @@
 					    </td>
 				    </tr>
 					
-			    </c:forEach>
+			    
 			    
 			    	<tr>
 				    	<td colspan="3"></td>
@@ -119,6 +119,7 @@
 				    	</th>
 				    </tr>
 				    </c:if>
+				    </c:forEach>
 			    </table>
 			    </div>
 		   		</div>
