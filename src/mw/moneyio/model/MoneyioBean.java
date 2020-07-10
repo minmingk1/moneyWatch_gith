@@ -33,8 +33,11 @@ public class MoneyioBean {
 		String id = (String)session.getAttribute("memId");
 		/* String id= "nahui068"; */
 			dto.setId(id);
-
-			List<My_cardDTO> card_list = dao.card(id);
+			ArrayList<List<My_cardDTO>> card_list = new ArrayList<List<My_cardDTO>>();
+			List<My_cardDTO> list_company = dao.account(id);
+			List<My_cardDTO> list_card = dao.card(id);
+			card_list.add(list_company);
+			card_list.add(list_card);
 			//System.out.println("card_list: "+card_list);
 			
 			//System.out.println(card_list.get(0));
@@ -49,8 +52,17 @@ public class MoneyioBean {
 		public String bankSelect(My_cardDTO mdto, Model model/* , HttpServletRequest request */) {
 			//System.out.println("id: "+mdto.getId());
 			//System.out.println("mdtoCard_name() : " + mdto.getCard_name());
-							
-			List<My_cardDTO> card_Account = dao.card_Account(mdto);
+			String[] card_Account = {""};
+			
+			List account_card = dao.card_Account(mdto);				
+			List account_company = dao.company_Account(mdto);
+			for(int i=0; i<account_card.size();i++) {
+				card_Account[i] = (String) account_card.get(i);
+			}
+			for(int i=account_card.size()+1; i<account_card.size()+account_company.size();i++) {
+				card_Account[i] = (String) account_company.get(i);
+			}
+
 			//System.out.println("card_Account: "+card_Account);
 			model.addAttribute("card_Account", card_Account);
 

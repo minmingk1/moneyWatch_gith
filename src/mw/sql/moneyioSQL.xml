@@ -3,21 +3,28 @@
 
 <mapper namespace="moneyio">
 
-	<!-- 개인이 등록한 은행만 option으로 select -->
+	<!-- 개인이 등록한 카드명/은행만 option으로 select -->
 	<select id="card" resultType="String" parameterType="String"> 
 		select card_name from mwregistercard where id=#{id}
 	</select>
+	<select id="account" resultType="String" parameterType="String"> 
+		select account_company from mwregisteraccount where id=#{id}
+	</select>
 	
-	<!-- 개인 은행 option선택 후 해당 계좌 option으로 select -->
+	<!-- 개인 카드명/은행 option선택 후 해당 계좌 option으로 select -->
 	<select id="card_Account" resultType="mycardDTO" parameterType="mycardDTO" >
 		select account_company, account_num from mwregistercard where id=#{id} and card_name=#{card_name}
+	</select>
+	
+	<select id="company_Account" resultType="mycardDTO" parameterType="mycardDTO" >
+		select account_company, account_num from mwregistercard where id=#{id} and account_company=#{card_name}
 	</select>
 
 	<!-- 계좌 잔액 -->
 	<select id="allMoney" resultType="String" parameterType="mycardDTO">
 		select balance from mwregisteraccount where id=#{id} and account_num=#{account_num}
 	</select>
-	
+
 	<!-- 지출/수입 insert -->
 	<insert id="insert" parameterType="moneyioDTO">
 		insert into mwmoneyio values(mwmoneyio_seq.nextval,#{io_category},#{io_detail},to_date(#{io_reg_date},'YYYY-MM-DD'),#{io_price},#{io_remain},#{io_bank},
