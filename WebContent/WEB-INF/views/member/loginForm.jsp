@@ -76,8 +76,8 @@
 						<span class="txt1">
 							Forgot
 						</span>
-						<a class="txt2" href="#">
-							Username / Password?
+						<a class="txt2" href="/moneyWatch/idFindForm.mw">
+							Username </a>/ <a class="txt2" href="/moneyWatch/pwFindForm.mw">Password?
 						</a>
 					</div>
 

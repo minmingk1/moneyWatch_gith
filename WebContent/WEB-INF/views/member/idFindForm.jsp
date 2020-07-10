@@ -46,7 +46,12 @@ td{
     			</tr>
     			<tr>
     			<td></td>
-    			<td colspan="3"><center><button type="submit" class="btn btn-primary" name="">&nbsp;&nbsp;Submit&nbsp;&nbsp;</button></center></td>
+    			<td colspan="3">
+    			<center>
+    				<input type="submit" value="Submit" class="btn btn-primary" />
+    				<input type="button" value="로그인" class="btn btn-primary" onclick="javascript:window.location='loginForm.mw'"/>
+    			</center>
+    			</td>
     			</tr>
     		</table>
     	</div>
