@@ -265,8 +265,8 @@ public class MoneyioBean {
 		Date date = new Date();
 		String nowDate = formatDate.format(date);
 		
-		/* String id = "minmingk1"; */
-		String id = (String)session.getAttribute("memId");
+		 String id = "k0725";
+		//String id = (String)session.getAttribute("memId");
 		
 		List<Reg_AccountDTO> acclist = new ArrayList();
 		acclist = dao.myAccount(id);
@@ -289,8 +289,8 @@ public class MoneyioBean {
 	@RequestMapping("ioList.mw")	
 	public String ioList(String filter, String acc, Model model, HttpSession session) {
 			
-		/* String id = "minmingk1"; */
-		String id = (String)session.getAttribute("memId"); 
+		 String id = "k0725"; 
+		//String id = (String)session.getAttribute("memId"); 
 		List list = new ArrayList();
 		
 		if(filter.equals("all")) {
@@ -310,8 +310,8 @@ public class MoneyioBean {
 	@RequestMapping("ioListDetail.mw")
 	public String ioListDetail(int ioNum, Model model, HttpSession session) {
 		
-//		String id = "minmingk1";
-		String id = (String)session.getAttribute("memId"); 
+		String id = "k0725";
+		//String id = (String)session.getAttribute("memId"); 
 		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
 		String n_check="내역이 없습니다.";
