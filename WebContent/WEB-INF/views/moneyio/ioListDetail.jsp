@@ -41,7 +41,7 @@
 			${dto.io_bank}
 		</td>
 		<td width="200" align="center" colspan="2">
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" 
+			<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#myModal" 
 				<%-- onclick="window.open('/moneyWatch/nbreadList?ioNum=${dto.io_num}')" --%>>
 	    		N빵 내역
 	  		</button>		
@@ -52,10 +52,10 @@
 			${dto.io_account}
 		</td>
 		<td width="100" align="center">
-			<button class="btn btn-primary" onclick="window.location.href='/moneyWatch/ioUpdateForm.mw?ioNum=${dto.io_num}&id=${dto.id}&account_num=${dto.io_account}'">수정</button>
+			<button class="btn btn-outline-danger" onclick="window.location.href='/moneyWatch/ioUpdateForm.mw?ioNum=${dto.io_num}&id=${dto.id}&account_num=${dto.io_account}'">수정</button>
 		</td>	
 		<td width="100" align="center">
-			<button class="btn btn-primary" onclick="deleteConfirm(${dto.io_num})">삭제</button>
+			<button class="btn btn-outline-danger" onclick="deleteConfirm(${dto.io_num})">삭제</button>
 		</td>
 	</tr>
 </table>

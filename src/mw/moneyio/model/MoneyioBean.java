@@ -138,30 +138,40 @@ public class MoneyioBean {
 
 		@RequestMapping("ioUpdatePro.mw")
 		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
+			
+			int io_old_price = Integer.parseInt(request.getParameter("io_old_price"));
 			int io_new_price = Integer.parseInt(request.getParameter("io_price"));
-			int io_price_one = Integer.parseInt(request.getParameter("io_price_one"));
-			if(io_new_price != io_price_one) {
+			
+			int io_old_set = Integer.parseInt(request.getParameter("io_old_set"));
+			int io_new_set = Integer.parseInt(request.getParameter("io_set"));
+		
+			//int differ = Math.abs(io_old_price - io_new_price); 
+			
+			//거래금액 변경 있는 경우
+			if(io_new_price != io_old_price) {
+				//지출/수입 선택 변경이 있는 경우
+				if(io_old_set != io_new_set) {
+					//수입 ->지출 변경
+					if(io_new_set==1) {
+						dto.setIo_remain(dto.getIo_remain()-io_old_price-io_new_price);
+						
+					}else { //지출->수입 변경
+						dto.setIo_remain(dto.getIo_remain()+io_old_price+io_new_price);
+						
+					}
+				}else {
+					//지출 -> 지출
+					if(io_new_set==1) {
+						dto.setIo_remain(dto.getIo_remain()+io_old_price-io_new_price);
+					}else { //수입 -> 수입
+						dto.setIo_remain(dto.getIo_remain()-io_old_price+io_new_price);
+					}
+				}
 				
 			}
-			int io_new_set = Integer.parseInt(request.getParameter("io_set"));
-			int io_price = Math.abs(dto.getIo_price() - io_new_price); 
 						// 39000 - 40000 //  // -1000
 			System.out.println("dto.getIo_remain()"+dto.getIo_remain());
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
-			
-			if(io_new_set==1) {
-				if(dto.getIo_set()==1) {
-					dto.setIo_remain(dto.getIo_remain()-io_price);
-				}else {
-					dto.setIo_remain(dto.getIo_remain()-dto.getIo_price()+io_price);
-				}
-			}else {
-				if(dto.getIo_set()==1) {
-					dto.setIo_remain(dto.getIo_remain()+io_price-dto.getIo_price());
-				}else {
-					dto.setIo_remain(dto.getIo_remain()+io_price);
-				}
-			}
 			
 			dao.ioUpdatePro(dto);
 			

@@ -1,5 +1,7 @@
 package mw.faqboard.model;
 
+import java.util.HashMap;
+
 import org.mybatis.spring.SqlSessionTemplate;
 
 public class FaqReplyDAO {
@@ -11,4 +13,16 @@ public class FaqReplyDAO {
 	public FaqReplyDAO(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
+	
+	//reply ют╥б
+	public void faqContentReplyInsert(String id, int faq_num, String content) {
+		
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("faq_num", faq_num);
+		map.put("content", content);
+		
+		sqlSession.delete("reply.replyInsert", map);
+	}
+	
 }

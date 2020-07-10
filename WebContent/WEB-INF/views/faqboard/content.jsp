@@ -7,6 +7,7 @@
 <title>유저 게시판 CONTENT</title>
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css">
+<script src="js/faqreply/faqreply.js"></script>
 <style>
 table {
 	margin: auto;
@@ -52,21 +53,25 @@ table {
 		</table>
 	<br/>
 		<table style="width: 50%; text-align: center;" border="1" cellspacing="0" cellpadding="0">
-			<div>
+			<c:if test="${sessionScope.memId != null">	
+			<div id="insert">
 				<tr>
 					<td>댓글</td>
 					<td colspan="2"><textarea cols="10" rows="5" class="form-control" name="memo" placeholder="댓글을 입력하세요."></textarea></td>
-					<td><input type="button" value="입력" name="reply" id="reply" onclick="insertReply()"></td>				
+					<td><input type="button" value="입력" name="insertReply" id="insertReply" onclick="insertReply()"></td>				
 				</tr>	
-			</div>	
-			<div>
+			</div>
+			</c:if>
+			<div id="reply">
 				<tr>
 					<td colspan="2">작성자</td>
-					<td colspan="2">작성일</td>
+					<td>작성일</td>
+					<c:if test="${sessionScope.memId == ${}">				
+						<td><input type="button" value="삭제" name="deleteReply" id="deleteReply" onclick="deleteReply()"></td>
+					</c:if>
 				</tr>
 				<tr>
-					<td colspan="3">내용</td>
-					<td><input type="button" value="삭제" name="deleteReply" id="deleteReply" onclick="deleteReply()"></td>
+					<td colspan="4">내용</td>
 				</tr>
 			</div>
 		</table>
