@@ -37,7 +37,7 @@ public class MoneyioDAO {
 	
 	// 계좌 잔액 업데이트
 	public int balanceUpdateAccount(Reg_AccountDTO rdto) {
-		return sqlSession.update("moneyio.balance_update", rdto);
+		return sqlSession.update("moneyio.balance_update_account", rdto);
 	}
 	
 	//지출/수입 내역 입력

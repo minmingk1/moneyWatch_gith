@@ -122,7 +122,26 @@ public class FaqBoardBean {
 		}
 		return "/faqboard/faqDeletePro";
 	}
-
+	@RequestMapping("faqAdminDelForm.mw")
+	public String faqAdminDelForm(Model model,ServletRequest request) {
+		String faq_num =request.getParameter("faq_num");
+		model.addAttribute("faq_num", faq_num);
+		
+		return "/faqboard/faqAdminDelForm";
+	}
+	
+	@RequestMapping("faqAdminDel.mw")
+	public String faqAdminDel(Model model,HttpSession session,ServletRequest request) {
+		int faq_num =Integer.parseInt(request.getParameter("faq_num"));
+		String id=request.getParameter("memId");
+		
+			dao.DeleteAdminfaq(faq_num);
+		
+		
+		return "/faqboard/faqAdminDel";
+	}
+	
+	
 	@RequestMapping("faqUpdateForm.mw") // 유저게시판 수정
 	public String faqUpdateForm(FaqBoardDTO dto, HttpSession session, ServletRequest request, Model model) {
 		String faq_num = request.getParameter("faq_num");

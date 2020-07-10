@@ -137,7 +137,7 @@ public class MoneyioBean {
 		
 
 		@RequestMapping("ioUpdatePro.mw")
-		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
+		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, Reg_AccountDTO rdto,My_cardDTO mdto, HttpServletRequest request) {
 			
 			int io_old_price = Integer.parseInt(request.getParameter("io_old_price"));
 			int io_new_price = Integer.parseInt(request.getParameter("io_price"));
@@ -167,13 +167,14 @@ public class MoneyioBean {
 						dto.setIo_remain(dto.getIo_remain()-io_old_price+io_new_price);
 					}
 				}
-				
 			}
 						// 39000 - 40000 //  // -1000
 			System.out.println("dto.getIo_remain()"+dto.getIo_remain());
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
 			
 			dao.ioUpdatePro(dto);
+			dao.balanceUpdate(mdto);
+			dao.balanceUpdateAccount(rdto);
 			
 			if(dto.getIo_N_div()>0) {
 				dao.n_delete(ndto.getIo_num());

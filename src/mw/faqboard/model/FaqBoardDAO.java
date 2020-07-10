@@ -132,4 +132,8 @@ public class FaqBoardDAO {
 		int count = (Integer) sqlSession.selectOne("faqboard.mylistboard", id);
 		return count;
 	}
+	
+	public void DeleteAdminfaq(int faq_num) {
+		sqlSession.delete("faqboard.DeleteAdminfaq",faq_num);
+	}
 }
