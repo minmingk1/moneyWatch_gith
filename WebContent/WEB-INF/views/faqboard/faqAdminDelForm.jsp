@@ -14,6 +14,6 @@
 <c:if test="${sessionScope.memId == 'admin'}">
 <center><input type="button" value="삭제진행" class="btn btn-primary" onclick="window.location='faqAdminDel.mw?faq_num=${faq_num}'">
 </c:if></center>
- 
+  
 </body>
 </html>
