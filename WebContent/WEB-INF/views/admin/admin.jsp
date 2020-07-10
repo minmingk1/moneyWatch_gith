@@ -69,13 +69,13 @@
             </a>
           </li>
           <li>
-            <a href="./#.mw">
+            <a href="./faqList.mw">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>FAQ Board</p>
             </a>
           </li>
           <li>
-            <a href="./#.mw">
+            <a href="./senseAdmin.mw">
               <i class="now-ui-icons location_map-big"></i>
               <p>Sense Board</p>
             </a>
