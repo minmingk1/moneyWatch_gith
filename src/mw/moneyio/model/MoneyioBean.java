@@ -136,6 +136,10 @@ public class MoneyioBean {
 		@RequestMapping("ioUpdatePro.mw")
 		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, HttpServletRequest request) {
 			int io_new_price = Integer.parseInt(request.getParameter("io_price"));
+			int io_price_one = Integer.parseInt(request.getParameter("io_price_one"));
+			if(io_new_price != io_price_one) {
+				
+			}
 			int io_new_set = Integer.parseInt(request.getParameter("io_set"));
 			int io_price = Math.abs(dto.getIo_price() - io_new_price); 
 						// 39000 - 40000 //  // -1000
@@ -261,19 +265,22 @@ public class MoneyioBean {
 		Date date = new Date();
 		String nowDate = formatDate.format(date);
 		
-		/* String id = "minmingk1"; */
-		String id = (String)session.getAttribute("memId");
+		String id = "k0725";
+		//String id = (String)session.getAttribute("memId");
 		
-		//List acclist = new ArrayList();
-		//acclist = dao.
+		List<Reg_AccountDTO> acclist = new ArrayList();
+		acclist = dao.myAccount(id);
+		Reg_AccountDTO radto = new Reg_AccountDTO();
+		String account = acclist.get(0).getAccount_num();
 		
 		// 해당 회원id를 매개변수로 계좌정보 가져오기
 		// 첫번째 계좌정보를 가지고 내역 가져오기
 		// 계좌정보 보내기
 		
-		//List list = dao.moneyioListAll(id, acc);
+		List<MoneyioDTO> mlist = dao.moneyioListAll(id, account);
 		
-		model.addAttribute("moneyioList", list);
+		model.addAttribute("myAcc", acclist);
+		model.addAttribute("moneyioList", mlist);
 		model.addAttribute("nowDate", nowDate);
 		
 		return "/moneyio/moneyioList";
@@ -282,8 +289,8 @@ public class MoneyioBean {
 	@RequestMapping("ioList.mw")	
 	public String ioList(String filter, String acc, Model model, HttpSession session) {
 			
-		/* String id = "minmingk1"; */
-		String id = (String)session.getAttribute("memId"); 
+		 String id = "k0725"; 
+		//String id = (String)session.getAttribute("memId"); 
 		List list = new ArrayList();
 		
 		if(filter.equals("all")) {
@@ -303,8 +310,8 @@ public class MoneyioBean {
 	@RequestMapping("ioListDetail.mw")
 	public String ioListDetail(int ioNum, Model model, HttpSession session) {
 		
-//		String id = "minmingk1";
-		String id = (String)session.getAttribute("memId"); 
+		String id = "k0725";
+		//String id = (String)session.getAttribute("memId"); 
 		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
 		String n_check="내역이 없습니다.";

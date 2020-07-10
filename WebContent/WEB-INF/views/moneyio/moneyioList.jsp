@@ -39,9 +39,9 @@
 		<table class="table table-hover" border = "1" style="width:30%">
 			<tr>
 				<td>
-					<select class="form-control" id="myAcc" name="myAcc">
-						<c:forEach>						
-							<option value="#">#</option>		
+					<select class="form-control" id="myAcc" name="myAcc" onchange="filter()">
+						<c:forEach var="myAcc" items="${myAcc}">						
+							<option value="${myAcc.account_num}">${myAcc.account_num}</option>		
 						</c:forEach>
 					</select>
 				</td>

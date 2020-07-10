@@ -168,9 +168,9 @@ public class MoneyioDAO {
 		return sqlSession.selectList("moneyio.moneyioListRemain", id);
 	}
 	
-//	public List registerAccount(String id) {
-//		
-//	}
+	public List myAccount(String id) {
+		return sqlSession.selectList("moneyio.myAccount", id);
+	}
 	
 	
 }

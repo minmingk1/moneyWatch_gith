@@ -3879,11 +3879,12 @@ Created using IcoMoon - icomoon.io
   margin-top: 7px;
 }
 
+/* 관리자 좌측메뉴바 Style */ 
 .sidebar .nav li>a,
 .off-canvas-sidebar .nav li>a {
   margin: 10px 15px 0;
   border-radius: 30px;
-  color: #FFFFFF;
+  color: #FFFFFF;					
   display: block;
   text-decoration: none;
   position: relative;
