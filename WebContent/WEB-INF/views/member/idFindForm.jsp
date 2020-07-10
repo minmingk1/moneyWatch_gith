@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
-<link href="/mw_test/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <style>
 legend{
 	text-align: center;
@@ -22,7 +22,7 @@ td{
 </head>
 <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 <body>
-  <fieldset>
+  <fieldset style="margin-top:10%;">
 	<legend>아이디 찾기</legend>
     <form method="post" action="/mw_test/idFindPro.mw" >
     	<div class="form-group row">
