@@ -9,6 +9,7 @@ public class FaqReplyDTO {
 	private String id; //회원ID
 	private String content; //내용
 	private Timestamp reg; //댓글 게시시간
+	private int count; //댓글 개수
 	
 	
 	//getter
@@ -32,6 +33,10 @@ public class FaqReplyDTO {
 		return reg;
 	}
 	
+	public int getCount() {
+		return count;
+	}
+	
 	
 	//setter
 	public void setNum(int num) {
@@ -52,6 +57,10 @@ public class FaqReplyDTO {
 
 	public void setReg(Timestamp reg) {
 		this.reg = reg;
+	}
+	
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 }

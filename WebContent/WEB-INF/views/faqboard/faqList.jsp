@@ -100,11 +100,15 @@
 
 					<td align="center">${number}<c:set var="number"
 							value="${number-1}" /></td>
-
+							
+				<c:forEach var="replycount" items="${replycount}">
+					<c:if test="${article.faq_num == replycount.faq_num }">
 					<td align="center"><a
 						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
-							${article.subject}</a></td>
-
+							${article.subject} [${replycount.count }]</a></td>
+					</c:if>
+				</c:forEach>
+				
 					<td align="center">${article.id}</td>
 
 					<td align="center">${article.reg}</td>

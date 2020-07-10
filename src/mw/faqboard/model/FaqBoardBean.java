@@ -29,7 +29,10 @@ public class FaqBoardBean {
 	// faqboard 오버라이드
 	@Autowired
 	private FaqBoardDAO dao = null;
-	private FaqReplyDAO reply = null; //댓글 DAO
+	
+	//댓글 DAO
+	@Autowired
+	private FaqReplyDAO reply = null; 
 
 	// FAQ 게시판,유저게시판 출력
 	@RequestMapping("faqList.mw")
@@ -39,10 +42,12 @@ public class FaqBoardBean {
 
 		qList = dao.selectMainFaq(dto1);
 		int qcount = dao.getQcount(dto1);
+		List<FaqReplyDTO> replycount = reply.faqContentReplyCount(); //댓글개수
 
 		if (qcount > 0) {
 			model.addAttribute("qList", qList);
 			model.addAttribute("qcount", qcount);
+			model.addAttribute("replycount", replycount);
 		}
 
 		int pageSize = 10;
@@ -292,14 +297,16 @@ public class FaqBoardBean {
 
 		String num = request.getParameter("faq_num");
 		int num1 = Integer.parseInt(num);
-
+		
 		FaqBoardDTO article = dao.getContent(num1);
+		List<FaqReplyDTO> replyList = reply.faqContentReplyList(num1); //댓글출력
 
 		model.addAttribute("number", number);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("faq_num", num);
 
 		model.addAttribute("article", article);
+		model.addAttribute("reply", replyList);
 
 		return "/faqboard/content";
 	}
@@ -307,13 +314,29 @@ public class FaqBoardBean {
 	//유저게시글 상세보기 댓글 입출력 - ajax
 	@RequestMapping("contentReply.mw")
 	public String faqContentReply(int faq_num, String content, HttpSession session, Model model) {
+		
 		String id = (String) session.getAttribute("memId");
 		
-		reply.faqContentReplyInsert(id, faq_num, content); //입력
-		//FaqReplyDTO reply = reply.faqContentReplySelect(faq_num);//출력
+		reply.faqContentReplyInsert(id, faq_num, content); // 댓글 입력
+		List<FaqReplyDTO> replyList = reply.faqContentReplyList(faq_num);// 출력
 		
-		model.addAttribute("reply", reply);
+		model.addAttribute("faq_num", faq_num);
+		model.addAttribute("reply", replyList);
 		return "/faqboard/faqContentReply";
+		
+	}
+	
+	//유저게시글 상세보기 댓글 삭제 - ajax
+	@RequestMapping("contentReplyDelete.mw")
+	public String faqContentReplyDelete(int num, int faq_num, HttpSession session, Model model) {
+		
+		String id = (String)session.getAttribute("memId");
+		reply.faqContentReplyDelete(id, num); // 댓글 삭제
+		List<FaqReplyDTO> replyList = reply.faqContentReplyList(faq_num);// 출력
+
+		model.addAttribute("reply", replyList);
+		return "/faqboard/faqContentReply";
+		
 	}
 	
 	

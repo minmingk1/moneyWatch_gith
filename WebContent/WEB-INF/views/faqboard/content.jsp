@@ -7,6 +7,7 @@
 <title>유저 게시판 CONTENT</title>
 <link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css">
+<script src="http://code.jquery.com/jquery-latest.js"></script>	
 <script src="js/faqreply/faqreply.js"></script>
 <style>
 table {
@@ -52,28 +53,41 @@ table {
 
 		</table>
 	<br/>
-		<table style="width: 50%; text-align: center;" border="1" cellspacing="0" cellpadding="0">
+		<!-- 댓글 입력 -->
+		<table id="insertReply" style="width: 50%; text-align: center;"  cellspacing="0" cellpadding="0">
+
 			<c:if test="${sessionScope.memId != null}">	
-			<div id="insert">
+			<div>
 				<tr>
 					<td>댓글</td>
-					<td colspan="2"><textarea cols="10" rows="5" class="form-control" name="memo" placeholder="댓글을 입력하세요."></textarea></td>
-					<td><input type="button" value="입력" name="insertReply" id="insertReply" onclick="insertReply()"></td>				
+					<td colspan="2"><textarea cols="100" rows="5" name="content" placeholder="댓글을 입력하세요."></textarea></td>
+					<td><input id="num"  type="button" value="입력" onclick="insertReply(${article.faq_num})"></td>				
 				</tr>	
 			</div>
 			</c:if>
-			<div id="reply">
+			
+		</table>
+				
+		<!-- 댓글 리스트 -->				
+		<table id="replyList" style="width: 50%; text-align: center;"  cellspacing="0" cellpadding="0">
+
+			<div>
+			
+				<c:forEach items="${ reply }" var="reply">
 				<tr>
-					<td colspan="2">작성자</td>
-					<td>작성일</td>
-					<%-- <c:if test="${sessionScope.memId == ${}"> --%>				
-						<td><input type="button" value="삭제" name="deleteReply" id="deleteReply" onclick="deleteReply()"></td>
-					<%-- </c:if> --%>
+					<td colspan="2">${ reply.id }</td><!-- 작성자 -->
+					<td>${ reply.reg }</td> <!-- 작성일 -->
+					<c:if test="${sessionScope.memId == reply.id }">				
+						<td><input type="button" value="삭제" onclick="deleteReply(${ reply.num }, ${reply.faq_num })"></td>
+					</c:if>
 				</tr>
 				<tr>
-					<td colspan="4">내용</td>
+					<td colspan="4">${ reply.content }</td><!-- 댓글내용 -->
 				</tr>
+				</c:forEach>
+				
 			</div>
+				
 		</table>
 		
 		
