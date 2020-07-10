@@ -32,11 +32,11 @@
 	<aop:config>
 	
 		<!-- 관리자 로그인 확인 AOP 설정 -->
-		<!-- <aop:pointcut id="p2" expression="execution(public * mw.*.model.*Bean.admin*(..))" />
+		<aop:pointcut id="p2" expression="execution(public * mw.*.model.*Bean.admin*(..))" />
 		
 		<aop:aspect id="bfadm" ref="adminAop">
 			<aop:around method="around" pointcut-ref="p2" />
-		</aop:aspect> -->
+		</aop:aspect>
 		
 	
 	</aop:config>

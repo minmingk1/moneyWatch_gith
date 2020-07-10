@@ -15,7 +15,7 @@ public class Advice {
 		HttpServletRequest request = sr.getRequest();
 		HttpSession session = request.getSession();
 
-		if(session != null) {	// 세션 존재
+		if(session.getAttribute("memId") != null) {	// 세션 존재
 			String id = (String)session.getAttribute("memId");
 			if(id == null || id.equals("")) {	// 세션 ID정보값 없다면(로그아웃상태)
 				return "redirect:/index.mw";	// 로그인 페이지로 이동

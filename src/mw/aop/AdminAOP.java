@@ -15,13 +15,16 @@ public class AdminAOP {
 		HttpServletRequest request = sr.getRequest();
 		HttpSession session = request.getSession();
 		
-		if(session != null) {	// 技记 粮犁
-			String id = (String)session.getAttribute("memId");
+		if(session.getAttribute("memId") != null) {	// 技记 粮犁
+			String id = (String)session.getAttribute("memId");			
 			if(id.equals("admin")) {
 				return (String)jp.proceed();					
+			}else{
+				return "redirect:/main.mw";
 			}
-		}				
-		return "redirect:/index.mw";
+		}else {			
+			return "redirect:/index.mw";
+		}
 	}
 	
 }
