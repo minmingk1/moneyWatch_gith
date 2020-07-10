@@ -96,7 +96,7 @@ public class AdminBean {
 			model.addAttribute("registerCount"+i, registerCount[i]);	// 오늘(0),어제(1),... 등록자 수
 			model.addAttribute("moneyioCount"+i, moneyioCount[i]);	// 오늘(0),어제(1),... 내역등록 수
 			
-			System.out.println("days"+i + " : " + days[i]);
+			//System.out.println("days"+i + " : " + days[i]);
 		}
 
 		

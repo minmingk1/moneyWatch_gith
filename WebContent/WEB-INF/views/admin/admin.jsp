@@ -42,7 +42,7 @@
 <!-- ####################################### 좌측 메뉴 ####################################################### -->
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="orange">
+    <div class="sidebar" data-color="yellow">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
@@ -63,7 +63,7 @@
             </a>
           </li>
           <li>
-            <a href="./#.mw">
+            <a href="./memList.mw">
               <i class="now-ui-icons users_single-02"></i>
               <p>Members</p>
             </a>
