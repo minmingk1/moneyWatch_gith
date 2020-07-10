@@ -111,7 +111,7 @@
 						<td>
 							<fmt:setLocale value="ko"/>
 							<fmt:formatNumber type="text" value="${dto.io_price}" pattern="#,###" var="io_price"/>
-							<%-- <input type = "hidden" name="io_price" value="${dto.io_price}" /> --%>
+							<input type = "hidden" name="io_price_one" value="${dto.io_price}" />
 							<input type="text" class="form-control" name="io_price" placeholder="${io_price}"></td>
 						<td><label for="text">&nbsp;&nbsp;&nbsp;&nbsp;거래 잔액</label></td>
 						<td colspan="2">
