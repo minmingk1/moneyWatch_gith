@@ -44,6 +44,42 @@
 				}
 			});			
 		}
+		
+		jQuery(document).ready(function($){
+			$('#io_price').on('focus', function(){
+				var val = $('#io_price').val();
+				if(!isEmpty(val)){
+					val = val.replace(/,/g,'');
+					$('#io_price').val(val);
+				}
+			});
+			
+			$('#io_price').on('blur', function(){
+				var val = $('#io_price').val();
+				if(!isEmpty(val) && isNumeric(val)){
+					val = currencyFormatter(val);
+					$('#io_price').val(val);
+				}
+			});
+		}); 
+		
+		//Null check
+		function isEmpty(value){
+			if(value.length ==0 || value==null){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		//정규식 표현식으로 숫자 값 여부 체크
+		function isNumeric(value){
+			var regExp = /^[0-9]+$/g;
+			return regExp.test(value);
+		}
+		//숫자 세자리 마다 콤마를 추가하여 금액 표기 형태로 변환
+		function currencyFormatter(amount){
+			return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
+		}
 
 	</script>
 <body><br/><br/>
@@ -87,11 +123,11 @@
 								선택</label></td>
 						<td>
 							<div class="custom-control custom-radio">
-								<input type="radio" id="customRadio1" name="io_set" value=1
-									class="custom-control-input" checked> &nbsp;&nbsp;<label
-									class="custom-control-label" for="customRadio1">&nbsp;&nbsp;지출</label>
+								<input type="hidden" name="io_old_set" value="${dto.io_set}" />
+								<input type="radio" id="customRadio1" name="io_set" value=1 class="custom-control-input" checked> &nbsp;&nbsp;
+								<label class="custom-control-label" for="customRadio1">&nbsp;&nbsp;지출</label>
 							</div>
-						</td>
+						</td>	
 						<td>
 							<div class="custom-control custom-radio">
 								<input type="radio" id="customRadio2" name="io_set" value=0
@@ -102,17 +138,17 @@
 				</tr>
 				<tr>
 						<td><label for="exampleSelect1">&nbsp;&nbsp;&nbsp;&nbsp;대상(은행/카드)</label></td>
-						<td><input type="text" class="form-control" name="io_bank" value="${dto.io_bank}" disabled/> </td>
+						<td><input type="text" class="form-control" name="io_bank" value="${dto.io_bank}" readOnly/> </td>
 						<td><label for="exampleSelect1">&nbsp;&nbsp;&nbsp;&nbsp;거래번호(계좌/카드번호)</label></td>
-						<td colspan="2"><input type="text" class="form-control" name="io_account" value="${dto.io_account}" disabled/></td>	
+						<td colspan="2"><input type="text" class="form-control" name="io_account" value="${dto.io_account}" readOnly/></td>	
 				</tr>
 				<tr>
 						<td><label for="money">&nbsp;&nbsp;&nbsp;&nbsp;거래 금액</label></td>
 						<td>
 							<fmt:setLocale value="ko"/>
-							<fmt:formatNumber type="text" value="${dto.io_price}" pattern="#,###" var="io_price"/>
-							<input type = "hidden" name="io_price_one" value="${dto.io_price}" />
-							<input type="text" class="form-control" name="io_price" placeholder="${io_price}"></td>
+							<%-- <fmt:formatNumber type="text" value="${dto.io_price}" pattern="#,###" var="io_price"/> --%>
+							<input type = "hidden" name="io_old_price" value="${dto.io_price}" />
+							<input type="text" class="form-control" name="io_price" value="${dto.io_price}" /></td>
 						<td><label for="text">&nbsp;&nbsp;&nbsp;&nbsp;거래 잔액</label></td>
 						<td colspan="2">
 							<fmt:setLocale value="ko"/>
