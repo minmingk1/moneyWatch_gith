@@ -1,5 +1,6 @@
 package mw.moneyio.model;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import mw.account_card.model.Reg_AccountDTO;
 
@@ -19,6 +21,7 @@ import mw.account_card.model.Reg_AccountDTO;
 public class MoneyioBean {
 	
 	SimpleDateFormat formatDate = new SimpleDateFormat("yyyy.MM.dd");
+	DecimalFormat formatter = new DecimalFormat("###,###.##");
 	
 	@Autowired
 	private MoneyioDAO dao = null;
@@ -283,14 +286,12 @@ public class MoneyioBean {
 		Reg_AccountDTO radto = new Reg_AccountDTO();
 		String account = acclist.get(0).getAccount_num();
 		
-		// 해당 회원id를 매개변수로 계좌정보 가져오기
-		// 첫번째 계좌정보를 가지고 내역 가져오기
-		// 계좌정보 보내기
-		
 		List<MoneyioDTO> mlist = dao.moneyioListAll(id, account);
+		int ioRemain = dao.ioRemain(id, account);
 		
 		model.addAttribute("myAcc", acclist);
 		model.addAttribute("moneyioList", mlist);
+		model.addAttribute("ioRemain", ioRemain);
 		model.addAttribute("nowDate", nowDate);
 		
 		return "/moneyio/moneyioList";
@@ -345,10 +346,18 @@ public class MoneyioBean {
 	
 	@RequestMapping("ioDeletePro.mw")
 	public String ioDeletePro(int io_num) {
-		System.out.println(io_num);
+		//System.out.println(io_num);
 		dao.io_delete(io_num);
 		return "redirect:moneyioList.mw";
 	}
 	
+	@RequestMapping("ioRemain.mw")
+	public @ResponseBody String ioRemain(String acc) {
+		String id = "k0725";
+		//String id = (String)session.getAttribute("memId");
+		int ioRemain = dao.ioRemain(id, acc);
+
+		return formatter.format(ioRemain)+"";
+	}
 	
 }

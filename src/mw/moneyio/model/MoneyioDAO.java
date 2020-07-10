@@ -131,7 +131,6 @@ public class MoneyioDAO {
 	
 	public List moneyioListAll(String id, String acc) {
 		
-		map = new HashMap();
 		map.put("id", id);
 		map.put("acc", acc);
 		
@@ -139,7 +138,6 @@ public class MoneyioDAO {
 	}
 	public List moneyioListIn(String id, String acc) {
 		
-		map = new HashMap();
 		map.put("id", id);
 		map.put("acc", acc);
 		
@@ -147,7 +145,6 @@ public class MoneyioDAO {
 	}
 	public List moneyioListOut(String id, String acc) {
 		
-		map = new HashMap();
 		map.put("id", id);
 		map.put("acc", acc);
 		
@@ -156,7 +153,6 @@ public class MoneyioDAO {
 	
 	public MoneyioDTO moneyioListDetail(String id, int ioNum) {
 		
-		map = new HashMap();
 		map.put("id", id);
 		map.put("ioNum", ioNum);
 		
@@ -170,6 +166,14 @@ public class MoneyioDAO {
 	
 	public List myAccount(String id) {
 		return sqlSession.selectList("moneyio.myAccount", id);
+	}
+	
+	public int ioRemain(String id, String acc) {
+			
+		map.put("id", id);
+		map.put("acc", acc);
+		
+		return sqlSession.selectOne("moneyio.ioRemain", map);
 	}
 	
 	

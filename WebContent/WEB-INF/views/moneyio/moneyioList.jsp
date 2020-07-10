@@ -18,6 +18,14 @@
 				$("#ioList").html(data);
 			}
 		});
+		$.ajax({
+			url : "ioRemain.mw",
+			data : {acc: $("#myAcc").val()},
+			success : function(data){
+				console.log("ioRemain-Ajax");
+				$("#ioRemain").html(data);
+			}
+		});
 	}
 	
 	function detail(ioNum){
@@ -59,7 +67,7 @@
 					마지막 업데이트 : ${nowDate}
 				</td>	
 				<td>			
-					전체 남은 잔액 : <fmt:formatNumber value="${moneyioList[0].io_remain}" pattern="#,###"/> 원
+					전체 남은 잔액 : <label id="ioRemain"><fmt:formatNumber value="${ioRemain}" pattern="#,###"/></label> 원
 				</td>
 			</tr>
 		</table>
