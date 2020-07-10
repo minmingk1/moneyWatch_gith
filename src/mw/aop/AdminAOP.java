@@ -2,6 +2,7 @@ package mw.aop;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -20,9 +21,11 @@ public class AdminAOP {
 			if(id.equals("admin")) {
 				return (String)jp.proceed();					
 			}else{
+				JOptionPane.showMessageDialog(null, "관리자 권한이 필요합니다.");
 				return "redirect:/main.mw";
 			}
-		}else {			
+		}else {	
+			JOptionPane.showMessageDialog(null, "관리자 권한이 필요합니다.");
 			return "redirect:/index.mw";
 		}
 	}
