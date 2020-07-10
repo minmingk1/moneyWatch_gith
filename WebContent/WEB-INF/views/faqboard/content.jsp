@@ -53,7 +53,7 @@ table {
 		</table>
 	<br/>
 		<table style="width: 50%; text-align: center;" border="1" cellspacing="0" cellpadding="0">
-			<c:if test="${sessionScope.memId != null">	
+			<c:if test="${sessionScope.memId != null}">	
 			<div id="insert">
 				<tr>
 					<td>댓글</td>
@@ -66,9 +66,9 @@ table {
 				<tr>
 					<td colspan="2">작성자</td>
 					<td>작성일</td>
-					<c:if test="${sessionScope.memId == ${}">				
+					<%-- <c:if test="${sessionScope.memId == ${}"> --%>				
 						<td><input type="button" value="삭제" name="deleteReply" id="deleteReply" onclick="deleteReply()"></td>
-					</c:if>
+					<%-- </c:if> --%>
 				</tr>
 				<tr>
 					<td colspan="4">내용</td>
@@ -88,7 +88,11 @@ table {
 		<!-- 페이지 num url과 함께 보냄 -->
 		<input type="button" class="btn btn-primary" value="목록보기"
 			onclick="document.location.href='/moneyWatch/faqList.mw?pageNum=${pageNum}'" />
-
+		<!-- 관리자 삭제 -->
+		<c:if test="${sessionScope.memId=='admin'}">
+		<input type="button" class="btn btn-primary" value="게시글 삭제"
+			onclick="document.location.href='/moneyWatch/faqAdminDelForm.mw?faq_num=${faq_num}'" />
+		</c:if>
 	</div>
 
 </body>
