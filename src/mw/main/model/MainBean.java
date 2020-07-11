@@ -3,6 +3,7 @@ package mw.main.model;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,10 @@ public class MainBean {
 	}
 	
 	@RequestMapping("index.mw")	
-	public String index() {
+	public String index(HttpServletRequest request) {
+		//String path = request.getServletContext().getRealPath("");
+		//System.out.println(path);
+		
 		return "/index";
 	}
 	
