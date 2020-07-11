@@ -34,6 +34,24 @@
 			});
 		}); 
 	
+		//Null check
+		function isEmpty(value){
+			if(value.length ==0 || value==null){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		//정규식 표현식으로 숫자 값 여부 체크
+		function isNumeric(value){
+			var regExp = /^[0-9]+$/g;
+			return regExp.test(value);
+		}
+		//숫자 세자리 마다 콤마를 추가하여 금액 표기 형태로 변환
+		function currencyFormatter(amount){
+			return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,','); 
+		}
+
 		function N_divFunction() {
 			var checkBox = document.getElementById("customSwitch1");
 			var text = document.getElementById("io_N_div");
@@ -91,23 +109,7 @@
 		}
 		
 		
-		//Null check
-		function isEmpty(value){
-			if(value.length ==0 || value==null){
-				return true;
-			}else{
-				return false;
-			}
-		}
-		//정규식 표현식으로 숫자 값 여부 체크
-		function isNumeric(value){
-			var regExp = /^[0-9]+$/g;
-			return regExp.test(value);
-		}
-		//숫자 세자리 마다 콤마를 추가하여 금액 표기 형태로 변환
-		function currencyFormatter(amount){
-			return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
-		}
+		
 		//$("#io_account option:selected").val();
 	</script>
 <br><br>	
@@ -193,7 +195,7 @@
 					</td>
 				</tr>
 			</table><br/>
-			<input type="submit" class="btn btn-primary" value="등록하기" style="float:right; margin-right:20%;"/>
+			<input type="submit" class="btn btn-primary" id="submit" value="등록하기" style="float:right; margin-right:20%;"/>
 		</div>
 		<br /><br />
 		
