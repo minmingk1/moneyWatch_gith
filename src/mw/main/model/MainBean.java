@@ -29,7 +29,7 @@ public class MainBean {
 		//System.out.println(path);
 		
 		if(session.getAttribute("memId")!=null) {
-			return "/main/main";
+			return "redirect:/main.mw";
 		}
 		
 		return "/index";
