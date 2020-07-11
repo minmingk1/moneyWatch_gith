@@ -419,9 +419,9 @@ public class MoneyioBean {
 	}
 	
 	@RequestMapping("ioRemain.mw")
-	public @ResponseBody String ioRemain(String acc) {
-		String id = "k0725";
-		//String id = (String)session.getAttribute("memId");
+	public @ResponseBody String ioRemain(String acc, HttpSession session) {
+		//String id = "k0725";
+		String id = (String)session.getAttribute("memId");
 		int ioRemain = dao.ioRemain(id, acc);
 
 		return formatter.format(ioRemain)+"";
