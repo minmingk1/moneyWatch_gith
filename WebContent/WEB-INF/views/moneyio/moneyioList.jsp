@@ -47,7 +47,7 @@
 <center>
 <div class="form-group">
 	<!-- 종합 -->
-		<table class="table table-hover" border = "1" style="width:30%">
+		<table class="table table-hover" border = "1" style="width:40%">
 			<tr>
 				<td>
 					<select class="form-control" id="myAcc" name="myAcc" onchange="filter()">
