@@ -23,7 +23,6 @@
 			url : "ioRemain.mw",
 			data : {acc: $("#myAcc").val()},
 			success : function(data){
-				console.log("ioRemain-Ajax");
 				$("#ioRemain").html(data);
 			}
 		});

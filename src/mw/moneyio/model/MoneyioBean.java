@@ -210,23 +210,23 @@ public class MoneyioBean {
 		
 			//int differ = Math.abs(io_old_price - io_new_price); 
 			
-			//�ŷ��ݾ� ���� �ִ� ���
+			//占신뤄옙占쌥억옙 占쏙옙占쏙옙 占쌍댐옙 占쏙옙占�
 			if(io_new_price != io_old_price) {
-				//����/���� ���� ������ �ִ� ���
+				//占쏙옙占쏙옙/占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍댐옙 占쏙옙占�
 				if(io_old_set != io_new_set) {
-					//���� ->���� ����
+					//占쏙옙占쏙옙 ->占쏙옙占쏙옙 占쏙옙占쏙옙
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()-io_old_price-io_new_price);
 						
-					}else { //����->���� ����
+					}else { //占쏙옙占쏙옙->占쏙옙占쏙옙 占쏙옙占쏙옙
 						dto.setIo_remain(dto.getIo_remain()+io_old_price+io_new_price);
 						
 					}
 				}else {
-					//���� -> ����
+					//占쏙옙占쏙옙 -> 占쏙옙占쏙옙
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()+io_old_price-io_new_price);
-					}else { //���� -> ����
+					}else { //占쏙옙占쏙옙 -> 占쏙옙占쏙옙
 						dto.setIo_remain(dto.getIo_remain()-io_old_price+io_new_price);
 					}
 				}
@@ -276,7 +276,7 @@ public class MoneyioBean {
 		}
 		
 		
-		@RequestMapping("ptEstimate.mw") //개인 소비목록 리스트, 다음달 예상 지출액 
+		@RequestMapping("ptEstimate.mw") //媛쒖씤 �냼鍮꾨ぉ濡� 由ъ뒪�듃, �떎�쓬�떖 �삁�긽 吏�異쒖븸 
 		public String ptEstimate(HttpSession session, Model model) {
 			String id = (String)session.getAttribute("memId");
 			int sum = 0;
@@ -352,8 +352,8 @@ public class MoneyioBean {
 	@RequestMapping("ioList.mw")	
 	public String ioList(String filter, String acc, Model model, HttpSession session) {
 			
-		 String id = "k0725"; 
-		//String id = (String)session.getAttribute("memId"); 
+		//String id = "k0725"; 
+		String id = (String)session.getAttribute("memId"); 
 		List list = new ArrayList();
 		
 		if(filter.equals("all")) {
@@ -373,11 +373,11 @@ public class MoneyioBean {
 	@RequestMapping("ioListDetail.mw")
 	public String ioListDetail(int ioNum, Model model, HttpSession session) {
 		
-		String id = "k0725";
-		//String id = (String)session.getAttribute("memId"); 
+		//String id = "k0725";
+		String id = (String)session.getAttribute("memId"); 
 		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
-		String n_check="������ �����ϴ�.";
+		String n_check="占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙.";
 		NbreadDTO ndto = new NbreadDTO();
 		
 		if(nlist.size()==0) {
