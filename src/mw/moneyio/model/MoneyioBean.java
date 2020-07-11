@@ -162,8 +162,6 @@ public class MoneyioBean {
 			dao.balanceUpdateAccount(rdto);
 			ndto.setIo_num(dto.getIo_num());
 			ndto.setN_category(dto.getIo_category());
-			//System.out.println("dto io_num : "+dto.getIo_num());	
-			//System.out.println("getIo_N_div: "+dto.getIo_N_div());
 			
 			if(dto.getIo_N_div()>0) {
 				String[] n_debtor = request.getParameterValues("n_debtor");
@@ -173,7 +171,6 @@ public class MoneyioBean {
 					ndto.setN_debtor(n_debtor[i]);
 					ndto.setN_price(n_price[i]);
 					dao.n_insert(ndto);
-					//System.out.println("ndto get n debtor"+ndto.getN_debtor());
 				}
 			}	
 			System.out.println("getN_debtor: "+ndto.getN_debtor());
@@ -213,23 +210,23 @@ public class MoneyioBean {
 		
 			//int differ = Math.abs(io_old_price - io_new_price); 
 			
-			//°Å·¡±İ¾× º¯°æ ÀÖ´Â °æ¿ì
+			//ï¿½Å·ï¿½ï¿½İ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
 			if(io_new_price != io_old_price) {
-				//ÁöÃâ/¼öÀÔ ¼±ÅÃ º¯°æÀÌ ÀÖ´Â °æ¿ì
+				//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
 				if(io_old_set != io_new_set) {
-					//¼öÀÔ ->ÁöÃâ º¯°æ
+					//ï¿½ï¿½ï¿½ï¿½ ->ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()-io_old_price-io_new_price);
 						
-					}else { //ÁöÃâ->¼öÀÔ º¯°æ
+					}else { //ï¿½ï¿½ï¿½ï¿½->ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 						dto.setIo_remain(dto.getIo_remain()+io_old_price+io_new_price);
 						
 					}
 				}else {
-					//ÁöÃâ -> ÁöÃâ
+					//ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()+io_old_price-io_new_price);
-					}else { //¼öÀÔ -> ¼öÀÔ
+					}else { //ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½
 						dto.setIo_remain(dto.getIo_remain()-io_old_price+io_new_price);
 					}
 				}
@@ -278,55 +275,42 @@ public class MoneyioBean {
 			return "/moneyio/ageChart";
 		}
 		
-
-		@RequestMapping("ptEstimate.mw")
+		
+		@RequestMapping("ptEstimate.mw") //ê°œì¸ ì†Œë¹„ëª©ë¡ ë¦¬ìŠ¤íŠ¸, ë‹¤ìŒë‹¬ ì˜ˆìƒ ì§€ì¶œì•¡ 
 		public String ptEstimate(HttpSession session, Model model) {
-			
 			String id = (String)session.getAttribute("memId");
-			System.out.println(id);
-		/* String id = "nahui068"; */
 			int sum = 0;
 			int sum1 = dao.sum5(id);
 			int sum2 = dao.sum6(id);
 			int sum3 = dao.sum7(id);
 			
-			System.out.println(id);
-			
 			List<MoneyioDTO> list1 = dao.ptEstimate5(id);
 			List<MoneyioDTO> list2 = dao.ptEstimate6(id);
 			List<MoneyioDTO> list3 = dao.ptEstimate7(id);
-			
 			List<MoneyioDTO> next_list = dao.nextMonth(id);
+			
 			for(int i=0; i<next_list.size();i++) {
 				if(next_list.get(i).getCount3()==3) {
 					int next = next_list.get(i).getIo_price()/3;
-					//System.out.println("next3: "+next);
 					sum = sum+next;
-					//System.out.println("sum3: "+sum);
 				}
-				System.out.println();
 				if(next_list.get(i).getCount3()==2) {
 					int next = next_list.get(i).getIo_price()/4;
-					//System.out.println("next2: "+next);
 					sum = sum + next;
-					//System.out.println("sum2: "+sum);
 				}
 				if(next_list.get(i).getCount3()==1) {
 					int next = next_list.get(i).getIo_price()/5;
 					sum = sum + next;
-					//System.out.println("sum1"+sum);
 				}
 			}
-			
 			if(sum3-sum2 > 0) {
 				int differ = sum3- sum2;
 				sum = sum+ differ;
 			}
 			int estimate  = sum;
-			System.out.println("sum_all: "+ estimate);
-			//MoneyioDTO dtoT = next_list.get(next_list.size()-1);
-			//System.out.println("next_list: "+ dtoT.getCount3());
 			
+			System.out.println("sum_all: "+ estimate);
+
 			model.addAttribute("memId", id);
 			model.addAttribute("list1", list1);
 			model.addAttribute("sum1", sum1);
@@ -335,7 +319,8 @@ public class MoneyioBean {
 			model.addAttribute("list3", list3);
 			model.addAttribute("sum3", sum3);
 			model.addAttribute("estimate", estimate);
-			
+			//MoneyioDTO dtoT = next_list.get(next_list.size()-1);
+			//System.out.println("next_list: "+ dtoT.getCount3());
 			return "/moneyio/ptEstimate";
 		}
 	
@@ -392,7 +377,7 @@ public class MoneyioBean {
 		//String id = (String)session.getAttribute("memId"); 
 		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
-		String n_check="³»¿ªÀÌ ¾ø½À´Ï´Ù.";
+		String n_check="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.";
 		NbreadDTO ndto = new NbreadDTO();
 		
 		if(nlist.size()==0) {
