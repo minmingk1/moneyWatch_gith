@@ -24,9 +24,13 @@ public class MainBean {
 	}
 	
 	@RequestMapping("index.mw")	
-	public String index(HttpServletRequest request) {
+	public String index(HttpSession session) {
 		//String path = request.getServletContext().getRealPath("");
 		//System.out.println(path);
+		
+		if(session.getAttribute("memId")!=null) {
+			return "/main/main";
+		}
 		
 		return "/index";
 	}

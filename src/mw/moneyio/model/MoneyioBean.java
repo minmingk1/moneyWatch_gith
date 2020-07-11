@@ -345,8 +345,8 @@ public class MoneyioBean {
 		Date date = new Date();
 		String nowDate = formatDate.format(date);
 		
-		String id = "k0725";
-		//String id = (String)session.getAttribute("memId");
+		//String id = "k0725";
+		String id = (String)session.getAttribute("memId");
 		
 		List<Reg_AccountDTO> acclist = new ArrayList();
 		acclist = dao.myAccount(id);
