@@ -44,42 +44,6 @@
 				}
 			});			
 		}
-		
-		jQuery(document).ready(function($){
-			$('#io_price').on('focus', function(){
-				var val = $('#io_price').val();
-				if(!isEmpty(val)){
-					val = val.replace(/,/g,'');
-					$('#io_price').val(val);
-				}
-			});
-			
-			$('#io_price').on('blur', function(){
-				var val = $('#io_price').val();
-				if(!isEmpty(val) && isNumeric(val)){
-					val = currencyFormatter(val);
-					$('#io_price').val(val);
-				}
-			});
-		}); 
-		
-		//Null check
-		function isEmpty(value){
-			if(value.length ==0 || value==null){
-				return true;
-			}else{
-				return false;
-			}
-		}
-		//정규식 표현식으로 숫자 값 여부 체크
-		function isNumeric(value){
-			var regExp = /^[0-9]+$/g;
-			return regExp.test(value);
-		}
-		//숫자 세자리 마다 콤마를 추가하여 금액 표기 형태로 변환
-		function currencyFormatter(amount){
-			return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');
-		}
 
 	</script>
 <body><br/><br/>

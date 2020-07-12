@@ -28,44 +28,43 @@ public class MoneyioBean {
 	
 	ArrayList list = new  ArrayList();
 
-		@RequestMapping("moneyioForm.mw")
-		public String moneyioForm(HttpSession session, MoneyioDTO dto, Model model) {
+	@RequestMapping("moneyioForm.mw")
+	public String moneyioForm(HttpSession session, MoneyioDTO dto, Model model) {
 		String id = (String)session.getAttribute("memId");
-		/* String id= "nahui068"; */
-			dto.setId(id);
+		dto.setId(id);
 			
-			List list_company = dao.account(id);
-			List list_card = dao.card(id);
+		List list_company = dao.account(id);
+		List list_card = dao.card(id);
 			
 		/*
 		 * System.out.println("list_company"+list_company);
 		 * System.out.println("list_card"+list_card)
 		 */;
 			
-			String[] card_list = new String[list_company.size()+list_card.size()];
+		String[] card_list = new String[list_company.size()+list_card.size()];
+		
+		for(int i=0; i<list_company.size();i++) {
+			card_list[i] = (String)list_company.get(i);
+		}
+		for(int i=list_company.size();i<list_company.size()+list_card.size();i++) {
+			int j = 0;
+			card_list[i] = (String)list_card.get(j);
+			j++;
+		}
 			
-			for(int i=0; i<list_company.size();i++) {
-				card_list[i] = (String)list_company.get(i);
-			}
-			for(int i=list_company.size();i<list_company.size()+list_card.size();i++) {
-				int j = 0;
-				card_list[i] = (String)list_card.get(j);
-				j++;
-			}
-			
-			for(int i = 0; i < card_list.length; i++) {
-				System.out.println("card_list["+i+"] : " + card_list[i]);
-			}
+		for(int i = 0; i < card_list.length; i++) {
+			System.out.println("card_list["+i+"] : " + card_list[i]);
+		}
 			//System.out.println("card_list"+card_list);
 			
 			//System.out.println("card_list: "+card_list);
 			
 			//System.out.println(card_list.get(0));
 			//System.out.println(card_list.get(1));
-			model.addAttribute("memId", id);
-			model.addAttribute("card_list", card_list);
+		model.addAttribute("memId", id);
+		model.addAttribute("card_list", card_list);
 
-			return "/moneyio/moneyioForm";
+		return "/moneyio/moneyioForm";
 		}
 		
 		@RequestMapping("bankSelect.mw")
@@ -124,13 +123,13 @@ public class MoneyioBean {
 		}
 		
 		@RequestMapping("remain.mw")
-		public String remain(My_cardDTO mdto, Model model) {
+		public String remain(String id, String account_num, Model model) {
 			
 			//System.out.println("dto.io_account : " + mdto.getAccount_num());
 			//System.out.println("dto.io_id : " + mdto.getId());
 			
-			String io_remain = dao.allMoney(mdto);
-			//System.out.println("io_remain: "+io_remain);
+			String io_remain = dao.allMoney(id, account_num);
+			System.out.println("io_remain: "+io_remain);
 			model.addAttribute("io_remain", io_remain);
 			return "/moneyio/remain";
 		}
@@ -145,7 +144,7 @@ public class MoneyioBean {
 		
 
 		@RequestMapping("moneyioPro.mw")
-		public String moneyioPro( Reg_AccountDTO rdto,  MoneyioDTO dto, NbreadDTO ndto, My_cardDTO mdto, HttpServletRequest request) {
+		public String moneyioPro(MoneyioDTO dto, NbreadDTO ndto,String id, HttpServletRequest request) {
 			int io_old_remain = Integer.parseInt(request.getParameter("io_old_remain"));
 			System.out.println("io_old_remain:"+io_old_remain);
 			
@@ -158,8 +157,14 @@ public class MoneyioBean {
 			dao.insert(dto);
 			System.out.println("reg: "+dto.getIo_reg_date()); 
 			
-			dao.balanceUpdate(mdto);
-			dao.balanceUpdateAccount(rdto);
+			if(dao.card_check(id, dto.getIo_account()) != 0) {
+				dao.balanceUpdate(id, dto.getIo_account());
+			}else {
+				dao.balanceUpdateAccount(id, dto.getIo_account());
+			}
+			
+			System.out.println("update 성공!");
+			
 			ndto.setIo_num(dto.getIo_num());
 			ndto.setN_category(dto.getIo_category());
 			
@@ -179,12 +184,12 @@ public class MoneyioBean {
 
 		
 		@RequestMapping("ioUpdateForm.mw")
-		public String ioUpdateForm(HttpSession session, My_cardDTO mdto, Model model, HttpServletRequest request) {
+		public String ioUpdateForm(HttpSession session, String id, String account_num, Model model, HttpServletRequest request) {
 			
-			String id = (String)session.getAttribute("memId"); 
+			String memId = (String)session.getAttribute("memId"); 
 			int io_num = Integer.parseInt(request.getParameter("ioNum"));
 			
-			String balance = dao.allMoney(mdto);
+			String balance = dao.allMoney(id, account_num);
 			
 			MoneyioDTO dto = dao.ioUpdateForm(io_num);
 			
@@ -192,7 +197,7 @@ public class MoneyioBean {
 				dto.setIo_N_div(0);
 			}
 			model.addAttribute("balance", balance);
-			model.addAttribute("memId", id);
+			model.addAttribute("memId", memId);
 			model.addAttribute("dto", dto);
 			
 			return "/moneyio/ioUpdateForm";
@@ -200,7 +205,7 @@ public class MoneyioBean {
 		
 
 		@RequestMapping("ioUpdatePro.mw")
-		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto, Reg_AccountDTO rdto,My_cardDTO mdto, HttpServletRequest request) {
+		public String ioUpdatePro(MoneyioDTO dto, NbreadDTO ndto,String id, String account_num, HttpServletRequest request) {
 			
 			int io_old_price = Integer.parseInt(request.getParameter("io_old_price"));
 			int io_new_price = Integer.parseInt(request.getParameter("io_price"));
@@ -236,8 +241,8 @@ public class MoneyioBean {
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
 			
 			dao.ioUpdatePro(dto);
-			dao.balanceUpdate(mdto);
-			dao.balanceUpdateAccount(rdto);
+			dao.balanceUpdate(id, account_num);
+			dao.balanceUpdateAccount(id, account_num);
 			
 			if(dto.getIo_N_div()>0) {
 				dao.n_delete(ndto.getIo_num());
@@ -377,7 +382,7 @@ public class MoneyioBean {
 		String id = (String)session.getAttribute("memId"); 
 		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
-		String n_check="占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙占싹댐옙.";
+		String n_check="내역이 없습니다.";
 		NbreadDTO ndto = new NbreadDTO();
 		
 		if(nlist.size()==0) {

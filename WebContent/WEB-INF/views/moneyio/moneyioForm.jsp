@@ -16,7 +16,7 @@
 <script type="text/javascript">
 	var n_all;
 	
-		jQuery(document).ready(function($){
+		/* jQuery(document).ready(function($){
 			$('#io_price').on('focus', function(){
 				var val = $('#io_price').val();
 				if(!isEmpty(val)){
@@ -50,7 +50,7 @@
 		//숫자 세자리 마다 콤마를 추가하여 금액 표기 형태로 변환
 		function currencyFormatter(amount){
 			return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g,','); 
-		}
+		} */
 
 		function N_divFunction() {
 			var checkBox = document.getElementById("customSwitch1");

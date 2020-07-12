@@ -16,7 +16,7 @@ public class MoneyioDAO {
 	public MoneyioDAO(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	//³ªÀÇ Ä«µå¸®½ºÆ®
+	//ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å¸®ï¿½ï¿½Æ®
 	public List<My_cardDTO> card(String id) {
 		return sqlSession.selectList("moneyio.card", id);
 	}
@@ -24,7 +24,7 @@ public class MoneyioDAO {
 		return sqlSession.selectList("moneyio.account", id);
 	}
 	
-	//³ªÀÇ Ä«µå °èÁÂ
+	//ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public List card_Account(String id, String card_name) {
 		//System.out.println(ca_company);
 		//System.out.println("dao: "+mdto.getId());
@@ -40,67 +40,79 @@ public class MoneyioDAO {
 		return sqlSession.selectList("moneyio.company_Account", map);
 	}
 	
-	//³ªÀÇ °èÁÂ ÀÜ¾×
-	public String allMoney(My_cardDTO mdto) {
-		return sqlSession.selectOne("moneyio.allMoney", mdto);
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½
+	public String allMoney(String id, String account_num) {
+		map.put("id", id);
+		map.put("account_num", account_num);
+		return sqlSession.selectOne("moneyio.allMoney", map);
+	}
+	
+	public int card_check(String id, String account_num) {
+		map.put("id", id);
+		map.put("account_num", account_num);
+		return sqlSession.selectOne("moneyio.card_check", map);
 	}
 	//mwregistercard balance update
-	public int balanceUpdate(My_cardDTO mdto) {
-		return sqlSession.update("moneyio.balance_update", mdto);
+	public int balanceUpdate(String id, String account_num) {
+		map.put("id", id);
+		map.put("account_num", account_num);
+		return sqlSession.update("moneyio.balance_update", map);
 	}
 	
-	// °èÁÂ ÀÜ¾× ¾÷µ¥ÀÌÆ®
-	public int balanceUpdateAccount(Reg_AccountDTO rdto) {
-		return sqlSession.update("moneyio.balance_update_account", rdto);
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+	public int balanceUpdateAccount(String id, String account_num) {
+		map.put("id", id);
+		map.put("account_num", account_num);
+		return sqlSession.update("moneyio.balance_update_account", map);
 	}
 	
-	//ÁöÃâ/¼öÀÔ ³»¿ª ÀÔ·Â
+	//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	public void insert(MoneyioDTO dto) {
 //		System.out.println("id : " + dto.getId());
 
 		sqlSession.insert("moneyio.insert", dto);
 	}
-	//´õÄ¡ÆäÀÌ ÀÔ·Â
+	//ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½
 	public void n_insert(NbreadDTO ndto) {
 
 		sqlSession.insert("moneyio.n_insert", ndto);
 	}
-	//ÁöÃâ/¼öÀÔ ³»¿ª ¼öÁ¤ ÆäÀÌÁö
+	//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public MoneyioDTO ioUpdateForm(int io_num) {
 
 		return sqlSession.selectOne("moneyio.updateForm", io_num);
 	}
 
-	//ÁöÃâ/¼öÀÔ ³»¿ª ¼öÁ¤
+	//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void ioUpdatePro(MoneyioDTO dto) {
 		sqlSession.update("moneyio.update", dto);
 	}
 
-	//ÁöÃâ/¼öÀÔ ³»¿ª »èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void io_delete(int io_num) {
 		sqlSession.delete("moneyio.io_delete", io_num);
 	}
 	
-	//ÁöÃâ/¼öÀÔ ³»¿ª »èÁ¦ or ¼öÁ¤ÇÏ±â À§ÇÑ »èÁ¦
+	//ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ or ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void n_delete(int io_num) {
 		sqlSession.delete("moneyio.n_delete", io_num);
 	}
 	
-	//´õÄ¡ÆäÀÌ ¼öÁ¤À» À§ÇÑ ÀçÀÔ·Â
+	//ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô·ï¿½
 	public void n_insert2(NbreadDTO ndto) {
 		sqlSession.insert("moneyio.n_insert2", ndto);
 	}
-	//¿¬·É´ëº° ÁöÃâ chart ÆäÀÌÁö -20
+	//ï¿½ï¿½ï¿½É´ëº° ï¿½ï¿½ï¿½ï¿½ chart ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -20
 	public List<MoneyioDTO> ageChart20() {
 		return sqlSession.selectList("moneyio.chart20");
 	}
 	
-	//¿¬·É´ëº° ÁöÃâ chart ÆäÀÌÁö -30
+	//ï¿½ï¿½ï¿½É´ëº° ï¿½ï¿½ï¿½ï¿½ chart ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -30
 	public List<MoneyioDTO> ageChart30() {
 		return sqlSession.selectList("moneyio.chart30");
 	}
 	
-	//¿¬·É´ëº° ÁöÃâ chart ÆäÀÌÁö -40
+	//ï¿½ï¿½ï¿½É´ëº° ï¿½ï¿½ï¿½ï¿½ chart ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -40
 	public List<MoneyioDTO> ageChart40() {
 		return sqlSession.selectList("moneyio.chart40");
 	}
@@ -112,27 +124,27 @@ public class MoneyioDAO {
 		return sqlSession.selectOne("moneyio.nSum", io_num);
 	}
 	
-	//°³ÀÎ¼ÒºñÆÐÅÏ chart5¿ù
+	//ï¿½ï¿½ï¿½Î¼Òºï¿½ï¿½ï¿½ï¿½ï¿½ chart5ï¿½ï¿½
 	public List<MoneyioDTO> ptEstimate5(String id){
 		return sqlSession.selectList("moneyio.ptEstimate5", id);
 	}
-	//°³ÀÎ¼ÒºñÆÐÅÏ chart5¿ù ÃÑ±Ý¾×
+	//ï¿½ï¿½ï¿½Î¼Òºï¿½ï¿½ï¿½ï¿½ï¿½ chart5ï¿½ï¿½ ï¿½Ñ±Ý¾ï¿½
 	public int sum5(String id) {
 		return sqlSession.selectOne("moneyio.moneySum5", id);
 	}
-	//°³ÀÎ¼ÒºñÆÐÅÏ chart6¿ù
+	//ï¿½ï¿½ï¿½Î¼Òºï¿½ï¿½ï¿½ï¿½ï¿½ chart6ï¿½ï¿½
 	public List<MoneyioDTO> ptEstimate6(String id){
 		return sqlSession.selectList("moneyio.ptEstimate6", id);
 	}
-	//°³ÀÎ¼ÒºñÆÐÅÏ chart6¿ù ÃÑ±Ý¾×
+	//ï¿½ï¿½ï¿½Î¼Òºï¿½ï¿½ï¿½ï¿½ï¿½ chart6ï¿½ï¿½ ï¿½Ñ±Ý¾ï¿½
 	public int sum6(String id) {
 		return sqlSession.selectOne("moneyio.moneySum6", id);
 	}
-	//°³ÀÎ¼ÒºñÆÐÅÏ chart7¿ù
+	//ï¿½ï¿½ï¿½Î¼Òºï¿½ï¿½ï¿½ï¿½ï¿½ chart7ï¿½ï¿½
 	public List<MoneyioDTO> ptEstimate7(String id){
 		return sqlSession.selectList("moneyio.ptEstimate7", id);
 	}
-	//°³ÀÎ¼ÒºñÆÐÅÏ chart7¿ù ÃÑ±Ý¾×
+	//ï¿½ï¿½ï¿½Î¼Òºï¿½ï¿½ï¿½ï¿½ï¿½ chart7ï¿½ï¿½ ï¿½Ñ±Ý¾ï¿½
 	public int sum7(String id) {
 		return sqlSession.selectOne("moneyio.moneySum7", id);
 	}
