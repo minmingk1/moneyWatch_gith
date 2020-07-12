@@ -36,13 +36,15 @@ public class MainBean {
 	}
 	
 	@RequestMapping("main.mw")	
-	public String aopmain(Model model) {
+	public String aopmain(Model model, HttpSession session) {
 		Date today = new Date();
+		String id = (String)session.getAttribute("memId");
 		SimpleDateFormat now = new SimpleDateFormat("MMM d, yyyy HH:mm");
 		
 		MainDTO video = dao.video_url(); //占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙
 		model.addAttribute("today", now.format(today));
 		model.addAttribute("video", video); //占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙 url 占쏙옙占쏙옙占쏙옙
+		model.addAttribute("memId", id);
 		return "/main/main";
 	}
 	

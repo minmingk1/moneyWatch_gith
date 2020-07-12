@@ -4,7 +4,8 @@
 <mapper namespace="admin">
 
 	<insert id="insertVisitor" parameterType="VisitCountDTO">
-		insert into mwvisitor(visit_no, visit_ip, visit_time, visit_refer, visit_agent, id) values(mwvisitor_seq.nextval, #{visit_ip}, sysdate, #{visit_refer}, #{visit_agent}, #{id})		
+		insert into mwvisitor(visit_no, visit_ip, visit_time, visit_refer, visit_agent, id)
+		 values(mwvisitor_seq.nextval, #{visit_ip}, sysdate, #{visit_refer}, #{visit_agent}, #{id})		
     </insert>
     
     <select id="visitCount" parameterType="HashMap" resultType="int">
@@ -33,7 +34,8 @@
     
     <select id="faqboard" resultType="faqboardDTO">
     	<![CDATA[
-    		select * from (select faq_num, subject, id, reg, rownum from mwfaqboard order by reg desc, faq_num desc) where rownum <=5
+    		select * from (select faq_num, subject, id, reg, rownum from mwfaqboard order by reg desc, faq_num desc)
+    		 where rownum <=5
     	]]>
     </select>
     
