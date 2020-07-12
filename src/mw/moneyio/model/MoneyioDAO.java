@@ -53,16 +53,18 @@ public class MoneyioDAO {
 		return sqlSession.selectOne("moneyio.card_check", map);
 	}
 	//mwregistercard balance update
-	public void balanceUpdate(String id, String account_num) {
+	public void balanceUpdate(String id, String account_num, String balance) {
 		map.put("id", id);
 		map.put("account_num", account_num);
+		map.put("balance", balance);
 		sqlSession.update("moneyio.balance_update", map);
 	}
 	
 	// ���� �ܾ� ������Ʈ
-	public void balanceUpdateAccount(String id, String account_num) {
+	public void balanceUpdateAccount(String id, String account_num, String balance) {
 		map.put("id", id);
 		map.put("account_num", account_num);
+		map.put("balance", balance);
 		sqlSession.update("moneyio.balance_update_account", map);
 	}
 	

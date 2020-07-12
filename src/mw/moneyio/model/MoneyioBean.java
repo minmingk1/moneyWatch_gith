@@ -158,9 +158,9 @@ public class MoneyioBean {
 			System.out.println("reg: "+dto.getIo_reg_date()); 
 			
 			if(dao.card_check(id, dto.getIo_account()) != 0) {
-				dao.balanceUpdate(id, dto.getIo_account());
+				dao.balanceUpdate(id, dto.getIo_account(),dto.getIo_remain());
 			}else {
-				dao.balanceUpdateAccount(id, dto.getIo_account());
+				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
 			}
 			
 			System.out.println("update 성공!");
