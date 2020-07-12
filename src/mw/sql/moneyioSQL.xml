@@ -43,12 +43,12 @@
 	
 	<!-- 카드계좌 잔액 업데이트 -->
 	<update id="balance_update" parameterType="hashmap">
-		update mwregistercard set balance=#{io_remain} where id=#{id} and account_num=#{account_num}
+		update mwregistercard set balance=#{balance} where id=#{id} and account_num=#{account_num}
 	</update>
 
 	<!-- 계좌 잔액 업데이트 -->
 	<update id="balance_update_account" parameterType="hashmap">
-		update mwregisteraccount set balance=#{io_remain} where id=#{id} and account_num=#{account_num}
+		update mwregisteraccount set balance=#{balance} where id=#{id} and account_num=#{account_num}
 	</update>
 		
 	<!-- 지출/수입 내역 수정페이지 데이터 -->	
