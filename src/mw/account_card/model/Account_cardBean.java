@@ -86,7 +86,7 @@ public class Account_cardBean {
 		String set = request.getParameter("set"); // 메인에 있는 form이랑 마이페이지에 있는 form이랑 구별해서 넘기기 위함
 		
 		if(ca_set.equals("0")) { // 카드등록일 경우 
-			check = acdao.check_card(id, cdto.getCard_name(), cdto.getAccount_num());
+			check = acdao.check_card(id, cdto.getCard_name(), cdto.getAccount_num()); //카드와 계좌가 존재하는지 확인
 			if(check == 0) {
 				acdao.card_insert(cdto); // 카드등록
 				acdao.account_insert(adto); // 계좌등록
