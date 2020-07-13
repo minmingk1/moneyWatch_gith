@@ -128,7 +128,7 @@
 	    	$.ajax({
 	    		type : "post", //송신 데이터타입
 	    		url : "day_detail.mw",
-	    		data : {title:title, start_time:start_time},
+	    		data : {title:title, start_time:start_time,set:${set}},
 	    		success : function(data){
 	    			$("#content").html(data);
 	    		}
