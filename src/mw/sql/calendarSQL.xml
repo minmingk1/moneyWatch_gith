@@ -60,7 +60,7 @@
 	
 	<!-- 오늘 일정(memo) -->
 	<select id="todayMemo" resultType="String" parameterType="hashmap">
-		select memo from (select memo, rownum from mwschedule where id=#{id} and start_time=#{today} and rownum = 1 order by num desc)
+		select title from (select title, rownum from mwschedule where id=#{id} and start_time=#{today} and rownum = 1 order by num desc)
 	</select>
 	
 </mapper>
