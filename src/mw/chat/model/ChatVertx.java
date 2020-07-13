@@ -17,7 +17,10 @@ import com.nhncorp.mods.socket.io.SocketIOSocket;
 import com.nhncorp.mods.socket.io.impl.DefaultSocketIOServer;
 import com.nhncorp.mods.socket.io.spring.DefaultEmbeddableVerticle;
 
+import mw.account_card.model.Account_cardDAO;
 import mw.account_card.model.Reg_AccountDTO;
+import mw.account_card.model.Reg_CardDTO;
+import mw.calendar.model.MwScheduleDAO;
 import mw.member.model.MemberDAO;
 import mw.member.model.MemberDTO;
 import mw.moneyio.model.MoneyioDAO;
@@ -34,8 +37,8 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 	@Autowired
 	private MoneyioDAO moDAO = null;
 	private MoneyioDTO moDTO = new MoneyioDTO();
-	public List moAllList = new ArrayList();		// 모든 내역 목록 저장
-	public List moReList = new ArrayList();			// 일자별 마지막 내역 저장
+	List moAllList = new ArrayList();		// 모든 내역 목록 저장
+	List moReList = new ArrayList();			// 일자별 마지막 내역 저장
 
 	int remainAgo_1;
 	int remainAgo_2;
@@ -45,10 +48,31 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 	@Autowired
 	private MemberDAO meDAO = null;
 	private MemberDTO meDTO = new MemberDTO();
-	public List meAllList = new ArrayList();
+	List<MemberDTO> meAllList = new ArrayList();
 	
-	public List<Reg_AccountDTO> acclist = new ArrayList();
 	private Reg_AccountDTO radto = new Reg_AccountDTO();
+	List<Reg_AccountDTO> acclist = new ArrayList();
+	
+	// cardDAO, DTO, List 생성(호출)
+	@Autowired
+	private Account_cardDAO caDAO = null;
+	private Reg_CardDTO caDTO = new Reg_CardDTO();
+	List<Reg_CardDTO> caRank20 = new ArrayList();
+	List<Reg_CardDTO> caRank30 = new ArrayList();
+	List<Reg_CardDTO> caRank40 = new ArrayList();
+	String caRank20_company;
+	String caRank30_company;
+	String caRank40_company;
+	String caRank20_name;
+	String caRank30_name;
+	String caRank40_name;
+	
+	
+	int todayOutMoney = 0;
+	
+	@Autowired
+	private MwScheduleDAO schDAO = null;
+	String todayMemo = "일정없음";
 	
 	@Override
 	public void start(Vertx vertx) {
@@ -100,6 +124,48 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 							ioAllRemain = 0; 
 						}
 						
+						// 연령대 별 카드 순위 가져오기
+						caRank20 = (List)caDAO.card_rank(caDTO).get("rankList_20");
+						caRank30 = (List)caDAO.card_rank(caDTO).get("rankList_30");
+						caRank40 = (List)caDAO.card_rank(caDTO).get("rankList_40");
+						
+						caRank20_company = caRank20.get(0).getCard_company();
+						caRank20_name = caRank20.get(0).getCard_name();
+						
+						caRank30_company = caRank30.get(0).getCard_company();
+						caRank30_name = caRank30.get(0).getCard_name();
+						
+						caRank40_company = caRank40.get(0).getCard_company();
+						caRank40_name = caRank40.get(0).getCard_name();
+						
+						
+						if(caRank20_company == null) {
+							caRank20_company = " - ";
+							caRank20_name = " - ";
+						}
+						if(caRank30_company == null) {
+							caRank30_company = " - ";
+							caRank30_name = " - ";
+						}
+						if(caRank40_company == null) {
+							caRank40_company = " - ";
+							caRank40_name = " - ";
+						}
+						
+						// 오늘 지출액 가져오기
+						try {
+							todayOutMoney = moDAO.todayOutMoney(id);
+						}catch(Exception e) {
+							todayOutMoney = 0;
+						}
+						
+						// 오늘 일정 가져오기
+						todayMemo = schDAO.todayMemo(id);
+						if(todayMemo==null) {
+							todayMemo = "일정없음";
+						}
+						
+						
 						
 // callback Method 사용? (파라미터: userMsg, id, meDTO, moAllList .. 등 // 반환값: adminRe)
 // ########################################################################################################
@@ -107,15 +173,17 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						
 						if(userMsg.contains("안녕") || userMsg.contains("하이") || userMsg.contains("ㅎㅇ")) {
 			// 인사(1)
-							event.putString("adminRe", "그래, 안녕");
+							event.putString("adminRe", "안녕하세요.");
 							
 						}else if(userMsg.contains("잘가") || userMsg.contains("바이")
-								|| userMsg.contains("갈게") || userMsg.contains("ㅂㅇ")) {
+								|| userMsg.contains("갈게") || userMsg.contains("잘 있어")
+								|| userMsg.contains("잘있어")  || userMsg.contains("ㅂㅇ")) {
 			// 인사(2)
-							event.putString("adminRe", "그래, 잘가");
+							event.putString("adminRe", "안녕히 가십시오");
 							
 						}else if((userMsg.contains("ID") || userMsg.contains("id") || userMsg.contains("아이디"))
-								&& userMsg.contains("찾아") || userMsg.contains("뭐야")) {
+								&& userMsg.contains("내") || userMsg.contains("알려줘") || userMsg.contains("찾아")
+								|| userMsg.contains("뭐") || userMsg.contains("무엇")) {
 			// 회원 ID 알림
 							event.putString("adminRe", "회원님의 아이디는 [ "+ id + " ] 입니다.");		
 							
@@ -273,19 +341,39 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 							
 						}else if( userMsg.contains("내 카드 혜택") ) {
 			// 				
-							event.putString("adminRe","userClickEvent");	
-											
+							event.putString("adminE",
+									"<iframe src='./mycardList.mw' style='width:100%; height:200%;' "
+									+ "marginwidth='0' marginheight='0' frameborder='0'></iframe>"
+									);	
+												
 						}else if( userMsg.contains("카드 추천") ) {
 			// 				
-							event.putString("adminRe","userClickEvent");	
+							int rankCount = 1;
+							event.putString("adminE",
+									"<center>20대 카드 1위<br />" +								 
+									rankCount + "위 - " + caRank20_company + " - " +  caRank20_name
+									+ "<br /><br />30대 카드 1위<br />" +								 
+									rankCount + "위 - " + caRank30_company + " - " +  caRank30_name
+									+ "<br /><br />40대 카드 1위<br />" +								 
+									rankCount + "위 - " + caRank40_company + " - " +  caRank40_name
+									+ "<br /><br /><a href='./card_rank.mw' style='color:black;' target='_blank'>자세히 보기</a></center>"
+									);	
 							
 						}else if( userMsg.contains("오늘 지출액 및 일정") ) {
 			// 				
-							event.putString("adminRe","userClickEvent");	
+							event.putString("adminE","오늘 지출하신 금액은 " + formatter.format(todayOutMoney) + "원 입니다. <br />"
+									+ "오늘 일정은 [" + todayMemo + "] 입니다. <br />"
+									+ "<a href='./Calendar_sub.mw' style='color:black;' target='_blank'>자세히 보기</a>");	
 							
-						}else if( userMsg.contains("다음 달 예상 지출액") ) {
+						}else if( userMsg.contains("키워드 안내") ) {
 			// 				
-							event.putString("adminRe","userClickEvent");	
+							event.putString("adminE",
+									"\"안녕\", \"갈게\" <br />" + 
+									"\"제 ID가 무엇인가요?\" <br />" + 
+									"\"현재 남은 잔액이 얼마있나요?\" <br />" + 
+									"\"금리\", \"환율\", \"채권\", \"주식\", " + 
+									"\"금융상품\", \"펀드\", \"재테크\", \"부동산\", \"자산분배\""
+									);	
 							
 						}else{
 			// 키워드 조건에 해당되지 않는 질문에 대한 답		
