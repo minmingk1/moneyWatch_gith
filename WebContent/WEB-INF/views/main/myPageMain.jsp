@@ -58,8 +58,9 @@
 	</head>
 	<body>
 	  <h2>이번 달 나의 지출/수입</h2>
-      <h5>${today}</h5><br /><br />
+      <h5>${today}</h5><br />
       <div class="fakeimg" style="height:60%;">
+      
       <div id="chart-container">FusionCharts XT will load here!</div>
       </div>
 	</body>

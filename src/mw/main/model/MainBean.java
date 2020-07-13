@@ -60,16 +60,28 @@ public class MainBean {
 	public String myPageMain(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("memId"); 
 //		String id = "nahui068";
-		int thisOut = dao.thisOut(id);
-		int thisIn = dao.thisIn(id);
-		String all_balance = dao.all_balance(id);
-		Date today = new Date();
-		SimpleDateFormat now = new SimpleDateFormat("MMM d, yyyy HH:mm");
+		try {
+			int thisOut = dao.thisOut(id);
+			
+			//System.out.println("thisIn"+thisIn);
+			String all_balance = dao.all_balance(id);
+			Date today = new Date();
+			SimpleDateFormat now = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+			
+			model.addAttribute("today", now.format(today));
+			model.addAttribute("thisOut", thisOut);
+			
+			model.addAttribute("all_balance", all_balance);
+		}catch(NullPointerException e) {
+			e.printStackTrace();
+		}
+		try {
+			int thisIn = dao.thisIn(id);
+			model.addAttribute("thisIn", thisIn);
+		}catch(NullPointerException e) {
+			e.printStackTrace();
+		}
 		
-		model.addAttribute("today", now.format(today));
-		model.addAttribute("thisOut", thisOut);
-		model.addAttribute("thisIn", thisIn);
-		model.addAttribute("all_balance", all_balance);
 		return "/main/myPageMain";
 	}
 	
