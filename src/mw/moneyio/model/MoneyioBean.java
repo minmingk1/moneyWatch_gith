@@ -183,7 +183,7 @@ public class MoneyioBean {
 			return "/moneyio/moneyioPro";
 		}
 
-		
+		//수정 폼 불러오기
 		@RequestMapping("ioUpdateForm.mw")
 		public String ioUpdateForm(HttpSession session, String id, String account_num, Model model, HttpServletRequest request) {
 			
