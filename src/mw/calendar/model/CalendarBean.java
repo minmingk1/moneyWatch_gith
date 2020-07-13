@@ -30,6 +30,8 @@ public class CalendarBean {
 	public String cal(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
 		String id = (String)session.getAttribute("memId");
+		int set = 0;
+		
 		List<MwScheduleDTO> slist = dao.schedule_select(id); // 일정가져오기
 		List<MoneyioDTO> olist = dao.money_out(id); // 지출내역가져오기
 		List<MoneyioDTO> ilist = dao.money_in(id); // 수입내역가져오기
@@ -37,6 +39,7 @@ public class CalendarBean {
 		model.addAttribute("listview", slist);
 		model.addAttribute("olist",olist);
 		model.addAttribute("ilist",ilist);
+		model.addAttribute("set",set); // 메인캘린더인지 구분
 		
 		return "/calendar/calendar";
 	}
@@ -45,6 +48,7 @@ public class CalendarBean {
 	public String cal_sub(HttpSession session, HttpServletRequest request,MwScheduleDTO mwdto, Model model) throws Exception {
 		
 		String id = (String)session.getAttribute("memId");
+		int set = 1;
 		List<MwScheduleDTO> slist = dao.schedule_select(id); // 일정가져오기
 		List<MoneyioDTO> olist = dao.money_out(id); // 지출내역가져오기
 		List<MoneyioDTO> ilist = dao.money_in(id); // 수입내역가져오기
@@ -52,6 +56,7 @@ public class CalendarBean {
 		model.addAttribute("listview", slist);
 		model.addAttribute("olist",olist);
 		model.addAttribute("ilist",ilist);
+		model.addAttribute("set",set); // top이 있는 캘린더인지 구분
 		
 		return "/calendar/calendar_sub";
 	}
@@ -76,7 +81,7 @@ public class CalendarBean {
 	
 	
 	@RequestMapping("day_detail.mw")// 일정세부내용 출력
-	public String day_detail(HttpSession session, String title, String start_time, Model model) {
+	public String day_detail(HttpSession session, String title, String start_time, int set ,Model model) {
 		
 		String id = (String)session.getAttribute("memId");
 		
@@ -84,6 +89,7 @@ public class CalendarBean {
 		MwScheduleDTO detail = dao.day_detail(id, title , start_time);
 		
 		model.addAttribute("detail", detail);
+		model.addAttribute("set", set);
 		
 		return "/calendar/day_detail";
 	}
@@ -119,13 +125,16 @@ public class CalendarBean {
 	}
 	
 	@RequestMapping("day_delete.mw")//일정삭제
-	public String day_delete(HttpSession session, HttpServletRequest request){
+	public String day_delete(HttpSession session, HttpServletRequest request,Model model){
 	
 		String id = (String)session.getAttribute("memId");
 		String title = request.getParameter("title"); // 일정명
 		String start_time = request.getParameter("start_time"); // 시작일
+		String set = request.getParameter("set");
 		
 		dao.day_delete(id, title, start_time);
+		
+		model.addAttribute("set",set);
 		
 		return "/calendar/day_delete";
 	}

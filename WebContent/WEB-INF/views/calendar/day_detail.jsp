@@ -30,6 +30,5 @@
 
 	</table>
 	<br>
-<center><button id="delete" type="button" class="btn btn-outline-primary" onclick="window.location='day_delete.mw?title=${detail.title}&start_time=${detail.start_time}'">일정삭제</button>
+<center><button id="delete" type="button" class="btn btn-outline-primary" onclick="window.location='day_delete.mw?title=${detail.title}&start_time=${detail.start_time}&set=${set}'">일정삭제</button>
 <button id="update" type="button" class="btn btn-outline-primary" onclick="update();">일정수정</button></center>
-<%-- onclick="window.location='day_updateForm.mw?title=${detail.title}&start_time=${detail.start_time}'" --%>

@@ -126,7 +126,7 @@
 	    	$.ajax({
 	    		type : "post", //송신 데이터타입
 	    		url : "day_detail.mw",
-	    		data : {title:title, start_time:start_time}, // day_detail.mw에 넘길 데이터
+	    		data : {title:title, start_time:start_time, set:${set}}, // day_detail.mw에 넘길 데이터
 	    		success : function(data){
 	    			$("#content").html(data);
 	    		}
