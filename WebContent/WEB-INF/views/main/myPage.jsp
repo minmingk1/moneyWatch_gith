@@ -23,7 +23,7 @@
   <div class="row">
 
     <div class="col-sm-4" style="margin-left:-10%;">
-          <h3>마이페이지</h3><br/>
+          <a href="myPage.mw"><h3>마이페이지</h3></a><br/>
       	<h5>${sessionScope.memId}님 Hi~~!</h5><br/>
 	    <div class="list-group" style="margin-right:45%;">
 		  <h7 class="list-group-item list-group-item-action active">개인 정보</h7>
