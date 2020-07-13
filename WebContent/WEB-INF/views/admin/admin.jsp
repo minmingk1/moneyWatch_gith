@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <!-- CSS Files -->
   <link href="/moneyWatch/assets/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="/moneyWatch/assets/css/now-ui-dashboard.css?v=1.5.0" rel="stylesheet" />
+  <link href="/moneyWatch/assets/css/now-ui-dashboard.css?v=1.5.2" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="/moneyWatch/assets/demo/demo.css" rel="stylesheet" />
     
@@ -42,15 +42,15 @@
 <!-- ####################################### 좌측 메뉴 ####################################################### -->
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="yellow">
+    <div class="sidebar" data-color="red">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        <a href="./main.mw" class="simple-text logo-mini">
           MW
         </a>
-        <a href="/moneyWatch/admin.mw" class="simple-text logo-normal">
+        <a href="/moneyWatch/main.mw" class="simple-text logo-normal">
           Money Watch
         </a>
       </div>
@@ -82,9 +82,9 @@
           </li>
           
           <li class="active-pro">
-            <a href="./#.mw">
+            <a href="/moneyWatch/siteMap.mw">
               <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Upgrade to PRO</p>
+              <p>Site Map</p>
             </a>
           </li>
         </ul>
@@ -105,7 +105,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Visitor Graph</a>
+            <a class="navbar-brand" href="#">Visitor Graph</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -125,33 +125,43 @@
             </form>
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#pablo">
+                <a class="nav-link" href="#">
                   <i class="now-ui-icons media-2_sound-wave"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Stats</span>
                   </p>
                 </a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <li class="nav-item">
+              <!-- <li class="nav-item dropdown"> -->
+                <!-- <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                <a class="nav-link" href="#">
                   <i class="now-ui-icons location_world"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Some Actions</span>
                   </p>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+                </div> -->
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#pablo">
+              <!-- <li class="nav-item"> -->
+              <li class="nav-item dropdown">
+              	<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <!-- <a class="nav-link" href="#"> -->
                   <i class="now-ui-icons users_single-02"></i>
                   <p>
                     <span class="d-lg-none d-md-block">Account</span>
                   </p>
-                </a>
+               	</a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  	  <a class="dropdown-item" href="/moneyWatch/logout.mw">Logout</a>
+	                  <!-- <a class="dropdown-item" href="#">Action</a>
+	                  <a class="dropdown-item" href="#">Another action</a>
+	                  <a class="dropdown-item" href="#">Something else here</a> -->
+	              </div>
               </li>
             </ul>
           </div>
@@ -169,7 +179,7 @@
               <div class="card-header">
                 <h5 class="card-category">Members</h5>
                 <h4 class="card-title">Leave Members</h4>
-                <div class="dropdown">
+                <!-- <div class="dropdown">
                   <button type="button" class="btn btn-round btn-outline-default dropdown-toggle btn-simple btn-icon no-caret" data-toggle="dropdown">
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
@@ -179,7 +189,7 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                     <a class="dropdown-item text-danger" href="#">Remove Data</a>
                   </div>
-                </div>
+                </div> -->
               </div>
               <div class="card-body">
                 <div class="chart-area">
@@ -188,7 +198,8 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                	<i class="now-ui-icons ui-2_time-alarm"></i> Last 11 days
+                  <!-- <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated -->
                 </div>
               </div>
             </div>
@@ -204,10 +215,10 @@
                     <i class="now-ui-icons loader_gear"></i>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="./memList.mw">Member List</a>
+                    <!-- <a class="dropdown-item" href="#">Another action</a>
                     <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item text-danger" href="#">Remove Data</a>
+                    <a class="dropdown-item text-danger" href="#">Remove Data</a> -->
                   </div>
                 </div>
               </div>
@@ -218,7 +229,8 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated
+                	<i class="now-ui-icons ui-2_time-alarm"></i> Last 11 days
+                  <!-- <i class="now-ui-icons arrows-1_refresh-69"></i> Just Updated -->
                 </div>
               </div>
             </div>
@@ -237,7 +249,7 @@
               </div>
               <div class="card-footer">
                 <div class="stats">
-                  <i class="now-ui-icons ui-2_time-alarm"></i> Last 7 days
+                  <i class="now-ui-icons ui-2_time-alarm"></i> Last 11 days
                 </div>
               </div>
             </div>
@@ -249,7 +261,7 @@
             <div class="card">
               <div class="card-header">
                 <h5 class="card-category">FAQ Board</h5>
-                <h4 class="card-title"> Recent FAQ info </h4>
+                <h4 class="card-title"> Recent FAQ info </h4> 
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -296,7 +308,7 @@
             <div class="card">
               <div class="card-header">
                 <h5 class="card-category">Financial knowledge</h5>
-                <h4 class="card-title">Scrap by Sense Category</h4>
+                <h4 class="card-title">Scrap by Sense Category</h4>                
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -379,7 +391,7 @@
                 <h5 class="card-category">chat</h5>
                 <h4 class="card-title"> Chat Messages </h4>
               </div>
-					 <div id="chatScroll" style="width:90%; height:500px; overflow:auto; border:1px solid; margin: 5%; border-radius: 10px;" >
+					 <div id="chatScroll" style="width:90%; height:250px; overflow:auto; border:1px solid; margin: 5%; border-radius: 10px;" >
 							<table id="msgs" width="100%" cellspacing="10" cellpadding="10"	></table>
 					</div>
             </div>
@@ -393,17 +405,17 @@
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
+                <a href="#">
                   Creative Tim
                 </a>
               </li>
               <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="#">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com">
+                <a href="#">
                   Blog
                 </a>
               </li>
@@ -412,7 +424,7 @@
           <div class="copyright" id="copyright">
             &copy; <script>
               document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
-            </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </script>, Designed by <a href="#" target="_blank">Invision</a>. Coded by <a href="#" target="_blank">Creative Tim</a>.
           </div>
         </div>
       </footer>

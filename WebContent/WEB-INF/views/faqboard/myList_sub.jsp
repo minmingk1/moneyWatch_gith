@@ -29,7 +29,7 @@
 
 
 	<c:if test="${count == 0}">
-		<table align="center" border="1" style="width:30%;">
+		<table align="center" border="1" style="width:50%;">
 			<tr>
 				<td align="center">게시판에 저장된 글이 없습니다.</td>
 		</table>
@@ -37,7 +37,7 @@
 	<br />
 	<br />
 	<c:if test="${count != 0}">
-		<table class="table table-hover" style="width: 50%;" align="center">
+		<table class="table table-hover" style="width: 80%; margin-left:5%;" align="center">
 			<tr class="table-active">
 				<td align="center"></td>
 				<td align="center">번 호</td>

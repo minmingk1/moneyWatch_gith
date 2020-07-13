@@ -63,7 +63,7 @@
 							<!-- 썸네일이미지> --> 
 								<td onclick="detail(${ list.num })"><img src="https://img.youtube.com/vi/${ list.sense_thumbnail }/default.jpg" alt="Page Not Found"/></td>
 								<td onclick="detail(${ list.num })">${ list.sense_title }</td>
-								<td class="badge badge-primary badge-pill" id="readcount${ list.num }"> ${ list.readcount } </td>
+								<td class="badge badge-pill badge-secondary" id="readcount${ list.num }"> ${ list.readcount } </td>
 							</tr>
 						</table>
 					</c:forEach>	

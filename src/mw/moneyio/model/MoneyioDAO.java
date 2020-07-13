@@ -53,68 +53,67 @@ public class MoneyioDAO {
 		return sqlSession.selectOne("moneyio.card_check", map);
 	}
 	//mwregistercard balance update
-	public void balanceUpdate(String id, String account_num, String balance) {
+	public void balanceUpdate(String id, String account_num, int balance) {
 		map.put("id", id);
 		map.put("account_num", account_num);
 		map.put("balance", balance);
 		sqlSession.update("moneyio.balance_update", map);
 	}
 	
-	// ���� �ܾ� ������Ʈ
-	public void balanceUpdateAccount(String id, String account_num, String balance) {
+
+	public void balanceUpdateAccount(String id, String account_num, int balance) {
 		map.put("id", id);
 		map.put("account_num", account_num);
 		map.put("balance", balance);
 		sqlSession.update("moneyio.balance_update_account", map);
 	}
 	
-	//����/���� ���� �Է�
+
 	public void insert(MoneyioDTO dto) {
 //		System.out.println("id : " + dto.getId());
 
 		sqlSession.insert("moneyio.insert", dto);
 	}
-	//��ġ���� �Է�
+
 	public void n_insert(NbreadDTO ndto) {
 
 		sqlSession.insert("moneyio.n_insert", ndto);
 	}
-	//����/���� ���� ���� ������
+
 	public MoneyioDTO ioUpdateForm(int io_num) {
 
 		return sqlSession.selectOne("moneyio.updateForm", io_num);
 	}
 
-	//����/���� ���� ����
+
 	public void ioUpdatePro(MoneyioDTO dto) {
 		sqlSession.update("moneyio.update", dto);
 	}
 
-	//����/���� ���� ����
+	
 	public void io_delete(int io_num) {
 		sqlSession.delete("moneyio.io_delete", io_num);
 	}
-	
-	//����/���� ���� ���� or �����ϱ� ���� ����
+
 	public void n_delete(int io_num) {
 		sqlSession.delete("moneyio.n_delete", io_num);
 	}
 	
-	//��ġ���� ������ ���� ���Է�
+
 	public void n_insert2(NbreadDTO ndto) {
 		sqlSession.insert("moneyio.n_insert2", ndto);
 	}
-	//���ɴ뺰 ���� chart ������ -20
+
 	public List<MoneyioDTO> ageChart20() {
 		return sqlSession.selectList("moneyio.chart20");
 	}
 	
-	//���ɴ뺰 ���� chart ������ -30
+
 	public List<MoneyioDTO> ageChart30() {
 		return sqlSession.selectList("moneyio.chart30");
 	}
 	
-	//���ɴ뺰 ���� chart ������ -40
+
 	public List<MoneyioDTO> ageChart40() {
 		return sqlSession.selectList("moneyio.chart40");
 	}
@@ -126,27 +125,27 @@ public class MoneyioDAO {
 		return sqlSession.selectOne("moneyio.nSum", io_num);
 	}
 	
-	//���μҺ����� chart5��
+
 	public List<MoneyioDTO> ptEstimate5(String id){
 		return sqlSession.selectList("moneyio.ptEstimate5", id);
 	}
-	//���μҺ����� chart5�� �ѱݾ�
+
 	public int sum5(String id) {
 		return sqlSession.selectOne("moneyio.moneySum5", id);
 	}
-	//���μҺ����� chart6��
+
 	public List<MoneyioDTO> ptEstimate6(String id){
 		return sqlSession.selectList("moneyio.ptEstimate6", id);
 	}
-	//���μҺ����� chart6�� �ѱݾ�
+
 	public int sum6(String id) {
 		return sqlSession.selectOne("moneyio.moneySum6", id);
 	}
-	//���μҺ����� chart7��
+
 	public List<MoneyioDTO> ptEstimate7(String id){
 		return sqlSession.selectList("moneyio.ptEstimate7", id);
 	}
-	//���μҺ����� chart7�� �ѱݾ�
+
 	public int sum7(String id) {
 		return sqlSession.selectOne("moneyio.moneySum7", id);
 	}

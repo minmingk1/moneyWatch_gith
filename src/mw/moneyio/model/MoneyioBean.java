@@ -159,6 +159,7 @@ public class MoneyioBean {
 			
 			if(dao.card_check(id, dto.getIo_account()) != 0) {
 				dao.balanceUpdate(id, dto.getIo_account(),dto.getIo_remain());
+				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
 			}else {
 				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
 			}
@@ -215,23 +216,23 @@ public class MoneyioBean {
 		
 			//int differ = Math.abs(io_old_price - io_new_price); 
 			
-			//占신뤄옙占쌥억옙 占쏙옙占쏙옙 占쌍댐옙 占쏙옙占�
+		
 			if(io_new_price != io_old_price) {
-				//占쏙옙占쏙옙/占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍댐옙 占쏙옙占�
+				
 				if(io_old_set != io_new_set) {
-					//占쏙옙占쏙옙 ->占쏙옙占쏙옙 占쏙옙占쏙옙
+			
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()-io_old_price-io_new_price);
 						
-					}else { //占쏙옙占쏙옙->占쏙옙占쏙옙 占쏙옙占쏙옙
+					}else { 
 						dto.setIo_remain(dto.getIo_remain()+io_old_price+io_new_price);
 						
 					}
 				}else {
-					//占쏙옙占쏙옙 -> 占쏙옙占쏙옙
+					
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()+io_old_price-io_new_price);
-					}else { //占쏙옙占쏙옙 -> 占쏙옙占쏙옙
+					}else {
 						dto.setIo_remain(dto.getIo_remain()-io_old_price+io_new_price);
 					}
 				}
@@ -241,9 +242,14 @@ public class MoneyioBean {
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
 			
 			dao.ioUpdatePro(dto);
-			dao.balanceUpdate(id, account_num);
-			dao.balanceUpdateAccount(id, account_num);
 			
+			if(dao.card_check(id, dto.getIo_account()) != 0) {
+				dao.balanceUpdate(id, dto.getIo_account(),dto.getIo_remain());
+				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
+			}else {
+				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
+			}
+			System.out.println("update 성공!");
 			if(dto.getIo_N_div()>0) {
 				dao.n_delete(ndto.getIo_num());
 				String[] n_debtor = request.getParameterValues("n_debtor");
@@ -281,7 +287,7 @@ public class MoneyioBean {
 		}
 		
 		
-		@RequestMapping("ptEstimate.mw") //媛쒖씤 �냼鍮꾨ぉ濡� 由ъ뒪�듃, �떎�쓬�떖 �삁�긽 吏�異쒖븸 
+		@RequestMapping("ptEstimate.mw") //揶쏆뮇�뵥 占쎈꺖�뜮袁ⓦ걠嚥∽옙 �뵳�딅뮞占쎈뱜, 占쎈뼄占쎌벉占쎈뼎 占쎌굙占쎄맒 筌욑옙�빊�뮇釉� 
 		public String ptEstimate(HttpSession session, Model model) {
 			String id = (String)session.getAttribute("memId");
 			int sum = 0;
@@ -380,24 +386,34 @@ public class MoneyioBean {
 		
 		//String id = "k0725";
 		String id = (String)session.getAttribute("memId"); 
-		List<NbreadDTO> nlist = dao.nList(ioNum);
-		
-		String n_check="내역이 없습니다.";
-		NbreadDTO ndto = new NbreadDTO();
-		
-		if(nlist.size()==0) {
-			ndto.setN_num(0);
-			ndto.setN_check(n_check);
-			nlist.add(ndto);
-		}else {
-			String category = nlist.get(1).getN_category();
-			String nSum = dao.nSum(ioNum);
-			model.addAttribute("category", category);
-			model.addAttribute("nSum", nSum);
+		try {
+			String n_check="내역이 없습니다.";
+			
+			NbreadDTO ndto = new NbreadDTO();
+			List<NbreadDTO> nlist = dao.nList(ioNum);
+			
+			if(nlist.size()==0) {
+				ndto.setN_num(0);
+				ndto.setN_check(n_check);
+				nlist.add(ndto);
+			}else {
+				String category = nlist.get(0).getN_category();
+				String nSum = dao.nSum(ioNum);
+				model.addAttribute("category", category);
+				model.addAttribute("nSum", nSum);
+			}
+			
+			MoneyioDTO dto = dao.moneyioListDetail(id, ioNum);
+
+			model.addAttribute("dto", dto);
+			model.addAttribute("nlist", nlist);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		MoneyioDTO dto = dao.moneyioListDetail(id, ioNum);
-		model.addAttribute("dto", dto);
-		model.addAttribute("nlist", nlist);
+		
+		
+		
 		return "/moneyio/ioListDetail";
 	}
 	

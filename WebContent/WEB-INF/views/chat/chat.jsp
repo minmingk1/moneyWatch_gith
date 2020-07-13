@@ -16,8 +16,27 @@
 		var socket = io.connect("http://192.168.0.76:12345");  //서버연결
 			
 		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="color:black; width:95%; border-radius: 10px; ">'
-						+ '안녕하세요. 무엇을 도와드릴까요?'
+						+ '&nbsp; 안녕하세요. 무엇을 도와드릴까요?'
 						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
+		$('#msgs').append('<table width="100%"><tr>'
+				+ '<td bgcolor="yellow" align="center" style="width:16%; border-radius: 10px; ">'
+				+ '<a href="./card_benefit.mw" target="_blank" style="color:black;">'
+				+ '카드혜택정보</a></td>'
+				+ '<td bgcolor="yellow" align="center" style="width:16%; border-radius: 10px; ">'
+				+ '<a href="./sense.mw" target="_blank" style="color:black;">'
+				+ '금융지식</a></td>'
+				+ '<td bgcolor="yellow" align="center" style="width:16%; border-radius: 10px; ">'
+				+ '<a href="./Calendar_sub.mw" target="_blank" style="color:black;">'
+				+ '오늘 일정</a></td>'
+				+ '<td bgcolor="yellow" align="center" style="width:16%; border-radius: 10px; ">'
+				+ '<a href="./myPage.mw" target="_blank" style="color:black;">'
+				+ '내 질문 확인</a></td>'
+				+ '<td bgcolor="yellow" align="center" style="width:16%; border-radius: 10px; ">'
+				+ '<a href="./faqList.mw" target="_blank" style="color:black;">'
+				+ 'FAQ 게시판</a></td>'
+				+ '<td bgcolor="yellow" id="chatClick_etc" align="center" style="width:16%; border-radius: 10px; ">'
+				+ '기타</td>'				
+				+ '</table>');
 		
 		$("#chat").focus();
 			
@@ -26,20 +45,35 @@
 			
 			if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
 				
-				$('#msgs').append('<table width="100%"><tr><td style="width:5%"></td><td bgcolor="yellow" align="right" style="color:black; width:95%; border-radius: 10px;">' + msg.msg
-								+ '</td></tr><tr><td style="width:5%"></td><td bgcolor="skyblue" align="right" style="width:95%; font-size:70%; border-radius: 10px;">' + msg.nowTime
-								+ '</td></tr><tr><td></td></tr></table>');
-	
-				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="color:black; width:95%; border-radius: 10px; ">' + msg.adminRe
-						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
-	
-			
-			
-				$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));
+				if(msg.adminRe == "userClickEvent"){
+					$('#msgs').append('<table width="100%">'
+							+ '<tr><td bgcolor="#ffbf00" id="chatClick_mybenefit" align="left" style="width:95%; border-radius: 10px; ">'
+							+ '내 카드혜택 정보</a></td></tr>'
+							+ '<tr><td bgcolor="#ffbf00" id="chatClick_ageCardRank" align="left" style="width:95%; border-radius: 10px; ">'
+							+ '카드 추천</a></td></tr>'
+							+ '<tr><td bgcolor="#ffbf00" id="chatClick_todayOutSch" align="left" style="width:95%; border-radius: 10px; ">'
+							+ '오늘 지출 및 일정</a></td></tr>'
+							+ '<tr><td bgcolor="#ffbf00" id="chatClick_nextOut" align="left" style="width:95%; border-radius: 10px; ">'
+							+ '다음달 예상 지출</a></td></tr>'
+							+ '<tr><td bgcolor="#ffbf00" id="chatClick_keyword" align="left" style="width:95%; border-radius: 10px; ">'
+							+ '키워드 안내</a></td></tr>'
+							+ '</table>');
+				}else{
 				
+					$('#msgs').append('<table width="100%"><tr><td style="width:5%"></td><td bgcolor="yellow" align="right" style="color:black; width:95%; border-radius: 10px;">' + msg.msg
+									+ '</td></tr><tr><td style="width:5%"></td><td bgcolor="skyblue" align="right" style="width:95%; font-size:70%; border-radius: 10px;">' + msg.nowTime
+									+ '</td></tr><tr><td></td></tr></table>');
+		
+					$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="color:black; width:95%; border-radius: 10px; ">' + msg.adminRe
+							+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
+		
+				
+				
+					$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));
+				}
 			}
 
-		});
+		});				
 		
 		$("#sendBtn").bind("click", function() {
 			var msg = $("#chat").val();
@@ -48,8 +82,58 @@
 			$("#chat").focus();
 			$("#chat").val('');
 		});
+						
+		$("#chatClick_etc").bind("click", function() {
+			var msg = "기타"
+			socket.emit('msg', {msg:msg, id:'${id}'});
+
+			$("#chat").focus();
+			$("#chat").val('');
+		});
+		
+		$("#chatClick_mybenefit").bind("click", function() {
+			var msg = "내 카드 혜택"
+			socket.emit('msg', {msg:msg, id:'${id}'});
+
+			$("#chat").focus();
+			$("#chat").val('');
+		});
+		
+		$("#chatClick_ageCardRank").bind("click", function() {
+			var msg = "카드 추천"
+			socket.emit('msg', {msg:msg, id:'${id}'});
+
+			$("#chat").focus();
+			$("#chat").val('');
+		});
+		
+		$("#chatClick_todayOutSch").bind("click", function() {
+			var msg = "오늘 지출액 및 일정"
+			socket.emit('msg', {msg:msg, id:'${id}'});
+
+			$("#chat").focus();
+			$("#chat").val('');
+		});
+		
+		$("#chatClick_nextOut").bind("click", function() {
+			var msg = "다음 달 예상 지출액"
+			socket.emit('msg', {msg:msg, id:'${id}'});
+
+			$("#chat").focus();
+			$("#chat").val('');
+		});
+		
+		$("#chatClick_keyword").bind("click", function() {
+			var msg = "키워드 안내"
+			socket.emit('msg', {msg:msg, id:'${id}'});
+
+			$("#chat").focus();
+			$("#chat").val('');
+		});
 			
 	});
+	
+	
 
 </script>
 </head>

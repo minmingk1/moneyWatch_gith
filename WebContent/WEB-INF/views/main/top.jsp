@@ -38,8 +38,8 @@
 	      <a class="dropdown-item" href="ptEstimate.mw">나의 소비 목록 보기</a>
 	      <a class="dropdown-item" href="ageChart.mw">연령별 지출 비교</a>
 		  <div class="dropdown-divider"></div>
-	      <a class="dropdown-item" href="account_cardForm_main.mw">등록</a>
-	      <a class="dropdown-item" href="card_benefit.mw">목록 및 혜택 보기</a>
+	      <a class="dropdown-item" href="account_cardForm_main.mw">카드/계좌 등록</a>
+	      <a class="dropdown-item" href="card_benefit.mw">카드 목록 및 혜택 보기</a>
 	      <a class="dropdown-item" href="card_rank.mw">연령별 카드 순위 보기</a>
 		  <div class="dropdown-divider"></div>
 	      <a class="dropdown-item" href="faqList.mw">FAQ</a>
