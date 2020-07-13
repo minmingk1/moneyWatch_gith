@@ -215,23 +215,23 @@ public class MoneyioBean {
 		
 			//int differ = Math.abs(io_old_price - io_new_price); 
 			
-			//占신뤄옙占쌥억옙 占쏙옙占쏙옙 占쌍댐옙 占쏙옙占�
+		
 			if(io_new_price != io_old_price) {
-				//占쏙옙占쏙옙/占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍댐옙 占쏙옙占�
+				
 				if(io_old_set != io_new_set) {
-					//占쏙옙占쏙옙 ->占쏙옙占쏙옙 占쏙옙占쏙옙
+			
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()-io_old_price-io_new_price);
 						
-					}else { //占쏙옙占쏙옙->占쏙옙占쏙옙 占쏙옙占쏙옙
+					}else { 
 						dto.setIo_remain(dto.getIo_remain()+io_old_price+io_new_price);
 						
 					}
 				}else {
-					//占쏙옙占쏙옙 -> 占쏙옙占쏙옙
+					
 					if(io_new_set==1) {
 						dto.setIo_remain(dto.getIo_remain()+io_old_price-io_new_price);
-					}else { //占쏙옙占쏙옙 -> 占쏙옙占쏙옙
+					}else {
 						dto.setIo_remain(dto.getIo_remain()-io_old_price+io_new_price);
 					}
 				}
@@ -241,8 +241,8 @@ public class MoneyioBean {
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
 			
 			dao.ioUpdatePro(dto);
-			dao.balanceUpdate(id, account_num);
-			dao.balanceUpdateAccount(id, account_num);
+			dao.balanceUpdate(id, account_num, dto.getIo_remain());
+			dao.balanceUpdateAccount(id, account_num, dto.getIo_remain());
 			
 			if(dto.getIo_N_div()>0) {
 				dao.n_delete(ndto.getIo_num());
@@ -281,7 +281,7 @@ public class MoneyioBean {
 		}
 		
 		
-		@RequestMapping("ptEstimate.mw") //媛쒖씤 �냼鍮꾨ぉ濡� 由ъ뒪�듃, �떎�쓬�떖 �삁�긽 吏�異쒖븸 
+		@RequestMapping("ptEstimate.mw") //揶쏆뮇�뵥 占쎈꺖�뜮袁ⓦ걠嚥∽옙 �뵳�딅뮞占쎈뱜, 占쎈뼄占쎌벉占쎈뼎 占쎌굙占쎄맒 筌욑옙�빊�뮇釉� 
 		public String ptEstimate(HttpSession session, Model model) {
 			String id = (String)session.getAttribute("memId");
 			int sum = 0;
@@ -382,7 +382,7 @@ public class MoneyioBean {
 		String id = (String)session.getAttribute("memId"); 
 		List<NbreadDTO> nlist = dao.nList(ioNum);
 		
-		String n_check="내역이 없습니다.";
+		String n_check="�궡�뿭�씠 �뾾�뒿�땲�떎.";
 		NbreadDTO ndto = new NbreadDTO();
 		
 		if(nlist.size()==0) {
