@@ -97,7 +97,7 @@
 	    </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	    <c:if test="${sessionScope.memId == 'admin'}">
 	            <li class="nav-item dropdown">
-	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
+	    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="admin.mw" role="button" aria-haspopup="true" aria-expanded="false">관리자</a>
 	    <div class="dropdown-menu" style="">
 	      <a class="dropdown-item" href="memList.mw">회원 관리</a>    
 	      <a class="dropdown-item" href="faqList.mw">게시판 관리</a>
