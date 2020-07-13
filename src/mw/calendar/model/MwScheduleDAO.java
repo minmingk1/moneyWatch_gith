@@ -102,8 +102,16 @@ public class MwScheduleDAO {
 		int year = cal.get ( cal.YEAR );
 		int month = cal.get ( cal.MONTH ) + 1;
 		int day = cal.get ( cal.DATE );
+		String month_s = month+"";
+		String day_s = day+"";
+		if(month<10) {
+			month_s = "0"+month;
+		}
+		if(day<10) {
+			day_s = "0"+day;
+		}
 		
-		String today = year + "-" + month + "-" + day;
+		String today = year + "-" + month_s + "-" + day_s;
 		
 		HashMap map = new HashMap(); 
 		map.put("id", id);

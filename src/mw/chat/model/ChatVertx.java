@@ -129,24 +129,15 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						caRank30 = (List)caDAO.card_rank(caDTO).get("rankList_30");
 						caRank40 = (List)caDAO.card_rank(caDTO).get("rankList_40");
 						
-						try {
-							caRank20_company = caRank20.get(0).getCard_company();
-							caRank20_name = caRank20.get(0).getCard_company();
-						}catch(Exception e){
-							
-						}
-						try {
-							caRank30_company = caRank30.get(0).getCard_company();
-							caRank30_name = caRank30.get(0).getCard_company();
-						}catch(Exception e) {
-							
-						}
-						try {
-							caRank40_company = caRank40.get(0).getCard_company();
-							caRank40_name = caRank40.get(0).getCard_company();
-						}catch(Exception e) {
-							
-						}
+						caRank20_company = caRank20.get(0).getCard_company();
+						caRank20_name = caRank20.get(0).getCard_name();
+						
+						caRank30_company = caRank30.get(0).getCard_company();
+						caRank30_name = caRank30.get(0).getCard_name();
+						
+						caRank40_company = caRank40.get(0).getCard_company();
+						caRank40_name = caRank40.get(0).getCard_name();
+						
 						
 						if(caRank20_company == null) {
 							caRank20_company = " - ";
@@ -161,8 +152,6 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 							caRank40_name = " - ";
 						}
 						
-						
-						
 						// 오늘 지출액 가져오기
 						try {
 							todayOutMoney = moDAO.todayOutMoney(id);
@@ -175,10 +164,6 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						if(todayMemo==null) {
 							todayMemo = "일정없음";
 						}
-						
-						
-						
-						
 						
 						
 						
@@ -197,7 +182,8 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 							event.putString("adminRe", "안녕히 가십시오");
 							
 						}else if((userMsg.contains("ID") || userMsg.contains("id") || userMsg.contains("아이디"))
-								&& userMsg.contains("찾아") || userMsg.contains("뭐") || userMsg.contains("무엇")) {
+								&& userMsg.contains("내") || userMsg.contains("알려줘") || userMsg.contains("찾아")
+								|| userMsg.contains("뭐") || userMsg.contains("무엇")) {
 			// 회원 ID 알림
 							event.putString("adminRe", "회원님의 아이디는 [ "+ id + " ] 입니다.");		
 							
@@ -368,9 +354,9 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 									rankCount + "위 - " + caRank20_company + " - " +  caRank20_name
 									+ "<br /><br />30대 카드 1위<br />" +								 
 									rankCount + "위 - " + caRank30_company + " - " +  caRank30_name
-									+ "<br /><br /><center>40대 카드 1위</center><br />" +								 
+									+ "<br /><br />40대 카드 1위<br />" +								 
 									rankCount + "위 - " + caRank40_company + " - " +  caRank40_name
-									+ "<br /><a href='./card_rank.mw' style='color:black;' target='_blank'>자세히 보기</a></center>"
+									+ "<br /><br /><a href='./card_rank.mw' style='color:black;' target='_blank'>자세히 보기</a></center>"
 									);	
 							
 						}else if( userMsg.contains("오늘 지출액 및 일정") ) {
