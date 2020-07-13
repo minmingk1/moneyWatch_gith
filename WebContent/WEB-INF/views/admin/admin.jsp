@@ -287,7 +287,7 @@
                     				${faq.faq_num}
                     			</td>
                     			<td>
-                    				<a href="/moneyWatch/faqContent.mw?qnum=${faq.faq_num}">${faq.subject}</a>
+                    				<a href="/moneyWatch/content.mw?faq_num=${faq.faq_num}">${faq.subject}</a>
                     			</td>
                     			<td>
                     				${faq.id}
@@ -392,12 +392,16 @@
                 <h4 class="card-title"> Chat Messages </h4>
               </div>
 					 <div id="chatScroll" style="width:90%; height:250px; overflow:auto; border:1px solid; margin: 5%; border-radius: 10px;" >
-							<table id="msgs" width="100%" cellspacing="10" cellpadding="10"	></table>
+							<table id="msgs0" width="100%" cellspacing="10" cellpadding="10"></table>
+						<table id="msgs00" width="100%" cellspacing="10" cellpadding="10"></table>
+						<table id="msgs2" width="100%" cellspacing="10" cellpadding="10"></table>
+						<table id="msgs3" width="100%" cellspacing="10" cellpadding="10"></table>		
+						<table id="msgs" width="100%" cellspacing="10" cellpadding="10"></table>
 					</div>
             </div>
           </div> 
           
-          
+          <!-- ########################################################################################################### -->
         </div>
       </div>
       <footer class="footer">
@@ -455,25 +459,25 @@
       demo.initDashboardPageCharts();
       
       // chat
-      var socket = io.connect("http://192.168.44.1:12345");  //서버연결
-		
-		$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%; border-radius: 10px;">'
-						+ '안녕하세요. 무엇을 도와드릴까요?'
-						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
-		
-		socket.on('response', function(msg){// 서버로부터 채팅메세지를 계속 받고있다. .. 
+      var socket = io.connect("http://172.30.1.16:12345");  //서버연결
 			
-			//if('${sessionScope.memId}' == "admin" || '${sessionScope.memId}' == msg.id){ // 자기 자신이 쓴 글(+관리자)
+		$('#msgs0').html('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="color:black; width:95%; border-radius: 10px; ">'
+						+ '&nbsp; 안녕하세요. 무엇을 도와드릴까요?'
+						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
+			
+		socket.on('response', function(msg){// 서버로부터 채팅메세지를 계속 받고있다. .. 
 				
+					
 				$('#msgs').append('<table width="100%"><tr><td style="width:5%"></td><td bgcolor="yellow" align="right" style="width:95%; border-radius: 10px;">' + msg.msg
 								+ '</td></tr><tr><td style="width:5%"></td><td bgcolor="skyblue" align="right" style="width:95%; font-size:70%; border-radius: 10px;">'
 								+ msg.id + ' :: ' + msg.nowTime
 								+ '</td></tr><tr><td></td></tr></table>');
-	
-				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="width:95%; border-radius: 10px;">' + msg.adminRe
+		
+				$('#msgs').append('<table width="100%"><tr><td bgcolor="yellowgreen" align="left" style="color:black; width:95%; border-radius: 10px; ">' + msg.adminRe
 						+ '</td><td style="width:5%"></td></tr><tr><td></td></tr></table>');
-	
-				$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));
+			
+				
+		$('#chatScroll').scrollTop($('#chatScroll').prop('scrollHeight'));
 				
 			//}
       
