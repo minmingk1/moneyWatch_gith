@@ -159,6 +159,7 @@ public class MoneyioBean {
 			
 			if(dao.card_check(id, dto.getIo_account()) != 0) {
 				dao.balanceUpdate(id, dto.getIo_account(),dto.getIo_remain());
+				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
 			}else {
 				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
 			}
@@ -241,9 +242,14 @@ public class MoneyioBean {
 			System.out.println("dto.getIo_price()"+dto.getIo_price());
 			
 			dao.ioUpdatePro(dto);
-			dao.balanceUpdate(id, account_num, dto.getIo_remain());
-			dao.balanceUpdateAccount(id, account_num, dto.getIo_remain());
 			
+			if(dao.card_check(id, dto.getIo_account()) != 0) {
+				dao.balanceUpdate(id, dto.getIo_account(),dto.getIo_remain());
+				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
+			}else {
+				dao.balanceUpdateAccount(id, dto.getIo_account(), dto.getIo_remain());
+			}
+			System.out.println("update 성공!");
 			if(dto.getIo_N_div()>0) {
 				dao.n_delete(ndto.getIo_num());
 				String[] n_debtor = request.getParameterValues("n_debtor");
