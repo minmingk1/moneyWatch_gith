@@ -206,4 +206,11 @@
 		select sum(balance) from mwregisteraccount where id=#{id}
 	</select>
 	
+	<select id="todayOutMoney" resultType="int" parameterType="hashmap">
+	<![CDATA[
+		select sum(io_price) from mwmoneyio where id = #{id} and io_set = 1
+		 and io_reg_date = #{today} order by io_reg_date desc
+	]]>
+	</select>
+	
 </mapper>

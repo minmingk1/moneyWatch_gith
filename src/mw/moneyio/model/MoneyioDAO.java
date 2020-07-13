@@ -1,5 +1,6 @@
 package mw.moneyio.model;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -205,6 +206,21 @@ public class MoneyioDAO {
 	
 	public int ioAllRemain(String id) {
 		return sqlSession.selectOne("moneyio.ioAllRemain", id);
+	}
+	
+	public int todayOutMoney(String id) {
+		Calendar cal = Calendar.getInstance();
+		//현재 연도, 월, 일
+		int year = cal.get ( cal.YEAR );
+		int month = cal.get ( cal.MONTH ) + 1;
+		int day = cal.get ( cal.DATE );
+		
+		String today = year + "-" + month + "-" + day;
+		
+		map.put("id", id);
+		map.put("today", today);
+		
+		return sqlSession.selectOne("moneyio.todayOutMoney", map);
 	}
 	
 	

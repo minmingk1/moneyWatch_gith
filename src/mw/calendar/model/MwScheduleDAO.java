@@ -1,5 +1,6 @@
 package mw.calendar.model;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -92,5 +93,22 @@ public class MwScheduleDAO {
 		daymap.put("num",num);
 		
 		sqlSession.update("calendar.day_update",mwdto);
+	}
+	
+	// 오늘 일정(memo) 가져오기
+	public String todayMemo(String id) {
+		Calendar cal = Calendar.getInstance();
+		//현재 연도, 월, 일
+		int year = cal.get ( cal.YEAR );
+		int month = cal.get ( cal.MONTH ) + 1;
+		int day = cal.get ( cal.DATE );
+		
+		String today = year + "-" + month + "-" + day;
+		
+		HashMap map = new HashMap(); 
+		map.put("id", id);
+		map.put("today", today);
+		
+		return sqlSession.selectOne("calendar.todayMemo", map);
 	}
 }
