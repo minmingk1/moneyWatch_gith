@@ -6,7 +6,7 @@ public class Reg_AccountDTO {
 	private String id;
 	private String account_company;
 	private String account_num;
-	private String balance;
+	private int balance;
 	
 	public int getNum() {
 		return num;
@@ -32,10 +32,10 @@ public class Reg_AccountDTO {
 	public void setAccount_num(String account_num) {
 		this.account_num = account_num;
 	}
-	public String getBalance() {
+	public int getBalance() {
 		return balance;
 	}
-	public void setBalance(String balance) {
+	public void setBalance(int balance) {
 		this.balance = balance;
 	}
 
