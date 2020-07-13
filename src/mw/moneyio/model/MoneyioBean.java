@@ -287,49 +287,54 @@ public class MoneyioBean {
 		}
 		
 		
-		@RequestMapping("ptEstimate.mw") //揶쏆뮇�뵥 占쎈꺖�뜮袁ⓦ걠嚥∽옙 �뵳�딅뮞占쎈뱜, 占쎈뼄占쎌벉占쎈뼎 占쎌굙占쎄맒 筌욑옙�빊�뮇釉� 
+		@RequestMapping("ptEstimate.mw") 
 		public String ptEstimate(HttpSession session, Model model) {
 			String id = (String)session.getAttribute("memId");
 			int sum = 0;
-			int sum1 = dao.sum5(id);
-			int sum2 = dao.sum6(id);
-			int sum3 = dao.sum7(id);
-			
-			List<MoneyioDTO> list1 = dao.ptEstimate5(id);
-			List<MoneyioDTO> list2 = dao.ptEstimate6(id);
-			List<MoneyioDTO> list3 = dao.ptEstimate7(id);
-			List<MoneyioDTO> next_list = dao.nextMonth(id);
-			
-			for(int i=0; i<next_list.size();i++) {
-				if(next_list.get(i).getCount3()==3) {
-					int next = next_list.get(i).getIo_price()/3;
-					sum = sum+next;
-				}  
-				if(next_list.get(i).getCount3()==2) {
-					int next = next_list.get(i).getIo_price()/4;
-					sum = sum + next;
+			try {
+				int sum1 = dao.sum5(id);
+				int sum2 = dao.sum6(id);
+				int sum3 = dao.sum7(id);
+				
+				List<MoneyioDTO> list1 = dao.ptEstimate5(id);
+				List<MoneyioDTO> list2 = dao.ptEstimate6(id);
+				List<MoneyioDTO> list3 = dao.ptEstimate7(id);
+				List<MoneyioDTO> next_list = dao.nextMonth(id);
+				
+				for(int i=0; i<next_list.size();i++) {
+					if(next_list.get(i).getCount3()==3) {
+						int next = next_list.get(i).getIo_price()/3;
+						sum = sum+next;
+					}  
+					if(next_list.get(i).getCount3()==2) {
+						int next = next_list.get(i).getIo_price()/4;
+						sum = sum + next;
+					}
+					if(next_list.get(i).getCount3()==1) {
+						int next = next_list.get(i).getIo_price()/5;
+						sum = sum + next;
+					}
 				}
-				if(next_list.get(i).getCount3()==1) {
-					int next = next_list.get(i).getIo_price()/5;
-					sum = sum + next;
+				if(sum3-sum2 > 0) {
+					int differ = sum3- sum2;
+					sum = sum+ differ;
 				}
-			}
-			if(sum3-sum2 > 0) {
-				int differ = sum3- sum2;
-				sum = sum+ differ;
-			}
-			int estimate  = sum;
-			
-			System.out.println("sum_all: "+ estimate);
+				int estimate  = sum;
+				
+				System.out.println("sum_all: "+ estimate);
 
-			model.addAttribute("memId", id);
-			model.addAttribute("list1", list1);
-			model.addAttribute("sum1", sum1);
-			model.addAttribute("list2", list2);
-			model.addAttribute("sum2", sum2);
-			model.addAttribute("list3", list3);
-			model.addAttribute("sum3", sum3);
-			model.addAttribute("estimate", estimate);
+				model.addAttribute("memId", id);
+				model.addAttribute("list1", list1);
+				model.addAttribute("sum1", sum1);
+				model.addAttribute("list2", list2);
+				model.addAttribute("sum2", sum2);
+				model.addAttribute("list3", list3);
+				model.addAttribute("sum3", sum3);
+				model.addAttribute("estimate", estimate);
+			}catch(NullPointerException e) {
+				
+			}
+			
 			//MoneyioDTO dtoT = next_list.get(next_list.size()-1);
 			//System.out.println("next_list: "+ dtoT.getCount3());
 			return "/moneyio/ptEstimate";
