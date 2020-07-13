@@ -29,7 +29,7 @@
 				+ '<a href="./Calendar_sub.mw" target="_blank" style="color:black;">'
 				+ '오늘 일정</a></td>'
 				+ '<td bgcolor="yellow" align="center" style="width:16%; border-radius: 10px; ">'
-				+ '<a href="./myPage.mw" target="_blank" style="color:black;">'
+				+ '<a href="./myList.mw" target="_blank" style="color:black;">'
 				+ '내 질문 확인</a></td>'
 				+ '<td bgcolor="yellow" align="center" style="width:16%; border-radius: 10px; ">'
 				+ '<a href="./faqList.mw" target="_blank" style="color:black;">'
