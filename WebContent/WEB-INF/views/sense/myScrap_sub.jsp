@@ -21,7 +21,7 @@
 	</div>
 		<br/><br/>
 			<!-- 카테고리 리스트 -->	
-		<div class="right-box" style="float: right; margin-right:15%;">
+		<div class="right-box" style="float: right; margin-right:20%;">
 			<div align=center>
 				<table class="btn-group btn-group-toggle" data-toggle="buttons" >
 					<tr>

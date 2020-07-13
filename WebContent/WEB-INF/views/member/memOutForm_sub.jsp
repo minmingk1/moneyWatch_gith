@@ -24,8 +24,8 @@
 
 <form name="myform" action="/moneyWatch/memOutPro.mw" method="post" onSubmit="return checkIt()">
 <div class="form-group">
-	<h3 style="text-align: center;">회원 탈퇴</h3><br />
-	<table border="1" align="center" width="40%" style="text-align:center;">
+	<h3 style="margin-left:34%;">회원 탈퇴</h3><br /><br />
+	<table border="1" align="center" width="40%" style="text-align:center; margin-left:20%;">
 		<tr>
 			<td>탈퇴사유</td>
 			<td>
@@ -42,13 +42,9 @@
 		  	<input type="password" class="form-control" name="pw" size="15" maxlength="12">
 		  	</td>
 		</tr>
-		<tr>
-		  <td colspan="2">
-		  <input type="submit" class="btn btn-danger" value="회원 탈퇴" style="float:right;">
-		  <input type="button"  class="btn btn-primary" value="취 소" onclick="javascript:window.location='/moneyWatch/main.mw'" style="float:left;">
-		  </td>
-		</tr>
-	</table>
+	</table><br/>
+	<input type="submit" class="btn btn-danger" value="회원 탈퇴" style="float:right; margin-right:40%;" >
+	<input type="button"  class="btn btn-primary" value="취 소" onclick="javascript:window.location='/moneyWatch/main.mw'" style="float:right; margin-right:2%;">
 </div>
 </form>
 </head>

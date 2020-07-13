@@ -18,10 +18,10 @@
     -->
 </script>
 <body><br /><br/>
-<h3 style="text-align:center;"> 회원 정보 수정</h3><br/><br/>
+<h3 style="margin-left:34%;"> 회원 정보 수정</h3><br/><br/>
   <form method="post" action="/moneyWatch/modifyPro.mw" name="userinput" onsubmit="return checkIt()">
   <div class="form-group">
-     <table border="1" align="center" width="80%">
+     <table border="1" align="center" width="80%" style="margin-left:5%;">
     <tr>
      <td>사용자 ID</td>
      <td><input type="text" class="form-control"  name="id" value="${dto.getId()}" disabled /></td>
@@ -87,13 +87,9 @@
 			<td><input type="text" class="form-control" name="email2" size="10" maxlength="12" value="${dto.getEmail2()}">
 		</td>
 	</tr>
-    
-    <tr>
-      <td colspan="5">
-      <input type="submit" class="btn btn-danger" name="modify" value="수정" style="float:right;">
-      <input type="button"  class="btn btn-info" value="취소" onclick="javascript:window.location='main.mw'"></td>
-    </tr>
-   </table>
+   </table><br/>
+   <input type="submit" class="btn btn-danger" name="modify" value="수정" style="float:right; margin-right:15%;">
+   <input type="button"  class="btn btn-info" value="취소" onclick="javascript:window.location='main.mw'" style="float:right; margin-right:2%;">
   </div>
 
   </form> 
