@@ -82,7 +82,7 @@ public class Account_cardBean {
 	
 		String id = (String)session.getAttribute("memId");
 		
-		String ca_set = request.getParameter("ca_set");
+		String ca_set = request.getParameter("ca_set"); // 카드,계좌 구별
 		String set = request.getParameter("set"); // 메인에 있는 form이랑 마이페이지에 있는 form이랑 구별해서 넘기기 위함
 		
 		if(ca_set.equals("0")) { // 카드등록일 경우 
