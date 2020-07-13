@@ -59,7 +59,7 @@
 
 
 					<td align="center"><a
-						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}">
+						href="/moneyWatch/content_sub.mw?faq_num=${article.faq_num}&pageNum=${currentPage}">
 							${article.subject}</a></td>
 
 					<td align="center">${article.content}</td>

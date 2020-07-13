@@ -309,6 +309,27 @@ public class FaqBoardBean {
 		return "/faqboard/content";
 	}
 	
+	@RequestMapping("content_sub.mw") // 유저게시글 상세 보기_sub
+	public String faqContent_sub(FaqBoardDTO dto, HttpServletRequest request, Model model, HttpSession session) {
+		String pageNum = request.getParameter("pageNum");
+		String number = request.getParameter("number");
+
+		String num = request.getParameter("faq_num");
+		int num1 = Integer.parseInt(num);
+		
+		FaqBoardDTO article = dao.getContent(num1);
+		List<FaqReplyDTO> replyList = reply.faqContentReplyList(num1); //댓글출력
+
+		model.addAttribute("number", number);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("faq_num", num);
+
+		model.addAttribute("article", article);
+		model.addAttribute("reply", replyList);
+
+		return "/faqboard/content_sub";
+	}
+	
 	//유저게시글 상세보기 댓글 입출력 - ajax
 	@RequestMapping("contentReply.mw")
 	public String faqContentReply(int faq_num, String content, HttpSession session, Model model) {
