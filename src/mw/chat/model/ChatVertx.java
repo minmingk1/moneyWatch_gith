@@ -63,45 +63,48 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 				
 				socket.on("msg", new Handler<JsonObject>() {	// 요청(채팅실행)될 때마다 실행
 					public void handle(JsonObject event) {
-						Date time = new Date();									//////// new 객체가 계속 생성되어도 괜찮은건가???????
 						
+						String userMsg = "";
+						userMsg = event.getString("msg"); 	// 회원이 보낸 채팅메시지
+						
+// #####################################################################################################################
+				// DB Select 등 데이터를 가져오기 위한 영역		
+						// 채팅 입력한 시간(시/분) 
+						Date time = new Date();
 						String nowTime = formatTime.format(time);
-						
 						event.putString("nowTime", nowTime);
 						
-						
-						System.out.println("id : " + event.getString("id"));
-						
+						// 채팅 입력한 회원의 ID 저장
 						String id = event.getString("id");
 						
-						
+						// 회원의 계좌번호들을 가져오기
 						acclist = moDAO.myAccount(id);
 						
+						// 회원의 첫번째 계좌번호 가져오기
 						String account;
 						if(acclist.size() != 0) {
 							account = acclist.get(0).getAccount_num();
 						}
 						
-						
-						//moAllList = moDAO.moneyioListAll(id, acc);	// 메시지 보낸 사용자에 대한 입출력내역 목록 가져오기
-						moReList = moDAO.moneyioListRemain(id);	// 메시지 보낸 사용자에 대한 입출력내역의 일자별 마지막 내역 가져오기
-						
-						meDTO = meDAO.modifyCheck(id);			// 메시지 보낸 사용자에 대한 회원정보 가져오기
-						
-						//System.out.println("id2 : " + meDTO.getId());
-						
-						String userMsg = "";
-						userMsg = event.getString("msg"); 	// 회원이 보낸 채팅메시지
+						// 메시지 보낸 사용자에 대한 입출력내역의 일자별 마지막 내역 가져오기
+						moReList = moDAO.moneyioListRemain(id);
+						// 메시지 보낸 사용자에 대한 회원정보 가져오기
+						meDTO = meDAO.modifyCheck(id);			
 						
 						
-						
-						
-						
+						// 회원의 남은 잔액
+						int ioAllRemain;
+						try {
+							ioAllRemain = moDAO.ioAllRemain(id);
+						}catch(Exception e){
+							ioAllRemain = 0; 
+						}
 						
 						
 // callback Method 사용? (파라미터: userMsg, id, meDTO, moAllList .. 등 // 반환값: adminRe)
 // ########################################################################################################
 // 키워드 처리 // 답 메시지 저장	// Key,Value
+						
 						if(userMsg.contains("안녕") || userMsg.contains("하이") || userMsg.contains("ㅎㅇ")) {
 			// 인사(1)
 							event.putString("adminRe", "그래, 안녕");
@@ -120,18 +123,7 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 								(userMsg.contains("남아있") || userMsg.contains("남은") || userMsg.contains("있어")) && 
 								(userMsg.contains("잔액") || userMsg.contains("금액") || 
 										userMsg.contains("얼마") || userMsg.contains("돈")) ) {
-			// 남은 잔액 알림							
-							//moDTO = (MoneyioDTO)moAllList.get(0);		// 가장 최근 내역
-							
-//							int ioRemain = moDAO.ioRemain(id, account);
-//							event.putString("adminRe", id + " 님의 현재 남은 잔액은 " + account
-//									+" 계좌에 " + formatter.format(ioRemain)  + " 원 남아 있습니다.");
-							int ioAllRemain;
-							try {
-								ioAllRemain = moDAO.ioAllRemain(id);
-							}catch(Exception e){
-								ioAllRemain = 0; 
-							}
+			// 남은 잔액 알림			
 							
 							event.putString("adminRe", id + " 님의 현재 남은 잔액은 "
 							+ formatter.format(ioAllRemain)  + " 원 남아 있습니다.");
@@ -274,6 +266,26 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 									+ "운용 자산별 비중, 만기 구조, 신용투자 규모 등에 대해 중·장기 자산운용 정책을 수립하는 것을 의미하며,<br />"
 									+ "기관투자가의 효과적인 자산운용 방법에서 가장 핵심이 되는 사항이다.</a>"
 							);		
+							
+						}else if( userMsg.contains("기타") ) {
+			// 				
+							event.putString("adminRe","userClickEvent");	
+							
+						}else if( userMsg.contains("내 카드 혜택") ) {
+			// 				
+							event.putString("adminRe","userClickEvent");	
+											
+						}else if( userMsg.contains("카드 추천") ) {
+			// 				
+							event.putString("adminRe","userClickEvent");	
+							
+						}else if( userMsg.contains("오늘 지출액 및 일정") ) {
+			// 				
+							event.putString("adminRe","userClickEvent");	
+							
+						}else if( userMsg.contains("다음 달 예상 지출액") ) {
+			// 				
+							event.putString("adminRe","userClickEvent");	
 							
 						}else{
 			// 키워드 조건에 해당되지 않는 질문에 대한 답		

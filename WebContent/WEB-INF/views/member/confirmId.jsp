@@ -10,11 +10,10 @@
 
 <script language="javascript">
 
-  function setId()
-    {		
-    	opener.document.userinput.id.value;
-		self.close();
-		
+function setId(reId){		
+	window.opener.userinput.id.value=reId;
+	self.close();
+	
 	}
 
 </script>
@@ -44,7 +43,7 @@
   <tr> 
     <td align="center"> 
       <p>입력하신 [${id}]은(는) 사용하실 수 있는 ID입니다. </p>
-      <input type="button"  class="btn btn-info" value="닫기" value="confirm_id" onclick="setId()" />
+        <input type="button"  class="btn btn-info" value="닫기" onclick="setId('${id}')" />
     </td>
   </tr>
 </table>

@@ -30,7 +30,8 @@
     
 	<!-- 특정 패키지 출력 설정 -->
     <logger name="org.springframework">
-	    <level value="INFO"/>
+	    <!-- <level value="INFO"/> -->
+	    <level value="ERROR"/>
 	</logger>
 
 	<!-- 기본 출력 설정 -->	
