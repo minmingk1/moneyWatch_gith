@@ -59,19 +59,20 @@ public class MainBean {
 	@RequestMapping("myPageMain.mw")	
 	public String myPageMain(HttpSession session, Model model) {
 		String id = (String)session.getAttribute("memId"); 
+		Date today = new Date();
+		SimpleDateFormat now = new SimpleDateFormat("MMM dd, yyyy HH:mm");
 //		String id = "nahui068";
 		try {
 			int thisOut = dao.thisOut(id);
 			
 			//System.out.println("thisIn"+thisIn);
-			String all_balance = dao.all_balance(id);
-			Date today = new Date();
-			SimpleDateFormat now = new SimpleDateFormat("MMM dd, yyyy HH:mm");
+	
 			
-			model.addAttribute("today", now.format(today));
+			
+			
 			model.addAttribute("thisOut", thisOut);
 			
-			model.addAttribute("all_balance", all_balance);
+			
 		}catch(NullPointerException e) {
 			e.printStackTrace();
 		}
@@ -81,7 +82,13 @@ public class MainBean {
 		}catch(NullPointerException e) {
 			e.printStackTrace();
 		}
-		
+		try {
+			String all_balance = dao.all_balance(id);
+			model.addAttribute("all_balance", all_balance);
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+		model.addAttribute("today", now.format(today));
 		return "/main/myPageMain";
 	}
 	
