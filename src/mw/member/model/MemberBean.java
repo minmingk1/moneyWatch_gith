@@ -25,21 +25,21 @@ public class MemberBean {
 	@Autowired
 	private AdminDAO admdao = null;
 	
-	@RequestMapping("loginForm.mw")
+	@RequestMapping("loginForm.mw")//회원가입 FORM
 	public String loginform() {
 		return "/member/loginForm";
 	}
 
-	@RequestMapping("loginPro.mw")
+	@RequestMapping("loginPro.mw")//회원가입 실행
 	public String loginPro(MemberDTO dto, HttpSession session, Model model, HttpServletRequest request) {
 		String id=request.getParameter("id");
 		String pw=request.getParameter("pw");
-		dto.setId(id);
-		dto.setPw(pw);
+		dto.setId(id); //dto의 set 메서드에 바로 넣음
+		dto.setPw(pw); //dto의 set 메서드에 바로 넣음
 		int check=dao.loginCheck(dto);
 		
 		if(check==1) {
-			session.setAttribute("memId", dto.getId());
+			session.setAttribute("memId", dto.getId()); //id session 키 등록
 		
 			// 방문자 정보 등록
 			HttpServletRequest req = ((ServletRequestAttributes)RequestContextHolder.currentRequestAttributes()).getRequest();
@@ -65,27 +65,27 @@ public class MemberBean {
 		return "/member/loginPro";
 	}
 	
-	@RequestMapping("logout.mw")
+	@RequestMapping("logout.mw") // 로그아웃 실행
 	public String aoplogout(HttpSession session) {
-		session.invalidate();	
+		session.invalidate(); //session을 지워줌
 		return "/member/logout";
 	}
 	
-	@RequestMapping("registerForm.mw")
+	@RequestMapping("registerForm.mw") //회원 가입 FORM
 	public String registerForm() {
 		return "/member/registerForm";
 	}
 
-	@RequestMapping("registerPro.mw")
+	@RequestMapping("registerPro.mw") //회원 가입 진행
 	public String registerPro(MemberDTO dto) {
-		dao.insert(dto);	
+		dao.insert(dto); //dto로 데이터 삽입
 		return "/member/registerPro";
 	}
 	
 	
 	@RequestMapping("confirmId.mw") //아이디 중복 체크
 	public String confirmId(String id,Model model) {
-		int check=dao.memberCheck(id);
+		int check=dao.memberCheck(id); //id로 검색해서 check로 반환받음
 		model.addAttribute("check",check);
 		model.addAttribute("id",id);
 		
@@ -95,7 +95,7 @@ public class MemberBean {
 	@RequestMapping("modifyForm.mw") // 회원정보 수정
 	public String aopmodifyForm(HttpSession session,Model model) {
 		String id=(String)session.getAttribute("memId");
-		MemberDTO dto =dao.modifyCheck(id);
+		MemberDTO dto =dao.modifyCheck(id); //id로 수정할 정보 반환 받음
 		model.addAttribute("dto",dto);
 	
 		return "/member/modifyForm";
@@ -121,11 +121,11 @@ public class MemberBean {
 	}
 	
 
-	@RequestMapping("memOutForm.mw")
+	@RequestMapping("memOutForm.mw")// 회원탈퇴 FORM
 	public String aopmemOutForm() {
 		return "/member/memOutForm";
 	}
-	
+	//마이페이지에서 사용하는 회원탈퇴
 	@RequestMapping("memOutForm_sub.mw")
 	public String aopmemOutForm_sub() {
 		return "/member/memOutForm_sub";
@@ -136,21 +136,19 @@ public class MemberBean {
 		String pw =request.getParameter("pw"); // "pw" 값을 요청.겟 파라미터로 가지고와 pw에 저장 
 		String id =(String)session.getAttribute("memId"); // 서버에 있는 세션을 가지고와 id에 저장
 		
-		int check = dao.deleteCheck(id,pw); // 다오 deleteCheck메서드로 id,pw 체크
+		int check = dao.deleteCheck(id,pw); // deleteCheck메서드로 id,pw 체크
 		
-		model.addAttribute("check",check); //모델.에드어트류뷰트로"check"이름으로 check겍체를 추가
+		model.addAttribute("check",check); //모델로 check 저장
 		
-		System.out.println(id); // 콘솔창에 출력이 되는지 확인하는
-		System.out.println(pw);
-		System.out.println(check);
+		
 				
 		if(check==1) { // 조건이 맞다면 삭제진행
 			
 			  String reason=request.getParameter("reason");
 			  
-			  MemberDTO dto1=dao.deleteSelect(id); // deleteSelect메서드로 id를 검색 된값을 dto1에 저장
-			  
-			  dto2.setId(dto1.getId()); // dto1 저장된 값을 dto2에 set로 저장 시키고
+			  MemberDTO dto1=dao.deleteSelect(id); // deleteSelect메서드로 id로 검색 하여 dto1에 저장
+			  // memberDTO에 get메서드 가져와서 deleteMemListDTO의 set메서드에 저장 
+			  dto2.setId(dto1.getId()); 
 			  dto2.setName(dto1.getName());
 			  dto2.setGender(dto1.getGender()); 
 			  dto2.setBirth_y(dto1.getBirth_y());
@@ -160,13 +158,13 @@ public class MemberBean {
 			  dto2.setPhone1(dto1.getPhone1());
 			  dto2.setPhone2(dto1.getPhone2()); 
 			  dto2.setPhone3(dto1.getPhone3());
-			  dto2.setReason(reason);
+			  dto2.setReason(reason); //탈퇴 사유
 			  dto2.setReg(dto1.getReg());
 			  
-			  dao.deleteInsert(dto2); // 위에 값을deleteInsert로 넣음
+			  dao.deleteInsert(dto2); // 위에 값을 deleteInsert로 넣음
 		
 			  dao.deleteMem(id); //삭제 진행
-			  session.invalidate();
+			  session.invalidate();//session 삭제
 		}
 		return "/member/memOutPro";
 	}
@@ -176,13 +174,13 @@ public class MemberBean {
 		List list=null; //선언부
 		list=dao.selectMemList(dto); // list 에 dto 저장
 	  
-		model.addAttribute("list", list); //"list"이름으로 list겍체 추가
+		model.addAttribute("list", list); //"list"이름으로 list객체 추가
 	
-		String keyField=request.getParameter("keyField"); 
-		String keyWord=request.getParameter("keyWord");
+		String keyField=request.getParameter("keyField"); // name or id
+		String keyWord=request.getParameter("keyWord"); // text에 입력한 값
 	
 		if(keyField != null) {
-			List search=dao.memSearch(keyField,keyWord);
+			List search=dao.memSearch(keyField,keyWord);// 위에서 받은 두개 값으로 검색된 값 List에 담아서 반환 받음
 			
 			model.addAttribute("search", search);
 			
@@ -190,7 +188,7 @@ public class MemberBean {
 		return "/admin/memList"; 
 	}
 	
-	@RequestMapping("adminMemDel.mw")
+	@RequestMapping("adminMemDel.mw") //운영자가 회원 삭제 FORM
 	public String adminMemDel(Model model ,MemberDTO dto ,HttpServletRequest request, HttpSession session) {
 		String id=request.getParameter("id");
 		
@@ -203,7 +201,7 @@ public class MemberBean {
 		String id=request.getParameter("id");
 		
 		
-		String reason=request.getParameter("reason");
+		String reason=request.getParameter("reason"); // 삭제 시킨 사유를 받아옴
 		  
 		MemberDTO dto1=dao.deleteSelect(id);
 		  
@@ -220,9 +218,9 @@ public class MemberBean {
 		  dto2.setReason(reason);
 		  dto2.setReg(dto1.getReg());
 		  
-		  dao.deleteInsert(dto2);
+		  dao.deleteInsert(dto2); //deleteMemListDTO에 삽입
 		
-		  dao.deleteMem(id);
+		  dao.deleteMem(id); //id로 삭제 진행
 		
 		return "/admin/adminMemDelPro";
 	

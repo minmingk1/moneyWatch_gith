@@ -26,7 +26,7 @@ import java.lang.Integer;
 
 @Controller
 public class FaqBoardBean {
-	// faqboard 오버라이드
+	
 	@Autowired
 	private FaqBoardDAO dao = null;
 	
@@ -66,44 +66,44 @@ public class FaqBoardBean {
 
 		List articleList = null;
 
-		int count = dao.getCount(dto);
+		int count = dao.getCount(dto);//전체게시글 개수 가져오기
 
 		if (count > 0) {
-			articleList = dao.getArticles(start, end);
+			articleList = dao.getArticles(start, end);//SQL 에서 오름차순으로 데이터 찾는 메서드
 		}
 
-		number = count - (currentPage - 1) * pageSize;
+		number = count - (currentPage - 1) * pageSize; //초기값 0 으로 지정하여 전체글갯수에서 연산함
 
-		if (count > 0) {
-			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);
+		if (count > 0) { //전체글 개수가 1개이상일때 실행
+			int pageCount = count / pageSize + (count % pageSize == 0 ? 0 : 1);// (/)는 나누어서 나온값 + (%)는 나눠서 남은 값 0이 나온다면 트루 그외의 값이나온다면 1
 			int startPage = (int) (currentPage / 10) * 10 + 1;
 			int pageBlock = 10;
 			int endPage = startPage + pageBlock - 1;
-			if (endPage > pageCount) {
-				endPage = pageCount;
+				if (endPage > pageCount) {
+					endPage = pageCount;
+				}
+				model.addAttribute("startPage", startPage);
+				model.addAttribute("endPage", endPage);
+				model.addAttribute("pageCount", pageCount);
+				model.addAttribute("startPage", startPage);
+				model.addAttribute("endPage", endPage);
 			}
-			model.addAttribute("startPage", startPage);
-			model.addAttribute("endPage", endPage);
-			model.addAttribute("pageCount", pageCount);
-			model.addAttribute("startPage", startPage);
-			model.addAttribute("endPage", endPage);
-		}
-		model.addAttribute("currentPage", currentPage);
-		model.addAttribute("start", start);
-		model.addAttribute("end", end);
-		model.addAttribute("number", number);
-		model.addAttribute("count", count);
-		model.addAttribute("articleList", articleList);
+			model.addAttribute("currentPage", currentPage);
+			model.addAttribute("start", start);
+			model.addAttribute("end", end);
+			model.addAttribute("number", number);
+			model.addAttribute("count", count);
+			model.addAttribute("articleList", articleList);
 		return "/faqboard/faqList";
 	}
 
 	
 	@RequestMapping("faqDeleteForm.mw") // 유저 게시판 삭제
 	public String faqDeleteForm(HttpServletRequest respons, ServletRequest request, Model model) {
-		String pageNum = request.getParameter("pageNum");
+		String pageNum = request.getParameter("pageNum"); 
 		String faq_num = request.getParameter("faq_num");
 
-		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("pageNum", pageNum); //취소를 눌렀을시에 돌아갈수있게 페이지번호를 보냄
 		model.addAttribute("faq_num", faq_num);
 
 		return "/faqboard/faqDeleteForm";
@@ -111,14 +111,12 @@ public class FaqBoardBean {
 
 	@RequestMapping("faqDeletePro.mw") // 유저게시판 삭제 진행
 	public String faqDeletePro(HttpServletRequest respons, ServletRequest request, Model model) {
-		String pageNum = request.getParameter("pageNum");
 		String faq_num = request.getParameter("faq_num");
 		String pw = request.getParameter("pw");
 
-		int check = dao.DeleteCheck(faq_num, pw);
+		int check = dao.DeleteCheck(faq_num, pw); //게시글번호와 비밀번호가 일치하면 삭제 진행
 
 		model.addAttribute("check", check);
-		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("faq_num", faq_num);
 		model.addAttribute("pw", pw);
 
@@ -127,7 +125,7 @@ public class FaqBoardBean {
 		}
 		return "/faqboard/faqDeletePro";
 	}
-	@RequestMapping("faqAdminDelForm.mw")
+	@RequestMapping("faqAdminDelForm.mw") // 관리자 게시글 삭제
 	public String faqAdminDelForm(Model model,ServletRequest request) {
 		String faq_num =request.getParameter("faq_num");
 		model.addAttribute("faq_num", faq_num);
@@ -135,12 +133,12 @@ public class FaqBoardBean {
 		return "/faqboard/faqAdminDelForm";
 	}
 	
-	@RequestMapping("faqAdminDel.mw")
+	@RequestMapping("faqAdminDel.mw") // 관리자 게시글 삭제 진행
 	public String faqAdminDel(Model model,HttpSession session,ServletRequest request) {
 		int faq_num =Integer.parseInt(request.getParameter("faq_num"));
 		String id=request.getParameter("memId");
 		
-			dao.DeleteAdminfaq(faq_num);
+			dao.DeleteAdminfaq(faq_num); //게시글 번호로 찾아서 삭제
 		
 		
 		return "/faqboard/faqAdminDel";
@@ -152,7 +150,7 @@ public class FaqBoardBean {
 		String faq_num = request.getParameter("faq_num");
 		String pageNum = request.getParameter("pageNum");
 
-		FaqBoardDTO dto1 = dao.updateSelect(faq_num);
+		FaqBoardDTO dto1 = dao.updateSelect(faq_num);//dto 객체에서 get 사용을 위해 DTO로 리턴받음
 
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("faq_num", faq_num);
@@ -165,14 +163,14 @@ public class FaqBoardBean {
 	public String faqUpdatePro(FaqBoardDTO dto1, ServletRequest request, Model model, String article) {
 		String faq_num = request.getParameter("faq_num");
 		String pw = request.getParameter("pw");
-		// 2개의 객체를 비교하여 체크객체로 리턴받음
-		int check = dao.updateCheck(faq_num, pw);
+		
+		int check = dao.updateCheck(faq_num, pw);// 2개의 객체를 비교하여 체크객체로 리턴받음
 
 		model.addAttribute("check", check);
 		model.addAttribute("faq_num", faq_num);
 		model.addAttribute("pw", pw);
 
-		if (check == 1) {
+		if (check == 1) { //check 로 받은 int값이 조건과 일치한다면 실행
 			dao.updateContent(dto1);
 		}
 
@@ -378,12 +376,12 @@ public class FaqBoardBean {
 		String id = (String) session.getAttribute("memId");
 		String q_id = (String) request.getParameter("q_id");
 		int qnum = (Integer.parseInt(request.getParameter("qnum")));
-		//list 로 리턴 받음
+		//dto로 리턴 받음
 		FaqMainBoardDTO list = dao.getQcontent(qnum);
 
 		model.addAttribute("memId", id);
 		model.addAttribute("q_id", q_id);
-		model.addAttribute("list", list);
+		model.addAttribute("list", list); //dto의 객체 넘겨주기
 
 		return "/faqboard/faqMainUpdateForm";
 	}

@@ -2,7 +2,7 @@ package mw.member.model;
 
 import java.sql.Timestamp;
 
-public class DeleteMemListDTO {
+public class DeleteMemListDTO {//탈퇴회원 데이터 저장 DTO
 	private int no;			// 번호
 	private String id;      // 회원 아이디
 	private String name;    // 회원 이름

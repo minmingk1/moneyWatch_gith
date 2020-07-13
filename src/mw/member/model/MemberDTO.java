@@ -2,7 +2,7 @@ package mw.member.model;
 
 import java.sql.Timestamp;
 
-public class MemberDTO { 
+public class MemberDTO { //회원 정보
 	
 	private String id;		// 회원아이디
 	private String pw;		// 비밀번호
