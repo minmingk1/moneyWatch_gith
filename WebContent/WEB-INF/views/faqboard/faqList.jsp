@@ -100,12 +100,18 @@
 
 					<td align="center">${number}<c:set var="number"
 							value="${number-1}" /></td>
-							
-				<c:forEach var="replycount" items="${replycount}">
-					<c:if test="${article.faq_num == replycount.faq_num }">
+				<c:if test="${replycount == null}">
 					<td align="center"><a
 						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
-							${article.subject} [${replycount.count }]</a></td>
+							${article.subject}[]</a></td>
+				</c:if>
+
+				<c:forEach var="replycount" items="${replycount}">				
+							
+					<c:if test="${article.faq_num == replycount.faq_num}">
+						<td align="center"><a
+							href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
+								${article.subject} [${replycount.count }]</a></td>
 					</c:if>
 				</c:forEach>
 				
