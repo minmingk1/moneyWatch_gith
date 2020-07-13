@@ -382,7 +382,12 @@ public class MoneyioBean {
 		List<Reg_AccountDTO> acclist = new ArrayList();
 		acclist = dao.myAccount(id);
 		Reg_AccountDTO radto = new Reg_AccountDTO();
-		String account = acclist.get(0).getAccount_num();
+		String account;
+		try {
+			account = acclist.get(0).getAccount_num();
+		}catch(Exception e) {
+			account = "";
+		}
 		
 		List<MoneyioDTO> mlist = dao.moneyioListAll(id, account);
 		int ioRemain = dao.ioRemain(id, account);
