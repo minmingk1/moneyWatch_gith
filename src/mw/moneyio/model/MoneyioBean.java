@@ -380,24 +380,34 @@ public class MoneyioBean {
 		
 		//String id = "k0725";
 		String id = (String)session.getAttribute("memId"); 
-		List<NbreadDTO> nlist = dao.nList(ioNum);
-		
-		String n_check="�궡�뿭�씠 �뾾�뒿�땲�떎.";
-		NbreadDTO ndto = new NbreadDTO();
-		
-		if(nlist.size()==0) {
-			ndto.setN_num(0);
-			ndto.setN_check(n_check);
-			nlist.add(ndto);
-		}else {
-			String category = nlist.get(1).getN_category();
-			String nSum = dao.nSum(ioNum);
-			model.addAttribute("category", category);
-			model.addAttribute("nSum", nSum);
+		try {
+			String n_check="내역이 없습니다.";
+			
+			NbreadDTO ndto = new NbreadDTO();
+			List<NbreadDTO> nlist = dao.nList(ioNum);
+			
+			if(nlist.size()==0) {
+				ndto.setN_num(0);
+				ndto.setN_check(n_check);
+				nlist.add(ndto);
+			}else {
+				String category = nlist.get(0).getN_category();
+				String nSum = dao.nSum(ioNum);
+				model.addAttribute("category", category);
+				model.addAttribute("nSum", nSum);
+			}
+			
+			MoneyioDTO dto = dao.moneyioListDetail(id, ioNum);
+
+			model.addAttribute("dto", dto);
+			model.addAttribute("nlist", nlist);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
-		MoneyioDTO dto = dao.moneyioListDetail(id, ioNum);
-		model.addAttribute("dto", dto);
-		model.addAttribute("nlist", nlist);
+		
+		
+		
 		return "/moneyio/ioListDetail";
 	}
 	

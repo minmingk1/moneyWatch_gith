@@ -33,7 +33,7 @@
 						${ioListval.io_reg_date}
 					</td>
 					<td width="300" onclick="detail(${ioListval.io_num})">
-						${ioListval.io_detail}
+						${ioListval.io_category}
 					</td>
 				</tr>
 				<tr>
