@@ -356,14 +356,14 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 									rankCount + "위 - " + caRank30_company + " - " +  caRank30_name
 									+ "<br /><br />40대 카드 1위<br />" +								 
 									rankCount + "위 - " + caRank40_company + " - " +  caRank40_name
-									+ "<br /><br /><a href='./card_rank.mw' style='color:black;' target='_blank'>자세히 보기</a></center>"
+									+ "<br /><br /><a href='./card_rank.mw' style='color:black;' target='_blank'><b>자세히 보기</b></a></center>"
 									);	
 							
 						}else if( userMsg.contains("오늘 지출액 및 일정") ) {
 			// 				
 							event.putString("adminE","오늘 지출하신 금액은 " + formatter.format(todayOutMoney) + "원 입니다. <br />"
 									+ "오늘 일정은 [" + todayMemo + "] 입니다. <br />"
-									+ "<a href='./Calendar_sub.mw' style='color:black;' target='_blank'>자세히 보기</a>");	
+									+ "<a href='./Calendar_sub.mw' style='color:black;' target='_blank'><b>자세히 보기</b></a>");	
 							
 						}else if( userMsg.contains("키워드 안내") ) {
 			// 				
