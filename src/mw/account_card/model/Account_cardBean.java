@@ -294,7 +294,6 @@ public class Account_cardBean {
 	public String mycardList(HttpSession session, String card_name,Model model){
 		
 		String id = (String)session.getAttribute("memId");
-		//String id= "nahui068";
 		List mycard = acdao.myCardList(id); // 나의 카드목록에 대한 카드이미지
 		
 		model.addAttribute("mycard",mycard);
