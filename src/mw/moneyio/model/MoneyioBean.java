@@ -304,7 +304,7 @@ public class MoneyioBean {
 				if(next_list.get(i).getCount3()==3) {
 					int next = next_list.get(i).getIo_price()/3;
 					sum = sum+next;
-				}
+				}  
 				if(next_list.get(i).getCount3()==2) {
 					int next = next_list.get(i).getIo_price()/4;
 					sum = sum + next;
