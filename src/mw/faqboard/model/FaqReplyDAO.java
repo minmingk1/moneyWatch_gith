@@ -28,12 +28,16 @@ public class FaqReplyDAO {
 	
 	//reply 리스트출력
 	public List<FaqReplyDTO> faqContentReplyList(int faq_num){
+		
 		return sqlSession.selectList("reply.reply",faq_num);
 	}
 	
 	//reply 개수
 	public List<FaqReplyDTO> faqContentReplyCount() {
-		return sqlSession.selectList("reply.replyCount");
+		
+		List<FaqReplyDTO> dto = sqlSession.selectList("reply.replyCount");
+
+		return dto;
 	}
 	
 	//reply 삭제

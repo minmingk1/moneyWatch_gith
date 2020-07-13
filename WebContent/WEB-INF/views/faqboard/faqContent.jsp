@@ -41,7 +41,7 @@ table{
 		 </tr>
 		 <tr>	
 			<td colspan="6" align="right">
-			<c:if test="${sessionScope.memId != null}">
+			<c:if test="${sessionScope.memId == admin}">
 			<input type="button" class="btn btn-primary" value="글수정" onclick="document.location.href='/moneyWatch/faqMainUpdateForm.mw?qnum=${qlist.qnum}'" />
 			<input type="button" class="btn btn-primary" value="글삭제" onclick="document.location.href='/moneyWatch/faqMainDelete.mw?qnum=${qlist.qnum}&q_id=${qlist.q_id}'" />
 			</c:if>
