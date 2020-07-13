@@ -5,7 +5,8 @@
 
 	<!-- 유저게시판 댓글 개수 -->
 	<select id="replyCount" resultType="faqreplyDTO">
-		select faq_num, count(*) as count  from mwfaqreply group by faq_num order by faq_num desc
+		<!-- select faq_num, count(*) as count  from mwfaqreply group by faq_num order by faq_num desc -->
+		select r.faq_num, count(*) as counter from mwfaqboard b left outer join mwfaqreply r on b.faq_num = r.faq_num group by r.faq_num order by r.faq_num
 	</select>
 	
 	<!-- 유저게시판 댓글쓰기 -->

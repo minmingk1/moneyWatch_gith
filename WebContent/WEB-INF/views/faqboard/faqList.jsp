@@ -84,7 +84,6 @@
 	<c:if test="${count != 0}">
 		<table class="table table-hover" style="width: 40%;" border="1" align="center">
 			<tr class="table-active">
-				<td align="center">  </td>
 				<td align="center">번호</td>
 				<td align="center">제목</td>
 				<td align="center">작성자</td>
@@ -94,27 +93,42 @@
 			<c:forEach var="article" items="${articleList}">
 
 				<tr scope="row">
-					<td align="center"><c:if test="${article.readcount >= 20}">
-							<img src="/moneyWatch/image/hot.gif" border="0" height="16">
-						</c:if></td>
-
 					<td align="center">${number}<c:set var="number"
 							value="${number-1}" /></td>
-				<c:if test="${replycount == null}">
-					<td align="center"><a
-						href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
-							${article.subject}[]</a></td>
-				</c:if>
-
-				<c:forEach var="replycount" items="${replycount}">				
 							
-					<c:if test="${article.faq_num == replycount.faq_num}">
+					<c:if test="${ empty replycount }">
 						<td align="center"><a
 							href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
-								${article.subject} [${replycount.count }]</a></td>
+								${article.subject}</a></td>
 					</c:if>
-				</c:forEach>
-				
+					
+					<c:forEach var="replycount" items="${replycount}">				
+					
+						<c:if test="${article.faq_num == replycount.faq_num }">	
+							<td align="center">
+							
+								<a href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
+									${article.subject} [${replycount.counter }]</a>
+								<c:if test="${article.readcount >= 20}">
+								<img src="/moneyWatch/image/hot.gif" border="0" height="16">
+								</c:if>		
+							</td>
+						</c:if>
+						
+						<c:if test="${article.faq_num != replycount.faq_num}">	
+							<c:if test="${replycount.faq_num != 0 }">								
+							<td align="center">
+								<a href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
+									${article.subject}</a>
+								<c:if test="${article.readcount >= 20}">
+								<img src="/moneyWatch/image/hot.gif" border="0" height="16">
+								</c:if>
+							</td>
+ 							</c:if>
+						</c:if>
+					</c:forEach>
+					
+			
 					<td align="center">${article.id}</td>
 
 					<td align="center">${article.reg}</td>
