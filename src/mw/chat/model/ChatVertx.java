@@ -102,7 +102,10 @@ public class ChatVertx extends DefaultEmbeddableVerticle {
 						String id = event.getString("id");
 						
 						// 회원의 계좌번호들을 가져오기
-						acclist = moDAO.myAccount(id);
+						try {
+							acclist = moDAO.myAccount(id);
+						}catch(Exception e) {}
+						
 						
 						// 회원의 첫번째 계좌번호 가져오기
 						String account;
