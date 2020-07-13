@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-<html>
-<head><title>로그인</title>
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -15,7 +9,6 @@
 <!------ Include the above in your HEAD tag ---------->
     <html>
      <head><title>로그인</title>
-
       <script language="JavaScript">
       
       function begin(){
@@ -32,24 +25,26 @@
           	alert("비밀번호를 입력하지 않으셨습니다.");
           	document.myform.pw.focus();
          	return false;
-            }
-       }
-     </script>  
+          	}
+         }
       
-
-</head>
-
+        
+      </script>  
+      
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="https://colorlib.com/etc/lf/Login_v1/images/img-01.png" alt="IMG">
+			
+				<div class="login100-pic js-tilt" data-tilt style="margin-top:-10%;">
+					<h1 style="text-align:center;">moneyWatch</h1><br/>
+					<img src="image/clock.jpg" alt="IMG"><br/><br/>
+					<h4 style="text-align:center;">자산 관리 프로그램</h4>
 				</div>
 				
 				<body onload="begin()">
 				<form class="login100-form validate-form" name="myform" action="/moneyWatch/loginPro.mw" method="post" onSubmit="return checkIt()">
 					<span class="login100-form-title">
-						Member Login
+						<h3>Login</h3>
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -75,16 +70,14 @@
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
+							<a class="txt2" href="idFindForm.mw">Username</a> / <a class="txt2" href="pwFindForm.mw">Password?</a>
 						</span>
-						<a class="txt2" href="/moneyWatch/idFindForm.mw">
-							Username </a>/ <a class="txt2" href="/moneyWatch/pwFindForm.mw">Password?
-						</a>
 					</div>
 
 					<div class="text-center p-t-136">
 						<a class="txt2" href="/moneyWatch/registerForm.mw">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+							<h5>Create your Account<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></h5>
+							
 						</a>
 					</div>
 				</form>
@@ -93,32 +86,3 @@
 		</div>
 	</div>
 	
-
-      
-<!--      </head>
-    <body onload="begin()">
-     <form name="myform" action="/moneyWatch/loginPro.mw" method="post" onSubmit="return checkIt()">
-      <table cellSpacing="1" cellPadding="1" width="250" border="1" align="center">  
-      
-       <tr height="30">
-        <td colspan="2" align="middle"><strong>회원로그인</strong></td></tr>
-       
-       <tr height="30">
-        <td width="110" align="center">아이디</td>
-        <td width="150" align=center>
-         <input type="text" name="id" size="15" maxlength="12"></td></tr>
-       
-       <tr height="30">
-        <td width="110" align="center">비밀번호</td>
-        <td width="150" align="center">
-         <input type="password" name="pw" size="15" maxlength="12"></td></tr>
-       
-       <tr height="30">
-        <td colspan="2" align="middle">
-         <input type="submit" value="로그인">
-         <input type="reset" value="다시입력">
-         <input type="button" value="회윈가입" onclick="javascript:window.location='/moneyWatch/registerForm.mw'"></td></tr>             
-      </table>
-     </form>
-    </body>  
-   </html> -->
