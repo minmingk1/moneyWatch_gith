@@ -95,16 +95,10 @@ table{
     				</tr>
     				<c:forEach items="${list1}" var="list">
     				<tr>
-    					<c:if test="${list.io_category==null}">
-    					<td>기타</td>
-    					</c:if>
-    					<c:if test="${list.io_category!=null}">
 						<td>${list.io_category}</td>
-						</c:if>
 						<td><fmt:formatNumber value="${list.io_price}" pattern="#,###" /></td>
 					</tr>
 					</c:forEach>
-					
 						
 					<tr class="table-secondary">
 						<td>총 지출금액</td>

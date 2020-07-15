@@ -17,7 +17,7 @@ public class MoneyioDAO {
 	public MoneyioDAO(SqlSessionTemplate sqlSession) {
 		this.sqlSession = sqlSession;
 	}
-	//ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½å¸®ï¿½ï¿½Æ®
+	
 	public List<My_cardDTO> card(String id) {
 		return sqlSession.selectList("moneyio.card", id);
 	}
@@ -25,7 +25,7 @@ public class MoneyioDAO {
 		return sqlSession.selectList("moneyio.account", id);
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	
 	public List card_Account(String id, String card_name) {
 		//System.out.println(ca_company);
 		//System.out.println("dao: "+mdto.getId());
@@ -41,7 +41,7 @@ public class MoneyioDAO {
 		return sqlSession.selectList("moneyio.company_Account", map);
 	}
 	
-	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¾ï¿½
+
 	public String allMoney(String id, String account_num) {
 		map.put("id", id);
 		map.put("account_num", account_num);
@@ -210,7 +210,7 @@ public class MoneyioDAO {
 	
 	public int todayOutMoney(String id) {
 		Calendar cal = Calendar.getInstance();
-		//ÇöÀç ¿¬µµ, ¿ù, ÀÏ
+		
 		int year = cal.get ( cal.YEAR );
 		int month = cal.get ( cal.MONTH ) + 1;
 		int day = cal.get ( cal.DATE );
