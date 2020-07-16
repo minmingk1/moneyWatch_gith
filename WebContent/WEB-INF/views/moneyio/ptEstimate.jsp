@@ -88,27 +88,24 @@ table{
   <div class="tab-content">
     <div id="home" class="container tab-pane active"><br> 
 		<div class="card border-danger mb-3" style="max-width: 20rem;">
-				<table class="table table-hover">
-				    <tr class="table-secondary">
-	      				<td>카테고리</td>
-						<td>금액</td>
-    				</tr>
-    				<c:forEach items="${list1}" var="list">
-    				<tr>
-						<td>${list.io_category}</td>
-						<td><fmt:formatNumber value="${list.io_price}" pattern="#,###" /></td>
-					</tr>
-					</c:forEach>
-						
-					<tr class="table-secondary">
-						<td>총 지출금액</td>
-						<td><fmt:formatNumber value="${sum1}" pattern="#,###" /></td>
-					</tr>
-				</table>
-			</div>
-			
+			<table class="table table-hover">
+				<tr class="table-secondary">
+	      			<td>카테고리</td>
+					<td>금액</td>
+    			</tr>
+    			<c:forEach items="${list1}" var="list">
+    			<tr>
+					<td>${list.io_category}</td>
+					<td><fmt:formatNumber value="${list.io_price}" pattern="#,###" /></td>
+				</tr>
+				</c:forEach>
+				<tr class="table-secondary">
+					<td>총 지출금액</td>
+					<td><fmt:formatNumber value="${sum1}" pattern="#,###" /></td>
+				</tr>
+			</table>
 		</div>
-		
+	</div>	
     <div id="menu1" class="container tab-pane fade"><br>
     	<div class="card border-primary mb-3" style="max-width: 20rem;">
 			<table class="table table-hover">

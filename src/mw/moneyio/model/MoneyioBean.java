@@ -68,21 +68,11 @@ public class MoneyioBean {
 		}
 		
 		@RequestMapping("bankSelect.mw")
-		public String bankSelect(My_cardDTO mdto, String id, String card_name, Model model/* , HttpServletRequest request */) {
-			//System.out.println("id: "+mdto.getId());
-			//System.out.println("mdtoCard_name() : " + mdto.getCard_name());
-			System.out.println("mdto.getCard_name() : " + mdto.getCard_name());
-			System.out.println("mdto.getId() : " + mdto.getId());
-			
-//			List<String> account_card = null;
-//			List<String> account_company = null; 
-//			List<String> la = new ArrayList();
-			
+		public String bankSelect(My_cardDTO mdto, String id, String card_name, Model model) {
+
 			List account_company = dao.company_Account(id, card_name);
 			List account_card = dao.card_Account(id, card_name);
-				
 			String[] card_Account = new String[account_company.size()+account_card.size()];
-			
 			
 			for(int i=0; i<account_company.size();i++) {
 				card_Account[i] = (String)account_company.get(i);
@@ -92,13 +82,17 @@ public class MoneyioBean {
 				card_Account[i] = (String)account_card.get(j);
 				j++;
 			}
-			
 			for(int i = 0; i < card_Account.length; i++) {
 				System.out.println("card_account["+i+"] : " + card_Account[i]);
 			}
+			model.addAttribute("card_Account", card_Account);
+
+			return "/moneyio/bankSelect";
+		}
 			
-			
-			
+//			List<String> account_card = null;
+//			List<String> account_company = null; 
+//			List<String> la = new ArrayList();
 			
 //			if(account_company != null) {
 //				la.add(account_company.toString());
@@ -107,20 +101,12 @@ public class MoneyioBean {
 //			if(account_card != null) {
 //				la.add(account_card.toString());
 //			}
-			
-			
-			
 //			for(int i=0; i<card_Account.length;i++) {
 //				card_Account[i] = (String) la.get(i);
 //				System.out.println("card_Account===="+card_Account[i]);
 //			}
-			
-			
 			//System.out.println("card_Account: "+card_Account);
-			model.addAttribute("card_Account", card_Account);
-
-			return "/moneyio/bankSelect";
-		}
+//		}
 		
 		@RequestMapping("remain.mw")
 		public String remain(String id, String account_num, Model model) {
