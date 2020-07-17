@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 찾기2</title>
-<link href="/mw_test/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/moneyWatch/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <style>
 
 table{
@@ -19,7 +19,7 @@ td{
 </style>
 <script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
-<body>
+<body><br/><br/><br/>
 <div class="form-group row">
 
   <c:if test="${check==1}">
@@ -28,8 +28,8 @@ td{
   			<tr><td colspan="2"><h4>${id}</h4>입니다.</td>
   			</tr>
   			<tr>
-  			<td><a href="/mw_test/member/pwFindFomr.mw"><button class="btn btn-primary">비밀번호 찾기</button></a></td>
-  			<td><a href="/mw_test/main/main.mw"><button class="btn btn-primary">메인으로</button></a></td>
+  			<td><a href="/moneyWatch/member/pwFindForm.mw"><button class="btn btn-primary">비밀번호 찾기</button></a></td>
+  			<td><a href="/moneyWatch/index.mw"><button class="btn btn-primary">로그인</button></a></td>
   			</tr>
   		</table>		
   </c:if>

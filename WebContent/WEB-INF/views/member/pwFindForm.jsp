@@ -24,7 +24,7 @@ td{
 <body>
   <fieldset style="margin-top:10%;">
 	<legend>비밀번호 찾기</legend>
-    <form action="/mw_test/pwFindPro.mw" >
+    <form action="/moneyWatch/pwFindPro.mw" >
     	<div class="form-group row">
     		<table border="0" align="center" width="60%" >
     			<tr>
@@ -54,7 +54,7 @@ td{
     			<td colspan="3">
     			<center>
     			<input type="submit" value="Submit" class="btn btn-primary" />
-    			<input type="button" value="로그인" class="btn btn-primary" onclick="javascript:window.location='loginForm.mw'"/>
+    			<input type="button" value="로그인" class="btn btn-primary" onclick="javascript:window.location='index.mw'"/>
     			</center>
     			</td>
     			</tr>

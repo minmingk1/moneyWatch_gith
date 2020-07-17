@@ -24,7 +24,7 @@ td{
 <body>
   <fieldset style="margin-top:10%;">
 	<legend>아이디 찾기</legend>
-    <form method="post" action="/mw_test/idFindPro.mw" >
+    <form method="post" action="/moneyWatch/idFindPro.mw" >
     	<div class="form-group row">
     		<table border="0" align="center" width="60%" >
     			<tr>
@@ -49,7 +49,7 @@ td{
     			<td colspan="3">
     			<center>
     				<input type="submit" value="Submit" class="btn btn-primary" />
-    				<input type="button" value="로그인" class="btn btn-primary" onclick="javascript:window.location='loginForm.mw'"/>
+    				<input type="button" value="로그인" class="btn btn-primary" onclick="javascript:window.location='index.mw'"/>
     			</center>
     			</td>
     			</tr>
