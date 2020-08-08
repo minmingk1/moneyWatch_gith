@@ -90,6 +90,7 @@
 				<td align="center">작성일</td>
 				<td align="center">조회</td>
 			</tr>
+
 			<c:forEach var="article" items="${articleList}">
 
 				<tr scope="row">
@@ -102,32 +103,18 @@
 								${article.subject}</a></td>
 					</c:if>
 					
-					<c:forEach var="replycount" items="${replycount}">				
-					
-						<c:if test="${article.faq_num == replycount.faq_num }">	
-							<td align="center">
-							
-								<a href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
-									${article.subject} [${replycount.counter }]</a>
-								<c:if test="${article.readcount >= 20}">
-								<img src="/moneyWatch/image/hot.gif" border="0" height="16">
-								</c:if>		
-							</td>
-						</c:if>
-						
-						<c:if test="${article.faq_num != replycount.faq_num}">	
-							<c:if test="${replycount.faq_num != 0 }">								
-							<td align="center">
-								<a href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
-									${article.subject}</a>
-								<c:if test="${article.readcount >= 20}">
-								<img src="/moneyWatch/image/hot.gif" border="0" height="16">
-								</c:if>
-							</td>
- 							</c:if>
-						</c:if>
-					</c:forEach>
-					
+					<c:if test="${ replycount != null }">
+						<td align="center">
+							<a href="/moneyWatch/content.mw?faq_num=${article.faq_num}&pageNum=${currentPage}&number=${number}">
+								${article.subject} <!-- 글 제목 -->
+								<c:forEach var="replycount" items="${replycount}">
+									<c:if test="${article.faq_num == replycount.faq_num }">		
+									 [${replycount.counter }] <!-- 댓글 개수 -->
+									</c:if>
+								</c:forEach>
+							</a>
+						</td>
+					</c:if>
 			
 					<td align="center">${article.id}</td>
 
@@ -136,6 +123,7 @@
 					<td align="center">${article.readcount}</td>
 				</tr>
 			</c:forEach>
+			
 		</table>
 	</c:if>
 

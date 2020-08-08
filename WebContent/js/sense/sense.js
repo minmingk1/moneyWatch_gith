@@ -83,7 +83,15 @@
 			
 		}
 	}
-	
+		
+	//senseMain에서 스크랩+메모
+	function scrapmemo(num){
+		var url= "memo.mw?num="+num;
+		var name = "memo";
+		var option = "width=500, height=500, left=150, top=100";
+		
+		window.open(url, name, option);
+	}	
 	
 	//senseMain에서 스크랩 버튼 작동	
 	function scrap(num){
@@ -100,17 +108,6 @@
 			}
 		});
 	}
-	
-	
-	//senseMain에서 스크랩+메모
-	function scrapmemo(num){
-		var url= "memo.mw?num="+num;
-		var name = "memo";
-		var option = "width=500, height=500, left=150, top=100";
-		
-		window.open(url, name, option);
-	}
-	
 	
 	//sense main에서 카테고리 클릭시 해당 카테고리 리스트 출력
 	function myscrapCategory(num){
